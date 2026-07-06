@@ -1,0 +1,501 @@
+{
+  "generated_at": "2026-07-06T09:31:59.365259+00:00",
+  "pipeline_version": "PR15",
+  "inspector_version": "PR15.5",
+  "total_professors": 10,
+  "total_failures": 7,
+  "statistics": {
+    "overview": {
+      "total_professors": 10,
+      "succeeded_with_members": 3,
+      "failed": 7,
+      "success_rate": 0.3,
+      "failure_rate": 0.7,
+      "wrong_page_navigated": 1
+    },
+    "failure_distribution": {
+      "Section Detection Failure": 3,
+      "Unsupported HTML Structure": 1,
+      "No Homepage": 1,
+      "Dynamic HTML": 1,
+      "Fetch Failure": 1
+    },
+    "failure_distribution_raw_keys": {
+      "section_detection_failure": 3,
+      "unsupported_html_structure": 1,
+      "no_homepage": 1,
+      "dynamic_html": 1,
+      "fetch_failure": 1
+    },
+    "top_rejection_reasons": {
+      "Page rejected": 4,
+      "No suitable group page found in HomepageGraph": 2,
+      "Wrong page": 1
+    },
+    "most_common_section_headings": {
+      "About Us": 2,
+      "Distributed Systems Laboratory": 2,
+      "SAIL@Princeton": 1,
+      "Directions": 1,
+      "News": 1,
+      "Featured projects": 1,
+      "Featured publications": 1
+    },
+    "unmatched_member_headings": {
+      "Distributed Systems Laboratory": 2
+    },
+    "unsupported_layout_patterns": {
+      "no_headings_found": 2,
+      "css_card_grid": 1,
+      "dynamic_spa": 1,
+      "wrong_page_navigated": 1
+    },
+    "classifier_page_type_distribution": {
+      "research_group": 4,
+      "student_page": 1
+    },
+    "html_availability": {
+      "records_with_cached_html": 5,
+      "records_without_html": 2
+    },
+    "post_navigation_failures": 5,
+    "post_navigation_failure_rate": 0.625
+  },
+  "failures": [
+    {
+      "professor": "Ravi Netravali",
+      "original_homepage": "https://www.cs.princeton.edu/people/profile/ravian",
+      "canonical_homepage": "https://www.cs.princeton.edu/~ravian",
+      "research_group_url": "https://sysml.cs.princeton.edu/",
+      "fetch_status": "page_rejected",
+      "classifier_result": {
+        "page_type": "research_group",
+        "confidence": 0.35,
+        "is_acceptable": false,
+        "reason": "Rejected as research_group (confidence=0.35)"
+      },
+      "parser_result": {
+        "page_title": "SAIL@Princeton",
+        "total_sections_detected": 3,
+        "sections": [
+          {
+            "name": "sail@princeton",
+            "role": "Unknown",
+            "is_member_section": false,
+            "member_status": "UNKNOWN",
+            "entry_count": 0
+          },
+          {
+            "name": "about us",
+            "role": "Unknown",
+            "is_member_section": false,
+            "member_status": "UNKNOWN",
+            "entry_count": 0
+          },
+          {
+            "name": "directions",
+            "role": "Unknown",
+            "is_member_section": false,
+            "member_status": "UNKNOWN",
+            "entry_count": 0
+          }
+        ],
+        "section_names": [
+          "sail@princeton",
+          "about us",
+          "directions"
+        ],
+        "member_section_count": 0,
+        "current_member_section_count": 0,
+        "member_section_names": [],
+        "total_entries_parsed": 0,
+        "total_links_found": 100,
+        "visible_text_length": 2574
+      },
+      "navigation_path": [
+        "https://www.cs.princeton.edu/people/profile/ravian",
+        "https://www.cs.princeton.edu/~ravian",
+        "https://sysml.cs.princeton.edu/"
+      ],
+      "navigation_score": {
+        "lab_score": 0.805,
+        "member_score": 0.0,
+        "research_group_score": 0.0,
+        "homepage_score": 0.234,
+        "directory_penalty": 0.0,
+        "provider_score": 0.805,
+        "final_score": 0.805
+      },
+      "navigation_evidence": [
+        "node_type:lab_page",
+        "anchor_lab:lab",
+        "anchor_group+:lab"
+      ],
+      "visible_signals": {
+        "html_size_bytes": 31283,
+        "visible_text_ratio": 0.0853,
+        "is_likely_dynamic": false,
+        "spa_frameworks": [],
+        "has_member_keywords_in_html": true,
+        "has_card_or_grid_pattern": true,
+        "uses_plain_text_sections": false,
+        "plain_section_matches": [],
+        "wrong_page_detected": false
+      },
+      "section_headings": [
+        "SAIL@Princeton",
+        "About Us",
+        "Directions"
+      ],
+      "detected_member_sections": [],
+      "unmatched_member_headings": [],
+      "rejected_reason": "Page rejected: Rejected as research_group (confidence=0.35)",
+      "failure_category": "unsupported_html_structure",
+      "failure_category_label": "Unsupported HTML Structure",
+      "suggested_fix": "Page lists members in a CSS grid/card layout (card pattern detected, visible text ratio=8.5%). The parser relies on h1–h4 headings before member lists. Fix: add a profile-card container parser to MemberPageParser."
+    },
+    {
+      "professor": "Arvind Krishnamurthy",
+      "original_homepage": "http://www.cs.washington.edu/homes/arvind/",
+      "canonical_homepage": "http://www.cs.washington.edu/homes/arvind/",
+      "research_group_url": null,
+      "fetch_status": "skipped",
+      "classifier_result": null,
+      "parser_result": {},
+      "navigation_path": [],
+      "navigation_score": null,
+      "navigation_evidence": [],
+      "visible_signals": {},
+      "section_headings": [],
+      "detected_member_sections": [],
+      "unmatched_member_headings": [],
+      "rejected_reason": "No suitable group page found in HomepageGraph",
+      "failure_category": "no_homepage",
+      "failure_category_label": "No Homepage",
+      "suggested_fix": "HomepageGraph only contains: [homepage, publications_page, teaching_page]. No lab/group/people page link was discovered. Possible causes: (1) homepage uses Google Sites / JavaScript navigation that the static HP agent cannot crawl; (2) the lab page link text does not match GROUP_ANCHOR_POSITIVE keywords; (3) the professor lists students only on their personal page without a dedicated lab URL. Fix: expand HomepagePipeline anchor scoring for Google Sites or add a second navigation hop."
+    },
+    {
+      "professor": "Vincent Liu 0001",
+      "original_homepage": "https://vincen.tl/",
+      "canonical_homepage": "https://vincen.tl/",
+      "research_group_url": "https://dsl.cis.upenn.edu/",
+      "fetch_status": "page_rejected",
+      "classifier_result": {
+        "page_type": "research_group",
+        "confidence": 0.25,
+        "is_acceptable": false,
+        "reason": "No member sections found on page"
+      },
+      "parser_result": {
+        "page_title": "Distributed Systems Laboratory – Investigating Advanced Distributed Systems and Networking Technologies",
+        "total_sections_detected": 2,
+        "sections": [
+          {
+            "name": "distributed systems laboratory",
+            "role": "Unknown",
+            "is_member_section": false,
+            "member_status": "UNKNOWN",
+            "entry_count": 0
+          },
+          {
+            "name": "about us",
+            "role": "Unknown",
+            "is_member_section": false,
+            "member_status": "UNKNOWN",
+            "entry_count": 0
+          }
+        ],
+        "section_names": [
+          "distributed systems laboratory",
+          "about us"
+        ],
+        "member_section_count": 0,
+        "current_member_section_count": 0,
+        "member_section_names": [],
+        "total_entries_parsed": 0,
+        "total_links_found": 5,
+        "visible_text_length": 516
+      },
+      "navigation_path": [
+        "https://vincen.tl/",
+        "https://dsl.cis.upenn.edu/"
+      ],
+      "navigation_score": {
+        "lab_score": 0.805,
+        "member_score": 0.0,
+        "research_group_score": 0.0,
+        "homepage_score": 0.234,
+        "directory_penalty": 0.0,
+        "provider_score": 0.805,
+        "final_score": 0.805
+      },
+      "navigation_evidence": [
+        "node_type:lab_page",
+        "anchor_lab:lab",
+        "anchor_group+:lab"
+      ],
+      "visible_signals": {
+        "html_size_bytes": 35189,
+        "visible_text_ratio": 0.0223,
+        "is_likely_dynamic": true,
+        "spa_frameworks": [
+          "React"
+        ],
+        "has_member_keywords_in_html": true,
+        "has_card_or_grid_pattern": false,
+        "uses_plain_text_sections": false,
+        "plain_section_matches": [],
+        "wrong_page_detected": false
+      },
+      "section_headings": [
+        "Distributed Systems Laboratory",
+        "Distributed Systems Laboratory",
+        "About Us"
+      ],
+      "detected_member_sections": [],
+      "unmatched_member_headings": [
+        "Distributed Systems Laboratory",
+        "Distributed Systems Laboratory"
+      ],
+      "rejected_reason": "Page rejected: No member sections found on page",
+      "failure_category": "dynamic_html",
+      "failure_category_label": "Dynamic HTML",
+      "suggested_fix": "Page is JavaScript-rendered (React) — visible text ratio is only 2.2%. The static HTML parser receives near-empty content. Fix: (1) add a headless-browser fetch path (Playwright/Puppeteer) for SPA pages; (2) look for a server-side-rendered sitemap or /people.json endpoint; (3) check if the page has a static fallback URL."
+    },
+    {
+      "professor": "Rachit Agarwal 0001",
+      "original_homepage": "http://www.cs.cornell.edu/~ragarwal/index.html",
+      "canonical_homepage": "http://www.cs.cornell.edu/~ragarwal/index.html",
+      "research_group_url": "https://www.cs.cornell.edu/~ragarwal/collaborators.html",
+      "fetch_status": "page_rejected",
+      "classifier_result": {
+        "page_type": "research_group",
+        "confidence": 0.4,
+        "is_acceptable": false,
+        "reason": "No member sections found on page"
+      },
+      "parser_result": {
+        "page_title": "Rachit Agarwal's collaborators",
+        "total_sections_detected": 0,
+        "sections": [],
+        "section_names": [],
+        "member_section_count": 0,
+        "current_member_section_count": 0,
+        "member_section_names": [],
+        "total_entries_parsed": 0,
+        "total_links_found": 0,
+        "visible_text_length": 5479
+      },
+      "navigation_path": [
+        "http://www.cs.cornell.edu/~ragarwal/index.html",
+        "https://www.cs.cornell.edu/~ragarwal/collaborators.html"
+      ],
+      "navigation_score": {
+        "lab_score": 1.0,
+        "member_score": 0.0,
+        "research_group_score": 0.0,
+        "homepage_score": 0.3,
+        "directory_penalty": 0.0,
+        "provider_score": 1.0,
+        "final_score": 1.0
+      },
+      "navigation_evidence": [
+        "node_type:lab_page",
+        "group_pattern:/~",
+        "anchor_lab:lab",
+        "anchor_group+:lab"
+      ],
+      "visible_signals": {
+        "html_size_bytes": 21203,
+        "visible_text_ratio": 0.2401,
+        "is_likely_dynamic": false,
+        "spa_frameworks": [],
+        "has_member_keywords_in_html": true,
+        "has_card_or_grid_pattern": false,
+        "uses_plain_text_sections": false,
+        "plain_section_matches": [],
+        "wrong_page_detected": false
+      },
+      "section_headings": [],
+      "detected_member_sections": [],
+      "unmatched_member_headings": [],
+      "rejected_reason": "Page rejected: No member sections found on page",
+      "failure_category": "section_detection_failure",
+      "failure_category_label": "Section Detection Failure",
+      "suggested_fix": "Page contains member-related words in HTML body but no h1–h4 headings matched section keywords. Members may be listed without standard HTML heading elements — possibly using bold text, divs, or CSS classes as visual separators. Fix: extend MemberPageParser to handle div/span-based section boundaries."
+    },
+    {
+      "professor": "Tianyin Xu",
+      "original_homepage": "https://tianyin.github.io/",
+      "canonical_homepage": "https://tianyin.github.io/",
+      "research_group_url": "https://www.cs.cornell.edu/~legunsen",
+      "fetch_status": "page_rejected",
+      "classifier_result": {
+        "page_type": "research_group",
+        "confidence": 0.4,
+        "is_acceptable": false,
+        "reason": "No member sections found on page"
+      },
+      "parser_result": {
+        "page_title": "Owolabi Legunsen",
+        "total_sections_detected": 0,
+        "sections": [],
+        "section_names": [],
+        "member_section_count": 0,
+        "current_member_section_count": 0,
+        "member_section_names": [],
+        "total_entries_parsed": 0,
+        "total_links_found": 76,
+        "visible_text_length": 12441
+      },
+      "navigation_path": [
+        "https://tianyin.github.io/",
+        "https://www.cs.cornell.edu/~legunsen"
+      ],
+      "navigation_score": {
+        "lab_score": 0.808,
+        "member_score": 0.0,
+        "research_group_score": 0.0,
+        "homepage_score": 0.195,
+        "directory_penalty": 0.0,
+        "provider_score": 0.808,
+        "final_score": 0.808
+      },
+      "navigation_evidence": [
+        "node_type:lab_page",
+        "group_pattern:/~",
+        "anchor_lab:lab",
+        "anchor_group+:lab"
+      ],
+      "visible_signals": {
+        "html_size_bytes": 35819,
+        "visible_text_ratio": 0.3363,
+        "is_likely_dynamic": false,
+        "spa_frameworks": [],
+        "has_member_keywords_in_html": true,
+        "has_card_or_grid_pattern": false,
+        "uses_plain_text_sections": false,
+        "plain_section_matches": [],
+        "wrong_page_detected": true
+      },
+      "section_headings": [],
+      "detected_member_sections": [],
+      "unmatched_member_headings": [],
+      "rejected_reason": "Wrong page: Page title 'Owolabi Legunsen' does not match target professor 'Tianyin Xu'; likely a different person's homepage",
+      "failure_category": "section_detection_failure",
+      "failure_category_label": "Section Detection Failure",
+      "suggested_fix": "WRONG PAGE NAVIGATED: the selected URL (https://www.cs.cornell.edu/~legunsen) belongs to a different person (page title: 'Owolabi Legunsen'). The navigator followed a link on the professor's homepage that points to a collaborator's or colleague's page rather than the professor's own lab. Fix: (1) add cross-professor name verification to GroupPageDiscoverer — reject candidates whose page title does not contain the professor's name or institution; (2) add the URL pattern to the navigator's denylist."
+    },
+    {
+      "professor": "Aditya Akella",
+      "original_homepage": "https://www.cs.utexas.edu/~akella/",
+      "canonical_homepage": "https://www.cs.utexas.edu/~akella/",
+      "research_group_url": "http://utns.cs.utexas.edu/",
+      "fetch_status": "page_rejected",
+      "classifier_result": {
+        "page_type": "student_page",
+        "confidence": 0.05,
+        "is_acceptable": false,
+        "reason": "No member sections found on page"
+      },
+      "parser_result": {
+        "page_title": "Home | UT Networked Systems",
+        "total_sections_detected": 3,
+        "sections": [
+          {
+            "name": "news",
+            "role": "Unknown",
+            "is_member_section": false,
+            "member_status": "UNKNOWN",
+            "entry_count": 0
+          },
+          {
+            "name": "featured projects",
+            "role": "Unknown",
+            "is_member_section": false,
+            "member_status": "UNKNOWN",
+            "entry_count": 0
+          },
+          {
+            "name": "featured publications",
+            "role": "Unknown",
+            "is_member_section": false,
+            "member_status": "UNKNOWN",
+            "entry_count": 0
+          }
+        ],
+        "section_names": [
+          "news",
+          "featured projects",
+          "featured publications"
+        ],
+        "member_section_count": 0,
+        "current_member_section_count": 0,
+        "member_section_names": [],
+        "total_entries_parsed": 0,
+        "total_links_found": 18,
+        "visible_text_length": 3076
+      },
+      "navigation_path": [
+        "https://www.cs.utexas.edu/~akella/",
+        "http://utns.cs.utexas.edu/"
+      ],
+      "navigation_score": {
+        "lab_score": 0.805,
+        "member_score": 0.0,
+        "research_group_score": 0.0,
+        "homepage_score": 0.234,
+        "directory_penalty": 0.0,
+        "provider_score": 0.805,
+        "final_score": 0.805
+      },
+      "navigation_evidence": [
+        "node_type:lab_page",
+        "anchor_lab:lab",
+        "anchor_group+:lab"
+      ],
+      "visible_signals": {
+        "html_size_bytes": 13466,
+        "visible_text_ratio": 0.2301,
+        "is_likely_dynamic": false,
+        "spa_frameworks": [],
+        "has_member_keywords_in_html": true,
+        "has_card_or_grid_pattern": false,
+        "uses_plain_text_sections": false,
+        "plain_section_matches": [],
+        "wrong_page_detected": false
+      },
+      "section_headings": [
+        "News",
+        "Featured projects",
+        "Featured publications"
+      ],
+      "detected_member_sections": [],
+      "unmatched_member_headings": [],
+      "rejected_reason": "Page rejected: No member sections found on page",
+      "failure_category": "section_detection_failure",
+      "failure_category_label": "Section Detection Failure",
+      "suggested_fix": "Page headings found: \"News\", \"Featured projects\", \"Featured publications\". None of these headings matched CURRENT_SECTION_KEYWORDS or ALUMNI_SECTION_KEYWORDS. Fix: review these headings and add matching entries to precision_constants.py. Members may also be organized by CSS class/div without heading elements."
+    },
+    {
+      "professor": "Peng Huang 0005",
+      "original_homepage": "https://web.eecs.umich.edu/~ryanph/",
+      "canonical_homepage": "https://web.eecs.umich.edu/~ryanph/",
+      "research_group_url": null,
+      "fetch_status": "skipped",
+      "classifier_result": null,
+      "parser_result": {},
+      "navigation_path": [],
+      "navigation_score": null,
+      "navigation_evidence": [],
+      "visible_signals": {},
+      "section_headings": [],
+      "detected_member_sections": [],
+      "unmatched_member_headings": [],
+      "rejected_reason": "No suitable group page found in HomepageGraph",
+      "failure_category": "fetch_failure",
+      "failure_category_label": "Fetch Failure",
+      "suggested_fix": "Homepage fetch itself failed (HTTPSConnectionPool(host='web.eecs.umich.edu', port=443): Max retries exceeded with url: /~ryanph/ (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))). Group page was never reachable. Fix: retry with a longer timeout, use a proxy, or skip this professor."
+    }
+  ]
+}

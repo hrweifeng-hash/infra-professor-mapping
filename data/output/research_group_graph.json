@@ -1,0 +1,3170 @@
+[
+  {
+    "schema_version": "1.2",
+    "generated_at": "2026-07-06T09:31:54.454030+00:00",
+    "pipeline_version": "PR16",
+    "professor_name": "Ravi Netravali",
+    "professor_homepage": "https://www.cs.princeton.edu/~ravian",
+    "original_homepage": "https://www.cs.princeton.edu/people/profile/ravian",
+    "canonical_homepage": "https://www.cs.princeton.edu/~ravian",
+    "homepage_resolution_method": "link_upgrade:Homepage",
+    "homepage_resolution_confidence": 0.75,
+    "navigation_provider": "heuristic",
+    "navigation_path": [
+      "https://www.cs.princeton.edu/people/profile/ravian",
+      "https://www.cs.princeton.edu/~ravian",
+      "https://sysml.cs.princeton.edu/"
+    ],
+    "group_page": {
+      "url": "https://sysml.cs.princeton.edu/",
+      "source_node_type": "lab_page",
+      "confidence": 0.805,
+      "reason": "node_type:lab_page; anchor_lab:lab; anchor_group+:lab",
+      "navigation_path": [
+        "https://www.cs.princeton.edu/people/profile/ravian",
+        "https://www.cs.princeton.edu/~ravian",
+        "https://sysml.cs.princeton.edu/"
+      ],
+      "evidence": [
+        "node_type:lab_page",
+        "anchor_lab:lab",
+        "anchor_group+:lab"
+      ],
+      "navigation_score": {
+        "lab_score": 0.805,
+        "member_score": 0.0,
+        "research_group_score": 0.0,
+        "homepage_score": 0.234,
+        "directory_penalty": 0.0,
+        "provider_score": 0.805,
+        "final_score": 0.805
+      }
+    },
+    "fetch_status": "page_rejected",
+    "provider": "heuristic",
+    "member_count": 0,
+    "current_member_count": 0,
+    "former_member_count": 0,
+    "members": [],
+    "former_members": [],
+    "errors": [
+      "Page rejected: Rejected as research_group (confidence=0.35)"
+    ]
+  },
+  {
+    "schema_version": "1.2",
+    "generated_at": "2026-07-06T09:31:54.458601+00:00",
+    "pipeline_version": "PR16",
+    "professor_name": "Feng Qian 0001",
+    "professor_homepage": "https://feng-qian.github.io/",
+    "original_homepage": "https://feng-qian.github.io/",
+    "canonical_homepage": "https://feng-qian.github.io/",
+    "homepage_resolution_method": "already_personal",
+    "homepage_resolution_confidence": 1.0,
+    "navigation_provider": "heuristic",
+    "navigation_path": [
+      "https://feng-qian.github.io/",
+      "https://feng-qian.github.io/students.html"
+    ],
+    "group_page": {
+      "url": "https://feng-qian.github.io/students.html",
+      "source_node_type": "people_page",
+      "confidence": 1.0,
+      "reason": "node_type:people_page; url_member:/students; group_pattern:/students; anchor_member:students; anchor_group+:student",
+      "navigation_path": [
+        "https://feng-qian.github.io/",
+        "https://feng-qian.github.io/students.html"
+      ],
+      "evidence": [
+        "node_type:people_page",
+        "url_member:/students",
+        "group_pattern:/students",
+        "anchor_member:students",
+        "anchor_group+:student"
+      ],
+      "navigation_score": {
+        "lab_score": 0.0,
+        "member_score": 1.0,
+        "research_group_score": 0.0,
+        "homepage_score": 0.386,
+        "directory_penalty": 0.0,
+        "provider_score": 1.0,
+        "final_score": 1.0
+      }
+    },
+    "fetch_status": "success",
+    "provider": "heuristic",
+    "member_count": 19,
+    "current_member_count": 19,
+    "former_member_count": 0,
+    "members": [
+      {
+        "name": "Ahmad Hassan",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Feng Qian 0001",
+        "profile_url": "https://ahmadhassandebugs.github.io/",
+        "digital_footprint": {
+          "homepage": {
+            "url": "https://ahmadhassandebugs.github.io/",
+            "confidence": 0.7,
+            "method": "url_heuristic",
+            "discovery_source": "page_link"
+          },
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 1.0
+      },
+      {
+        "name": "Anlan Zhang",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Feng Qian 0001",
+        "profile_url": "https://zhan6841.github.io/",
+        "digital_footprint": {
+          "homepage": {
+            "url": "https://zhan6841.github.io/",
+            "confidence": 0.7,
+            "method": "url_heuristic",
+            "discovery_source": "page_link"
+          },
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 1.0
+      },
+      {
+        "name": "Xianghang Mi",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Feng Qian 0001",
+        "profile_url": "https://mixianghang.github.io/",
+        "digital_footprint": {
+          "homepage": {
+            "url": "https://mixianghang.github.io/",
+            "confidence": 0.7,
+            "method": "url_heuristic",
+            "discovery_source": "page_link"
+          },
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 1.0
+      },
+      {
+        "name": "Arvind Narayanan",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Feng Qian 0001",
+        "profile_url": "https://www-users.cs.umn.edu/~naray111/",
+        "digital_footprint": {
+          "homepage": {
+            "url": "https://www-users.cs.umn.edu/~naray111/",
+            "confidence": 0.7,
+            "method": "url_heuristic",
+            "discovery_source": "page_link"
+          },
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 1.0
+      },
+      {
+        "name": "Xing Liu",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Feng Qian 0001",
+        "profile_url": "http://xingliu1.weebly.com",
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.998
+      },
+      {
+        "name": "Runsheng Ma",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Feng Qian 0001",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.8
+      },
+      {
+        "name": "Justus Schriedel",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Feng Qian 0001",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 0.8
+      },
+      {
+        "name": "Bin Hu",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Feng Qian 0001",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Yuming Hu",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Feng Qian 0001",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Ritvik Janamsetty",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Feng Qian 0001",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 0.75
+      },
+      {
+        "name": "Junhua Liu",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Feng Qian 0001",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Yu Liu",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Feng Qian 0001",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Zejun Zhang",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Feng Qian 0001",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Chendong Wang",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Feng Qian 0001",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Qingyang Xiao",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Feng Qian 0001",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Tianyu Chen",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Feng Qian 0001",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Yunsheng Yao",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Feng Qian 0001",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Wenxiao Zhang",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Feng Qian 0001",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Wangyang Li",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Feng Qian 0001",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      }
+    ],
+    "former_members": [],
+    "errors": []
+  },
+  {
+    "schema_version": "1.2",
+    "generated_at": "2026-07-06T09:31:54.458649+00:00",
+    "pipeline_version": "PR16",
+    "professor_name": "Arvind Krishnamurthy",
+    "professor_homepage": "http://www.cs.washington.edu/homes/arvind/",
+    "original_homepage": "http://www.cs.washington.edu/homes/arvind/",
+    "canonical_homepage": "http://www.cs.washington.edu/homes/arvind/",
+    "homepage_resolution_method": "already_personal",
+    "homepage_resolution_confidence": 1.0,
+    "navigation_provider": "heuristic",
+    "navigation_path": [],
+    "group_page": null,
+    "fetch_status": "skipped",
+    "provider": "heuristic",
+    "member_count": 0,
+    "current_member_count": 0,
+    "former_member_count": 0,
+    "members": [],
+    "former_members": [],
+    "errors": [
+      "No suitable group page found in HomepageGraph"
+    ]
+  },
+  {
+    "schema_version": "1.2",
+    "generated_at": "2026-07-06T09:31:54.461751+00:00",
+    "pipeline_version": "PR16",
+    "professor_name": "Vincent Liu 0001",
+    "professor_homepage": "https://vincen.tl/",
+    "original_homepage": "https://vincen.tl/",
+    "canonical_homepage": "https://vincen.tl/",
+    "homepage_resolution_method": "already_personal",
+    "homepage_resolution_confidence": 1.0,
+    "navigation_provider": "heuristic",
+    "navigation_path": [
+      "https://vincen.tl/",
+      "https://dsl.cis.upenn.edu/"
+    ],
+    "group_page": {
+      "url": "https://dsl.cis.upenn.edu/",
+      "source_node_type": "lab_page",
+      "confidence": 0.805,
+      "reason": "node_type:lab_page; anchor_lab:lab; anchor_group+:lab",
+      "navigation_path": [
+        "https://vincen.tl/",
+        "https://dsl.cis.upenn.edu/"
+      ],
+      "evidence": [
+        "node_type:lab_page",
+        "anchor_lab:lab",
+        "anchor_group+:lab"
+      ],
+      "navigation_score": {
+        "lab_score": 0.805,
+        "member_score": 0.0,
+        "research_group_score": 0.0,
+        "homepage_score": 0.234,
+        "directory_penalty": 0.0,
+        "provider_score": 0.805,
+        "final_score": 0.805
+      }
+    },
+    "fetch_status": "page_rejected",
+    "provider": "heuristic",
+    "member_count": 0,
+    "current_member_count": 0,
+    "former_member_count": 0,
+    "members": [],
+    "former_members": [],
+    "errors": [
+      "Page rejected: No member sections found on page"
+    ]
+  },
+  {
+    "schema_version": "1.2",
+    "generated_at": "2026-07-06T09:31:54.470360+00:00",
+    "pipeline_version": "PR16",
+    "professor_name": "Rachit Agarwal 0001",
+    "professor_homepage": "http://www.cs.cornell.edu/~ragarwal/index.html",
+    "original_homepage": "http://www.cs.cornell.edu/~ragarwal/index.html",
+    "canonical_homepage": "http://www.cs.cornell.edu/~ragarwal/index.html",
+    "homepage_resolution_method": "already_personal",
+    "homepage_resolution_confidence": 1.0,
+    "navigation_provider": "heuristic",
+    "navigation_path": [
+      "http://www.cs.cornell.edu/~ragarwal/index.html",
+      "https://www.cs.cornell.edu/~ragarwal/collaborators.html"
+    ],
+    "group_page": {
+      "url": "https://www.cs.cornell.edu/~ragarwal/collaborators.html",
+      "source_node_type": "lab_page",
+      "confidence": 1.0,
+      "reason": "node_type:lab_page; group_pattern:/~; anchor_lab:lab; anchor_group+:lab",
+      "navigation_path": [
+        "http://www.cs.cornell.edu/~ragarwal/index.html",
+        "https://www.cs.cornell.edu/~ragarwal/collaborators.html"
+      ],
+      "evidence": [
+        "node_type:lab_page",
+        "group_pattern:/~",
+        "anchor_lab:lab",
+        "anchor_group+:lab"
+      ],
+      "navigation_score": {
+        "lab_score": 1.0,
+        "member_score": 0.0,
+        "research_group_score": 0.0,
+        "homepage_score": 0.3,
+        "directory_penalty": 0.0,
+        "provider_score": 1.0,
+        "final_score": 1.0
+      }
+    },
+    "fetch_status": "page_rejected",
+    "provider": "heuristic",
+    "member_count": 0,
+    "current_member_count": 0,
+    "former_member_count": 0,
+    "members": [],
+    "former_members": [],
+    "errors": [
+      "Page rejected: No member sections found on page"
+    ]
+  },
+  {
+    "schema_version": "1.2",
+    "generated_at": "2026-07-06T09:31:54.477713+00:00",
+    "pipeline_version": "PR16",
+    "professor_name": "Tianyin Xu",
+    "professor_homepage": "https://tianyin.github.io/",
+    "original_homepage": "https://tianyin.github.io/",
+    "canonical_homepage": "https://tianyin.github.io/",
+    "homepage_resolution_method": "already_personal",
+    "homepage_resolution_confidence": 1.0,
+    "navigation_provider": "heuristic",
+    "navigation_path": [
+      "https://tianyin.github.io/",
+      "https://www.cs.cornell.edu/~legunsen"
+    ],
+    "group_page": {
+      "url": "https://www.cs.cornell.edu/~legunsen",
+      "source_node_type": "lab_page",
+      "confidence": 0.808,
+      "reason": "node_type:lab_page; group_pattern:/~; anchor_lab:lab; anchor_group+:lab",
+      "navigation_path": [
+        "https://tianyin.github.io/",
+        "https://www.cs.cornell.edu/~legunsen"
+      ],
+      "evidence": [
+        "node_type:lab_page",
+        "group_pattern:/~",
+        "anchor_lab:lab",
+        "anchor_group+:lab"
+      ],
+      "navigation_score": {
+        "lab_score": 0.808,
+        "member_score": 0.0,
+        "research_group_score": 0.0,
+        "homepage_score": 0.195,
+        "directory_penalty": 0.0,
+        "provider_score": 0.808,
+        "final_score": 0.808
+      }
+    },
+    "fetch_status": "page_rejected",
+    "provider": "heuristic",
+    "member_count": 0,
+    "current_member_count": 0,
+    "former_member_count": 0,
+    "members": [],
+    "former_members": [],
+    "errors": [
+      "Wrong page: Page title 'Owolabi Legunsen' does not match target professor 'Tianyin Xu'; likely a different person's homepage"
+    ]
+  },
+  {
+    "schema_version": "1.2",
+    "generated_at": "2026-07-06T09:31:54.483592+00:00",
+    "pipeline_version": "PR16",
+    "professor_name": "Mosharaf Chowdhury",
+    "professor_homepage": "http://www.mosharaf.com/",
+    "original_homepage": "http://www.mosharaf.com/",
+    "canonical_homepage": "http://www.mosharaf.com/",
+    "homepage_resolution_method": "already_personal",
+    "homepage_resolution_confidence": 1.0,
+    "navigation_provider": "heuristic",
+    "navigation_path": [
+      "http://www.mosharaf.com/",
+      "https://symbioticlab.org/people/"
+    ],
+    "group_page": {
+      "url": "https://symbioticlab.org/people/",
+      "source_node_type": "people_page",
+      "confidence": 1.0,
+      "reason": "node_type:people_page; url_member:/people; group_pattern:/people/; anchor_member:students; anchor_group+:student",
+      "navigation_path": [
+        "http://www.mosharaf.com/",
+        "https://symbioticlab.org/people/"
+      ],
+      "evidence": [
+        "node_type:people_page",
+        "url_member:/people",
+        "group_pattern:/people/",
+        "anchor_member:students",
+        "anchor_group+:student"
+      ],
+      "navigation_score": {
+        "lab_score": 0.0,
+        "member_score": 1.0,
+        "research_group_score": 0.0,
+        "homepage_score": 0.386,
+        "directory_penalty": 0.0,
+        "provider_score": 1.0,
+        "final_score": 1.0
+      }
+    },
+    "fetch_status": "success",
+    "provider": "heuristic",
+    "member_count": 10,
+    "current_member_count": 10,
+    "former_member_count": 70,
+    "members": [
+      {
+        "name": "Shiqi He",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": "https://tctower.github.io/",
+        "digital_footprint": {
+          "homepage": {
+            "url": "https://tctower.github.io/",
+            "confidence": 0.7,
+            "method": "url_heuristic",
+            "discovery_source": "page_link"
+          },
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 1.0
+      },
+      {
+        "name": "Runyu Lu",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": "https://lry89757.github.io/",
+        "digital_footprint": {
+          "homepage": {
+            "url": "https://lry89757.github.io/",
+            "confidence": 0.7,
+            "method": "url_heuristic",
+            "discovery_source": "page_link"
+          },
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 1.0
+      },
+      {
+        "name": "Ruofan Wu",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": "https://ruofan-wu.github.io/",
+        "digital_footprint": {
+          "homepage": {
+            "url": "https://ruofan-wu.github.io/",
+            "confidence": 0.7,
+            "method": "url_heuristic",
+            "discovery_source": "page_link"
+          },
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 1.0
+      },
+      {
+        "name": "Kevin Xue",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": "https://kevinrsx.github.io/",
+        "digital_footprint": {
+          "homepage": {
+            "url": "https://kevinrsx.github.io/",
+            "confidence": 0.7,
+            "method": "url_heuristic",
+            "discovery_source": "page_link"
+          },
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 1.0
+      },
+      {
+        "name": "Jeff Ma",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": "https://jeff.junzema.com/",
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.998
+      },
+      {
+        "name": "Aakash Puntambekar",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 0.75
+      },
+      {
+        "name": "Wonbin Jin",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Letian Ruan",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "David Mc",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 0.75
+      },
+      {
+        "name": "Jaeyi Kang",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      }
+    ],
+    "former_members": [
+      {
+        "name": "Dr. Juncheng Gu",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": "https://www.linkedin.com/in/juncheng-gu-93960859/",
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": {
+            "url": "https://www.linkedin.com/in/juncheng-gu-93960859/",
+            "confidence": 0.95,
+            "method": "url_host_match",
+            "discovery_source": "page_link"
+          },
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.85,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.938
+      },
+      {
+        "name": "Dr. Peifeng Yu",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": "https://www.linkedin.com/in/peifengyu/",
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": {
+            "url": "https://www.linkedin.com/in/peifengyu/",
+            "confidence": 0.95,
+            "method": "url_host_match",
+            "discovery_source": "page_link"
+          },
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.85,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.938
+      },
+      {
+        "name": "Dr. Jie You",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": "https://www.linkedin.com/in/jimmyyou/",
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": {
+            "url": "https://www.linkedin.com/in/jimmyyou/",
+            "confidence": 0.95,
+            "method": "url_host_match",
+            "discovery_source": "page_link"
+          },
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.85,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.938
+      },
+      {
+        "name": "Dr. Hasan Al Maruf",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": "https://www.linkedin.com/in/hasanalmaruf/",
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": {
+            "url": "https://www.linkedin.com/in/hasanalmaruf/",
+            "confidence": 0.95,
+            "method": "url_host_match",
+            "discovery_source": "page_link"
+          },
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 0.938
+      },
+      {
+        "name": "Prof. Fan Lai",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": "https://www.linkedin.com/in/fan-lai-a27764147/",
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": {
+            "url": "https://www.linkedin.com/in/fan-lai-a27764147/",
+            "confidence": 0.95,
+            "method": "url_host_match",
+            "discovery_source": "page_link"
+          },
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.85,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.988
+      },
+      {
+        "name": "Dr. Yiwen Zhang",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": "https://www.linkedin.com/in/yiwen-zhang-a75719112/",
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": {
+            "url": "https://www.linkedin.com/in/yiwen-zhang-a75719112/",
+            "confidence": 0.95,
+            "method": "url_host_match",
+            "discovery_source": "page_link"
+          },
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.85,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.938
+      },
+      {
+        "name": "Dr. Jiachen Liu",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": "https://www.linkedin.com/in/jiachen-amber-liu-872506169/",
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": {
+            "url": "https://www.linkedin.com/in/jiachen-amber-liu-872506169/",
+            "confidence": 0.95,
+            "method": "url_host_match",
+            "discovery_source": "page_link"
+          },
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.85,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.938
+      },
+      {
+        "name": "Dr. Insu Jang",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": "https://www.linkedin.com/in/insujang/",
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": {
+            "url": "https://www.linkedin.com/in/insujang/",
+            "confidence": 0.95,
+            "method": "url_host_match",
+            "discovery_source": "page_link"
+          },
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 0.938
+      },
+      {
+        "name": "Jack Kosaian",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 0.8
+      },
+      {
+        "name": "Qinye Li",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.8
+      },
+      {
+        "name": "Yang Liu",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Shuoren Fu",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.8
+      },
+      {
+        "name": "Yiwen Zhang",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.8
+      },
+      {
+        "name": "Yilei Xu",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Yue Tan",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.8
+      },
+      {
+        "name": "Wenting Tan",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.8
+      },
+      {
+        "name": "Songyuan Guan",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Yiwei Zhang",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.8
+      },
+      {
+        "name": "Yuze Lou",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 0.8
+      },
+      {
+        "name": "Yujia Xie",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Kaiwei Tu",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.8
+      },
+      {
+        "name": "Yuchen Wang",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Jingyuan Zhu",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.8
+      },
+      {
+        "name": "Alexander Neben",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 0.75
+      },
+      {
+        "name": "Xiangfeng Zhu",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.8
+      },
+      {
+        "name": "Jiachen Liu",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.8
+      },
+      {
+        "name": "Jiangchen Zhu",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.8
+      },
+      {
+        "name": "Jiaxing Yang",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.8
+      },
+      {
+        "name": "Zhezheng Chen",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Chuheng Hu",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Yinwei Dai",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.8
+      },
+      {
+        "name": "Yuqing Qiu",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.8
+      },
+      {
+        "name": "Yash Gaitonde",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 0.75
+      },
+      {
+        "name": "Kaiyang Yu",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.8
+      },
+      {
+        "name": "Xiang Shen",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Churong Ji",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.8
+      },
+      {
+        "name": "Sanjay S. Singapuram",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 0.8
+      },
+      {
+        "name": "Hongxi Pu",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.8
+      },
+      {
+        "name": "Haochen Zhang",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.8
+      },
+      {
+        "name": "Zayd Uzzaman",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 0.75
+      },
+      {
+        "name": "Yuxuan Zhu",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.8
+      },
+      {
+        "name": "Yutong Li",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Yile Gu",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.8
+      },
+      {
+        "name": "Luoxi Meng",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.8
+      },
+      {
+        "name": "Chengsong Zhang",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.8
+      },
+      {
+        "name": "Junwen Tan",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Xuye He",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.8
+      },
+      {
+        "name": "Yunzhen Liu",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Xingran Shen",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.8
+      },
+      {
+        "name": "Andrew Li",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Zhenning Yang",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.8
+      },
+      {
+        "name": "Zhixiang Teoh",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 0.75
+      },
+      {
+        "name": "Zhiyu Wu",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.8
+      },
+      {
+        "name": "Yong Seung Lee",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.85,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Yuxuan Xia",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Yunxuan Tang",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Zhenyan Zhu",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Amanuel Mersha",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 0.75
+      },
+      {
+        "name": "Parth Raut",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 0.75
+      },
+      {
+        "name": "Daniel Hou",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Sharon Han",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Oh Jun Kweon",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 0.75
+      },
+      {
+        "name": "Jiaheng Lu",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.8
+      },
+      {
+        "name": "Divyam Sharma",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 0.75
+      },
+      {
+        "name": "Jenny Xun",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 0.75
+      },
+      {
+        "name": "Vishwa Ramanakumar",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 0.75
+      },
+      {
+        "name": "Vatsal Joshi",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 0.75
+      },
+      {
+        "name": "Wenxuan Tan",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": {
+          "type": "Likely Chinese Surname",
+          "probability": 0.96,
+          "method": "surname_dictionary"
+        },
+        "confidence": 0.75
+      },
+      {
+        "name": "Rishika Kalidindi",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 0.8
+      },
+      {
+        "name": "Jisang Ahn",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Mosharaf Chowdhury",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 0.75
+      }
+    ],
+    "errors": []
+  },
+  {
+    "schema_version": "1.2",
+    "generated_at": "2026-07-06T09:31:54.486489+00:00",
+    "pipeline_version": "PR16",
+    "professor_name": "Aditya Akella",
+    "professor_homepage": "https://www.cs.utexas.edu/~akella/",
+    "original_homepage": "https://www.cs.utexas.edu/~akella/",
+    "canonical_homepage": "https://www.cs.utexas.edu/~akella/",
+    "homepage_resolution_method": "already_personal",
+    "homepage_resolution_confidence": 1.0,
+    "navigation_provider": "heuristic",
+    "navigation_path": [
+      "https://www.cs.utexas.edu/~akella/",
+      "http://utns.cs.utexas.edu/"
+    ],
+    "group_page": {
+      "url": "http://utns.cs.utexas.edu/",
+      "source_node_type": "lab_page",
+      "confidence": 0.805,
+      "reason": "node_type:lab_page; anchor_lab:lab; anchor_group+:lab",
+      "navigation_path": [
+        "https://www.cs.utexas.edu/~akella/",
+        "http://utns.cs.utexas.edu/"
+      ],
+      "evidence": [
+        "node_type:lab_page",
+        "anchor_lab:lab",
+        "anchor_group+:lab"
+      ],
+      "navigation_score": {
+        "lab_score": 0.805,
+        "member_score": 0.0,
+        "research_group_score": 0.0,
+        "homepage_score": 0.234,
+        "directory_penalty": 0.0,
+        "provider_score": 0.805,
+        "final_score": 0.805
+      }
+    },
+    "fetch_status": "page_rejected",
+    "provider": "heuristic",
+    "member_count": 0,
+    "current_member_count": 0,
+    "former_member_count": 0,
+    "members": [],
+    "former_members": [],
+    "errors": [
+      "Page rejected: No member sections found on page"
+    ]
+  },
+  {
+    "schema_version": "1.2",
+    "generated_at": "2026-07-06T09:31:54.486502+00:00",
+    "pipeline_version": "PR16",
+    "professor_name": "Peng Huang 0005",
+    "professor_homepage": "https://web.eecs.umich.edu/~ryanph/",
+    "original_homepage": "https://web.eecs.umich.edu/~ryanph/",
+    "canonical_homepage": "https://web.eecs.umich.edu/~ryanph/",
+    "homepage_resolution_method": "already_personal",
+    "homepage_resolution_confidence": 1.0,
+    "navigation_provider": "heuristic",
+    "navigation_path": [],
+    "group_page": null,
+    "fetch_status": "skipped",
+    "provider": "heuristic",
+    "member_count": 0,
+    "current_member_count": 0,
+    "former_member_count": 0,
+    "members": [],
+    "former_members": [],
+    "errors": [
+      "No suitable group page found in HomepageGraph"
+    ]
+  },
+  {
+    "schema_version": "1.2",
+    "generated_at": "2026-07-06T09:31:54.493578+00:00",
+    "pipeline_version": "PR16",
+    "professor_name": "Scott Shenker",
+    "professor_homepage": "https://www2.eecs.berkeley.edu/Faculty/Homepages/shenker.html",
+    "original_homepage": "https://www2.eecs.berkeley.edu/Faculty/Homepages/shenker.html",
+    "canonical_homepage": "https://www2.eecs.berkeley.edu/Faculty/Homepages/shenker.html",
+    "homepage_resolution_method": "no_personal_link_found",
+    "homepage_resolution_confidence": 0.5,
+    "navigation_provider": "heuristic",
+    "navigation_path": [
+      "https://www2.eecs.berkeley.edu/Faculty/Homepages/shenker.html",
+      "https://eecs.berkeley.edu/people/"
+    ],
+    "group_page": {
+      "url": "https://eecs.berkeley.edu/people/",
+      "source_node_type": "people_page",
+      "confidence": 0.817,
+      "reason": "node_type:people_page; url_member:/people; group_pattern:/people/; anchor_member:people; anchor_neg:people",
+      "navigation_path": [
+        "https://www2.eecs.berkeley.edu/Faculty/Homepages/shenker.html",
+        "https://eecs.berkeley.edu/people/"
+      ],
+      "evidence": [
+        "node_type:people_page",
+        "url_member:/people",
+        "group_pattern:/people/",
+        "anchor_member:people",
+        "anchor_neg:people"
+      ],
+      "navigation_score": {
+        "lab_score": 0.0,
+        "member_score": 0.961,
+        "research_group_score": 0.0,
+        "homepage_score": 0.386,
+        "directory_penalty": 0.25,
+        "provider_score": 0.817,
+        "final_score": 0.817
+      }
+    },
+    "fetch_status": "success",
+    "provider": "heuristic",
+    "member_count": 10,
+    "current_member_count": 10,
+    "former_member_count": 2,
+    "members": [
+      {
+        "name": "Student Organizations",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Scott Shenker",
+        "profile_url": "https://eecs.berkeley.edu/people/students-2/organizations/",
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 1.0
+      },
+      {
+        "name": "Student Awards",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Scott Shenker",
+        "profile_url": "https://eecs.berkeley.edu/people/students-2/awards/",
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 1.0
+      },
+      {
+        "name": "More Student Lists",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Scott Shenker",
+        "profile_url": "https://eecs.berkeley.edu/people/students-2/",
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 1.0
+      },
+      {
+        "name": "All Faculty",
+        "role": "Professor",
+        "status": "CURRENT",
+        "advisor": "Scott Shenker",
+        "profile_url": "https://www2.eecs.berkeley.edu/Faculty/Lists/faculty.html",
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 0.998
+      },
+      {
+        "name": "Faculty Awards",
+        "role": "Professor",
+        "status": "CURRENT",
+        "advisor": "Scott Shenker",
+        "profile_url": "https://www2.eecs.berkeley.edu/Faculty/Awards/",
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 0.998
+      },
+      {
+        "name": "In Memoriam",
+        "role": "Professor",
+        "status": "CURRENT",
+        "advisor": "Scott Shenker",
+        "profile_url": "https://www2.eecs.berkeley.edu/Faculty/inmemoriam.shtml",
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 0.998
+      },
+      {
+        "name": "More Faculty Lists",
+        "role": "Professor",
+        "status": "CURRENT",
+        "advisor": "Scott Shenker",
+        "profile_url": "https://eecs.berkeley.edu/people/faculty/",
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 0.998
+      },
+      {
+        "name": "Grad Homepages",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Scott Shenker",
+        "profile_url": "https://www2.eecs.berkeley.edu/People/gradhomepages.html",
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 0.998
+      },
+      {
+        "name": "Browse Students",
+        "role": "PhD Student",
+        "status": "CURRENT",
+        "advisor": "Scott Shenker",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 0.8
+      },
+      {
+        "name": "Browse Faculty",
+        "role": "Professor",
+        "status": "CURRENT",
+        "advisor": "Scott Shenker",
+        "profile_url": null,
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 0.75
+      }
+    ],
+    "former_members": [
+      {
+        "name": "Alumni Entrepreneurial Activities",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Scott Shenker",
+        "profile_url": "https://www2.eecs.berkeley.edu/Industry/Startups/startup.html#alumni",
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 1.0
+      },
+      {
+        "name": "More Alumni Lists",
+        "role": "Alumni",
+        "status": "ALUMNI",
+        "advisor": "Scott Shenker",
+        "profile_url": "https://eecs.berkeley.edu/people/alumni/",
+        "digital_footprint": {
+          "homepage": null,
+          "github": null,
+          "linkedin": null,
+          "google_scholar": null,
+          "dblp": null,
+          "openreview": null,
+          "semantic_scholar": null,
+          "orcid": null,
+          "blog": null
+        },
+        "research_interests": [],
+        "language_signal": null,
+        "confidence": 1.0
+      }
+    ],
+    "errors": []
+  }
+]

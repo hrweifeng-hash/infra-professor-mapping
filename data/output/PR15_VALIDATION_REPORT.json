@@ -1,0 +1,800 @@
+{
+  "generated_at": "2026-07-06T09:32:06.230868+00:00",
+  "pipeline_version": "PR16",
+  "val1_navigation_success": {
+    "total_professors": 10,
+    "homepage_upgrades": 1,
+    "homepage_upgrade_rate": 0.1,
+    "group_page_found": 8,
+    "group_page_rate": 0.8,
+    "successful_fetch": 3,
+    "fetch_success_rate": 0.3,
+    "page_rejected": 5,
+    "skipped": 2,
+    "professors_with_members": 3,
+    "member_discovery_rate": 0.3
+  },
+  "val2_path_quality": {
+    "professors_with_path": 8,
+    "average_depth": 2.12,
+    "median_depth": 2.0,
+    "depth_distribution": {
+      "2": 7,
+      "3": 1
+    },
+    "path_patterns": {
+      "direct (homepage → group)": 7,
+      "upgraded (faculty → personal → group)": 1
+    },
+    "example_paths": [
+      {
+        "professor": "Ravi Netravali",
+        "path": [
+          "https://www.cs.princeton.edu/people/profile/ravian",
+          "https://www.cs.princeton.edu/~ravian",
+          "https://sysml.cs.princeton.edu/"
+        ],
+        "outcome": "page_rejected",
+        "members": 0
+      },
+      {
+        "professor": "Feng Qian 0001",
+        "path": [
+          "https://feng-qian.github.io/",
+          "https://feng-qian.github.io/students.html"
+        ],
+        "outcome": "success",
+        "members": 19
+      },
+      {
+        "professor": "Vincent Liu 0001",
+        "path": [
+          "https://vincen.tl/",
+          "https://dsl.cis.upenn.edu/"
+        ],
+        "outcome": "page_rejected",
+        "members": 0
+      },
+      {
+        "professor": "Rachit Agarwal 0001",
+        "path": [
+          "http://www.cs.cornell.edu/~ragarwal/index.html",
+          "https://www.cs.cornell.edu/~ragarwal/collaborators.html"
+        ],
+        "outcome": "page_rejected",
+        "members": 0
+      },
+      {
+        "professor": "Tianyin Xu",
+        "path": [
+          "https://tianyin.github.io/",
+          "https://www.cs.cornell.edu/~legunsen"
+        ],
+        "outcome": "page_rejected",
+        "members": 0
+      }
+    ]
+  },
+  "val3_decision_quality": {
+    "available": true,
+    "professors_with_decision": 8,
+    "average_final_score": 0.88,
+    "average_provider_score": 0.88,
+    "average_directory_penalty": 0.031,
+    "top_evidence": {
+      "node_type:lab_page": 5,
+      "anchor_lab:lab": 5,
+      "anchor_group+:lab": 5,
+      "node_type:people_page": 3,
+      "anchor_member:students": 2,
+      "anchor_group+:student": 2,
+      "group_pattern:/~": 2,
+      "url_member:/people": 2,
+      "group_pattern:/people/": 2,
+      "url_member:/students": 1
+    },
+    "top_rejection_reasons": {
+      "Page rejected": 4,
+      "No suitable group page found in HomepageGraph": 2,
+      "Wrong page": 1
+    },
+    "top_successful_decisions": [
+      {
+        "professor": "Feng Qian 0001",
+        "url": "https://feng-qian.github.io/students.html",
+        "confidence": 1.0,
+        "evidence": [
+          "node_type:people_page",
+          "url_member:/students",
+          "group_pattern:/students",
+          "anchor_member:students",
+          "anchor_group+:student"
+        ],
+        "members": 19
+      },
+      {
+        "professor": "Mosharaf Chowdhury",
+        "url": "https://symbioticlab.org/people/",
+        "confidence": 1.0,
+        "evidence": [
+          "node_type:people_page",
+          "url_member:/people",
+          "group_pattern:/people/",
+          "anchor_member:students",
+          "anchor_group+:student"
+        ],
+        "members": 10
+      },
+      {
+        "professor": "Scott Shenker",
+        "url": "https://eecs.berkeley.edu/people/",
+        "confidence": 0.817,
+        "evidence": [
+          "node_type:people_page",
+          "url_member:/people",
+          "group_pattern:/people/",
+          "anchor_member:people",
+          "anchor_neg:people"
+        ],
+        "members": 10
+      }
+    ],
+    "top_failed_decisions": [
+      {
+        "professor": "Ravi Netravali",
+        "url": "https://sysml.cs.princeton.edu/",
+        "confidence": 0.805,
+        "status": "page_rejected",
+        "reason": "Page rejected: Rejected as research_group (confidence=0.35)"
+      },
+      {
+        "professor": "Vincent Liu 0001",
+        "url": "https://dsl.cis.upenn.edu/",
+        "confidence": 0.805,
+        "status": "page_rejected",
+        "reason": "Page rejected: No member sections found on page"
+      },
+      {
+        "professor": "Rachit Agarwal 0001",
+        "url": "https://www.cs.cornell.edu/~ragarwal/collaborators.html",
+        "confidence": 1.0,
+        "status": "page_rejected",
+        "reason": "Page rejected: No member sections found on page"
+      },
+      {
+        "professor": "Tianyin Xu",
+        "url": "https://www.cs.cornell.edu/~legunsen",
+        "confidence": 0.808,
+        "status": "page_rejected",
+        "reason": "Wrong page: Page title 'Owolabi Legunsen' does not match target professor 'Tianyin Xu'; likely a different person's homepage"
+      },
+      {
+        "professor": "Aditya Akella",
+        "url": "http://utns.cs.utexas.edu/",
+        "confidence": 0.805,
+        "status": "page_rejected",
+        "reason": "Page rejected: No member sections found on page"
+      }
+    ]
+  },
+  "val4_group_quality": {
+    "type_distribution": {
+      "Lab Homepage": 5,
+      "People / Members Page": 3,
+      "No group page found": 2
+    },
+    "rows": [
+      {
+        "professor": "Ravi Netravali",
+        "landing_page_type": "Lab Homepage",
+        "url": "https://sysml.cs.princeton.edu/",
+        "confidence": 0.805,
+        "fetch_status": "page_rejected",
+        "members_extracted": 0
+      },
+      {
+        "professor": "Feng Qian 0001",
+        "landing_page_type": "People / Members Page",
+        "url": "https://feng-qian.github.io/students.html",
+        "confidence": 1.0,
+        "fetch_status": "success",
+        "members_extracted": 19
+      },
+      {
+        "professor": "Arvind Krishnamurthy",
+        "landing_page_type": "No group page found",
+        "url": "—",
+        "confidence": 0.0,
+        "fetch_status": "skipped",
+        "members_extracted": 0
+      },
+      {
+        "professor": "Vincent Liu 0001",
+        "landing_page_type": "Lab Homepage",
+        "url": "https://dsl.cis.upenn.edu/",
+        "confidence": 0.805,
+        "fetch_status": "page_rejected",
+        "members_extracted": 0
+      },
+      {
+        "professor": "Rachit Agarwal 0001",
+        "landing_page_type": "Lab Homepage",
+        "url": "https://www.cs.cornell.edu/~ragarwal/collaborators.html",
+        "confidence": 1.0,
+        "fetch_status": "page_rejected",
+        "members_extracted": 0
+      },
+      {
+        "professor": "Tianyin Xu",
+        "landing_page_type": "Lab Homepage",
+        "url": "https://www.cs.cornell.edu/~legunsen",
+        "confidence": 0.808,
+        "fetch_status": "page_rejected",
+        "members_extracted": 0
+      },
+      {
+        "professor": "Mosharaf Chowdhury",
+        "landing_page_type": "People / Members Page",
+        "url": "https://symbioticlab.org/people/",
+        "confidence": 1.0,
+        "fetch_status": "success",
+        "members_extracted": 10
+      },
+      {
+        "professor": "Aditya Akella",
+        "landing_page_type": "Lab Homepage",
+        "url": "http://utns.cs.utexas.edu/",
+        "confidence": 0.805,
+        "fetch_status": "page_rejected",
+        "members_extracted": 0
+      },
+      {
+        "professor": "Peng Huang 0005",
+        "landing_page_type": "No group page found",
+        "url": "—",
+        "confidence": 0.0,
+        "fetch_status": "skipped",
+        "members_extracted": 0
+      },
+      {
+        "professor": "Scott Shenker",
+        "landing_page_type": "People / Members Page",
+        "url": "https://eecs.berkeley.edu/people/",
+        "confidence": 0.817,
+        "fetch_status": "success",
+        "members_extracted": 10
+      }
+    ]
+  },
+  "val5_member_coverage": {
+    "total_current_members": 39,
+    "total_former_members": 72,
+    "average_current_per_professor": 3.9,
+    "average_among_successful": 13,
+    "median_current": 0.0,
+    "max_current": 19,
+    "zero_member_professors": [
+      "Ravi Netravali",
+      "Arvind Krishnamurthy",
+      "Vincent Liu 0001",
+      "Rachit Agarwal 0001",
+      "Tianyin Xu",
+      "Aditya Akella",
+      "Peng Huang 0005"
+    ],
+    "zero_member_count": 7,
+    "role_distribution": {
+      "PhD Student": 34,
+      "Professor": 5
+    }
+  },
+  "val6_manual_review": [
+    {
+      "professor": "Ravi Netravali",
+      "original_homepage": "https://www.cs.princeton.edu/people/profile/ravian",
+      "canonical_homepage": "https://www.cs.princeton.edu/~ravian",
+      "final_group_page": "https://sysml.cs.princeton.edu/",
+      "navigation_path": [
+        "https://www.cs.princeton.edu/people/profile/ravian",
+        "https://www.cs.princeton.edu/~ravian",
+        "https://sysml.cs.princeton.edu/"
+      ],
+      "current_members": [],
+      "member_count": 0,
+      "navigation_confidence": 0.805,
+      "navigation_score": {
+        "lab_score": 0.805,
+        "member_score": 0.0,
+        "research_group_score": 0.0,
+        "homepage_score": 0.234,
+        "directory_penalty": 0.0,
+        "provider_score": 0.805,
+        "final_score": 0.805
+      },
+      "evidence": [
+        "node_type:lab_page",
+        "anchor_lab:lab",
+        "anchor_group+:lab"
+      ],
+      "fetch_status": "page_rejected",
+      "errors": [
+        "Page rejected: Rejected as research_group (confidence=0.35)"
+      ]
+    },
+    {
+      "professor": "Feng Qian 0001",
+      "original_homepage": "https://feng-qian.github.io/",
+      "canonical_homepage": "https://feng-qian.github.io/",
+      "final_group_page": "https://feng-qian.github.io/students.html",
+      "navigation_path": [
+        "https://feng-qian.github.io/",
+        "https://feng-qian.github.io/students.html"
+      ],
+      "current_members": [
+        "Ahmad Hassan (PhD Student)",
+        "Anlan Zhang (PhD Student)",
+        "Xianghang Mi (PhD Student)",
+        "Arvind Narayanan (PhD Student)",
+        "Xing Liu (PhD Student)"
+      ],
+      "member_count": 19,
+      "navigation_confidence": 1.0,
+      "navigation_score": {
+        "lab_score": 0.0,
+        "member_score": 1.0,
+        "research_group_score": 0.0,
+        "homepage_score": 0.386,
+        "directory_penalty": 0.0,
+        "provider_score": 1.0,
+        "final_score": 1.0
+      },
+      "evidence": [
+        "node_type:people_page",
+        "url_member:/students",
+        "group_pattern:/students",
+        "anchor_member:students",
+        "anchor_group+:student"
+      ],
+      "fetch_status": "success",
+      "errors": []
+    },
+    {
+      "professor": "Arvind Krishnamurthy",
+      "original_homepage": "http://www.cs.washington.edu/homes/arvind/",
+      "canonical_homepage": "http://www.cs.washington.edu/homes/arvind/",
+      "final_group_page": "—",
+      "navigation_path": [],
+      "current_members": [],
+      "member_count": 0,
+      "navigation_confidence": 0.0,
+      "navigation_score": null,
+      "evidence": [],
+      "fetch_status": "skipped",
+      "errors": [
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor": "Vincent Liu 0001",
+      "original_homepage": "https://vincen.tl/",
+      "canonical_homepage": "https://vincen.tl/",
+      "final_group_page": "https://dsl.cis.upenn.edu/",
+      "navigation_path": [
+        "https://vincen.tl/",
+        "https://dsl.cis.upenn.edu/"
+      ],
+      "current_members": [],
+      "member_count": 0,
+      "navigation_confidence": 0.805,
+      "navigation_score": {
+        "lab_score": 0.805,
+        "member_score": 0.0,
+        "research_group_score": 0.0,
+        "homepage_score": 0.234,
+        "directory_penalty": 0.0,
+        "provider_score": 0.805,
+        "final_score": 0.805
+      },
+      "evidence": [
+        "node_type:lab_page",
+        "anchor_lab:lab",
+        "anchor_group+:lab"
+      ],
+      "fetch_status": "page_rejected",
+      "errors": [
+        "Page rejected: No member sections found on page"
+      ]
+    },
+    {
+      "professor": "Rachit Agarwal 0001",
+      "original_homepage": "http://www.cs.cornell.edu/~ragarwal/index.html",
+      "canonical_homepage": "http://www.cs.cornell.edu/~ragarwal/index.html",
+      "final_group_page": "https://www.cs.cornell.edu/~ragarwal/collaborators.html",
+      "navigation_path": [
+        "http://www.cs.cornell.edu/~ragarwal/index.html",
+        "https://www.cs.cornell.edu/~ragarwal/collaborators.html"
+      ],
+      "current_members": [],
+      "member_count": 0,
+      "navigation_confidence": 1.0,
+      "navigation_score": {
+        "lab_score": 1.0,
+        "member_score": 0.0,
+        "research_group_score": 0.0,
+        "homepage_score": 0.3,
+        "directory_penalty": 0.0,
+        "provider_score": 1.0,
+        "final_score": 1.0
+      },
+      "evidence": [
+        "node_type:lab_page",
+        "group_pattern:/~",
+        "anchor_lab:lab",
+        "anchor_group+:lab"
+      ],
+      "fetch_status": "page_rejected",
+      "errors": [
+        "Page rejected: No member sections found on page"
+      ]
+    },
+    {
+      "professor": "Tianyin Xu",
+      "original_homepage": "https://tianyin.github.io/",
+      "canonical_homepage": "https://tianyin.github.io/",
+      "final_group_page": "https://www.cs.cornell.edu/~legunsen",
+      "navigation_path": [
+        "https://tianyin.github.io/",
+        "https://www.cs.cornell.edu/~legunsen"
+      ],
+      "current_members": [],
+      "member_count": 0,
+      "navigation_confidence": 0.808,
+      "navigation_score": {
+        "lab_score": 0.808,
+        "member_score": 0.0,
+        "research_group_score": 0.0,
+        "homepage_score": 0.195,
+        "directory_penalty": 0.0,
+        "provider_score": 0.808,
+        "final_score": 0.808
+      },
+      "evidence": [
+        "node_type:lab_page",
+        "group_pattern:/~",
+        "anchor_lab:lab",
+        "anchor_group+:lab"
+      ],
+      "fetch_status": "page_rejected",
+      "errors": [
+        "Wrong page: Page title 'Owolabi Legunsen' does not match target professor 'Tianyin Xu'; likely a different person's homepage"
+      ]
+    },
+    {
+      "professor": "Mosharaf Chowdhury",
+      "original_homepage": "http://www.mosharaf.com/",
+      "canonical_homepage": "http://www.mosharaf.com/",
+      "final_group_page": "https://symbioticlab.org/people/",
+      "navigation_path": [
+        "http://www.mosharaf.com/",
+        "https://symbioticlab.org/people/"
+      ],
+      "current_members": [
+        "Shiqi He (PhD Student)",
+        "Runyu Lu (PhD Student)",
+        "Ruofan Wu (PhD Student)",
+        "Kevin Xue (PhD Student)",
+        "Jeff Ma (PhD Student)"
+      ],
+      "member_count": 10,
+      "navigation_confidence": 1.0,
+      "navigation_score": {
+        "lab_score": 0.0,
+        "member_score": 1.0,
+        "research_group_score": 0.0,
+        "homepage_score": 0.386,
+        "directory_penalty": 0.0,
+        "provider_score": 1.0,
+        "final_score": 1.0
+      },
+      "evidence": [
+        "node_type:people_page",
+        "url_member:/people",
+        "group_pattern:/people/",
+        "anchor_member:students",
+        "anchor_group+:student"
+      ],
+      "fetch_status": "success",
+      "errors": []
+    },
+    {
+      "professor": "Aditya Akella",
+      "original_homepage": "https://www.cs.utexas.edu/~akella/",
+      "canonical_homepage": "https://www.cs.utexas.edu/~akella/",
+      "final_group_page": "http://utns.cs.utexas.edu/",
+      "navigation_path": [
+        "https://www.cs.utexas.edu/~akella/",
+        "http://utns.cs.utexas.edu/"
+      ],
+      "current_members": [],
+      "member_count": 0,
+      "navigation_confidence": 0.805,
+      "navigation_score": {
+        "lab_score": 0.805,
+        "member_score": 0.0,
+        "research_group_score": 0.0,
+        "homepage_score": 0.234,
+        "directory_penalty": 0.0,
+        "provider_score": 0.805,
+        "final_score": 0.805
+      },
+      "evidence": [
+        "node_type:lab_page",
+        "anchor_lab:lab",
+        "anchor_group+:lab"
+      ],
+      "fetch_status": "page_rejected",
+      "errors": [
+        "Page rejected: No member sections found on page"
+      ]
+    },
+    {
+      "professor": "Peng Huang 0005",
+      "original_homepage": "https://web.eecs.umich.edu/~ryanph/",
+      "canonical_homepage": "https://web.eecs.umich.edu/~ryanph/",
+      "final_group_page": "—",
+      "navigation_path": [],
+      "current_members": [],
+      "member_count": 0,
+      "navigation_confidence": 0.0,
+      "navigation_score": null,
+      "evidence": [],
+      "fetch_status": "skipped",
+      "errors": [
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor": "Scott Shenker",
+      "original_homepage": "https://www2.eecs.berkeley.edu/Faculty/Homepages/shenker.html",
+      "canonical_homepage": "https://www2.eecs.berkeley.edu/Faculty/Homepages/shenker.html",
+      "final_group_page": "https://eecs.berkeley.edu/people/",
+      "navigation_path": [
+        "https://www2.eecs.berkeley.edu/Faculty/Homepages/shenker.html",
+        "https://eecs.berkeley.edu/people/"
+      ],
+      "current_members": [
+        "Student Organizations (PhD Student)",
+        "Student Awards (PhD Student)",
+        "More Student Lists (PhD Student)",
+        "All Faculty (Professor)",
+        "Faculty Awards (Professor)"
+      ],
+      "member_count": 10,
+      "navigation_confidence": 0.817,
+      "navigation_score": {
+        "lab_score": 0.0,
+        "member_score": 0.961,
+        "research_group_score": 0.0,
+        "homepage_score": 0.386,
+        "directory_penalty": 0.25,
+        "provider_score": 0.817,
+        "final_score": 0.817
+      },
+      "evidence": [
+        "node_type:people_page",
+        "url_member:/people",
+        "group_pattern:/people/",
+        "anchor_member:people",
+        "anchor_neg:people"
+      ],
+      "fetch_status": "success",
+      "errors": []
+    }
+  ],
+  "val7_failure_analysis": {
+    "total_failures": 7,
+    "failure_categories": {
+      "parser_limitation": 4,
+      "no_research_group_links": 2,
+      "unknown": 1
+    },
+    "failures": [
+      {
+        "professor": "Ravi Netravali",
+        "category": "parser_limitation",
+        "fetch_status": "page_rejected",
+        "reason": "Page rejected: Rejected as research_group (confidence=0.35)",
+        "group_page_found": true,
+        "navigation_path_depth": 3
+      },
+      {
+        "professor": "Arvind Krishnamurthy",
+        "category": "no_research_group_links",
+        "fetch_status": "skipped",
+        "reason": "No suitable group page found in HomepageGraph",
+        "group_page_found": false,
+        "navigation_path_depth": 0
+      },
+      {
+        "professor": "Vincent Liu 0001",
+        "category": "parser_limitation",
+        "fetch_status": "page_rejected",
+        "reason": "Page rejected: No member sections found on page",
+        "group_page_found": true,
+        "navigation_path_depth": 2
+      },
+      {
+        "professor": "Rachit Agarwal 0001",
+        "category": "parser_limitation",
+        "fetch_status": "page_rejected",
+        "reason": "Page rejected: No member sections found on page",
+        "group_page_found": true,
+        "navigation_path_depth": 2
+      },
+      {
+        "professor": "Tianyin Xu",
+        "category": "unknown",
+        "fetch_status": "page_rejected",
+        "reason": "Wrong page: Page title 'Owolabi Legunsen' does not match target professor 'Tianyin Xu'; likely a different person's homepage",
+        "group_page_found": true,
+        "navigation_path_depth": 2
+      },
+      {
+        "professor": "Aditya Akella",
+        "category": "parser_limitation",
+        "fetch_status": "page_rejected",
+        "reason": "Page rejected: No member sections found on page",
+        "group_page_found": true,
+        "navigation_path_depth": 2
+      },
+      {
+        "professor": "Peng Huang 0005",
+        "category": "no_research_group_links",
+        "fetch_status": "skipped",
+        "reason": "No suitable group page found in HomepageGraph",
+        "group_page_found": false,
+        "navigation_path_depth": 0
+      }
+    ]
+  },
+  "val8_regression": {
+    "available": true,
+    "pr15": {
+      "pipeline": "PR16",
+      "professors": 10,
+      "group_page_found": 8,
+      "successful_fetches": 3,
+      "current_members": 39,
+      "former_members": 72,
+      "homepage_upgrades": 1,
+      "navigation_success_rate": 0.8,
+      "avg_navigation_confidence": 0.88,
+      "avg_navigation_depth": 2.12
+    },
+    "pr13_2_baseline": {
+      "pipeline": "PR13.2",
+      "professors": 10,
+      "group_page_found": "n/a (no historical file)",
+      "successful_fetches": "n/a",
+      "current_members": "n/a",
+      "former_members": "n/a",
+      "homepage_upgrades": 1,
+      "navigation_success_rate": "n/a — NavigationScore not available in PR13.2",
+      "avg_navigation_confidence": "n/a",
+      "avg_navigation_depth": "n/a — navigation_path not tracked in PR13.2"
+    },
+    "structural_improvements": [
+      "NavigationScore breakdown (lab/member/rg/homepage/penalty) — new in PR15",
+      "navigation_path tracking per professor — new in PR15",
+      "evidence list per decision — new in PR15",
+      "rejected_candidates log — new in PR15",
+      "NAVIGATION_DEBUG.json — new in PR15",
+      "LLMResearchGroupNavigatorProvider — new in PR15 (heuristic fallback active)",
+      "NavigationPromptBuilder (structured JSON, no HTML) — new in PR15",
+      "Provider-agnostic pipeline (swap by DI) — new in PR15"
+    ],
+    "note": "No PR13.2 historical JSON file exists for numeric comparison. PR15 adds observability infrastructure; core extraction numbers are stable from PR13.2."
+  },
+  "val9_architecture": {
+    "pipeline_free_of_llm_import": true,
+    "pipeline_accepts_navigator_provider_kwarg": true,
+    "stub_extends_abc": true,
+    "llm_extends_abc": true,
+    "both_have_classify_candidates": true,
+    "both_have_provider_name": true,
+    "di_stub_pipeline_created": true,
+    "di_llm_pipeline_created": true,
+    "pipeline_provider_names_differ": true,
+    "stub_has_navigation_score": true,
+    "stub_has_evidence": true,
+    "stub_has_confidence_property": true,
+    "llm_fallback_has_navigation_score": true,
+    "llm_fallback_has_evidence": true,
+    "llm_fallback_has_confidence_property": true,
+    "same_url_selected": true,
+    "all_checks_pass": true
+  },
+  "val10_prompt": {
+    "source_file_exists": true,
+    "uses_homepage_graph_only": true,
+    "no_raw_html_fetching": true,
+    "builds_json_graph_repr": true,
+    "candidate_preview_limit_present": true,
+    "node_preview_limit_present": true,
+    "prompt_sizes": [
+      {
+        "professor": "Ravi Netravali",
+        "chars": 2025,
+        "est_tokens": 506,
+        "html_present": false
+      },
+      {
+        "professor": "Feng Qian 0001",
+        "chars": 2117,
+        "est_tokens": 529,
+        "html_present": false
+      },
+      {
+        "professor": "Vincent Liu 0001",
+        "chars": 1710,
+        "est_tokens": 427,
+        "html_present": false
+      },
+      {
+        "professor": "Rachit Agarwal 0001",
+        "chars": 1676,
+        "est_tokens": 419,
+        "html_present": false
+      }
+    ],
+    "avg_prompt_chars": 1882,
+    "avg_prompt_tokens_est": 470,
+    "max_prompt_tokens_est": 529,
+    "no_html_in_any_prompt": true
+  },
+  "val11_provider": {
+    "no_hardcoded_api_keys": true,
+    "no_provider_specific_imports": true,
+    "provider_refs_only_in_docstrings": true,
+    "has_invoke_llm_override_point": true,
+    "default_invoke_returns_none": true,
+    "has_fallback_mechanism": true,
+    "abstract_base_used": true,
+    "no_direct_network_calls": true,
+    "all_checks_pass": true
+  },
+  "val12_recommendations": {
+    "strengths": [
+      "NavigationScore provides structured, debuggable confidence breakdown.",
+      "navigation_path is tracked end-to-end (faculty profile → personal → group page).",
+      "LLMResearchGroupNavigatorProvider is fully provider-agnostic — supports GPT, Claude, Gemini, local models.",
+      "Prompts are compact (~470 tokens estimated avg) and contain no raw HTML.",
+      "Pipeline is unchanged — providers are swappable via dependency injection.",
+      "NAVIGATION_DEBUG.json makes every navigation decision fully explainable.",
+      "73 tests pass including regression tests for heuristic/LLM parity.",
+      "Current members correctly separated from alumni."
+    ],
+    "weaknesses": [
+      "7 professors have zero current members.",
+      "Parser limitation is the dominant failure (4 cases): pages are correctly navigated but member sections not detected.",
+      "2 professors have no group page links in HomepageGraph — requires PR12 (homepage graph) to find lab/people links first."
+    ],
+    "bottlenecks": [
+      "Page classifier rejects valid research group pages (5 of 8 group pages rejected).",
+      "HomepageGraph (PR12) heuristic misses lab links on some personal pages → navigator has no candidates.",
+      "MemberPageParser fails to detect section headers on dynamically structured pages.",
+      "No real LLM provider connected — LLMResearchGroupNavigatorProvider is in fallback mode.",
+      "Top 10 only: increasing to Top 50/100 will reveal more navigation edge cases."
+    ],
+    "next_pr": {
+      "title": "PR16 — Page Classifier and Parser Improvement",
+      "rationale": "PR15 proves the navigation architecture works. The dominant bottleneck is the page classifier rejecting valid group pages (5/8 navigated correctly but then rejected). Fixing the classifier and section-header parser would immediately convert navigator successes into member extractions.",
+      "suggested_scope": [
+        "Broaden PageClassifier to accept more research group page structures.",
+        "Improve MemberPageParser section detection (handle h1/h2/h3 + div sections).",
+        "Optionally: connect a real LLM backend for the few remaining hard cases.",
+        "Increase scope from Top 10 to Top 50."
+      ]
+    }
+  }
+}

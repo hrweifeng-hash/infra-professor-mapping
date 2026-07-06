@@ -1,4 +1,4 @@
-"""PR15 Research Group Agent report generator."""
+"""PR16 Research Group Agent report generator."""
 
 from __future__ import annotations
 
@@ -41,6 +41,12 @@ class ResearchGroupReport:
         navigation_stats = cls._navigation_stats(graphs)
         manual_review = cls._manual_review_cases(graphs, member_counts)
 
+        wrong_page_rejections = sum(
+            1
+            for rp in metrics.rejected_pages
+            if rp.get("reason", "").startswith("Page title '")
+        )
+
         return {
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "schema_version": SCHEMA_VERSION,
@@ -50,6 +56,7 @@ class ResearchGroupReport:
             "successful_group_fetches": successful_fetches,
             "rejected_pages": len(metrics.rejected_pages),
             "page_rejected_count": page_rejected,
+            "wrong_page_rejections": wrong_page_rejections,
             "current_members_extracted": len(all_members),
             "former_members_extracted": len(all_former),
             "members_extracted": len(all_members),
@@ -93,8 +100,8 @@ class ResearchGroupReport:
 
         md_path.write_text(cls._render_markdown(report, graphs), encoding="utf-8")
 
-        print(f"[PR15] Wrote research group graphs to {json_graph_path}", flush=True)
-        print(f"[PR15] Wrote report to {md_path}", flush=True)
+        print(f"[PR16] Wrote research group graphs to {json_graph_path}", flush=True)
+        print(f"[PR16] Wrote report to {md_path}", flush=True)
 
         return json_graph_path, md_path
 
@@ -316,12 +323,15 @@ class ResearchGroupReport:
 
         nav = report.get("navigation", {})
 
+        pipeline_ver = report.get('pipeline_version', 'PR16')
+        schema_ver = report.get('schema_version', '1.2')
+        wrong_page = report.get('wrong_page_rejections', 0)
+
         lines = [
-            "# Research Group Intelligence Report (PR15)",
+            f"# Research Group Intelligence Report ({pipeline_ver})",
             "",
             f"Generated: {report['generated_at']}",
-            f"Schema version: **{report.get('schema_version', '1.1')}** | "
-            f"Pipeline: **{report.get('pipeline_version', 'PR15')}**",
+            f"Schema version: **{schema_ver}** | Pipeline: **{pipeline_ver}**",
             "",
             "## Summary",
             "",
@@ -329,6 +339,7 @@ class ResearchGroupReport:
             f"- Research groups discovered: **{report['research_groups_discovered']}**",
             f"- Successful group page fetches: **{report['successful_group_fetches']}**",
             f"- Pages rejected by classifier: **{report.get('page_rejected_count', 0)}**",
+            f"- Wrong-page rejections (PR16): **{wrong_page}**",
             f"- Current members extracted: **{report.get('current_members_extracted', 0)}**",
             f"- Former members (debug): **{report.get('former_members_extracted', 0)}**",
             f"- Current member ratio: **{report.get('current_member_ratio', 0):.0%}**",

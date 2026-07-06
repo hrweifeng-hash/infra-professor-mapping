@@ -206,6 +206,19 @@ class ResearchGroupPipeline:
         base_url = document.final_url or document.url
         parsed = self.parser.parse(document.html, base_url=base_url)
 
+        wrong_reason = _wrong_page_professor(parsed, name)
+        if wrong_reason:
+            self.last_metrics.record_rejected_page(name, group_page.url, wrong_reason)
+            return self.graph_builder.build_failed(
+                professor_name=name,
+                professor_homepage=canonical,
+                group_page=group_page,
+                provider=self.provider.provider_name,
+                fetch_status="page_rejected",
+                errors=[f"Wrong page: {wrong_reason}"],
+                **ctx,
+            )
+
         classification = self.page_classifier.classify(
             parsed=parsed,
             page_url=base_url,

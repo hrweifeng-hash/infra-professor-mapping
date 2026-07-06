@@ -1,0 +1,164 @@
+{
+  "generated_at": "2026-07-06T09:31:54.493731+00:00",
+  "schema_version": "1.2",
+  "pipeline_version": "PR16",
+  "professors_processed": 10,
+  "research_groups_discovered": 8,
+  "successful_group_fetches": 3,
+  "rejected_pages": 7,
+  "page_rejected_count": 5,
+  "wrong_page_rejections": 1,
+  "current_members_extracted": 39,
+  "former_members_extracted": 72,
+  "members_extracted": 39,
+  "current_member_ratio": 0.351,
+  "homepage_resolution": {
+    "resolution_attempts": 10,
+    "upgrades_to_personal_homepage": 1,
+    "upgrade_rate": 0.1,
+    "professors_without_canonical_upgrade": 9,
+    "professors_without_current_students": [],
+    "conversions": [
+      {
+        "professor_name": "Ravi Netravali",
+        "original_homepage": "https://www.cs.princeton.edu/people/profile/ravian",
+        "canonical_homepage": "https://www.cs.princeton.edu/~ravian",
+        "method": "link_upgrade:Homepage",
+        "confidence": 0.75
+      }
+    ]
+  },
+  "navigation": {
+    "navigation_success_rate": 0.8,
+    "average_navigation_confidence": 0.88,
+    "average_navigation_depth": 2.12,
+    "provider_breakdown": {
+      "heuristic": 10
+    },
+    "fallback_rate": 1.0,
+    "llm_navigated_count": 0,
+    "top_evidence": {
+      "node_type:lab_page": 5,
+      "anchor_lab:lab": 5,
+      "anchor_group+:lab": 5,
+      "node_type:people_page": 3,
+      "anchor_member:students": 2,
+      "anchor_group+:student": 2,
+      "group_pattern:/~": 2,
+      "url_member:/people": 2,
+      "group_pattern:/people/": 2,
+      "url_member:/students": 1
+    }
+  },
+  "role_distribution": {
+    "PhD Student": 34,
+    "Professor": 5
+  },
+  "identity_coverage": {
+    "total_members": 39,
+    "any_identity_count": 8,
+    "any_identity_rate": 0.205,
+    "homepage_count": 8,
+    "homepage_rate": 0.205,
+    "github_count": 0,
+    "github_rate": 0.0,
+    "google_scholar_count": 0,
+    "google_scholar_rate": 0.0,
+    "linkedin_count": 0,
+    "linkedin_rate": 0.0
+  },
+  "language_signal_distribution": {
+    "count": 23,
+    "rate": 0.59,
+    "types": {
+      "Likely Chinese Surname": 23
+    }
+  },
+  "precision_statistics": {
+    "average_members_per_professor": 3.9,
+    "median_members_per_professor": 0,
+    "rejected_candidates": 3,
+    "rejected_pages": 7,
+    "rejection_reason_counts": {
+      "does not look like a person name": 3,
+      "No member sections found on page": 3,
+      "no suitable group page in HomepageGraph": 2,
+      "Rejected as research_group (confidence=0.35)": 1,
+      "Page title 'Owolabi Legunsen' does not match target professor 'Tianyin Xu'; likely a different person's homepage": 1
+    },
+    "member_count_histogram": {
+      "0": 7,
+      "6-20": 3
+    },
+    "healthy_range": "5-20",
+    "professors_in_healthy_range": 3,
+    "professors_outside_healthy_range": 0
+  },
+  "manual_review": [
+    {
+      "professor_name": "Ravi Netravali",
+      "group_page": "https://sysml.cs.princeton.edu/",
+      "member_count": 0,
+      "reasons": [
+        "page_rejected_by_classifier",
+        "Page rejected: Rejected as research_group (confidence=0.35)"
+      ]
+    },
+    {
+      "professor_name": "Arvind Krishnamurthy",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Vincent Liu 0001",
+      "group_page": "https://dsl.cis.upenn.edu/",
+      "member_count": 0,
+      "reasons": [
+        "page_rejected_by_classifier",
+        "Page rejected: No member sections found on page"
+      ]
+    },
+    {
+      "professor_name": "Rachit Agarwal 0001",
+      "group_page": "https://www.cs.cornell.edu/~ragarwal/collaborators.html",
+      "member_count": 0,
+      "reasons": [
+        "page_rejected_by_classifier",
+        "Page rejected: No member sections found on page"
+      ]
+    },
+    {
+      "professor_name": "Tianyin Xu",
+      "group_page": "https://www.cs.cornell.edu/~legunsen",
+      "member_count": 0,
+      "reasons": [
+        "page_rejected_by_classifier",
+        "Wrong page: Page title 'Owolabi Legunsen' does not match target professor 'Tianyin Xu'; likely a different person's homepage"
+      ]
+    },
+    {
+      "professor_name": "Aditya Akella",
+      "group_page": "http://utns.cs.utexas.edu/",
+      "member_count": 0,
+      "reasons": [
+        "page_rejected_by_classifier",
+        "Page rejected: No member sections found on page"
+      ]
+    },
+    {
+      "professor_name": "Peng Huang 0005",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    }
+  ],
+  "manual_review_count": 7,
+  "provider": "heuristic"
+}

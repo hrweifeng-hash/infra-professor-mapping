@@ -1,0 +1,167 @@
+{
+  "generated_at": "2026-07-06T09:31:59.574449+00:00",
+  "pipeline_version": "PR16",
+  "baseline_version": "PR15.5",
+  "val1_wrong_page_filter": {
+    "wrong_page_identified_by_pr15_5": 1,
+    "caught_by_pr16_filter": 1,
+    "catch_rate": 1.0,
+    "still_missed": 0,
+    "caught_details": [
+      {
+        "professor": "Tianyin Xu",
+        "pr16_error": "Wrong page: Page title 'Owolabi Legunsen' does not match target professor 'Tianyin Xu'; likely a different person's homepage",
+        "pr16_status": "page_rejected"
+      }
+    ],
+    "missed_details": []
+  },
+  "val2_member_count_delta": {
+    "previously_failed_professors": 7,
+    "now_fixed_in_pr16": 0,
+    "still_zero_in_pr16": 7,
+    "fixed_details": [],
+    "still_zero_details": [
+      {
+        "professor": "Ravi Netravali",
+        "pr16_status": "page_rejected",
+        "pr16_errors": [
+          "Page rejected: Rejected as research_group (confidence=0.35)"
+        ]
+      },
+      {
+        "professor": "Tianyin Xu",
+        "pr16_status": "page_rejected",
+        "pr16_errors": [
+          "Wrong page: Page title 'Owolabi Legunsen' does not match target professor 'Tianyin Xu'; likely a different person's homepage"
+        ]
+      },
+      {
+        "professor": "Peng Huang 0005",
+        "pr16_status": "skipped",
+        "pr16_errors": [
+          "No suitable group page found in HomepageGraph"
+        ]
+      },
+      {
+        "professor": "Arvind Krishnamurthy",
+        "pr16_status": "skipped",
+        "pr16_errors": [
+          "No suitable group page found in HomepageGraph"
+        ]
+      },
+      {
+        "professor": "Vincent Liu 0001",
+        "pr16_status": "page_rejected",
+        "pr16_errors": [
+          "Page rejected: No member sections found on page"
+        ]
+      },
+      {
+        "professor": "Rachit Agarwal 0001",
+        "pr16_status": "page_rejected",
+        "pr16_errors": [
+          "Page rejected: No member sections found on page"
+        ]
+      },
+      {
+        "professor": "Aditya Akella",
+        "pr16_status": "page_rejected",
+        "pr16_errors": [
+          "Page rejected: No member sections found on page"
+        ]
+      }
+    ],
+    "total_pr16_member_count": 39,
+    "professors_with_members_pr16": 3,
+    "total_professors_pr16": 10,
+    "member_discovery_rate_pr16": 0.3
+  },
+  "val3_failure_category_shift": {
+    "total_previously_failed": 7,
+    "pr16_outcome_distribution": {
+      "page_rejected": 4,
+      "skipped": 2,
+      "wrong_page_rejected": 1
+    },
+    "transition_matrix": {
+      "Section Detection Failure → page_rejected": 2,
+      "Unsupported HTML Structure → page_rejected": 1,
+      "No Homepage → skipped": 1,
+      "Dynamic HTML → page_rejected": 1,
+      "Section Detection Failure → wrong_page_rejected": 1,
+      "Fetch Failure → skipped": 1
+    },
+    "per_professor": [
+      {
+        "professor": "Ravi Netravali",
+        "pr15_5_category": "Unsupported HTML Structure",
+        "pr16_outcome": "page_rejected",
+        "pr16_members": 0
+      },
+      {
+        "professor": "Arvind Krishnamurthy",
+        "pr15_5_category": "No Homepage",
+        "pr16_outcome": "skipped",
+        "pr16_members": 0
+      },
+      {
+        "professor": "Vincent Liu 0001",
+        "pr15_5_category": "Dynamic HTML",
+        "pr16_outcome": "page_rejected",
+        "pr16_members": 0
+      },
+      {
+        "professor": "Rachit Agarwal 0001",
+        "pr15_5_category": "Section Detection Failure",
+        "pr16_outcome": "page_rejected",
+        "pr16_members": 0
+      },
+      {
+        "professor": "Tianyin Xu",
+        "pr15_5_category": "Section Detection Failure",
+        "pr16_outcome": "wrong_page_rejected",
+        "pr16_members": 0
+      },
+      {
+        "professor": "Aditya Akella",
+        "pr15_5_category": "Section Detection Failure",
+        "pr16_outcome": "page_rejected",
+        "pr16_members": 0
+      },
+      {
+        "professor": "Peng Huang 0005",
+        "pr15_5_category": "Fetch Failure",
+        "pr16_outcome": "skipped",
+        "pr16_members": 0
+      }
+    ]
+  },
+  "val4_precision_impact": {
+    "total_professors": 10,
+    "fetch_status_breakdown": {
+      "page_rejected": 5,
+      "success": 3,
+      "skipped": 2
+    },
+    "wrong_page_filter_rejections": 1,
+    "standard_classifier_rejections": 4,
+    "total_page_rejected": 5,
+    "skipped_no_group_page": 2,
+    "successful_fetches": 3,
+    "professors_with_members": 3
+  },
+  "val5_architecture": {
+    "wrong_page_professor_defined": true,
+    "wrong_page_called_in_analyze": true,
+    "wrong_page_rejection_recorded": true,
+    "schema_version_is_1_2": true,
+    "pipeline_version_is_PR16": true,
+    "report_includes_wrong_page_metric": true,
+    "report_header_is_PR16": true,
+    "wrong_page_catches_different_person": true,
+    "wrong_page_passes_lab_title": true,
+    "wrong_page_passes_matching_name": true,
+    "all_checks_pass": true
+  }
+}
