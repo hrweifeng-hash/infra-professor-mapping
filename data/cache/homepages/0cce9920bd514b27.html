@@ -1,0 +1,881 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Marios Kogias - Imperial College London</title>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --sidebar-width: 320px;
+            --sidebar-bg: #0f172a;
+            --sidebar-text: #94a3b8;
+            --sidebar-text-main: #f8fafc;
+
+            --content-bg: #fff;
+            --content-text: #334155;
+            --heading-color: #1e293b;
+
+            --accent-color: #38bdf8;
+            --link-color: #0284c7;
+            --link-hover: #0ea5e9;
+
+            --font-ui: 'Inter', sans-serif;
+            --font-body: 'Merriweather', serif;
+
+            --award-gold: #b45309;
+            --award-bg: #fef3c7;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-body);
+            color: var(--content-text);
+            display: flex;
+            min-height: 100vh;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ---------------------------------------------------------
+           SIDEBAR
+        --------------------------------------------------------- */
+        #sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--sidebar-bg);
+            color: var(--sidebar-text);
+            padding: 3rem 2rem;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            font-family: var(--font-ui);
+            /* UI font for sidebar */
+            z-index: 100;
+        }
+
+        .profile-section {
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 2rem;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            transition: border-color 0.3s ease;
+        }
+
+        .profile-img:hover {
+            border-color: var(--accent-color);
+        }
+
+        .name {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem 0;
+            color: var(--sidebar-text-main);
+            letter-spacing: -0.5px;
+        }
+
+        .title {
+            font-size: 0.95rem;
+            line-height: 1.4;
+            color: var(--sidebar-text);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .nav-menu {
+            margin-top: 2rem;
+            text-align: left;
+            width: 100%;
+            padding-top: 1.5rem;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 0.5rem 0;
+            color: var(--sidebar-text);
+            text-decoration: none;
+            transition: all 0.2s;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* Centered in mobile originally, here kept visually centered or left? reset to center for consistency with profile */
+        }
+
+        /* Let's center nav items for profile alignment */
+        .nav-menu .nav-link {
+            justify-content: center;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color);
+            transform: translateX(2px);
+        }
+
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.9rem;
+            text-align: left;
+            align-self: center;
+            /* Center the block itself if flex column */
+        }
+
+        .contact-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-list i {
+            width: 24px;
+            color: var(--accent-color);
+            flex-shrink: 0;
+            text-align: center;
+            margin-right: 12px;
+        }
+
+        .contact-list a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
+            border-bottom: 1px solid transparent;
+        }
+
+        .contact-list a:hover {
+            color: var(--accent-color);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        /* ---------------------------------------------------------
+           MAIN CONTENT
+        --------------------------------------------------------- */
+        #content {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            background-color: var(--content-bg);
+            padding: 5rem 6rem;
+            min-height: 100vh;
+            box-sizing: border-box;
+            max-width: 1200px;
+            /* Readability max width for large screens */
+        }
+
+        section {
+            margin-bottom: 5rem;
+            max-width: 850px;
+        }
+
+        h2 {
+            font-family: var(--font-ui);
+            font-size: 1.8rem;
+            color: var(--heading-color);
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.75rem;
+            margin-bottom: 2rem;
+            letter-spacing: -0.5px;
+            font-weight: 700;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            color: var(--content-text);
+        }
+
+        a.text-link {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 600;
+            /* Slightly bolder links */
+            transition: all 0.2s;
+        }
+
+        a.text-link:hover {
+            color: var(--link-hover);
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+        }
+
+
+
+        /* ---------------------------------------------------------
+           PUBLICATIONS
+        --------------------------------------------------------- */
+        .pub-list {
+            font-family: var(--font-ui);
+            /* Publications are often easier to scan in sans-serif */
+        }
+
+        .pub-item {
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 1.5rem;
+            border-left: 2px solid #e2e8f0;
+            transition: border-left-color 0.2s;
+        }
+
+        .pub-item:hover {
+            border-left-color: var(--link-color);
+        }
+
+        .pub-title {
+            font-weight: 600;
+            color: var(--heading-color);
+            font-size: 1.05rem;
+            display: block;
+            margin-bottom: 0.3rem;
+            line-height: 1.4;
+        }
+
+        .pub-authors {
+            color: #475569;
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        .pub-venue-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .pub-venue {
+            font-weight: 500;
+            color: #334155;
+            background: #f1f5f9;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .badge-award {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--award-bg);
+            color: var(--award-gold);
+            font-size: 0.8rem;
+            padding: 2px 8px;
+            border-radius: 9999px;
+            font-weight: 700;
+            border: 1px solid rgba(180, 83, 9, 0.2);
+        }
+
+        .badge-award i {
+            margin-right: 4px;
+        }
+
+        .pdf-link {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pdf-link:hover {
+            color: var(--link-hover);
+        }
+
+        /* ---------------------------------------------------------
+           RESPONSIVE
+        --------------------------------------------------------- */
+        @media (max-width: 950px) {
+            body {
+                flex-direction: column;
+            }
+
+            #sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 2rem 1.5rem;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: space-between;
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .profile-section {
+                display: flex;
+                align-items: center;
+                text-align: left;
+                gap: 1.5rem;
+            }
+
+            .profile-img {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 0;
+            }
+
+            .name {
+                font-size: 1.5rem;
+                margin-bottom: 0.2rem;
+            }
+
+            .title {
+                margin-bottom: 0;
+                font-size: 0.9rem;
+            }
+
+            .nav-menu {
+                display: none;
+                /* Hide nav links on mobile to save space, or turn into horizontal scroll */
+            }
+
+            .contact-list {
+                display: none;
+                /* Hide full contact list on mobile header, maybe show simplified version? */
+            }
+
+            /* Simplified mobile links */
+            .mobile-links {
+                display: flex;
+                gap: 1.5rem;
+            }
+
+            .mobile-links a {
+                color: var(--sidebar-text);
+                font-size: 1.2rem;
+                transition: color 0.2s;
+            }
+
+            .mobile-links a:hover {
+                color: var(--accent-color);
+            }
+
+            #content {
+                margin-left: 0;
+                padding: 3rem 1.5rem;
+            }
+
+            section {
+                margin-bottom: 4rem;
+            }
+        }
+
+        @media (min-width: 951px) {
+            .mobile-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+                width: 100%;
+            }
+
+            #sidebar {
+                justify-content: center;
+                padding-bottom: 1rem;
+            }
+
+            .mobile-links {
+                margin-top: 1rem;
+                justify-content: center;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <aside id="sidebar">
+        <div class="profile-section">
+            <img src="img/me.jpg" alt="Marios Kogias" class="profile-img">
+            <div>
+                <h1 class="name">Marios Kogias</h1>
+                <div class="title">Assistant Professor<br>Imperial College London</div>
+            </div>
+        </div>
+
+        <ul class="contact-list">
+            <li><i class="fas fa-university"></i> <a href="https://www.imperial.ac.uk/computing">Dept. of Computing</a>
+            </li>
+            <li><i class="fas fa-envelope"></i> m.kogias@imperial.ac.uk</li>
+            <li><i class="fas fa-map-marker-alt"></i> Room 562 Huxley</li>
+            <li><i class="fas fa-file-alt"></i> <a href="docs/marioskogias-cv.pdf">CV</a></li>
+        </ul>
+
+        <nav class="nav-menu">
+            <a href="#about" class="nav-link">About</a>
+            <a href="#teaching" class="nav-link">Teaching</a>
+            <a href="#students" class="nav-link">Students</a>
+            <!--<a href="#service" class="nav-link">Service</a>-->
+            <a href="#publications" class="nav-link">Publications</a>
+        </nav>
+
+        <!-- Mobile only icons -->
+        <div class="mobile-links">
+            <a href="mailto:m.kogias@imperial.ac.uk"><i class="fas fa-envelope"></i></a>
+            <a href="docs/marioskogias_cv.pdf"><i class="fas fa-file-alt"></i></a>
+            <a href="https://www.imperial.ac.uk/computing"><i class="fas fa-university"></i></a>
+        </div>
+    </aside>
+
+    <main id="content">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>
+                I'm an Assistant Professor (Lecturer in the UK system) in the <a
+                    href="https://www.imperial.ac.uk/computing" class="text-link">Department of Computing</a> at <a
+                    href="https://www.imperial.ac.uk/" class="text-link">Imperial College London</a>. I work at the
+                intersection of operating systems, networking, and distributed systems.
+                My research is supported by an <a href="https://erc.europa.eu/apply-grant/starting-grant" class="text-link">ERC Starting Grant</a>, <a href="https://www.aisi.gov.uk/" class="text-link">AISI</a>, <a href="https://www.aria.org.uk/opportunity-spaces/trust-everything-everywhere/" class="text-link">ARIA</a>, and a generous donation by <a href="https://www.mystenlabs.com/" class="text-link">Mysten Labs</a>.
+            </p>
+            <p>
+                I build systems that can provide <strong>tail-tolerance</strong>, <strong>fault-tolerance</strong>, and
+                <strong>confidentiality guarantees</strong> leveraging emerging datacenter hardware.
+            </p>
+            <p>
+                Before joining Imperial I was a researcher at Microsoft Research Cambridge. I obtained my PhD in 2020
+                from EPFL under the supervision of <a href="https://people.epfl.ch/edouard.bugnion" class="text-link">Ed
+                    Bugnion</a>. My thesis was awarded the 2021 Dennis M. Ritchie Award and the 2021 Honourable Mention
+                for the Eurosys Roger Needham PhD Award. My PhD was supported by an IBM Fellowship and the Microsoft
+                Swiss JRC. I did my undergrad in Electrical and Computer Engineering at <a
+                    href="https://www.ece.ntua.gr/en" class="text-link">NTUA</a>.
+            </p>
+            <p
+                style="margin-top: 2rem; background: #f0f9ff; padding: 1.5rem; border-left: 4px solid var(--accent-color); border-radius: 4px;">
+                <strong>Join my group:</strong> I'm always looking for motivated PostDocs, PhD students, and interns. If you are an
+                Imperial student, don't hesitate to reach out to me if you are interested in working on a project beyond
+                the ones listed in the <a href="https://project-portal.doc.ic.ac.uk/" class="text-link">projects
+                    portal</a>.
+            </p>
+        </section>
+
+        <section id="teaching">
+            <h2>Teaching</h2>
+            <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem;">
+                <li style="margin-bottom: 0.6rem;">
+                    <strong>Networked Systems</strong> (COM 60032) <span style="color:#64748b;">| Winter 2023</span>
+                    <a href="https://www.imperial.ac.uk/computing/current-students/courses/60032/" class="text-link"
+                        style="margin-left:0.5rem; font-size:0.9rem;">Course Page &rarr;</a>
+                </li>
+                <li style="margin-bottom: 0.6rem;">
+                    <strong>Computer Networks and Distributed Systems</strong> (COM 70041) <span
+                        style="color:#64748b;">| Spring 2023, 2024</span>
+                    <a href="https://www.imperial.ac.uk/computing/current-students/courses/70041/" class="text-link"
+                        style="margin-left:0.5rem; font-size:0.9rem;">Course Page &rarr;</a>
+                </li>
+                <li style="margin-bottom: 0.6rem;">
+                    <strong>Object Oriented Design & Programming</strong> (COM 70036) <span style="color:#64748b;">|
+                        Winter 2022</span>
+                    <a href="https://www.imperial.ac.uk/computing/current-students/courses/70036/" class="text-link"
+                        style="margin-left:0.5rem; font-size:0.9rem;">Course Page &rarr;</a>
+                </li>
+            </ul>
+        </section>
+
+        <section id="students">
+            <h2>Students</h2>
+
+            <h3 style="font-size:1.1rem; color: #475569; margin-bottom:1rem; font-family:var(--font-ui);">Current</h3>
+            <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem; margin-bottom: 2rem;">
+                <li style="margin-bottom: 0.5rem;">
+                    <strong>Amir Al Sadi</strong> (PostDoc)
+                    <a href="https://alsadiamir.github.io/" class="text-link" style="margin-left:0.3rem;">Profile
+                        &rarr;</a>
+                </li>
+                <li style="margin-bottom: 0.5rem;">
+                    <strong>Scofield Liu</strong> (PhD Student)
+                    <a href="https://scofield626.github.io/" class="text-link" style="margin-left:0.3rem;">Profile
+                        &rarr;</a>
+                </li>
+                <li style="margin-bottom: 0.5rem;">
+                    <strong>Farzad Mohammadi</strong> (PhD Student)
+                    <a href="https://farzad1132.github.io/" class="text-link" style="margin-left:0.3rem;">Profile
+                        &rarr;</a>
+                </li>
+                <li style="margin-bottom: 0.5rem;">
+                    <strong>Adel Sefiane</strong> (PhD Student)
+                    <a href="https://www.linkedin.com/in/adel-sefiane-3a19971b1/" class="text-link"
+                        style="margin-left:0.3rem;">Profile &rarr;</a>
+                </li>
+                <li style="margin-bottom: 0.5rem;">
+                    <strong>Dylan Farrer</strong> (PhD Student)
+                    <a href="https://www.linkedin.com/in/dylan-farrer-9b48651ab/" class="text-link"
+                        style="margin-left:0.3rem;">Profile &rarr;</a>
+                </li>
+            </ul>
+
+            <h3 style="font-size:1.1rem; color: #475569; margin-bottom:1rem; font-family:var(--font-ui);">Graduated</h3>
+            <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem;">
+                <li style="margin-bottom: 0.5rem;">
+                    <strong>Konstantinos Prasopoulos</strong> (PhD Student)
+                    <span style="font-size:0.9rem; color:#64748b; margin-left:0.5rem;">Co-advised with Ed Bugnion</span>
+                    <a href="https://people.epfl.ch/konstantinos.prasopoulos" class="text-link"
+                        style="margin-left:0.3rem;">Profile &rarr;</a>
+                </li>
+            </ul>
+        </section>
+
+        <!--<section id="service">-->
+            <!--<h2>Service</h2>-->
+
+            <!--<h3 style="font-size:1.1rem; color: #475569; margin-bottom:1rem; font-family:var(--font-ui);">Program-->
+                <!--Committee Member</h3>-->
+            <!--<div style="column-count: 2; column-gap: 2rem; margin-bottom: 2rem;">-->
+                <!--<ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem;">-->
+                    <!--<li style="margin-bottom: 0.5rem;"><strong>EuroSys</strong> (2022–2026)</li>-->
+                    <!--<li style="margin-bottom: 0.5rem;"><strong>ASPLOS</strong> (2022–2026)</li>-->
+                    <!--<li style="margin-bottom: 0.5rem;"><strong>EuroS&P</strong> (2026)</li>-->
+                    <!--<li style="margin-bottom: 0.5rem;"><strong>Middleware</strong> (2023–2024)</li>-->
+                    <!--<li style="margin-bottom: 0.5rem;"><strong>SOSR</strong> (2021–2022)</li>-->
+                    <!--<li style="margin-bottom: 0.5rem;"><strong>VEE</strong> (2021)</li>-->
+                    <!--<li style="margin-bottom: 0.5rem;"><strong>ANCS</strong> (2021)</li>-->
+                    <!--<li style="margin-bottom: 0.5rem;"><strong>OOPSLA</strong> (2021)</li>-->
+                    <!--<li style="margin-bottom: 0.5rem;"><strong>EuroDW</strong> (2021)</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+
+            <!--<h3 style="font-size:1.1rem; color: #475569; margin-bottom:1rem; font-family:var(--font-ui);">Leadership &-->
+                <!--Roles</h3>-->
+            <!--<ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem;">-->
+                <!--<li style="margin-bottom: 0.5rem;"><strong>Treasurer</strong>, ACM SIGOPS European Chapter (2024–now)-->
+                <!--</li>-->
+                <!--<li style="margin-bottom: 0.5rem;"><strong>Finance Chair</strong>, ASPLOS 2027</li>-->
+                <!--<li style="margin-bottom: 0.5rem;"><strong>European POD Organizer</strong>, NINES 2026</li>-->
+                <!--<li style="margin-bottom: 0.5rem;"><strong>Co-chair</strong>, EuroSys Doctoral Workshop 2026</li>-->
+                <!--<li style="margin-bottom: 0.5rem;"><strong>Sponsorship Co-chair</strong>, SOSP 2026</li>-->
+                <!--<li style="margin-bottom: 0.5rem;"><strong>Workshop Co-chair</strong>, SysTEX '25</li>-->
+                <!--<li style="margin-bottom: 0.5rem;"><strong>Workshops/Tutorials Co-Chair</strong>, EuroSys 2023, ASPLOS-->
+                    <!--2022</li>-->
+            <!--</ul>-->
+        <!--</section>-->
+
+        <section id="publications">
+            <h2>Publications</h2>
+
+            <!-- CONFERENCE PAPERS -->
+            <h3
+                style="font-size:1.3rem; margin-top:3rem; margin-bottom:1.5rem; text-transform:uppercase; color:#64748b; font-size:0.9rem; letter-spacing:1px;">
+                Conference Papers</h3>
+
+                <!-- 2026 -->
+                <div class="pub-list">
+
+                  <div class="pub-item">
+                    <span class="pub-title">Tyche: Composable Isolation as a Foundation to Manage Trust in the Cloud</span>
+                    <span class="pub-authors">Adrien Ghosn, Charly Castes, Neelu Shivprakash Kalani, Yuchen Qian, Marios Kogias, Edouard Bugnion</span>
+                    <div class="pub-venue-row">
+                      <span class="pub-venue">EuroSP 2026</span>
+                    </div>
+                  </div>
+
+                  <div class="pub-item">
+                    <span class="pub-title">CAEC: Confidential, Attestable, and Efficient Inter‑CVM Communication with Arm CCA</span>
+                    <span class="pub-authors">Sina Abdollahi, Amir Al Sadi, David Kotz, Marios Kogias, Hamed Haddadi</span>
+                    <div class="pub-venue-row">
+                      <span class="pub-venue">EuroSP 2026</span>
+                    </div>
+                  </div>
+
+                  <div class="pub-item">
+                    <span class="pub-title">Spandana: Reconciling Strict SLOs with Low Cost under Fine-Grained Load Fluctuations</span>
+                    <span class="pub-authors">Dilina Dehigama, Shyam Jesalpura,Zeyu Xu, Marton Nemeth, Shengda Zhu, Marios Kogias, Boris Grot</span>
+                    <div class="pub-venue-row">
+                      <span class="pub-venue">SoCC 2026</span>
+                    </div>
+                  </div>
+
+                  <div class="pub-item">
+                    <span class="pub-title">CheckWork: Enabling Trace-Driven Analysis of Checkpointing Overhead in Distributed ML Training</span>
+                    <span class="pub-authors">Eldar Hasanov, Adel Sefiane, Alireza Farshin, Marios Kogias</span>
+                    <div class="pub-venue-row">
+                      <span class="pub-venue">APNet 2026</span>
+                    </div>
+                  </div>
+
+                  <div class="pub-item">
+                    <span class="pub-title">KRAKENGUARD: Towards Fine-Grained eBPF Isolation</span>
+                    <span class="pub-authors">Jainil Patel, Lucas Graeff Buhl-Nielsen, Adrien Ghosn, Marios Kogias</span>
+                    <div class="pub-venue-row">
+                      <span class="pub-venue">NSDI 2026</span>
+                      <a href="https://www.usenix.org/system/files/nsdi26-patel.pdf" class="pdf-link">PDF</a>
+                    </div>
+                  </div>
+
+                  <!-- 2025 -->
+                <div class="pub-item">
+                    <span class="pub-title">SIRD: A Sender-Informed, Receiver-Driven Datacenter Transport
+                        Protocol</span>
+                    <span class="pub-authors">Konstantinos Prasopoulos, Ryan Kosta, Edouard Bugnion, Marios
+                        Kogias</span>
+                    <div class="pub-venue-row">
+                        <span class="pub-venue">NSDI 2025</span>
+                        <a href="https://www.usenix.org/system/files/nsdi25-prasopoulos.pdf" class="pdf-link">PDF</a>
+                    </div>
+                </div>
+                <div class="pub-item">
+                    <span class="pub-title">DORADD: Deterministic Parallel Execution in the Era of Microsecond-Scale
+                        Computing</span>
+                    <span class="pub-authors">Zhengqing Liu, Musa Unal, Matthew J. Parkinson, Marios Kogias</span>
+                    <div class="pub-venue-row">
+                        <span class="pub-venue">PPoPP 2025</span>
+                        <a href="docs/doradd.pdf" class="pdf-link">PDF</a>
+                    </div>
+                </div>
+
+                <!-- 2023 -->
+                <div class="pub-item">
+                    <span class="pub-title">Achieving Microsecond-Scale Tail Latency Efficiently with Approximate
+                        Optimal Scheduling</span>
+                    <span class="pub-authors">Rishabh Iyer, Musa Unal, Marios Kogias, George Candea</span>
+                    <div class="pub-venue-row">
+                        <span class="pub-venue">SOSP 2023</span>
+                        <a href="docs/concord.pdf" class="pdf-link">PDF</a>
+                    </div>
+                </div>
+                <div class="pub-item">
+                    <span class="pub-title">When Concurrency Matters: Behaviour-Oriented Concurrency</span>
+                    <span class="pub-authors">Luke Cheeseman, Matthew J. Parkinson, Sylvan Clebsch, Marios Kogias,
+                        Sophia Drossopoulou, David Chisnall, Tobias Wrigstad, Paul Liétar</span>
+                    <div class="pub-venue-row">
+                        <span class="pub-venue">OOPSLA 2023</span>
+                        <a href="docs/boc.pdf" class="pdf-link">PDF</a>
+                    </div>
+                </div>
+
+                <!-- 2021 -->
+                <div class="pub-item">
+                    <span class="pub-title">When Idling is Ideal: Optimizing Tail-Latency for Heavy-Tailed Datacenter
+                        Workloads with Persephone</span>
+                    <span class="pub-authors">Henri Maxime Demoulin, Joshua Fried, Isaac Pedisich, Marios Kogias, Boon
+                        Thau Loo, Linh Thi Xuan Phan, Irene Zhang</span>
+                    <div class="pub-venue-row">
+                        <span class="pub-venue">SOSP 2021</span>
+                        <a href="docs/persephone.pdf" class="pdf-link">PDF</a>
+                    </div>
+                </div>
+                <div class="pub-item">
+                    <span class="pub-title">Enclosure: language-based restriction of untrusted libraries</span>
+                    <span class="pub-authors">Adrien Ghosn, Marios Kogias, James Larus, Ed Bugnion</span>
+                    <div class="pub-venue-row">
+                        <span class="pub-venue">ASPLOS 2021</span>
+                        <a href="docs/enclosure.pdf" class="pdf-link">PDF</a>
+                    </div>
+                </div>
+                <div class="pub-item">
+                    <span class="pub-title">Benchmarking, Analysis, and Optimization of Serverless Function
+                        Snapshots</span>
+                    <span class="pub-authors">Dmitrii Ustiugov, Plamen Petrov, Marios Kogias, Ed Bugnion, Boris
+                        Grot</span>
+                    <div class="pub-venue-row">
+                        <span class="pub-venue">ASPLOS 2021</span>
+                        <span class="badge-award"><i class="fas fa-trophy"></i> Distinguished Artifact</span>
+                        <a href="docs/reap.pdf" class="pdf-link">PDF</a>
+                    </div>
+                </div>
+                <div class="pub-item">
+                    <span class="pub-title">SmartHarvest: harvesting idle CPUs safely and efficiently in the
+                        cloud</span>
+                    <span class="pub-authors">Yawen Wang, Kapil Arya, Marios Kogias, Manohar Vanga, Aditya Bhandari,
+                        Neeraja J. Yadwadkar, Siddhartha Sen, Sameh Elnikety, Christos Kozyrakis, Ricardo
+                        Bianchini</span>
+                    <div class="pub-venue-row">
+                        <span class="pub-venue">EuroSys 2021</span>
+                        <a href="docs/smartharvest.pdf" class="pdf-link">PDF</a>
+                    </div>
+                </div>
+
+                <!-- 2020 -->
+                <div class="pub-item">
+                    <span class="pub-title">HoverCraft: Scalability and Fault-tolerance for micro-second scale
+                        Datacenter Services</span>
+                    <span class="pub-authors">Marios Kogias, Edouard Bugnion</span>
+                    <div class="pub-venue-row">
+                        <span class="pub-venue">EuroSys 2020</span>
+                        <span class="badge-award"><i class="fas fa-trophy"></i> Best Student Paper</span>
+                        <a href="docs/hovercraft.pdf" class="pdf-link">PDF</a>
+                    </div>
+                </div>
+                <div class="pub-item">
+                    <span class="pub-title">Bypassing the load balancer without regrets</span>
+                    <span class="pub-authors">Marios Kogias, Rishabh R. Iyer, Edouard Bugnion</span>
+                    <div class="pub-venue-row">
+                        <span class="pub-venue">SoCC 2020</span>
+                        <a href="docs/crab.pdf" class="pdf-link">PDF</a>
+                    </div>
+                </div>
+
+                <!-- Older -->
+                <div class="pub-item">
+                    <span class="pub-title">R2P2: Making RPCs first-class datacenter citizens</span>
+                    <span class="pub-authors">Marios Kogias, George Prekas, Adrien Ghosn, Jonas Fietz, Edouard Bugnion</span>
+                    <div class="pub-venue-row">
+                        <span class="pub-venue">USENIX ATC 2019</span>
+                        <a href="https://www.usenix.org/conference/atc19/presentation/kogias-r2p2" class="pdf-link">PDF</a>
+                    </div>
+                </div>
+                <div class="pub-item">
+                    <span class="pub-title">Lancet: A self-correcting Latency Measuring Tool</span>
+                    <span class="pub-authors">Marios Kogias, Stephen Mallon, Edouard Bugnion</span>
+                    <div class="pub-venue-row">
+                        <span class="pub-venue">USENIX ATC 2019</span>
+                        <a href="https://www.usenix.org/system/files/atc19-kogias-lancet.pdf" class="pdf-link">PDF</a>
+                    </div>
+                </div>
+                <div class="pub-item">
+                    <span class="pub-title">ZygOS: Achieving Low Tail Latency for Microsecond-scale Networked
+                        Tasks</span>
+                    <span class="pub-authors">George Prekas, Marios Kogias, Edouard Bugnion</span>
+                    <div class="pub-venue-row">
+                        <span class="pub-venue">SOSP 2017</span>
+                        <a href="docs/zygos.pdf" class="pdf-link">PDF</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WORKSHOP PAPERS -->
+            <h3
+                style="font-size:1.3rem; margin-top:3rem; margin-bottom:1.5rem; text-transform:uppercase; color:#64748b; font-size:0.9rem; letter-spacing:1px;">
+                Workshop Papers</h3>
+            <div class="pub-list">
+                <!-- 2025 -->
+                <div class="pub-item">
+                    <span class="pub-title">An Early Experience With Confidential Computing Architecture for On-Device
+                        Model Protection</span>
+                    <span class="pub-authors">Sina Abdollahi, Mohammad Maheri, Sandra Siby, Marios Kogias, Hamed Haddadi</span>
+                    <div class="pub-venue-row">
+                        <span class="pub-venue">EuroS&P Workshops 2025</span>
+                        <a href="https://systex-workshop.github.io/2025/papers/systex25-final37.pdf" class="pdf-link">PDF</a>
+                    </div>
+                </div>
+                <div class="pub-item">
+                    <span class="pub-title">Why I Stopped Caring about the TCB</span>
+                    <span class="pub-authors">Adrien Ghosn, Marios Kogias</span>
+                    <div class="pub-venue-row">
+                        <span class="pub-venue">EuroS&P Workshops 2025</span>
+                        <a href="https://systex-workshop.github.io/2025/papers/systex25-final16.pdf" class="pdf-link">PDF</a>
+                    </div>
+                </div>
+                <div class="pub-item">
+                    <span class="pub-title">Shattering the ephemeral storage cost barrier for data-intensive serverless
+                        workflows</span>
+                    <span class="pub-authors">Shyam Jesalpura, Dmitrii Ustiugov, Michal Baczun, Bora A. Malper, Rustem Feyzkhanov, Edouard Bugnion, Marios Kogias, Boris Grot</span>
+                    <div class="pub-venue-row">
+                        <span class="pub-venue">SESAME 2025</span>
+                        <a href="docs/zipline.pdf" class="pdf-link">PDF</a>
+                    </div>
+                </div>
+                <div class="pub-item">
+                    <span class="pub-title">MLSynth: Towards Synthetic ML Traces</span>
+                    <span class="pub-authors">Adel Sefiane, Alireza Farshin, Marios Kogias</span>
+                    <div class="pub-venue-row">
+                        <span class="pub-venue">NetAI 2025</span>
+                        <a href="docs/mlsynth.pdf" class="pdf-link">PDF</a>
+                    </div>
+                </div>
+                <div class="pub-item">
+                    <span class="pub-title">uXDP: Frictionless XDP Deployments in Userspace</span>
+                    <span class="pub-authors">Yusheng Zheng, Panayiotis Gavriil, Marios Kogias</span>
+                    <div class="pub-venue-row">
+                        <span class="pub-venue">eBPF '25</span>
+                        <a href="docs/uxdp.pdf" class="pdf-link">PDF</a>
+                    </div>
+                </div>
+
+                <!-- 2024 -->
+                <div class="pub-item">
+                    <span class="pub-title">uBPF: Using eBPF for Microcontroller Compartmentalization</span>
+                    <span class="pub-authors">Szymon Kubica, Marios Kogias</span>
+                    <div class="pub-venue-row">
+                        <span class="pub-venue">eBPF@SIGCOMM 2024</span>
+                        <a href="docs/microbpf.pdf" class="pdf-link">PDF</a>
+                    </div>
+                </div>
+                <div class="pub-item">
+                    <span class="pub-title">Towards Functional Verification of eBPF Programs</span>
+                    <span class="pub-authors">Dana Lu, Boxuan Tang, Michael Paper, Marios Kogias</span>
+                    <div class="pub-venue-row">
+                        <span class="pub-venue">eBPF Workshop 2024</span>
+                        <a href="docs/draco.pdf" class="pdf-link">PDF</a>
+                    </div>
+                </div>
+                <div class="pub-item">
+                    <span class="pub-title">GuaranTEE: Towards Attestable and Private ML with CCA</span>
+                    <span class="pub-authors">Sandra Deepthy Siby, Sina Abdollahi, Mohammad Maheri, Marios Kogias, Hamed Haddadi</span>
+                    <div class="pub-venue-row">
+                        <span class="pub-venue">EuroMLSys 2024</span>
+                        <a href="docs/guarantee.pdf" class="pdf-link">PDF</a>
+                    </div>
+                </div>
+
+                <!-- 2023 -->
+                <div class="pub-item">
+                    <span class="pub-title">Creating Trust by Abolishing Hierarchies</span>
+                    <span class="pub-authors">Charly Castes, Adrien Ghosn, Neelu S. Kalani, Yuchen Qian, Marios Kogias, Mathias Payer, Edouard Bugnion</span>
+                    <div class="pub-venue-row">
+                        <span class="pub-venue">HotOS 2023</span>
+                        <a href="https://sigops.org/s/conferences/hotos/2023/papers/castes.pdf" class="pdf-link">PDF</a>
+                    </div>
+                </div>
+                <div class="pub-item">
+                    <span class="pub-title">Towards (Really) Safe and Fast Confidential I/O</span>
+                    <span class="pub-authors">Hugo Lefeuvre, David Chisnall, Marios Kogias, Pierre Olivier</span>
+                    <div class="pub-venue-row">
+                        <span class="pub-venue">HotOS 2023</span>
+                        <a href="https://sigops.org/s/conferences/hotos/2023/papers/lefeuvre.pdf" class="pdf-link">PDF</a>
+                    </div>
+                </div>
+                <div class="pub-item">
+                    <span class="pub-title">HEELS: A Host-Enabled eBPF-Based Load Balancing Scheme</span>
+                    <span class="pub-authors">Rui Yang, Marios Kogias</span>
+                    <div class="pub-venue-row">
+                        <span class="pub-venue">eBPF 2023</span>
+                        <a href="docs/heels.pdf" class="pdf-link">PDF</a>
+                    </div>
+                </div>
+
+                <!-- 2020 -->
+                <div class="pub-item">
+                    <span class="pub-title">Tail-tolerance as a Systems Principle not a Metric</span>
+                    <span class="pub-authors">Marios Kogias, Edouard Bugnion</span>
+                    <div class="pub-venue-row">
+                        <span class="pub-venue">APNet 2020</span>
+                        <a href="docs/sven.pdf" class="pdf-link">PDF</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+</body>
+
+</html>

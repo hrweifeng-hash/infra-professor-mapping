@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual Environment
+.venv/
+
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Dataset (multi-GB, re-downloadable — see docs/DATA_SOURCE.md)
+data/raw/*.gz
+data/raw/*.xml
+
+# Generated output
+data/output/
+*.xlsx
+!*_TEMPLATE.xlsx
+~$*.xlsx
+*.csv

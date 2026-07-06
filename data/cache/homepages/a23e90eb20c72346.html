@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Miryung Kim</title>
+    <style>
+      body {
+        font-family: "Lucida Grande", sans-serif;
+        background-color: #fff;
+        margin: 0;
+        padding: 1rem;
+        color: #000;
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        background-color: rgb(209, 226, 255);
+        padding: 0.5rem 0;
+        margin-bottom: 1rem;
+        border-radius: 6px;
+      }
+
+      nav a {
+        flex: 1 1 auto;
+        min-width: 80px;
+        max-width: 120px;
+        text-align: center;
+        color: #000; /* changed from white to black */
+        text-decoration: none;
+        font-size: 1.1rem;
+        padding: 0.5rem 0;
+        background-color: rgb(209, 226, 255);
+        margin: 0 4px;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      nav a:hover,
+      nav a:focus {
+        text-decoration: underline;
+      }
+
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 1160px;
+        margin: 0 auto;
+        gap: 1rem;
+      }
+
+      .left-column {
+        flex: 1 1 245px;
+        max-width: 300px;
+      }
+
+      .left-column img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 6px;
+      }
+
+      .right-column {
+        flex: 2 1 600px;
+        min-width: 280px;
+      }
+
+      h1, h2, h3 {
+        color: #333;
+      }
+
+      p {
+        line-height: 1.5;
+        font-size: 1rem;
+      }
+
+      a {
+        color: #0056b3;
+      }
+
+      a:hover,
+      a:focus {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          justify-content: center;
+        }
+
+        nav a {
+          flex: 1 1 40%;
+          margin: 4px 2%;
+          max-width: none;
+        }
+
+        .container {
+          flex-direction: column;
+        }
+
+        .left-column,
+        .right-column {
+          max-width: 100%;
+          flex: 1 1 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav> <a href="http://web.cs.ucla.edu/~miryung/index.html">Home</a>
+      <a href="http://web.cs.ucla.edu/~miryung/research.html">Research</a>
+      <a href="http://web.cs.ucla.edu/~miryung/publications.html">Publications</a>
+      <a href="http://web.cs.ucla.edu/~miryung/teaching.html">Teaching</a>
+      <a href="http://web.cs.ucla.edu/~miryung/students.html">Student</a>
+      <a href="http://web.cs.ucla.edu/~miryung/funding.html">Funding</a>
+      <a href="http://web.cs.ucla.edu/~miryung/activities.html">Service</a>
+      <a href="http://web.cs.ucla.edu/~miryung/diversity.html">Community</a>
+      <a href="http://web.cs.ucla.edu/~miryung/talk.html" title="Talks">Talks</a>
+      <a href="https://github.com/UCLA-SEAL/" title="GitHub">GitHub</a>
+    </nav>
+    <div class="container">
+      <div class="left-column"> <img
+          src="MiryungKimPhotoAugust2018.jpg" alt="Miryung Kim"
+          height="288" width="245">
+        <h1>Miryung Kim</h1>
+        <p> Professor<br>
+          Vice Chair of Graduate Studies<br>
+          <a href="http://www.ucla.edu">UCLA</a> <a
+            href="http://www.cs.ucla.edu">Computer Science</a><br>
+          Engineering VI, Room 474<br>
+          Los Angeles, CA 90095<br>
+          <img src="emailaddresspicture.png" alt="email" title="miryung"
+            height="32" width="183"><br>
+          TEL: 310-825-2858 </p>
+        <p> Administrative Support:<br>
+          Mr. Chris Bower<br>
+          TEL: 310-825-4033 </p>
+      </div>
+      <div class="right-column">
+        <h2>Research</h2>
+	<p> Miryung Kim is a Professor and Vice Chair of Graduate Studies in UCLAâs Computer Science Department. Recognizing an industry-wide shift toward data-intensive software engineering, she led early research on <a href="Publications/icse2016-datascientistsroles.pdf">the emerging role of data scientists</a>. By formalizing the "data scientist" role, this research helped establish the career path for <a href="Publications/tse2017-datascientists.pdf">data scientists in software teams</a>, contributing to the growth of data science and AI majors in universities. Her work focuses on <a href="https://web.cs.ucla.edu/~miryung/Publications/icse2023-FutureofSE-MiryungKim.pdf">developer tools for data-intensive computing</a> like Apache Spark, addressing scale and complexity challenges that traditional debugging and testing cannot meet.  </p>
+	<p>For her work on <a href="https://web.cs.ucla.edu/~miryung/research.html#clone">data-driven software analytics</a> and establishing the significance of <a href="https://web.cs.ucla.edu/~miryung/research.html#clone">code clones</a> in industrial software evolution, she received the <a href="https://www.cs.ucla.edu/professor-miryung-kim-receives-ieee-tcse-new-directions-award-presented-by-the-ieee-computer-society-technical-community-on-software-engineering-tcse/">IEEE TCSE New Directions Award</a>. Her research challenged the long-held belief that <a href="https://web.cs.ucla.edu/~miryung/Publications/isese04-copypaste.pdf">copy-and-paste</a> programming is detrimental. Instead, she demonstrated how <a href="https://web.cs.ucla.edu/~miryung/Publications/esecfse05-clonegenealogy.pdf">recurring code patterns</a> from large-scale repositories could be analyzed to <a href="https://web.cs.ucla.edu/~miryung/Publications/icse2013-lase-submitted.pdf">automate bug fixes</a>, <a href="https://web.cs.ucla.edu/~miryung/Publications/tse2014-refactoringpractices.pdf">refactoring</a>, and <a href="https://web.cs.ucla.edu/~miryung/Publications/oopsla10-libsync.pdf">API updates</a>---insights that inform modern AI-driven developer tools. She received ICSME Most Influential Paper Award for <a href="Publications/ICSME2023-MIP-Talk-APIStabilityAdoption.pdf">Android API evolution</a> and another ICSME MIP Award for <a href="Publications/ICSME2020-MIP-REFFINDER-Slides.pdf">reconstructing refactorings</a> from version histories.
+        <h3>Biography</h3>
+	<p> Professor Kim received the <a href="https://www2.sigsoft.org/awards/influentialeducator/">ACM SIGSOFT Influential Educator Award</a> for <a href="http://web.cs.ucla.edu/~miryung/students.html">mentoring</a> with emphasis on research excellence, diversity, and inclusion. Eight of her former students and postdocs are faculty members at institutions such as Columbia, Purdue, and Virginia Tech and five of them received NSF CAREER awards. She served as <a href="https://2022.esec-fse.org">FSE Program Co-Chair</a>, delivered keynotes at <a href="https://web.cs.ucla.edu/~miryung/PLDI2026-Keynote-AI-Bottleneck-MiryungKim.pdf">PLDI</a>, <a href="http://web.cs.ucla.edu/~miryung/ASE2019-Keynote-MiryungKim-SE4DA.pdf">ASE</a>, and <a href="https://web.cs.ucla.edu/~miryung/ISSTA-Keynote-SE4Hetero-Kim-UCLA.pdf">ISSTA</a>, and given distinguished lectures at <a href="https://www.cs.cmu.edu/calendar/166440324">CMU</a> and <a href="https://mediaspace.illinois.edu/media/t/1_vtn1quld">UIUC</a>. She has also worked at Microsoft Research and is currently an <a href="https://aws.amazon.com">Amazon Scholar</a> at
+          AWS. She is an ACM Distinguished Member, received two ICSME Test of Time Awards, an NSF CAREER Award, a Humboldt Fellowship, and awards from Microsoft, IBM, Google, and the Okawa Foundation. </p>
+        <h3>History</h3>
+        <p>Professor Kim completed her MS and PhD at the University of
+	Washington under <a href="https://www.engr.washington.edu/news/honoring_david_notkin.html">David Notkin</a> and held a faculty position at UT
+          Austin prior to UCLA. She graduated as No. 1 among all students in
+          KAIST and received the Korean Ministry of Education, Science,
+          and Technology Award, the highest honor given to an
+          undergraduate student in Korea. She served 8 years as a live-in faculty
+          member in UCLA residence halls to mentor undergraduate students and received the <a
+href="https://www.cs.ucla.edu/professor-miryung-kim-receives-doc-stevenson-faculity-in-residence-award/">
+            Doc Stevenson Faculty-in-Residence Award</a>. She created <a
+            href="https://mommycomputersciencecamp.com">Mommy Computer
+            Science Camp</a>, featured in <a
+href="https://www.pcmag.com/news/357852/at-this-camp-kids-learn-computer-science-without-computers">
+            PC Magazine</a>. </p>
+	
+        <h3>News <a href="news.html">(more here)</a></h3>
+	<p>
+	Prof. Kim gave a <a href="https://web.cs.ucla.edu/~miryung/PLDI2026-Keynote-AI-Bottleneck-MiryungKim.pdf">PLDI Keynote</a> on the AI coding bottleneck at <a href="https://pldi26.sigplan.org/details/pldi-2026-papers/2/Happiness-U-Curve-Navigating-the-AI-Validation-Bottleneck-with-Conformance-Testing-a">PLDI 2026</a> <a href="https://www.youtube.com/live/i5Vooz7o074?t=1202s">(video)</a>
+		<br> 
+	Prof. Kim received the <a moz-do-not-send="true" href="https://tc.computer.org/tcse/awards/">IEEE TCSE New Directions Award</a>
+	<a href="https://www.cs.ucla.edu/professor-miryung-kim-receives-ieee-tcse-new-directions-award-presented-by-the-ieee-computer-society-technical-community-on-software-engineering-tcse/">(News)</a><br>
+        Prof. Kim's former PhD student, <a href="https://people.cs.vt.edu/~gulzar/">Muhammad Ali Gulzar</a> and her former postdoc, <a href="https://www.cs.ucr.edu/~qzhang/">Qian Zhang</a> received NSF CAREER awards.  <br>
+	Congratulations on <a href="https://web.cs.ucla.edu/~miryung/publications.html" moz-do-not-send="true">WhyFlow</a> (sensemaking taint analysis), accepted to ICSE 2026. <br> Congratulations on <a moz-do-not-send="true" href="https://web.cs.ucla.edu/~miryung/publications.html">Change-And-Cover</a> (regression test augmentation with LLM), accepted to ICSE 2026.<br>
+	Prof. Kim gave a <a moz-do-not-send="true" href="https://www.youtube.com/watch?v=L90MBb6NLBE">Fuzzing Keynote</a> on constraining fuzzing at the <a href="https://conf.researchr.org/details/issta-2025/fuzzing-2025-papers/10/Keynote-Constraining-Fuzzing-without-Paying-Too-Much">ISSTA Fuzzing Workshop 2025</a>. <a moz-do-not-send="true" href="https://www.youtube.com/watch?v=L90MBb6NLBE">(video)</a><br>
+
+	Thanks to <a href="https://semiconductor.samsung.com/" moz-do-not-send="true">Samsung</a> for sponsoring projects on AI-based coding assistants.<br>
+	Congratulations on <a
+href="http://web.cs.ucla.edu/~miryung/Publications/DuoReduce_FSE2025.pdf"
+            moz-do-not-send="true">DuoReduce</a> (compiler debugging for
+          MLIR), accepted to FSE 2025.<br>
+          Congratulations on <a href="https://arxiv.org/abs/2404.16947"
+            moz-do-not-send="true">SynthFuzz</a> (testing AI accelerator
+          compilers), accepted to ICSE 2025.<br>
+          Prof. Kim gave a <a
+href="http://web.cs.ucla.edu/~miryung/Publications/2024-Dagstuhl-CodeSearch-MiryungKim.pdf"
+				   moz-do-not-send="true">Dagstuhl Keynote</a> in the seminar on Code Search </a> in
+          April 2024.<br>
+          Prof. Kim gave a <a
+href="https://www1.cs.ucr.edu/event-list/2024/04/12/distinguished-lecture-series-miryung-kim-software-engineering-data-intensive"
+            moz-do-not-send="true">Distinguished Lecture at UC
+            Riverside </a> in April 2024.<br>
+          Prof. Kimâs former PhD student <a
+            href="https://tianyi-zhang.github.io" moz-do-not-send="true">Tianyi
+            Zhang</a> received an NSF CAREER award.<br>
+          Our paper on API Stability and Adoption received the <a
+href="https://www.cs.ucla.edu/professor-kim-receives-the-most-influential-paper-award-at-icsme-2023"
+            moz-do-not-send="true"> Most Influential Paper Award from
+            ICSME 2023</a>.<br>
+          Prof. Kim gave a <a
+            href="https://www.mpi-sws.org/events/recent/"
+            moz-do-not-send="true">Distinguished Lecture at the Max Planck Institute</a> in 2023.<br>
+          Prof. Kim gave a <a
+href="https://www.cs.ucla.edu/professor-miryung-kim-gave-distinguished-lecture-at-cmu/"
+            moz-do-not-send="true">Distinguished Lecture at CMU </a>
+          in 2023.<br>
+          Prof. Kim gave a Keynote at the Symposium on <a
+href="https://semla.polymtl.ca/#:~:text=The%20Software%20Engineering%20for%20Machine,complex%20data%2Dintensive%20software%20systems."
+            moz-do-not-send="true"> SE for Machine Learning Applications
+          </a> in 2023.<br>
+          Prof. Kim gave a talk on the <a
+            href="https://conf.researchr.org/profile/icse-2023/miryungkim#"
+            moz-do-not-send="true">Future of Software Engineering</a>
+          for Big Data and HW Heterogeneity at ICSE 2023.<br>
+          Prof. Kim gave a <a
+href="https://www.dagstuhl.de/en/seminars/seminar-calendar/seminar-details/23131"
+				   moz-do-not-send="true">Dagstuhl Keynote</a> in the seminar on Software Bug Detection: Challenges and Synergies in 2023.<br>
+          Prof. Kim gave an invited talk at the <a
+            href="https://research-symposium.mpi-sws.org/lecturer-biographies/"
+            moz-do-not-send="true">MPI-SWS Research Symposium </a> in
+          2023.<br>
+          Prof. Kim served as a Program Chair of FSE 2022 (<a
+href="https://www.cs.ucla.edu/professor-miryung-kim-named-program-chair-of-fse-2022/"
+            moz-do-not-send="true">News</a>).<br>
+          Prof. Kim gave an <a
+href="https://conf.researchr.org/details/issta-2022/issta-2022-keynotes/2/Software-Developer-Tools-for-Democratizing-Heterogeneous-Computing-Applications"
+            moz-do-not-send="true">ISSTA Keynote</a> (<a
+href="https://www.cs.ucla.edu/professor-miryung-kim-delivers-keynote-address-at-issta-2022/"
+            moz-do-not-send="true">News</a>) on incorporating HW heterogeneity in SE.<br>
+          Our research on testing quantum software was selected for <a
+            href="https://www.sigsoft.org/resources/highlights.html"
+            moz-do-not-send="true">ACM SIGSOFT Research Highlights</a> in 2022 (<a
+href="https://www.cs.ucla.edu/ucla-teams-research-on-automated-testing-of-quantum-software-stacks-is-selected-for-acm-sigsoft-research-highlights/"
+            moz-do-not-send="true">News</a>).<br>
+          Prof. Kim received the <a
+            href="https://www.sigsoft.org/awards/influentialEducatorAward.html"
+            moz-do-not-send="true"> ACM SIGSOFT Influential Educator
+            Award </a> in 2022. (<a
+href="https://www.cs.ucla.edu/professor-miryung-kim-wins-the-acm-sigsoft-influential-educator-award/"
+            moz-do-not-send="true">News</a>)<br>
+          Prof. Kim became an ACM Distinguished Member in 2021. (<a
+href="https://www.cs.ucla.edu/professor-miryung-kim-selected-as-2021-acm-distinguished-member/"
+            moz-do-not-send="true">News</a>)<br>
+          Prof. Kim gave Distinguished Lectures at <a
+            href="https://calendars.illinois.edu/detail/5598?eventId=33399539"
+            moz-do-not-send="true">UIUC</a> and the <a
+href="https://cse.umn.edu/cs/events/cray-colloquium-software-engineering-data-analytics-se4da"
+            moz-do-not-send="true">University of Minnesota </a> in
+          2021.<br>
+          Our paper on refactoring received the <a
+            href="https://www.youtube.com/watch?v=DrDWyh9X_QU"
+            moz-do-not-send="true"> Most Influential Paper Award from
+            ICSME 2020 </a>.<br>
+          Prof. Kim gave an <a
+            href="https://2019.ase-conferences.org/info/keynotes"
+	    moz-do-not-send="true">ASE Keynote</a> data-intensive software development at ASE 2019</a>.<br>
+          Prof. Kim was awarded a Humboldt Research Fellowship from
+          Alexander von Humboldt Foundation.<br>
+          Prof. Kimâs former PhD students, Baishakhi Ray and Na Meng,
+          received NSF CAREER awards.<br>
+          Our team received a $4.9M grant from the <a
+            href="https://www.onr.navy.mil" moz-do-not-send="true">Office
+            of Naval Research</a> on Synergistic Software Customization.<br>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

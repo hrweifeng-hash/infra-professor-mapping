@@ -1,0 +1,11 @@
+# Core dependencies for the Infra Professor Mapping pipeline.
+#
+# lxml      - streaming XML parsing of dblp.xml.gz and per-author XML
+# requests  - fetches per-author DBLP pages (identity enrichment)
+# pandas    - Excel/CSV export
+# openpyxl  - .xlsx engine used by pandas
+
+lxml>=5.0
+requests>=2.31
+pandas>=2.2
+openpyxl>=3.1

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aditya Akella</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">Aditya Akella</a>
+  <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.getElementById('nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="awards.html">Awards</a></li>
+    <li><a href="teaching.html">Teaching</a></li>
+    <li><a href="service.html">Service</a></li>
+    <li><a href="publications.html">Publications</a></li>
+    <li><a href="http://utns.cs.utexas.edu/">UTNS Lab</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <!-- Bio -->
+  <div class="bio">
+    <div class="bio-photo">
+      <img src="img/akella-2020.jpg" alt="Aditya Akella">
+    </div>
+    <div class="bio-text">
+      <h1>Aditya Akella</h1>
+      <p class="bio-title">Professor &amp; Regents Chair Â· ACM Fellow<br>
+        Director: <a href="https://ldos.utexas.edu">LDOS</a> &amp; <a href="https://infraaicenter.org">InfraAI</a></p>
+      <p>I'm interested in rethinking systems infrastructure through the lens of advanced AI. I lead two centers doing this work: the <a href="https://ldos.utexas.edu">Learning Directed Operating System (LDOS)</a> project, an NSF CISE Expedition in Computing reimagining the OS for data-driven decision-making, and the <a href="https://infraaicenter.org">InfraAI Center</a>, an industryâUT collaborative effort to build systems infrastructure from the ground up for next-gen AI.</p>
+      <p>I also co-lead the <a href="http://utns.cs.utexas.edu/">UTNS Lab</a>. I'm married to <a href="http://www.cs.utexas.edu/~shuchi">Shuchi Chawla</a>.</p>
+      <div class="bio-contact">
+        Email: <a href="mailto:akella@cs.utexas.edu">akella@cs.utexas.edu</a><br>
+        Twitter: <a href="https://twitter.com/adityaakella">@adityaakella</a><br>
+        LinkedIn: <a href="https://www.linkedin.com/in/aditya-akella-5327148">Aditya Akella</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Highlights -->
+  <h2 class="section-title">Recent Highlights</h2>
+  <table class="highlights">
+    <tbody>
+      <tr>
+        <td>Jun 2026</td>
+        <td><a href="publications.html">MatchBox</a> wins Distinguished Paper Award at PLDI 2026!</td>
+      </tr>
+      <tr>
+        <td>Nov 2025</td>
+        <td>Excited to launch the <a href="https://infraaicenter.org">InfraAI Center</a>!</td>
+      </tr>
+      <tr>
+        <td>May 2024</td>
+        <td><a href="https://ldos.utexas.edu">LDOS NSF Expedition in Computing</a> awarded. See <a href="https://new.nsf.gov/news/nsf-invests-36m-computing-projects-promise">NSF</a> and <a href="https://cns.utexas.edu/news/announcements/nsf-funded-expedition-project-uses-ai-rethink-computer-operating-systems">UT Austin</a> press releases.</td>
+      </tr>
+      <tr>
+        <td>Jan 2024</td>
+        <td>Became an <a href="https://awards.acm.org/award-recipients/akella_9932799">ACM Fellow</a>.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Recent Publications -->
+  <h2 class="section-title">Recent Work &mdash; <a href="publications.html">full list</a></h2>
+  <table class="pub-list">
+    <tbody>
+      <tr>
+        <td class="venue">OSDI 26</td>
+        <td>
+          <div class="ptitle">Mimesys: Generating Realistic Executable Testing Environments from Resource Usage Traces</div>
+          <div class="authors">Donghyun Kim, Zichao Hu, Joydeep Biswas, Aditya Akella, Daehyeok Kim.</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="venue">OSDI 26</td>
+        <td>
+          <div class="ptitle">TrainMover: An Interruption-Resilient and Reliable ML Training Runtime</div>
+          <div class="authors">ChonLam Lao, Minlan Yu, Aditya Akella, Jiamin Cao, Yu Guan, Pengcheng Zhang, Zhilong Zheng, Yichi Xu, Ennan Zhai, Dennis Cai, Jiaqi Gao.</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="venue">ICML 26</td>
+        <td>
+          <div class="ptitle">When Do Graph Foundation Models Transfer? A Data-Centric Theory</div>
+          <div class="authors">J. Zhu*, Y. Chen, P. Wang*, Y. He, P. Li, A. Akella, and Z. Wang.</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="venue">PLDI 26</td>
+        <td>
+          <div class="ptitle">MatchBox: A Semantic Foundation for Data Plane Portability <span class="best-paper">Distinguished Paper Award</span></div>
+          <div class="authors">Eric Hayden Campbell, Robert Zhang, Divyanshu Saxena, Aditya Akella, Isil Dillig.</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="venue">ACL 26</td>
+        <td>
+          <div class="ptitle">Improving the Throughput of Diffusion-based Large Language Models via a Training-Free Confidence-Aware Calibration</div>
+          <div class="authors">Jack Shen*, Gaurav Sarkar*, Yeonju Ro, Sharath Nittur Sridhar, Zhangyang Wang, Aditya Akella, Souvik Kundu.</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="venue">NSDI 26</td>
+        <td>
+          <div class="ptitle">UNUM: A New Framework for Network Control</div>
+          <div class="authors">Jiayi Chen, Nihal Sharma, Debajit Chakraborty, Saurabh Agarwal, Jeffrey Zhou, Aditya Akella, Sanjay Shakkottai.</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="venue">NSDI 26</td>
+        <td>
+          <div class="ptitle">Towards Performance Robustness for Microservices</div>
+          <div class="authors">Divyanshu Saxena, Gaurav Vipat, Jiaxin Lin, Jingbo Wang, Isil Dillig, Sanjay Shakkottai, Aditya Akella.</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="venue">NSDI 26</td>
+        <td>
+          <div class="ptitle">SYMPHONY: Improving Memory Management for LLM Inference Workloads</div>
+          <div class="authors">Saurabh Agarwal, Bodun Hu, Anyong Mao, Aditya Akella, Shivaram Venkataraman.</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="venue">NSDI 26</td>
+        <td>
+          <div class="ptitle">Express Lane to Efficiency and Reliability: Multi-Dimensional Control in Meta's Express Backbone Network</div>
+          <div class="authors">Faisal Iqbal, Vitaly Neganov, Brian Chang, Rong Rong, Yuanjun Yao, Marek Denis, Qin Zhang, Alexandru Manea, Anton Marchenko, Ulas Kozat, Aditya Akella, Ying Zhang.</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="venue">EuroSys 26</td>
+        <td>
+          <div class="ptitle">Canopy: Property-Driven Learning for Congestion Control</div>
+          <div class="authors">Chenxi Yang, Divyanshu Saxena, Rohit Dwivedula, Kshiteej Mahajan, Swarat Chaudhuri, and Aditya Akella.</div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<script>
+  // Close nav when a link is clicked on mobile
+  document.querySelectorAll('#nav-links a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      document.getElementById('nav-links').classList.remove('open');
+    });
+  });
+</script>
+</body>
+</html>

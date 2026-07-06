@@ -1,0 +1,920 @@
+[
+    {
+        "canonical": "Air Force Institute of Technology",
+        "aliases": [
+            "AFIT"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Arizona State University",
+        "aliases": [
+            "ASU"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Auburn University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Baylor University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Binghamton University",
+        "aliases": [
+            "SUNY Binghamton"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Boston University",
+        "aliases": [
+            "BU"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Brigham Young University",
+        "aliases": [
+            "BYU"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Brown University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "California Institute of Technology",
+        "aliases": [
+            "Caltech"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Carnegie Mellon University",
+        "aliases": [
+            "CMU"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Case Western Reserve University",
+        "aliases": [
+            "Case Western"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Clemson University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Colorado School of Mines",
+        "aliases": [
+            "Mines"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Colorado State University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Columbia University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Cornell University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Dartmouth College",
+        "aliases": [
+            "Dartmouth"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "DePaul University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Drexel University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Duke University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Florida International University",
+        "aliases": [
+            "FIU"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Florida State University",
+        "aliases": [
+            "FSU"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "George Mason University",
+        "aliases": [
+            "GMU"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "George Washington University",
+        "aliases": [
+            "GWU"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Georgetown University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Georgia Institute of Technology",
+        "aliases": [
+            "Georgia Tech",
+            "GT",
+            "Gatech"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Georgia State University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Harvard University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Illinois Institute of Technology",
+        "aliases": [
+            "Illinois Tech",
+            "IIT"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Indiana University Bloomington",
+        "aliases": [
+            "Indiana University",
+            "IU Bloomington"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Iowa State University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Johns Hopkins University",
+        "aliases": [
+            "JHU"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Kansas State University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Kent State University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Lehigh University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Louisiana State University",
+        "aliases": [
+            "LSU"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Massachusetts Institute of Technology",
+        "aliases": [
+            "MIT"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Michigan State University",
+        "aliases": [
+            "MSU"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Michigan Technological University",
+        "aliases": [
+            "Michigan Tech"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Missouri University of Science and Technology",
+        "aliases": [
+            "Missouri S&T"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Montana State University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Naval Postgraduate School",
+        "aliases": [
+            "NPS"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "New Mexico State University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "New York University",
+        "aliases": [
+            "NYU"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "North Carolina State University",
+        "aliases": [
+            "NC State",
+            "NCSU"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Northeastern University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Northwestern University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Ohio State University",
+        "aliases": [
+            "OSU",
+            "The Ohio State University"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Oklahoma State University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Oregon State University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Pennsylvania State University",
+        "aliases": [
+            "Penn State",
+            "PSU"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Portland State University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Princeton University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Purdue University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Rensselaer Polytechnic Institute",
+        "aliases": [
+            "RPI"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Rice University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Rutgers University",
+        "aliases": [
+            "Rutgers, The State University of New Jersey"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "San Diego State University",
+        "aliases": [
+            "SDSU"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Southern Methodist University",
+        "aliases": [
+            "SMU"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Stanford University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Stony Brook University",
+        "aliases": [
+            "SUNY Stony Brook"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Syracuse University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Temple University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Texas A&M University",
+        "aliases": [
+            "Texas A&M"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Texas Tech University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "The University of Texas at Arlington",
+        "aliases": [
+            "UT Arlington",
+            "UTA"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "The University of Texas at Austin",
+        "aliases": [
+            "UT Austin",
+            "University of Texas at Austin",
+            "UT-Austin"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "The University of Texas at Dallas",
+        "aliases": [
+            "UT Dallas",
+            "UTD"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "The University of Texas at San Antonio",
+        "aliases": [
+            "UT San Antonio",
+            "UTSA"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Tufts University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "University at Albany, SUNY",
+        "aliases": [
+            "SUNY Albany",
+            "University of Albany"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University at Buffalo",
+        "aliases": [
+            "SUNY Buffalo",
+            "University of Buffalo"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Akron",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Alabama",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Alabama at Birmingham",
+        "aliases": [
+            "UAB"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Alaska Fairbanks",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Arizona",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of California, Berkeley",
+        "aliases": [
+            "UC Berkeley",
+            "Berkeley",
+            "UCB"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of California, Davis",
+        "aliases": [
+            "UC Davis",
+            "UCD"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of California, Irvine",
+        "aliases": [
+            "UC Irvine",
+            "UCI"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of California, Los Angeles",
+        "aliases": [
+            "UCLA"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of California, Merced",
+        "aliases": [
+            "UC Merced"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of California, Riverside",
+        "aliases": [
+            "UC Riverside",
+            "UCR"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of California, San Diego",
+        "aliases": [
+            "UC San Diego",
+            "UCSD"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of California, Santa Barbara",
+        "aliases": [
+            "UC Santa Barbara",
+            "UCSB"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of California, Santa Cruz",
+        "aliases": [
+            "UC Santa Cruz",
+            "UCSC"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Central Florida",
+        "aliases": [
+            "UCF"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Chicago",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Cincinnati",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Colorado Boulder",
+        "aliases": [
+            "CU Boulder",
+            "University of Colorado at Boulder"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Connecticut",
+        "aliases": [
+            "UConn"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Delaware",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Florida",
+        "aliases": [
+            "UF"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Georgia",
+        "aliases": [
+            "UGA"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Houston",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Idaho",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Illinois Chicago",
+        "aliases": [
+            "UIC",
+            "University of Illinois at Chicago"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Illinois Urbana-Champaign",
+        "aliases": [
+            "UIUC",
+            "University of Illinois at Urbana-Champaign",
+            "Illinois"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Iowa",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Kansas",
+        "aliases": [
+            "KU"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Kentucky",
+        "aliases": [
+            "UK"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Maryland, College Park",
+        "aliases": [
+            "University of Maryland",
+            "UMD"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Massachusetts Amherst",
+        "aliases": [
+            "UMass Amherst",
+            "UMass"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Miami",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Michigan",
+        "aliases": [
+            "UMich",
+            "University of Michigan-Ann Arbor",
+            "Michigan"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Minnesota",
+        "aliases": [
+            "University of Minnesota Twin Cities",
+            "UMN"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Missouri",
+        "aliases": [
+            "Mizzou"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Nebraska-Lincoln",
+        "aliases": [
+            "University of Nebraska"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Nevada, Las Vegas",
+        "aliases": [
+            "UNLV"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Nevada, Reno",
+        "aliases": [
+            "UNR"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of New Mexico",
+        "aliases": [
+            "UNM"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of North Carolina at Chapel Hill",
+        "aliases": [
+            "UNC Chapel Hill",
+            "UNC",
+            "University of North Carolina"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of North Texas",
+        "aliases": [
+            "UNT"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Notre Dame",
+        "aliases": [
+            "Notre Dame"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Oklahoma",
+        "aliases": [
+            "OU"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Oregon",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Pennsylvania",
+        "aliases": [
+            "Penn",
+            "UPenn"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Pittsburgh",
+        "aliases": [
+            "Pitt"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Rochester",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of South Carolina",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of South Florida",
+        "aliases": [
+            "USF"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Southern California",
+        "aliases": [
+            "USC"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Tennessee",
+        "aliases": [
+            "UT Knoxville",
+            "University of Tennessee, Knoxville"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Texas at El Paso",
+        "aliases": [
+            "UTEP"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Toledo",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Utah",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Virginia",
+        "aliases": [
+            "UVA"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Washington",
+        "aliases": [
+            "UW",
+            "UDub"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Wisconsin-Madison",
+        "aliases": [
+            "UW-Madison",
+            "University of Wisconsin",
+            "Wisconsin"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "University of Wyoming",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Vanderbilt University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Villanova University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Virginia Polytechnic Institute and State University",
+        "aliases": [
+            "Virginia Tech",
+            "VT",
+            "VPI"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Wake Forest University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Washington State University",
+        "aliases": [
+            "WSU"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Washington University in St. Louis",
+        "aliases": [
+            "WashU",
+            "Washington University in St Louis"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Wayne State University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "William & Mary",
+        "aliases": [
+            "College of William and Mary"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Worcester Polytechnic Institute",
+        "aliases": [
+            "WPI"
+        ],
+        "country": "United States"
+    },
+    {
+        "canonical": "Yale University",
+        "aliases": [],
+        "country": "United States"
+    },
+    {
+        "canonical": "Yeshiva University",
+        "aliases": [],
+        "country": "United States"
+    }
+]

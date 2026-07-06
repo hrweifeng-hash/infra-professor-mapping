@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+
+    <!-- Font Awesome for social media icons -->
+    <script src="https://kit.fontawesome.com/791291c78f.js" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+    <!-- Site Information -->
+    <title> SAIL@Princeton </title>
+
+    <style type="text/css">
+      .smlinks {
+        color: black;
+      }
+      .smlinks:hover {
+        color: rgb(7, 107, 255);
+      }
+      .card{
+        margin-bottom: 10px;
+      }
+    </style>
+
+    <!-- Favicon -->
+    <!-- TODO(ruipan): we could add a favicon of the website here -->
+    <!-- https://realfavicongenerator.net/ -->
+    <!-- <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff"> -->
+    
+    <!-- Functionality for searching papers -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+          // Function to get URL parameters
+          function getQueryParam(name) {
+              let urlParams = new URLSearchParams(window.location.search);
+              return urlParams.get(name) || "";
+          }
+    
+          // Populate search bar if "search" parameter exists
+          let searchQuery = getQueryParam("search");
+          $("#search").val(searchQuery).trigger("input"); // Fill and trigger search
+    
+          // Search functionality
+          $("#search").on("input", function () {
+              let query = $(this).val().toLowerCase();
+              $(".paper-item").each(function () {
+                  let text = $(this).text().toLowerCase();
+                  $(this).closest("li").toggle(text.includes(query));
+              });
+          });
+      });
+    </script>
+  </head>
+
+  <body>
+    <!-- Nav Bar -->
+    <!-- TODO(ruipan): figure out how to align the nav items to the right rather than the left -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top navbar-custom" style="background-color: #f58025">
+        <a class="navbar-brand" href="index.html">
+          <img src="./images/princeton_square.jpg" width="30" height="30" class="d-inline-block align-top">
+          SAIL@Princeton
+        </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <a class="nav-link" href="#projects">Projects</a>
+          </li>
+          <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <a class="nav-link" href="people.html">People</a>
+          </li>
+          <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <a class="nav-link" href="publications.html">Publications</a>
+          </li>
+          <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <a class="nav-link" href="blogs.html">Blogs</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Jumbotron -->
+    <div class="jumbotron jumbotron-fluid text-center">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-sm-12">
+            <h2 class="jumbotron-heading">SAIL@Princeton</h2>
+            <p class="lead">Systems for Artificial Intelligence Lab @ Princeton</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- About -->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2>About Us</h2>
+          <p>
+            SAIL@Princeton is an interdisciplinary research group focused on developing next-generation AI/ML systems that are efficient, 
+            accurate, reliable, scalable, and secure. As a collaboration between both systems and machine learning researchers, 
+            our work considers all parts of the compute stack, spanning the design of AI/ML algorithms and pipelines to runtime 
+            systems for training/inference to intelligent applications of ML to tackle core systems challenges. 
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Directions/Projects -->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2 style="margin-right: 10px;" id="projects">Directions</h2>
+          <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Efficient ML Inference</h5>
+                  <p class="card-text">High-throughput, low-latency, and low-cost inference systems and techniques for ML models (traditional DNNs and modern LLMs).</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                  <div>
+                      <a href="people.html#ravi-netravali"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/ravi-netravali.jpg" alt="Ravi Netravali"/></a>
+                      <a href="people.html#tri-dao"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/tri-dao.jpg" alt="Tri Dao"/></a>
+                      <a href="people.html#kai-li"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/kai-li.jpg" alt="Kai Li"/></a>
+                      <a href="people.html#yinwei-dai"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/yinwei-dai.png" alt="Yinwei Dai"/></a>
+                      <a href="people.html#rui-pan"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/rui-pan.jpg" alt="Rui Pan"/></a>
+                      <a href="people.html#tianle-cai"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/tianle-cai.jpg" alt="Tianle Cai"/></a>
+                      <a href="people.html#rohan-prabhakar"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/rohan-prabhakar.jpg" alt="Rohan Prabhakar"/></a>
+                  </div>
+                  <a href="publications.html?search=Efficient%20Inference" class="btn btn-outline-primary">→</a>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Efficient ML Training</h5>
+                  <p class="card-text">Efficient, high-throughput, fair, and cost-effective training and fine-tuning systems for ML models (traditional DNNs and modern LLMs).</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                  <div>
+                      <a href="people.html#ravi-netravali"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/ravi-netravali.jpg" alt="Ravi Netravali"/></a>
+                      <a href="people.html#tri-dao"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/tri-dao.jpg" alt="Tri Dao"/></a>
+                      <a href="people.html#danqi-chen"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/danqi-chen.jpg" alt="Danqi Chen"/></a>
+                      <a href="people.html#yinwei-dai"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/yinwei-dai.png" alt="Yinwei Dai"/></a>
+                      <a href="people.html#rui-pan"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/rui-pan.jpg" alt="Rui Pan"/></a>
+                      <a href="people.html#mengzhou-xia"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/mengzhou-xia.jpg" alt="Mengzhou Xia"/></a>
+                      <a href="people.html#tianyu-gao"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/tianyu-gao.jpg" alt="Tianyu Gao"/></a>
+                      <a href="people.html#samyak-gupta"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/samyak-gupta.jpg" alt="Samyak Gupta"/></a>
+                      <a href="people.html#andrew-sheinberg"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/andrew-sheinberg.jpg" alt="Andrew Sheinberg"/></a>
+                  </div>
+                  <a href="publications.html?search=Efficient%20Training" class="btn btn-outline-primary">→</a>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Compound AI Systems</h5>
+                  <p class="card-text">Designing and optimizing systems that tackle AI tasks by combining multiple interacting components, 
+                    including retrievers (Retrieval Augmented Generation), multiple calls to models, or external tools (Agents).</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                  <div>
+                      <a href="people.html#danqi-chen"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/danqi-chen.jpg" alt="Danqi Chen"/></a>
+                      <a href="people.html#karthik-narasimhan"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/karthik-narasimhan.jpg" alt="Karthik Narasimhan"/></a>
+                      <a href="people.html#ravi-netravali"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/ravi-netravali.jpg" alt="Ravi Netravali"/></a>
+                      <a href="people.html#carlos-jimenez"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/carlos-jimenez.jpg" alt="Carlos Jimenez"/></a>
+                      <a href="people.html#alexander-wettig"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/alexander-wettig.jpg" alt="Alexander Wettig"/></a>
+                      <a href="people.html#howard-yen"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/howard-yen.jpg" alt="Howard Yen"/></a>
+                      <a href="people.html#mengzhou-xia"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/mengzhou-xia.jpg" alt="Mengzhou Xia"/></a>
+                      <a href="people.html#tianyu-gao"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/tianyu-gao.jpg" alt="Tianyu Gao"/></a>
+                      <a href="people.html#rui-pan"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/rui-pan.jpg" alt="Rui Pan"/></a>
+                      <a href="people.html#yinwei-dai"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/yinwei-dai.png" alt="Yinwei Dai"/></a>
+                      <a href="people.html#mike-wong"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/mike-wong.jpg" alt="Mike Wong"/></a>
+                  </div>
+                  <a href="publications.html?search=Compound%20AI%20Systems" class="btn btn-outline-primary">→</a>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">ML for Systems</h5>
+                  <p class="card-text">Applying ML (reinforcement learning, Bayesian optimizations, LLMs, etc.) to key 
+                    systems decisions like caching, resource management, anomaly detection, and network protocol design.</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                  <div>
+                      <a href="people.html#ravi-netravali"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/ravi-netravali.jpg" alt="Ravi Netravali"/></a>
+                      <a href="people.html#wyatt-lloyd"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/wyatt-lloyd.jpg" alt="Wyatt Lloyd"/></a>
+                      <a href="people.html#kai-li"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/kai-li.jpg" alt="Kai Li"/></a>
+                      <a href="people.html#neil-agarwal"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/neil-agarwal.jpg" alt="Neil Agarwal"/></a>
+                      <a href="people.html#dongsheng-yang"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/dongsheng-yang.jpg" alt="Dongsheng Yang"/></a>
+                      <a href="people.html#mike-wong"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/mike-wong.jpg" alt="Mike Wong"/></a>
+                      <a href="people.html#rui-pan"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/rui-pan.jpg" alt="Rui Pan"/></a>
+                  </div>
+                  <a href="publications.html?search=ML%20for%20Systems" class="btn btn-outline-primary">→</a>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Novel Model Architectures</h5>
+                  <p class="card-text">Full-stack innovations on State Space Models (e.g., Mamba), and more generally, models with linear Attention/RNN layers.</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                  <div>
+                      <a href="people.html#tri-dao"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/tri-dao.jpg" alt="Tri Dao"/></a>
+                      <a href="people.html#ravi-netravali"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/ravi-netravali.jpg" alt="Ravi Netravali"/></a>
+                      <a href="people.html#rui-pan"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/rui-pan.jpg" alt="Rui Pan"/></a>
+                      <a href="people.html#hongjie-wang"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/hongjie-wang.jpg" alt="Hongjie Wang"/></a>
+                  </div>
+                  <a href="publications.html?search=State%20Space%20Models" class="btn btn-outline-primary">→</a>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Edge AI Systems</h5>
+                  <p class="card-text">Video analytics, video conferencing, and video streaming.</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                  <div>
+                      <a href="people.html#ravi-netravali"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/ravi-netravali.jpg" alt="Ravi Netravali"/></a>
+                      <a href="people.html#neil-agarwal"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/neil-agarwal.jpg" alt="Neil Agarwal"/></a>
+                      <a href="people.html#mike-wong"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/mike-wong.jpg" alt="Mike Wong"/></a>
+                      <a href="people.html#niraj-jha"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/niraj-jha.jpg" alt="Niraj Jha"/></a>
+                      <a href="people.html#rui-pan"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/rui-pan.jpg" alt="Rui Pan"/></a>
+                  </div>
+                  <a href="publications.html?search=Edge%20AI%20Systems" class="btn btn-outline-primary">→</a>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Emerging Paradigms</h5>
+                  <p class="card-text">Multimodal models, diffusion models, MoEs, inference-time compute, etc.</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                  <div>
+                      <a href="people.html#ravi-netravali"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/ravi-netravali.jpg" alt="Ravi Netravali"/></a>
+                      <a href="people.html#kai-li"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/kai-li.jpg" alt="Kai Li"/></a>
+                      <a href="people.html#niraj-jha"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/niraj-jha.jpg" alt="Niraj Jha"/></a>
+                      <a href="people.html#tianle-cai"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/tianle-cai.jpg" alt="Tianle Cai"/></a>
+                      <a href="people.html#rui-pan"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/rui-pan.jpg" alt="Rui Pan"/></a>
+                      <a href="people.html#hongjie-wang"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/hongjie-wang.jpg" alt="Hongjie Wang"/></a>
+                  </div>
+                  <a href="publications.html?search=Emerging%20Paradigms" class="btn btn-outline-primary">→</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Hardware Design for ML </h5>
+                  <p class="card-text">Tools for exploring the hardware design space, silicon cost aware hardware design for ML workloads, hardware for serving large models.</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                  <div>
+                      <a href="people.html#david-wentzlaff"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/david-wentzlaff.jpg" alt="David Wentzlaff"/></a>
+                      <a href="people.html#rohan-prabhakar"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/rohan-prabhakar.jpg" alt="Rohan Prabhakar"/></a>
+                      <a href="people.html#gwangho-lee"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/gwangho-lee.jpg" alt="Gwangho Lee"/></a>
+                      <a href="people.html#haiyue-ma"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/haiyue-ma.jpg" alt="Haiyue Ma"/></a>
+                      <a href="people.html#august-ning"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/august-ning.jpg" alt="August Ning"/></a>
+                      <a href="people.html#hengrui-zhang"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/hengrui-zhang.jpg" alt="Hengrui Zhang"/></a>
+                  </div>
+                  <a href="publications.html?search=Hardware%20Design%20for%20ML" class="btn btn-outline-primary">→</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">LLM Safety </h5>
+                  <p class="card-text">Building systems and datasets for improving LLM robustness, misuse prevention, and transparency.</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                  <div>
+                      <a href="people.html#kai-li"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/kai-li.jpg" alt="Kai Li"/></a>
+                      <a href="people.html#samyak-gupta"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/samyak-gupta.jpg" alt="Samyak Gupta"/></a>
+                      <a href="people.html#tianle-cai"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/tianle-cai.jpg" alt="Tianle Cai"/></a>
+                      <a href="people.html#andrew-sheinberg"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/andrew-sheinberg.jpg" alt="Andrew Sheinberg"/></a>
+                      <a href="people.html#dongsheng-yang"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/dongsheng-yang.jpg" alt="Dongsheng Yang"/></a>
+                  </div>
+                  <a href="publications.html?search=LLM%20Safety" class="btn btn-outline-primary">→</a>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Sequence Modeling</h5>
+                  <p class="card-text">Developing model architectures for sequence modeling and optimizing the processing of long context windows.</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                  <div>
+
+                      <a href="people.html#danqi-chen"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/danqi-chen.jpg" alt="Danqi Chen"/></a>
+                      <a href="people.html#rui-pan"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/rui-pan.jpg" alt="Rui Pan"/></a>
+                      <a href="people.html#tri-dao"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/tri-dao.jpg" alt="Tri Dao"/></a>
+                      <a href="people.html#wentao-guo"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/wentao-guo.jpg" alt="Wentao Guo"/></a>
+                      <a href="people.html#berlin-chen"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/berlin-chen.jpg" alt="Berlin Chen"/></a>
+                      <a href="people.html#ted-zadouri"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/ted-zadouri.jpg" alt="Ted Zadouri"/></a>
+                  </div>
+                  <a href="publications.html?search=Sequence%20Modeling" class="btn btn-outline-primary">→</a>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Intelligent Resource Management</h5>
+                  <p class="card-text">Scheduling, multi tenant GPU sharing, and learned cache eviction for ML workloads. </p>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                  <div>
+                      <a href="people.html#samyak-gupta"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/samyak-gupta.jpg" alt="Samyak Gupta"/></a>
+                      <a href="people.html#tianle-cai"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/tianle-cai.jpg" alt="Tianle Cai"/></a>
+                      <a href="people.html#andrew-sheinberg"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/andrew-sheinberg.jpg" alt="Andrew Sheinberg"/></a>
+                      <a href="people.html#dongsheng-yang"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/dongsheng-yang.jpg" alt="Dongsheng Yang"/></a>
+                      <a href="people.html#kai-li"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/kai-li.jpg" alt="kai-li"/></a>
+                  </div>
+                  <a href="publications.html?search=Intelligent%20Resource%20Management%20for%20ML" class="btn btn-outline-primary">→</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Security and Privacy</h5>
+                  <p class="card-text">Privacy preservation for ML to prevent leaking and misusing sensitive information, efficient ML models for detecting threats. </p>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                  <div>
+                      <a href="people.html#kai-li"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/kai-li.jpg" alt="kai-li"/></a>
+                      <a href="people.html#mike-wong"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/mike-wong.jpg" alt="mike-wong"/></a>
+                      <a href="people.html#neil-agarwal"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/neil-agarwal.jpg" alt="Neil Agarwal"/></a>
+                      <a href="people.html#ravi-netravali"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/ravi-netravali.jpg" alt="Ravi Netravali"/></a>
+                  </div>
+                  <a href="publications.html?search=Security%20and%20Privacy" class="btn btn-outline-primary">→</a>
+                </div>
+              </div>
+            </div>
+
+
+
+
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Novel ML Applications</h5>
+                  <p class="card-text">New and emerging applications of ML to domains such as IoT, healthcare, and security.</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                  <div>
+                      <a href="people.html#kai-li"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/kai-li.jpg" alt="kai-li"/></a>
+
+                      <a href="people.html#niraj-jha"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/niraj-jha.jpg" alt="Niraj Jha"/></a>
+                      <a href="people.html#yihao-a"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/niraj-jha.jpg" alt="Niraj Jha"/></a>
+                      <a href="people.html#mike-wong"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/mike-wong.jpg" alt="mike-wong"/></a>
+                      <a href="people.html#neil-agarwal"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/neil-agarwal.jpg" alt="Neil Agarwal"/></a>
+                      <a href="people.html#ravi-netravali"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/ravi-netravali.jpg" alt="Ravi Netravali"/></a>
+                  </div>
+                  <a href="publications.html?search=Novel%20ML%20Applications" class="btn btn-outline-primary">→</a>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Data Systems</h5>
+                  <p class="card-text">Leveraging ML and optimization techniques to build novel designs for data storage layouts, database indexes, and end-to-end data systems.</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                  <div>
+                      <a href="people.html#jialin-ding"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/jialin-ding.jpg" alt="Jialin Ding"/></a>
+                      <a href="people.html#wyatt-lloyd"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/wyatt-lloyd.jpg" alt="Wyatt Lloyd"/></a>
+                      <a href="people.html#nicolaas-kaashoek"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/nicolaas-kaashoek.jpg" alt="Nicolaas Kaashoek"/></a>
+                      <a href="people.html#jennifer-lam"><img class="img-circle rounded-circle" width="30" height="30" src="images/photos/jennifer-lam.jpg" alt="Jennifer Lam"/></a>
+                  </div>
+                  <a href="publications.html?search=Data%20Systems" class="btn btn-outline-primary">→</a>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>    
+    </div>  
+
+    <!-- End-of-the-page jumbotron -->
+    <div class="jumbotron text-center" style="padding-top: 10px; padding-bottom: 10px; margin-bottom:0">
+      <div class="container">
+        <div class="col-sm-12">
+          <a href="https://github.com/SysML-Princeton" class="smlinks" target="_blank"><i class="fab fa-github-square fa-2x"></i></a>
+        </div>
+      </div>
+      <p>@ 2025 SAIL@Princeton. Powered by Bootstrap.</p>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>

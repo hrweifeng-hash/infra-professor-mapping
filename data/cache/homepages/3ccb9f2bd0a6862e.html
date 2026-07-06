@@ -1,0 +1,631 @@
+<html>
+<title>
+Pedro Fonseca @ Purdue University
+</title>
+
+<head>
+	<!--<link rel="shortcut icon" href="images/uw240.png">-->
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-148989133-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-148989133-1');
+	</script>
+
+
+
+	<style type="text/css">
+		body{
+			font-family: 'Open Sans', sans-serif;
+			max-width: 900px;
+			margin: 25px auto;
+		}
+		.nw{
+			white-space: nowrap;
+		}
+
+		.mymail:after {
+			content: attr(data-name) "@" attr(data-domain) "." attr(data-tld);
+		}
+	</style>
+
+</head>
+
+<body>
+<div id="container">
+
+
+<tr>
+
+<div style='float: right;'>
+  <img src='images/photo.jpg' height='190'>
+</div>
+
+<div>
+<span style='font-size: 24pt;'>
+<a href='.' style='color: black; text-decoration: none;'>Pedro Fonseca</a> </span>
+<br>
+<div style='line-height: 1.5; padding-top: 15px;'> Associate Professor<br>
+<a href='http://www.cs.purdue.edu/' style='color: black;'>
+Reliable and Secure Systems Lab
+</a>
+<br>
+<a href='http://www.cs.purdue.edu/' style='color: black;'>
+Department of Computer Science
+</a>
+<br>
+<a href='http://www.purdue.edu/' style='color: black;'>
+Purdue University
+</a>
+</div>
+</div>
+
+
+
+<br>
+<br>
+<h3>Research</h3>
+
+<p>
+
+Pedro Fonseca leads the <a href="https://www.cs.purdue.edu/homes/pfonseca/">Reliable and Secure Systems Lab</a>. 
+He makes systems reliable and secure, and targets core software systems
+&ndash; the building blocks in modern computing
+that other software critically relies upon, such as <b>operating systems</b>,
+<b>hypervisors</b>, and <b>distributed systems</b>. 
+He is the recipient of a NSF CAREER award, a Google Faculty Research award, and a Google Research Scholar award. 
+
+<!--</p>
+I tackle this problem from three directions:
+<ul>
+
+	<li>	Building systematic testing tools that scale to modern, complex systems
+	</li>
+	
+	<li>	Designing and redesigning systems for reliability and security
+	</li>
+
+	<li>	Gathering insights about the impact of emerging trends on reliability 
+			and security, by conducting real-world, empirical studies
+	</li>
+</ul>
+</p>
+-->
+
+<p>
+Before joining Purdue, he was a postdoc at the <a href="https://www.cs.washington.edu">University of Washington</a>, where he worked with 
+<a href="https://www.cs.washington.edu/people/faculty/arvind/">Arvind Krishnamurthy</a>,
+<a href="https://www.cs.washington.edu/people/faculty/levy/">Hank Levy</a>, and
+<a href="https://homes.cs.washington.edu/~xi/">Xi Wang</a>.
+He graduated from <a href="http://www.mpi-sws.org">MPI-SWS</a> and 
+the <a href="https://www.uni-saarland.de/en/home.html">University of Saarland</a>, 
+where he worked with <a href="http://www.mpi-sws.org/~rodrigo">Rodrigo Rodrigues</a>. 
+</p>
+
+<!--
+<div class="alert alert-success">
+  <strong> <span class="badge badge-warning">Summer 2020 Internships</span> 
+  I am looking for talented, highly motivated undergraduate and graduate students to join my lab this Summer!</strong> 
+  Research projects available on testing, concurrency analysis and reasoning, distributed and serverless computing, 
+  trusted hardware (e.g., SGX, TZ), failure diagnosis, and system hardening. 
+  Prospective students should email me and explain their research interests and how they relate to my work.
+</div>
+-->
+
+<div class="alert alert-success">
+  <strong> <span class="badge badge-danger"></span> I am looking for talented, highly motivated PhD students to join my lab!</strong> 
+  Prospective students should email me and explain their research interests and how they relate to my work.
+</div>
+
+
+<br>
+<h3>Publications</h3>
+
+<ul>
+		<!--
+	  <img src="images/icon-new.png" height="30" width="45">
+		-->
+	<br/>
+
+
+	<li>
+		<b>Rose: Reproducing External-Fault-Induced Failures in Distributed Systems with Lightweight Instrumentation</b>
+		[<a href="papers/eurosys26-rose.pdf">pdf</a>] 
+		<br/>
+		SebastiÃ£o Amaro, Pedro Fonseca, and Miguel Matos. <br/>
+		In the 21st USENIX EuroSys Conference 2026 (EuroSys'26).<br/>
+		<br/>
+	</li>
+
+	<li>
+		<b>kSFS: Repurposing a Microkernel-like Interface for Fast and Secure In-Kernel Linux File Systems</b>
+		[<a href="papers/sec26-ksfs.pdf">pdf</a>] 
+		<br/>
+		Dinglan Peng and Pedro Fonseca. <br/>
+		In the 35th USENIX Security Symposium (Usenix Security'26).	<br/>
+		<br/>
+	</li>
+
+
+	<li>
+		<b>A Comprehensive Study of Concurrency Bugs in the Linux Kernel</b>
+		 [<a href="papers/icse26-concurrencybugstudy.pdf">pdf</a>]  
+		<br/>
+		Sishuai Gong, Chih-En Lin, Kevin Wu, Edwin Lu, and Pedro Fonseca. <br/>
+		In the 48th IEEE/ACM International Conference on Software Engineering (ICSE'26). <br/>
+		<br/>
+	</li>
+
+
+	<li>
+		<b>UpFuzz: Detecting Data Format Incompatibility Bugs during Distributed Storage System Upgrade</b>
+		<!-- [To appear]<br/>  -->
+		[<a href="papers/nsdi26-upfuzz.pdf">pdf</a>] <br/>
+		<b title="Community Award for the best paper with code and/or data set publicly available">ð Community Award ð</b>
+		<br/>
+		Ke Han, Sruthi P C, Yayu Wang, Yaoxu Song, Bishal Basak Papan, Junwen Yang, Pedro Fonseca, and Yongle Zhang. <br/>
+		In the 23rd USENIX Symposium on Network Systems Design and Implementation (NSDI'26). <br/>
+		<br/>
+	</li>
+
+	<li>
+		<b>KRR: Efficient and Scalable Kernel Record Replay</b>
+		[<a href="papers/osdi25-krr.pdf">pdf</a>] 
+		<br/>
+		Tianren Zhang, Sishuai Gong, and Pedro Fonseca.  <br/>
+		In the 19th USENIX Symposium on Operating Systems Design and Implementation (OSDI'25). <br/>
+		</br/>
+	</li>
+
+
+	<li>
+		<b>Snowplow: Effective Kernel Fuzzing with a Learned White-box Test Mutator</b>
+		[<a href="papers/asplos25-snowplow.pdf">pdf</a>]
+		<br/>
+		Sishuai Gong, Rui Wang, Deniz AltÄ±nbÃ¼ken, Pedro Fonseca, and Petros Maniatis. <br/>
+		In the 30th Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS'25). <br/>
+		</br/>
+	</li>
+
+
+	<li>
+		<b>Pegasus: Transparent and Unified Kernel-Bypass Networking for Fast Local and Remote Communication</b>
+		[<a href="papers/eurosys25-pegasus.pdf">pdf</a>]
+		<br/>
+		Dinglan Peng, Congyu Liu, Tapti Palit, Anjo Vahldiek-Oberwagner, Mona Vij, and Pedro Fonseca. <br/>
+		In the 20th USENIX EuroSys Conference 2025 (EuroSys'25).<br/>
+		</br/>
+	</li>
+
+	<li>
+		<b>Kaleidoscope: Precise Invariant-Guided Pointer Analysis</b>
+		[<a href="papers/asplos24-kaleidoscope.pdf">pdf</a>]
+		<br/>
+		Tapti Palit and Pedro Fonseca. <br/>
+		In the 29th Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS'24).<br/>
+		</br/>
+	</li>
+
+	<li>
+		<b>Pronghorn: Effective Checkpoint Orchestration for Serverless Hot-Starts</b>
+		[<a href="papers/eurosys24-pronghorn.pdf">pdf</a>]
+		<br/>
+		Sumer Kohli, Shreyas Kharbanda, Rodrigo Bruno, Joao Carreira, and Pedro Fonseca. <br/>
+		In the 19th USENIX EuroSys Conference 2024 (EuroSys'24).<br/>
+		</br/>
+	</li>
+
+
+	<li>
+		<b>Veil: A Protected Services Framework for Confidential Virtual Machines</b>
+		[<a href="papers/asplos24-veil.pdf">pdf</a>]
+		<br/>
+		Adil Ahmad, Botong Ou, Congyu Liu, Xiaokuan Zhang, and Pedro Fonseca. <br/>
+		In the 28th Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS'23). Presented in ASPLOS'24.<br/>
+		</br/>
+	</li>
+
+	<li>
+		<b>Snowcat: Efficient Kernel Concurrency Testing using a Learned Coverage Predictor</b>
+	 	[<a href="papers/sosp23-snowcat.pdf">pdf</a>] 
+		<br/>
+		Sishuai Gong, Dinglan Peng, Deniz AltÄ±nbÃ¼ken, Pedro Fonseca, and Petros Maniatis. <br/>
+		In the 29th Symposium on Operating Systems Principles (SOSP'23).<br/>
+		</br/>
+	</li>
+
+	<li>
+		<b>An Extensible Orchestration and Protection Framework for Confidential Cloud Computing</b>
+		[<a href="papers/osdi23-eopf.pdf">pdf</a>]
+		<br/>
+		Adil Ahmad, Alex Schultz, Byoungyoung Lee, and Pedro Fonseca. <br/>
+		In the 17th USENIX Symposium on Operating Systems Design and Implementation (OSDI'23).<br/>
+		</br/>
+	</li>
+
+
+	<li>
+		<b>Î¼SWITCH: Fast Kernel Context Isolation with Implicit Context Switches</b>
+		[<a href="papers/sp23-uswitch.pdf">pdf</a>]
+		<br/>
+		Dinglan Peng, Congyu Liu, Tapti Palit, Pedro Fonseca, Anjo Vahldiek-Oberwagner, and Mona Vij. <br/>
+		In the 2023 IEEE Symposium on Security and Privacy (S&P'23).<br/>
+		</br/>
+	</li>
+
+	<li>
+		<b>Always-On Recording Framework for Serverless Computations: Opportunities and Challenges</b>
+		[<a href="papers/sesame2023-serverless-rr.pdf">pdf</a>]
+		<br/>
+		Shreyas Kharbanda and Pedro Fonseca. <br/>
+		In the 1st Workshop on SErverless Systems, Applications and MEthodologies (SESAME'23).<br/>
+		</br/>
+	</li>
+
+	<li>
+		<b>KIT: Testing OS-level Virtualization for Functional Interference Bugs</b>
+		[<a href="papers/asplos23-kit.pdf">pdf</a>]
+		<br/>
+		Congyu Liu, Sishuai Gong, and Pedro Fonseca. <br/>
+		In the 28th Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS'23).<br/>
+		</br/>
+	</li>
+
+	<li>
+		<b>Snowboard: Finding Kernel Concurrency Bugs through Systematic Inter-thread Communication Analysis</b>
+		[<a href="papers/sosp21-snowboard.pdf">pdf</a>]
+		<br/>
+		Sishuai Gong, Deniz AltÄ±nbÃ¼ken, Pedro Fonseca, and Petros Maniatis. <br/>
+		In the 28th ACM Symposium on Operating Systems Principles (SOSP'21). <br/>
+		</br/>
+	</li>
+
+
+	<li>
+		<b>From Warm to Hot Starts: Leveraging Runtimes for the Serverless Era</b>
+		[<a href="papers/hotos21-ignite.pdf">pdf</a>] 
+		<br/>
+		Joao Carreira, Sumer Kohli, Rodrigo Bruno, and Pedro Fonseca.<br/>
+		In the 18th Workshop on Hot Topics in Operating Systems (HotOS'21). <br/>
+		</br/>
+	</li>
+
+
+	<li>
+		<b>Reproducing Production Failures with Execution Reconstruction</b>
+		[<a href="papers/pldi21-er.pdf">pdf</a>]
+		<br/>
+		Gefei Zuo, Jiacheng Ma, Andrew Quinn, Pramod Bhatotia, Pedro Fonseca, and Baris Kasikci.<br/>
+		In the 42nd ACM SIGPLAN Conference on Programming Language Design and Implementation 2021 (PLDI'21). <br/>
+		</br/>
+	</li>
+
+
+	<li>
+		<b>On-Demand-Fork: A Microsecond Fork for Memory-Intensive and Latency-Sensitive Applications</b>
+		[<a href="papers/eurosys21-odf.pdf">pdf</a>] 
+		<br/>
+		Kaiyang Zhao, Sishuai Gong, and Pedro Fonseca.<br/>
+		In the 16th USENIX EuroSys Conference 2021 (EuroSys'21).<br/>
+		<br/>
+	</li>
+
+
+	<li>
+		<b>KARD: Lightweight Data Race Detection with Per-Thread Memory Protection</b>
+		[<a href="papers/asplos21-kard.pdf">pdf</a>] 
+		<br/>
+		Adil Ahmad, Sangho Lee, Pedro Fonseca, and Byoungyoung Lee.<br/>
+		In the International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS'21).<br/>
+		<br/>
+	</li>
+
+	<li>
+		<b>SHARD: Fine-Grained Kernel Specialization with Context-Aware Hardening</b>
+		[<a href="papers/sec21-shard.pdf">pdf</a>] 
+		<br/>
+		 Muhammad Abubakar, Adil Ahmad, Pedro Fonseca, and Dongyan Xu. <br/>
+		In the USENIX Security Symposium 2021 (Usenix Security'21). <br/>
+		<br/>
+	</li>
+
+	<li>
+		<b>CHANCEL: Efficient Multi-client Isolation Under Adversarial Programs</b>
+		[<a href="papers/ndss21-chancel.pdf">pdf</a>] 
+		<br/>
+		Adil Ahmad, Juhee Kim, Jaebaek Seo, Insik Shin, Pedro Fonseca, and Byoungyoung Lee.<br/>
+		In the Network and Distributed System Security Symposium 2021 (NDSS'21).<br/>
+		<br/>
+	</li>
+
+
+	<li>
+		<b>SoK: Understanding the Prevailing Security Vulnerabilities in TrustZone-assisted TEE Systems</b> 
+		[<a href="papers/sp2020-tees.pdf">pdf</a>] 
+		<br/>
+		David Cerdeira, Nuno Santos, Pedro Fonseca, and Sandro Pinto. <br/>
+		In the IEEE Symposium on Security and Privacy 2020 (S&P'20).<br/>
+		<br/>
+	</li>
+
+	<li>
+		<b>Cirrus: A Serverless Framework for End-to-End ML Workflows</b>
+		[<a href="papers/socc19-cirrus.pdf">pdf</a>] 
+		<br/>
+		Joao Carreira, Pedro Fonseca, Alexey Tumanov, Andrew Zhang, and Randy Katz. <br/>
+		In the ACM Symposium on Cloud Computing 2019 (SoCC'19). <br/>
+		<br/>
+	</li>
+
+	<li>
+		<b>A Case for Serverless Machine Learning</b> 
+		[<a href="papers/mlsys18-disaggregatedml.pdf">pdf</a>] 
+		<br/>
+		Joao Carreira, Pedro Fonseca, Alexey Tumanov, Andrew Zhang, and Randy Katz. <br/>
+		In the Workshop on Systems for ML at NeurIPS 2018 (MLSYS'18). <br/>
+		<br/>
+	</li>
+
+
+	<li>
+		<b>MultiNyx: A Multi-level Abstraction Framework for Systematic Analysis of Hypervisors </b> 
+		[<a href="papers/eurosys2018-multinyx.pdf">pdf</a>] 
+		[<a href="slides/eurosys2018-multinyx-slides.pdf">slides</a>]
+		<br/>
+		Pedro Fonseca, Xi Wang, and Arvind Krishnamurthy. <br/>
+		In the 13th USENIX EuroSys Conference (EuroSys 2018). <br/>
+		<br/>
+	</li>
+
+	<li>
+		<b>Cntr: Lightweight OS Containers </b>
+		[<a href="papers/atc2018-cntr.pdf">pdf</a>] 
+		[<a href="https://github.com/Mic92/cntr">code</a>]
+		<br/>
+		J&#246;rg Thalheim, Pramod Bhatotia, Pedro Fonseca, and Baris Kasikci. <br/>
+		In the USENIX Annual Technical Conference (ATC 2018).<br/>
+		<br/>
+	</li>
+
+
+	<li>
+		<b>An Empirical Study on the Correctness of Formally Verified Distributed Systems</b>
+		[<a href="papers/eurosys2017-dsbugs.pdf">pdf</a>]
+		[<a href="slides/eurosys2017-dsbugs-slides.pdf">slides</a>]
+		<br/>
+		Pedro Fonseca, Kaiyuan Zhang, Xi Wang, and Arvind Krishnamurthy. <br/>
+		In the 12th USENIX EuroSys Conference (EuroSys 2017). <br/>
+		<br/>
+	</li>
+
+
+	<li>
+		<b>Diamond: Automating Data Management and Storage for Wide-area, Reactive Applications</b> 
+		[<a href="papers/osdi2016-diamond.pdf">pdf</a>] 
+		[<a href="https://github.com/UWSysLab/diamond">code</a>]
+		<br/>
+		Irene Zhang, Niel Lebeck, Pedro Fonseca, Brandon Holt, Raymond Cheng, Ariadna Norberg, Arvind Krishnamurthy, and Henry M. Levy. <br/>
+		In the 12th USENIX Symposium on Operating Systems Design and Implementation (OSDI 2016).<br/>
+		<br/>
+	</li>
+
+
+	<li>
+		<b>iThreads: A Threading Library for Parallel Incremental Computation</b> 
+		[<a href="papers/asplos2015-ithreads.pdf">pdf</a>]
+		<br/>
+		Pramod Bhatotia, Pedro Fonseca, Umut Acar, Bj&ouml;rn Brandenburg, and Rodrigo Rodrigues.  <br/>
+		In the 20th International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS 2015).<br/>
+		<br/>
+	</li>
+
+	<li>
+		<b> SKI: Exposing Kernel Concurrency Bugs through Systematic Schedule Exploration</b> 
+		[<a href="papers/osdi2014-ski.pdf">pdf</a>] 
+		[<a href="slides/osdi2014-ski-slides.pdf">slides</a>]
+		[<a href="https://github.com/skivm/ski">code</a>]
+		<br/>
+		Pedro Fonseca, Rodrigo Rodrigues, and Bj&ouml;rn Brandenburg. <br />
+		In the 11th USENIX Symposium on Operating Systems Design and Implementation (OSDI 2014)<br/>
+		<br>
+	</li>
+
+
+	<li>
+		<b>Composing OS Extensions Safely and Efficiently with Bascule</b> 
+		[<a href="papers/eurosys2013-bascule.pdf">pdf</a>] 
+		<br/>
+		Andrew Baumann, Dongyoon Lee, Pedro Fonseca, Lisa Glendenning, Jacob R. Lorch, Barry Bond, Reuben Olinsky, and Galen C. Hunt.  <br/>
+		In the 7th ACM European Conference on Computer Systems (EuroSys 2013).<br/>
+		<br>
+	</li>
+
+	<li>
+		<b>Fighting Cybercrime with Packet Attestation</b> 
+		[<a href="papers/packet-attestation-tr.pdf">pdf</a>]
+		<br/>
+		Andreas Haeberlen, Pedro Fonseca, Rodrigo Rodrigues, and Peter Druschel. <br/>
+		Technical Report MPI-SWS-2011-002, Max Planck Institute for Software Systems, July 2011. <br/>
+		<br>
+	</li>
+
+	<li>
+		<b>Finding Complex Concurrency Bugs in Large Multi-Threaded Applications</b> 
+		[<a href="papers/eurosys2011-pike.pdf">pdf</a>] 
+		<br/>
+		Pedro Fonseca, Cheng Li, and Rodrigo Rodrigues.  <br/>
+		In the 5th ACM European Conference on Computer Systems (EuroSys 2011).<br/>
+		<br>
+	</li>
+
+	<li>
+		<b>A Study of the Internal and External Effects of Concurrency Bugs</b> 
+		[<a href="papers/dsn2010-concurrencybugs.pdf">pdf</a>] 
+		<br/>
+		Pedro Fonseca, Cheng Li, Vishal Singhal, and Rodrigo Rodrigues. <br/> 
+		In the 40th IEEE/IFIP International Conference on Dependable Systems and Networks (DSN 2010). <br/>  
+		<br>
+	</li>
+
+	<li>
+		<b> Zeno: Eventually Consistent Byzantine Fault Tolerance</b> 
+		[<a href="papers/nsdi2009-zeno.pdf">pdf</a>] 
+		<br>
+		Atul Singh, Pedro Fonseca, Petr Kuznetsov, Rodrigo Rodrigues, and Petros Maniatis. <br>
+		In the 6th USENIX Symposium on Networked Systems Design and Implementation (NSDI 09). <br>
+		<br>
+	</li>
+
+	<li>
+		<b> Full-Information Lookups for Peer-to-Peer Overlays</b>  
+		<br>
+		Pedro Fonseca, Rodrigo Rodrigues, Anjali Gupta, and Barbara Liskov. <br>
+		In the IEEE Transactions on Parallel and Distributed Systems (TPDS), vol. 20, no. 9, September 2009. <br>
+		<br>
+	</li>
+
+	<li>
+		<b>Defining Weakly Consistent Byzantine Fault-Tolerant Services</b> 
+		[<a href="papers/ladis2008-zeno.pdf">pdf</a>] 
+		<br>
+		Atul Singh, Pedro Fonseca, Petr Kuznetsov, Rodrigo Rodrigues, and Petros Maniatis. <br>
+		In the Large-Scale Distributed Systems and Middleware (LADIS 2008). <br>
+	</li>
+</ul>
+
+<br>
+
+<h3>Selected Service</h3>
+
+<span class="nw"><a href="https://sigops.org/s/conferences/sosp/2026/cfp.html">SOSP'26</a> (PC),</span> 
+<span class="nw"><a href="https://www.usenix.org/conference/osdi26/call-for-papers">OSDI'26</a> (PC),</span> 
+<span class="nw"><a href="https://www.asplos-conference.org/asplos2026/cfp/">ASPLOS'26</a> (PC),</span> 
+<span class="nw"><a href="https://sesame25.github.io/">SESAME'25</a> (PC co-chair, co-organizer),</span> 
+<span class="nw"><a href="https://sigops.org/s/conferences/sosp/2025/cfp.html">SOSP'25</a> (PC),</span> 
+<span class="nw"><a href="https://www.usenix.org/conference/osdi25/call-for-papers">OSDI'25</a> (PC),</span> 
+<span class="nw"><a href="https://www.asplos-conference.org/asplos2025/cfp/">ASPLOS'25</a> (PC),</span> 
+<span class="nw"><a href="https://sysdw24.github.io/">SySDW'24</a> (PC),</span> 
+<span class="nw"><a href="https://sigops.org/s/conferences/sosp/2024/">SOSP'24</a> (PC),</span> 
+<span class="nw"><a href="https://sesame2024.github.io/">SESAME'24</a> (PC co-chair, co-organizer),</span>
+<span class="nw"><a href="https://www.usenix.org/conference/osdi24/call-for-papers">OSDI'24</a> (PC),</span> 
+<span class="nw"><a href="https://www.eurosys.org/news/eurosys-2024">EuroSys'24</a> (PC),</span> 
+<span class="nw"><a href="https://www.asplos-conference.org/asplos2024/cfp/">ASPLOS'24</a> (PC),</span> 
+<span class="nw"><a href="https://acmsocc.org/2023/papers.html">SoCC'23</a> (PC),</span> 
+<span class="nw"><a href="https://sesame23.github.io/">SESAME'23</a> (PC co-chair, co-organizer),</span> 
+<span class="nw"><a href="https://2023.eurosys.org">EuroSys'23</a> (PC),</span> 
+<span class="nw"><a href="https://asplos-conference.org/calls/">ASPLOS'23</a> (PC),</span> 
+<span class="nw"><a href="https://2022.eurosys.org/">EuroSys'22</a> (PC),</span>
+<span class="nw"><a href="https://acmsocc.org/2022/">SoCC'22</a> (PC),</span>
+<span class="nw"><a href="https://www.usenix.org/conference/atc22">ATC'22</a> (PC),</span>
+<span class="nw"><a href="https://www.ieee-security.org/TC/SP2022/cfpapers.html">SP'22</a> (PC),</span>
+<span class="nw"><a href="http://acmsocc.org/2021/">SoCC'21</a> (PC),</span>
+<span class="nw"><a href="https://sosp2021.mpi-sws.org/cfp.html">SOSP'21</a> (publicity chair),</span>
+<span class="nw"><a href="https://2021.eurosys.org">EuroSys'21</a> (mentorship co-chair),</span>
+<span class="nw"><a href="https://www.usenix.org/conference/atc21">ATC'21</a> (PC),</span>
+<span class="nw"><a href="https://eurodw21.github.io/">EuroDW'21</a> (co-chair),</span>
+<span class="nw"><a href="https://2021.eurosys.org/">EuroSys'21</a> (PC),</span>
+<span class="nw"><a href="https://www.usenix.org/conference/atc20">ATC'20</a> (PC),</span>
+<span class="nw"><a href="https://www.usenix.org/conference/hotcloud20">HotCloud'20</a> (PC),</span>
+<span class="nw"><a href="https://acmsocc.github.io/2020/">SoCC'20</a> (PC),</span>
+<span class="nw"><a href="https://www.usenix.org/conference/hotcloud19">HotCloud'19</a> (PC),</span>
+<span class="nw"><a href="https://theory.utdallas.edu/ICDCS2019/index.html">ICDCS'19</a> (PC),</span>
+<span class="nw"><a href="https://opodis2019.unine.ch/">OPODIS'18</a> (PC),</span>
+<span class="nw"><a href="https://icdcs2018.ocg.at/">ICDCS'18</a> (PC)</span>
+
+<br>
+<br>
+
+
+<h3>Teaching</h3>
+
+<ul>
+	<li> <a href="./seminar">Systems Seminar</a></li>
+	<li> <a href="./teaching/cs503/26spring">CS503: Operating Systems</a></li>
+	<li> <a href="./teaching/cs592/22fall/">CS592: Reliable and Secure Systems</a></li>
+	<li> <a href="./teaching/cs497/">CS497: Honors Research Project</a></li>
+	<li> <a href="./teaching/cs408/25fall/">CS408: Software Testing</a></li>
+	<!--
+	<li> <a href="./teaching/cs408/21fall/">CS408: Software Testing</a></li>
+	<li> <a href="./teaching/cs408/20fall/">CS408: Software Testing, Fall 20</a></li>
+	<li> <a href="./teaching/cs503/19fall/">CS503: Operating Systems, Fall 19</a></li>
+	<li> <a href="./teaching/cs503/19spring/">CS503: Operating Systems, Spring 19</a></li>
+	<li> <a href="./teaching/cs590/18fall/">CS590: Reliable and Secure Systems, Fall 18</a></li>
+	!-->
+</ul>
+
+<br/>
+
+<h3>Contact</h3>
+
+
+<p>
+<div class="card bg-light mb-3" style="max-width: 20rem;">
+	<div class="card-body">
+		<p class="card-text">
+		<address>
+			<strong>Purdue University</strong><br/>
+			Department of Computer Science <br/>
+			305 N. University Street <br/>
+			West Lafayette, IN 47907 <br/>
+
+		</address>
+
+		<address>
+			<abbr title="Email">Email:</abbr> 
+			<a href="mailto:pfonsecaxyzpurdue.edu"
+		 	  class="mymail2"
+			   data-name="pfonseca"
+			   data-domain="purdue"
+			   data-tld="edu"
+               onmouseover="this.href=this.href.replace('xyz','@');">pfonseca AT THIS DOMAIN</a>
+			<br/>
+			<abbr title="Gmail">Gmail:</abbr> 
+			<a href="mailto:pfonseca.systemsxyzgmail.com"
+		 	  class="mymail3"
+			   data-name="pfonseca.systems"
+			   data-domain="gmail"
+			   data-tld="com"
+               onmouseover="this.href=this.href.replace('xyz','@');">pfonseca.systems AT GMAIL DOMAIN</a>
+			<br/>
+			<abbr title="Office">Office:</abbr> DSAI 2116 <br/>
+			<!-- LWSN 3154N<br/> -->
+		</address>
+		</p>
+	</div>
+</div>
+
+<p>
+
+</div>
+</body>
+
+<script>
+$(document).ready(function() {
+   $('.mymail2').text($('.mymail2').text().replace(' AT THIS DOMAIN','@purdue.edu'));
+});
+
+$(document).ready(function() {
+	$('.mymail3').text($('.mymail3').text().replace(' AT GMAIL DOMAIN','@gmail.com'));
+});
+
+</script>
+
+</html>
+
