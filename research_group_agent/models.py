@@ -8,8 +8,8 @@ from enum import Enum
 from typing import Any
 
 
-SCHEMA_VERSION = "1.5"
-PIPELINE_VERSION = "PR20"
+SCHEMA_VERSION = "1.6"
+PIPELINE_VERSION = "PR21"
 DEFAULT_TOP_N = 10
 
 

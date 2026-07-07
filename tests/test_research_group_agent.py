@@ -299,11 +299,11 @@ class TestResearchGroupReport(unittest.TestCase):
 
 
 class TestVersionConstants(unittest.TestCase):
-    def test_schema_version_is_1_5(self):
-        self.assertEqual(SCHEMA_VERSION, "1.5")
+    def test_schema_version_is_1_6(self):
+        self.assertEqual(SCHEMA_VERSION, "1.6")
 
-    def test_pipeline_version_is_pr20(self):
-        self.assertEqual(PIPELINE_VERSION, "PR20")
+    def test_pipeline_version_is_pr21(self):
+        self.assertEqual(PIPELINE_VERSION, "PR21")
 
 
 class TestCandidatePageGenerator(unittest.TestCase):
@@ -580,7 +580,7 @@ class TestPipelineCandidateIntegration(unittest.TestCase):
 
         self.assertGreater(result.candidate_pages_discovered, 0)
 
-    def test_pipeline_version_is_pr20(self):
+    def test_pipeline_version_is_pr21(self):
         graph = ResearchGroupGraphBuilder().build(
             professor_name="Test",
             professor_homepage="https://test.edu/",
@@ -588,8 +588,8 @@ class TestPipelineCandidateIntegration(unittest.TestCase):
             members=[],
             provider="heuristic",
         )
-        self.assertEqual(graph.pipeline_version, "PR20")
-        self.assertEqual(graph.schema_version, "1.5")
+        self.assertEqual(graph.pipeline_version, "PR21")
+        self.assertEqual(graph.schema_version, "1.6")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -1006,6 +1006,288 @@ class TestSecondHopIntegration(unittest.TestCase):
         self.assertEqual(
             len(pipeline.last_metrics.second_hop_successful_counts), 1
         )
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# PR21 — HeadingCardExtractor unit tests
+# ─────────────────────────────────────────────────────────────────────────────
+
+from research_group_agent.heading_card_extractor import HeadingCardExtractor
+
+
+# Bootstrap-style card layout: each member has an H3 heading with a profile
+# link inside a card div, followed by a paragraph with the role.
+BOOTSTRAP_CARD_HTML = """
+<!DOCTYPE html>
+<html>
+<head><title>RISE Lab People</title></head>
+<body>
+  <h1>RISE Lab</h1>
+  <h2>Current Members</h2>
+  <div class="row">
+    <div class="card">
+      <h3><a href="https://example.edu/~alice">Alice Wang</a></h3>
+      <p>PhD Student</p>
+    </div>
+    <div class="card">
+      <h3><a href="https://example.edu/~bob">Bob Chen</a></h3>
+      <p>Postdoc</p>
+    </div>
+    <div class="card">
+      <h3><a href="https://example.edu/~carol">Carol Davis</a></h3>
+      <p>Research Scientist</p>
+    </div>
+  </div>
+</body>
+</html>
+"""
+
+# Consecutive H3 headings with role text — no Bootstrap structure, just
+# headings and paragraphs inside a member section.
+H34_IN_MEMBER_SECTION_HTML = """
+<!DOCTYPE html>
+<html>
+<head><title>Sky Computing Lab</title></head>
+<body>
+  <h1>Sky Computing Lab</h1>
+  <h2>PhD Students</h2>
+  <h3><a href="https://example.edu/~dan">Dan Kim</a></h3>
+  <p>PhD Student — 5th year</p>
+  <h3><a href="https://example.edu/~eva">Eva Martinez</a></h3>
+  <p>PhD Student — 3rd year</p>
+  <h3><a href="https://example.edu/~frank">Frank Liu</a></h3>
+  <p>PhD Student — 2nd year</p>
+  <h3><a href="https://example.edu/~grace">Grace Park</a></h3>
+  <p>Visiting Student</p>
+</body>
+</html>
+"""
+
+# Standalone heading cards (no parent section heading) — triggers standalone
+# mode because ≥3 headings have profile links.
+STANDALONE_H3_CARDS_HTML = """
+<!DOCTYPE html>
+<html>
+<head><title>CSL Illinois People</title></head>
+<body>
+  <h1>CSL Illinois</h1>
+  <h3><a href="https://csl.illinois.edu/~mike">Mike Johnson</a></h3>
+  <p>Associate Professor</p>
+  <h3><a href="https://csl.illinois.edu/~nina">Nina Patel</a></h3>
+  <p>PhD Student</p>
+  <h3><a href="https://csl.illinois.edu/~omar">Omar Hassan</a></h3>
+  <p>Postdoc</p>
+  <h3><a href="https://csl.illinois.edu/~priya">Priya Singh</a></h3>
+  <p>Research Staff</p>
+</body>
+</html>
+"""
+
+# Only 2 standalone heading cards — below threshold; should NOT trigger.
+BELOW_THRESHOLD_H3_HTML = """
+<!DOCTYPE html>
+<html>
+<head><title>Some Lab</title></head>
+<body>
+  <h1>Some Lab</h1>
+  <h3><a href="https://example.edu/~anna">Anna Brown</a></h3>
+  <p>PhD Student</p>
+  <h3><a href="https://example.edu/~ben">Ben White</a></h3>
+  <p>Postdoc</p>
+</body>
+</html>
+"""
+
+# Documentation page with section-like H3 headings — should NOT produce entries.
+DOCS_PAGE_H3_HTML = """
+<!DOCTYPE html>
+<html>
+<head><title>Research Overview</title></head>
+<body>
+  <h1>Research Areas</h1>
+  <h3>Distributed Systems</h3>
+  <p>We study distributed computing at scale.</p>
+  <h3>Machine Learning</h3>
+  <p>We apply ML to infrastructure problems.</p>
+  <h3>Cloud Computing</h3>
+  <p>We build cloud platforms.</p>
+  <h3>Network Security</h3>
+  <p>We secure distributed systems.</p>
+</body>
+</html>
+"""
+
+# No-regression: standard UL/LI layout should still work when heading cards
+# are also present (heading card extractor must not interfere).
+UL_LI_WITH_HEADING_CARDS_HTML = """
+<!DOCTYPE html>
+<html>
+<head><title>Mixed Lab Page</title></head>
+<body>
+  <h2>Current Members</h2>
+  <ul>
+    <li><a href="https://example.edu/~jw">Jian Wang</a> – PhD Student</li>
+    <li><a href="https://example.edu/~ac">Alice Chen</a> – Postdoc</li>
+  </ul>
+  <h2>Additional Members</h2>
+  <h3><a href="https://example.edu/~bs">Bob Smith</a></h3>
+  <p>Research Scientist</p>
+  <h3><a href="https://example.edu/~cd">Carol Davis</a></h3>
+  <p>PhD Student</p>
+  <h3><a href="https://example.edu/~ef">Eve Foster</a></h3>
+  <p>Postdoc</p>
+</body>
+</html>
+"""
+
+
+class TestHeadingCardExtractor(unittest.TestCase):
+    """PR21: tests for HeadingCardExtractor — heading-based member card layouts."""
+
+    def _extract(self, html: str, base: str = "https://example.edu/") -> list:
+        extractor = HeadingCardExtractor()
+        already_seen: set[str] = set()
+        return extractor.extract(html, base, already_seen)
+
+    # ── Bootstrap card layout ─────────────────────────────────────────────
+
+    def test_bootstrap_card_extracts_all_members(self):
+        entries = self._extract(BOOTSTRAP_CARD_HTML)
+        names = {e.name for e in entries}
+        self.assertIn("Alice Wang", names)
+        self.assertIn("Bob Chen", names)
+        self.assertIn("Carol Davis", names)
+
+    def test_bootstrap_card_profile_urls_resolved(self):
+        entries = self._extract(BOOTSTRAP_CARD_HTML)
+        alice = next(e for e in entries if e.name == "Alice Wang")
+        self.assertIsNotNone(alice.profile_url)
+        self.assertIn("alice", alice.profile_url)
+
+    def test_bootstrap_card_role_hints_attached(self):
+        entries = self._extract(BOOTSTRAP_CARD_HTML)
+        bob = next(e for e in entries if e.name == "Bob Chen")
+        self.assertIsNotNone(bob.role_hint)
+
+    def test_bootstrap_card_entries_marked_in_member_section(self):
+        entries = self._extract(BOOTSTRAP_CARD_HTML)
+        self.assertTrue(all(e.in_member_section for e in entries))
+
+    # ── Consecutive H3/H4 inside a member section ─────────────────────────
+
+    def test_h34_in_member_section_all_extracted(self):
+        entries = self._extract(H34_IN_MEMBER_SECTION_HTML)
+        names = {e.name for e in entries}
+        self.assertIn("Dan Kim", names)
+        self.assertIn("Eva Martinez", names)
+        self.assertIn("Frank Liu", names)
+        self.assertIn("Grace Park", names)
+
+    def test_h34_in_member_section_role_hints_present(self):
+        entries = self._extract(H34_IN_MEMBER_SECTION_HTML)
+        self.assertTrue(any(e.role_hint for e in entries))
+
+    # ── Standalone H3 cards (threshold activation) ────────────────────────
+
+    def test_standalone_h3_cards_extracted_above_threshold(self):
+        entries = self._extract(STANDALONE_H3_CARDS_HTML)
+        names = {e.name for e in entries}
+        self.assertIn("Mike Johnson", names)
+        self.assertIn("Nina Patel", names)
+        self.assertIn("Omar Hassan", names)
+        self.assertIn("Priya Singh", names)
+
+    def test_standalone_h3_below_threshold_not_extracted(self):
+        entries = self._extract(BELOW_THRESHOLD_H3_HTML)
+        self.assertEqual(len(entries), 0)
+
+    # ── False positive prevention ─────────────────────────────────────────
+
+    def test_docs_page_section_headings_not_extracted(self):
+        """H3 headings like 'Distributed Systems' must not produce member entries."""
+        entries = self._extract(DOCS_PAGE_H3_HTML)
+        names = {e.name for e in entries}
+        self.assertNotIn("Distributed Systems", names)
+        self.assertNotIn("Machine Learning", names)
+        self.assertNotIn("Cloud Computing", names)
+        self.assertNotIn("Network Security", names)
+
+    def test_docs_page_produces_no_entries(self):
+        entries = self._extract(DOCS_PAGE_H3_HTML)
+        self.assertEqual(len(entries), 0)
+
+    # ── Deduplication ─────────────────────────────────────────────────────
+
+    def test_already_seen_names_not_duplicated(self):
+        extractor = HeadingCardExtractor()
+        already_seen = {"alice wang", "bob chen"}
+        entries = extractor.extract(
+            BOOTSTRAP_CARD_HTML, "https://example.edu/", already_seen
+        )
+        names = {e.name for e in entries}
+        self.assertNotIn("Alice Wang", names)
+        self.assertNotIn("Bob Chen", names)
+        self.assertIn("Carol Davis", names)
+
+    def test_already_seen_updated_in_place(self):
+        extractor = HeadingCardExtractor()
+        already_seen: set[str] = set()
+        extractor.extract(BOOTSTRAP_CARD_HTML, "https://example.edu/", already_seen)
+        self.assertIn("alice wang", already_seen)
+        self.assertIn("bob chen", already_seen)
+
+
+class TestMemberPageParserPR21Regression(unittest.TestCase):
+    """Verify that PR21 (heading card extractor) does not break existing UL/LI parsing."""
+
+    def test_ul_li_layout_still_works(self):
+        """Standard list-based layout must not be affected by heading card extraction."""
+        parsed = MemberPageParser().parse(
+            MEMBER_PAGE_HTML, base_url="https://example.edu/"
+        )
+        names = {e.name for e in parsed.entries}
+        self.assertIn("Jian Wang", names)
+        self.assertIn("Alice Chen", names)
+
+    def test_heading_card_count_zero_for_list_only_page(self):
+        """heading_card_count must be 0 when no heading cards are found."""
+        parsed = MemberPageParser().parse(
+            MEMBER_PAGE_HTML, base_url="https://example.edu/"
+        )
+        self.assertEqual(parsed.heading_card_count, 0)
+
+    def test_mixed_layout_combines_ul_and_heading_cards(self):
+        """UL/LI entries and heading card entries should both be present."""
+        parsed = MemberPageParser().parse(
+            UL_LI_WITH_HEADING_CARDS_HTML, base_url="https://example.edu/"
+        )
+        names = {e.name for e in parsed.entries}
+        # UL/LI members
+        self.assertIn("Jian Wang", names)
+        self.assertIn("Alice Chen", names)
+        # Heading card members
+        self.assertIn("Bob Smith", names)
+        self.assertIn("Carol Davis", names)
+        self.assertIn("Eve Foster", names)
+
+    def test_heading_card_count_reflects_new_entries(self):
+        """heading_card_count should equal number of newly extracted heading cards."""
+        parsed = MemberPageParser().parse(
+            UL_LI_WITH_HEADING_CARDS_HTML, base_url="https://example.edu/"
+        )
+        # 3 heading cards should have been added (Bob Smith, Carol Davis, Eve Foster)
+        self.assertGreater(parsed.heading_card_count, 0)
+
+    def test_bootstrap_cards_via_main_parser(self):
+        """Full MemberPageParser pipeline must extract Bootstrap card members."""
+        parsed = MemberPageParser().parse(
+            BOOTSTRAP_CARD_HTML, base_url="https://rise.cs.berkeley.edu/people/"
+        )
+        names = {e.name for e in parsed.entries}
+        self.assertIn("Alice Wang", names)
+        self.assertIn("Bob Chen", names)
+        self.assertIn("Carol Davis", names)
+        self.assertGreater(parsed.heading_card_count, 0)
 
 
 if __name__ == "__main__":

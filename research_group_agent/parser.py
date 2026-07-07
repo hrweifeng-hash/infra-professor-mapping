@@ -8,6 +8,12 @@ PR16 improvements over PR15:
     <a href="…"> links when a high-confidence repeated pattern is detected
   - Modern HTML support: repeated <article>, <section>, <div class="card"> etc.
   - Lab-name headings no longer trigger false member sections
+
+PR21 addition:
+  - HeadingCardExtractor integration: extracts members from pages where each
+    member is represented as an H3/H4 heading rather than a list item.
+    Common on Bootstrap/React card-based lab pages (RISE Lab, Sky Computing,
+    CSL Illinois, Vijay Chidambaram's group, etc.).
 """
 
 from __future__ import annotations
@@ -81,6 +87,8 @@ class ParsedMemberPage:
     repeated_profiles: list[MemberPageEntry] = field(default_factory=list)
     inferred_section_count: int = 0
     profile_card_count: int = 0
+    # PR21 addition
+    heading_card_count: int = 0
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -594,4 +602,17 @@ class MemberPageParser:
         parser.set_base_url(base_url)
         parser.feed(html)
         parser.close()
-        return parser.finalize()
+        result = parser.finalize()
+
+        # PR21: heading-card extraction for modern card-based layouts.
+        # Runs as a second pass on the same HTML so the existing parser is
+        # completely unchanged.  Only entries not already captured are added.
+        from research_group_agent.heading_card_extractor import HeadingCardExtractor  # noqa: PLC0415
+        already_seen: set[str] = {e.name.lower() for e in result.entries}
+        already_seen.update(e.name.lower() for e in result.repeated_profiles)
+        heading_entries = HeadingCardExtractor().extract(html, base_url, already_seen)
+        if heading_entries:
+            result.entries.extend(heading_entries)
+            result.heading_card_count = len(heading_entries)
+
+        return result
