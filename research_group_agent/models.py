@@ -8,8 +8,8 @@ from enum import Enum
 from typing import Any
 
 
-SCHEMA_VERSION = "1.4"
-PIPELINE_VERSION = "PR19"
+SCHEMA_VERSION = "1.5"
+PIPELINE_VERSION = "PR20"
 DEFAULT_TOP_N = 10
 
 
@@ -160,6 +160,9 @@ class ExtractionRunMetrics:
     homepage_resolution_attempts: int = 0
     # PR19: per-professor candidate discovery counts
     candidate_page_counts: list[int] = field(default_factory=list)
+    # PR20: per-professor second-hop discovery counts
+    second_hop_discovered_counts: list[int] = field(default_factory=list)
+    second_hop_successful_counts: list[int] = field(default_factory=list)
 
     def record_homepage_resolution(self, upgraded: bool) -> None:
         self.homepage_resolution_attempts += 1
@@ -187,6 +190,11 @@ class ExtractionRunMetrics:
     def record_candidate_count(self, count: int) -> None:
         """Record the number of candidate pages discovered for one professor."""
         self.candidate_page_counts.append(count)
+
+    def record_second_hop(self, discovered: int, successful: int) -> None:
+        """Record second-hop discovery stats for one professor."""
+        self.second_hop_discovered_counts.append(discovered)
+        self.second_hop_successful_counts.append(successful)
 
     @property
     def rejection_reason_counts(self) -> dict[str, int]:
@@ -397,6 +405,9 @@ class ResearchGroupGraph:
     member_sources: dict[str, list[str]] = field(default_factory=dict)
     # PR19: total candidate pages enumerated before ranking
     candidate_pages_discovered: int = 0
+    # PR20: second-hop discovery results
+    second_hop_pages_discovered: int = 0
+    second_hop_pages_successful: int = 0
 
     @property
     def member_count(self) -> int:
@@ -450,4 +461,6 @@ class ResearchGroupGraph:
             "failed_pages": self.failed_pages,
             "member_sources": self.member_sources,
             "candidate_pages_discovered": self.candidate_pages_discovered,
+            "second_hop_pages_discovered": self.second_hop_pages_discovered,
+            "second_hop_pages_successful": self.second_hop_pages_successful,
         }

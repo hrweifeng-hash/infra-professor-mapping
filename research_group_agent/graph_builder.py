@@ -33,6 +33,8 @@ class ResearchGroupGraphBuilder:
         failed_pages: list[str] | None = None,
         member_sources: dict[str, list[str]] | None = None,
         candidate_pages_discovered: int = 0,
+        second_hop_pages_discovered: int = 0,
+        second_hop_pages_successful: int = 0,
     ) -> ResearchGroupGraph:
         navigation_path = list(group_page.navigation_path) if group_page else []
         navigation_provider = (
@@ -61,6 +63,8 @@ class ResearchGroupGraphBuilder:
             failed_pages=list(failed_pages or []),
             member_sources=dict(member_sources or {}),
             candidate_pages_discovered=candidate_pages_discovered,
+            second_hop_pages_discovered=second_hop_pages_discovered,
+            second_hop_pages_successful=second_hop_pages_successful,
         )
 
     def build_skipped(
@@ -106,6 +110,8 @@ class ResearchGroupGraphBuilder:
         successful_pages: list[str] | None = None,
         failed_pages: list[str] | None = None,
         candidate_pages_discovered: int = 0,
+        second_hop_pages_discovered: int = 0,
+        second_hop_pages_successful: int = 0,
     ) -> ResearchGroupGraph:
         return self.build(
             professor_name=professor_name,
@@ -123,4 +129,6 @@ class ResearchGroupGraphBuilder:
             successful_pages=successful_pages,
             failed_pages=failed_pages,
             candidate_pages_discovered=candidate_pages_discovered,
+            second_hop_pages_discovered=second_hop_pages_discovered,
+            second_hop_pages_successful=second_hop_pages_successful,
         )

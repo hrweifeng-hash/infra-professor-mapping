@@ -13,11 +13,17 @@ PR19 addition: broader candidate page discovery.
 Replaces the navigator-based candidate selection with CandidatePageGenerator
 (enumerates ALL HomepageGraph nodes + the canonical homepage) and
 CandidatePageRanker (scores with explainable rules, returns top 5).
+
+PR20 addition: second-hop candidate discovery.
+When a first-hop candidate page passes all validation but yields zero members,
+PeoplePageDiscovery inspects its navigation links for explicit people/team/
+member/student sub-pages and fetches those as a single additional hop.
 """
 
 from __future__ import annotations
 
 import re
+from typing import NamedTuple
 
 from homepage_agent.models import FetchStatus, HomepageGraph
 
@@ -26,6 +32,7 @@ from research_group_agent.candidate_page import (
     CandidatePageGenerator,
     CandidatePageRanker,
 )
+from research_group_agent.people_page_discovery import PeoplePageDiscovery
 from research_group_agent.enrichment import TalentEnricher
 from research_group_agent.fetcher import ResearchGroupFetcher
 from research_group_agent.graph_builder import ResearchGroupGraphBuilder
@@ -51,6 +58,27 @@ from models.professor_profile import ProfessorProfile
 
 # Maximum candidate pages to parse per professor (PR19: expanded to 5)
 _MAX_CANDIDATE_PAGES = 5
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Internal result types
+# ─────────────────────────────────────────────────────────────────────────────
+
+class _FetchParseResult(NamedTuple):
+    """Outcome of the fetch + parse + cross-identity phase."""
+
+    parsed: object    # ParsedMemberPage
+    base_url: str
+    document_title: str
+    raw_html: str     # Original HTML for PeoplePageDiscovery (nav links not in parsed)
+
+
+class _PageResult(NamedTuple):
+    """Successful outcome of the full classify + extract phase."""
+
+    current_profiles: list
+    former_profiles: list
+    errors: list[str]
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Cross-identity verification helpers (Part 5)
@@ -177,6 +205,8 @@ class ResearchGroupPipeline:
         # PR19: candidate-based discovery components
         self.candidate_generator = CandidatePageGenerator()
         self.candidate_ranker = CandidatePageRanker()
+        # PR20: second-hop people-page discovery
+        self.people_page_discovery = PeoplePageDiscovery()
 
     def _homepage_context(self, homepage_graph: HomepageGraph) -> dict:
         original = homepage_graph.original_homepage or homepage_graph.homepage_url
@@ -227,20 +257,72 @@ class ResearchGroupPipeline:
         # Track the primary group_page (highest confidence) for graph metadata
         primary_group_page: GroupPageSelection | None = multi.selected_pages[0]
 
+        # PR20: track every URL attempted to prevent second-hop duplication;
+        # pre-populate with all first-hop URLs so second-hop never re-queues them.
+        tried_urls: set[str] = {gp.url.rstrip("/") for gp in multi.selected_pages}
+        second_hop_discovered = 0
+        second_hop_successful = 0
+
         for group_page in multi.selected_pages:
             parsed_pages.append(group_page.url)
-            page_result = self._process_single_page(
+            fp, result = self._process_single_page(
                 name=name,
                 group_page=group_page,
                 canonical=canonical,
             )
-            if page_result is None:
+
+            if result is not None:
+                successful_pages.append(group_page.url)
+                all_errors.extend(result.errors)
+                page_results.append(
+                    (group_page.url, result.current_profiles, result.former_profiles)
+                )
+            else:
                 failed_pages.append(group_page.url)
-                continue
-            current_profiles, former_profiles, page_errors = page_result
-            successful_pages.append(group_page.url)
-            all_errors.extend(page_errors)
-            page_results.append((group_page.url, current_profiles, former_profiles))
+
+            # PR20: second-hop discovery — trigger when:
+            #   (a) the page was fetched successfully (fp is not None), AND
+            #   (b) no members were found (either classifier rejected or extraction
+            #       returned zero profiles).
+            # This catches the common pattern where a lab homepage has zero member
+            # sections itself but navigates to a /people or /team sub-page.
+            profiles_found = (
+                len(result.current_profiles) + len(result.former_profiles)
+                if result is not None else 0
+            )
+            if fp is not None and profiles_found == 0:
+                hop2_candidates = self.people_page_discovery.discover(
+                    html=fp.raw_html,
+                    base_url=fp.base_url,
+                    already_seen=tried_urls,
+                )
+                second_hop_discovered += len(hop2_candidates)
+
+                for hop2 in hop2_candidates:
+                    hop2_page = GroupPageSelection(
+                        url=hop2.url,
+                        source_node_type="second_hop",
+                        confidence=0.5,
+                        reason="; ".join(hop2.evidence) or "second_hop_discovery",
+                        navigation_provider="second_hop_discovery",
+                        evidence=list(hop2.evidence),
+                    )
+                    parsed_pages.append(hop2.url)
+                    _, hop2_result = self._process_single_page(
+                        name=name,
+                        group_page=hop2_page,
+                        canonical=canonical,
+                    )
+                    if hop2_result is None:
+                        failed_pages.append(hop2.url)
+                        continue
+                    successful_pages.append(hop2.url)
+                    all_errors.extend(hop2_result.errors)
+                    page_results.append(
+                        (hop2.url, hop2_result.current_profiles, hop2_result.former_profiles)
+                    )
+                    if len(hop2_result.current_profiles) + len(hop2_result.former_profiles) > 0:
+                        second_hop_successful += 1
 
         if not page_results:
             # All pages failed — return failed result using the primary page
@@ -255,6 +337,8 @@ class ResearchGroupPipeline:
                 successful_pages=successful_pages,
                 failed_pages=failed_pages,
                 candidate_pages_discovered=candidate_count,
+                second_hop_pages_discovered=second_hop_discovered,
+                second_hop_pages_successful=second_hop_successful,
                 **ctx,
             )
 
@@ -285,21 +369,28 @@ class ResearchGroupPipeline:
             failed_pages=failed_pages,
             member_sources=member_sources,
             candidate_pages_discovered=candidate_count,
+            second_hop_pages_discovered=second_hop_discovered,
+            second_hop_pages_successful=second_hop_successful,
             **ctx,
         )
         return graph
 
-    def _process_single_page(
-        self,
-        name: str,
-        group_page: GroupPageSelection,
-        canonical: str,
-    ) -> tuple[list[TalentProfile], list[TalentProfile], list[str]] | None:
-        """
-        Fetch, validate and extract members from one group page.
+    # ── Two-phase page processing ─────────────────────────────────────────────
 
-        Returns ``(current_profiles, former_profiles, errors)`` on success,
-        or ``None`` when the page should be skipped.
+    def _fetch_and_parse(
+        self,
+        group_page: GroupPageSelection,
+        name: str,
+    ) -> _FetchParseResult | None:
+        """
+        Phase 1: fetch the page, parse HTML, run cross-identity check.
+
+        Returns ``_FetchParseResult`` when the page is fetched successfully and
+        passes the cross-identity check.  Returns ``None`` on fetch failure or
+        when the page clearly belongs to a different professor.
+
+        The PageClassifier is NOT run here — callers can inspect navigation
+        links for second-hop discovery even when the classifier would reject.
         """
         document = self.fetcher.fetch(group_page.url)
         if document.fetch_status != FetchStatus.SUCCESS:
@@ -318,10 +409,30 @@ class ResearchGroupPipeline:
             self.last_metrics.record_rejected_page(name, group_page.url, wrong_reason)
             return None
 
-        classification = self.page_classifier.classify(
+        return _FetchParseResult(
             parsed=parsed,
-            page_url=base_url,
-            page_title=document.title,
+            base_url=base_url,
+            document_title=document.title or "",
+            raw_html=document.html or "",
+        )
+
+    def _classify_and_extract(
+        self,
+        fp: _FetchParseResult,
+        group_page: GroupPageSelection,
+        name: str,
+    ) -> _PageResult | None:
+        """
+        Phase 2: run PageClassifier then MemberExtractor on a pre-parsed page.
+
+        Returns ``_PageResult`` when the page passes the classifier and
+        extraction runs (even if zero members are found).  Returns ``None``
+        when the classifier rejects the page.
+        """
+        classification = self.page_classifier.classify(
+            parsed=fp.parsed,
+            page_url=fp.base_url,
+            page_title=fp.document_title,
         )
         if not classification.is_acceptable:
             self.last_metrics.record_rejected_page(
@@ -334,7 +445,7 @@ class ResearchGroupPipeline:
         extraction = self.member_extractor.extract(
             professor_name=name,
             group_page=group_page,
-            parsed=parsed,
+            parsed=fp.parsed,
         )
 
         for rejected in extraction.rejected_candidates:
@@ -347,10 +458,38 @@ class ResearchGroupPipeline:
         current_profiles, former_profiles = self._build_profiles(
             extraction.members,
             extraction.former_members,
-            parsed,
+            fp.parsed,
             name,
         )
-        return current_profiles, former_profiles, list(extraction.errors)
+        return _PageResult(
+            current_profiles=current_profiles,
+            former_profiles=former_profiles,
+            errors=list(extraction.errors),
+        )
+
+    def _process_single_page(
+        self,
+        name: str,
+        group_page: GroupPageSelection,
+        canonical: str,
+    ) -> tuple[_FetchParseResult | None, _PageResult | None]:
+        """
+        Full pipeline for one candidate page (both phases).
+
+        Returns ``(fp_result, page_result)`` where:
+          - ``fp_result``  is the fetch+parse result (None on fetch failure)
+          - ``page_result`` is the classify+extract result (None on rejection)
+
+        Callers should treat the page as "successful" only when both are
+        non-None.  ``fp_result`` alone (with ``page_result=None``) indicates
+        the page was fetched but the classifier rejected it — the parsed HTML
+        is still available for second-hop navigation discovery.
+        """
+        fp = self._fetch_and_parse(group_page, name)
+        if fp is None:
+            return None, None
+        result = self._classify_and_extract(fp, group_page, name)
+        return fp, result
 
     def _build_profiles(
         self,
@@ -460,5 +599,9 @@ class ResearchGroupPipeline:
             professor.research_group_graph = graph
             graphs.append(graph)
             self.last_metrics.record_member_count(graph.member_count)
+            self.last_metrics.record_second_hop(
+                graph.second_hop_pages_discovered,
+                graph.second_hop_pages_successful,
+            )
 
         return graphs

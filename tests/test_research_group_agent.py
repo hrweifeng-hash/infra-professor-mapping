@@ -299,11 +299,11 @@ class TestResearchGroupReport(unittest.TestCase):
 
 
 class TestVersionConstants(unittest.TestCase):
-    def test_schema_version_is_1_4(self):
-        self.assertEqual(SCHEMA_VERSION, "1.4")
+    def test_schema_version_is_1_5(self):
+        self.assertEqual(SCHEMA_VERSION, "1.5")
 
-    def test_pipeline_version_is_pr19(self):
-        self.assertEqual(PIPELINE_VERSION, "PR19")
+    def test_pipeline_version_is_pr20(self):
+        self.assertEqual(PIPELINE_VERSION, "PR20")
 
 
 class TestCandidatePageGenerator(unittest.TestCase):
@@ -580,7 +580,7 @@ class TestPipelineCandidateIntegration(unittest.TestCase):
 
         self.assertGreater(result.candidate_pages_discovered, 0)
 
-    def test_pipeline_version_is_pr19(self):
+    def test_pipeline_version_is_pr20(self):
         graph = ResearchGroupGraphBuilder().build(
             professor_name="Test",
             professor_homepage="https://test.edu/",
@@ -588,8 +588,424 @@ class TestPipelineCandidateIntegration(unittest.TestCase):
             members=[],
             provider="heuristic",
         )
-        self.assertEqual(graph.pipeline_version, "PR19")
-        self.assertEqual(graph.schema_version, "1.4")
+        self.assertEqual(graph.pipeline_version, "PR20")
+        self.assertEqual(graph.schema_version, "1.5")
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# PR20 — PeoplePageDiscovery unit tests
+# ─────────────────────────────────────────────────────────────────────────────
+
+from research_group_agent.people_page_discovery import PeoplePageDiscovery
+
+
+def _html_with_links(*links: tuple[str, str], base: str = "https://example.edu") -> str:
+    """Build minimal HTML containing anchor tags for the given (anchor_text, href) pairs."""
+    lis = "".join(
+        f'<li><a href="{href}">{anchor}</a></li>'
+        for anchor, href in links
+    )
+    return f"<html><body><ul>{lis}</ul></body></html>"
+
+
+def _nav_html_with_links(*links: tuple[str, str], base: str = "https://example.edu") -> str:
+    """Build HTML with links inside a <nav> element (tests nav-link discovery)."""
+    lis = "".join(
+        f'<li><a href="{href}">{anchor}</a></li>'
+        for anchor, href in links
+    )
+    return f"<html><body><nav><ul>{lis}</ul></nav></body></html>"
+
+
+class TestPeoplePageDiscovery(unittest.TestCase):
+    def setUp(self):
+        self.disc = PeoplePageDiscovery()
+        self.base = "https://example.edu/~prof/"
+
+    def _disc(self, html: str, already_seen: set[str] | None = None) -> list:
+        return self.disc.discover(html, self.base, already_seen or set())
+
+    # ── URL path matching ──────────────────────────────────────────────────
+
+    def test_discovers_people_path(self):
+        html = _html_with_links(("People", "https://example.edu/~prof/people"))
+        results = self._disc(html)
+        self.assertEqual(len(results), 1)
+        self.assertIn("/people", results[0].url)
+
+    def test_discovers_students_path(self):
+        html = _html_with_links(("Students", "https://example.edu/~prof/students"))
+        results = self._disc(html)
+        self.assertEqual(len(results), 1)
+
+    def test_discovers_team_path(self):
+        html = _html_with_links(("Team", "https://example.edu/~prof/team"))
+        results = self._disc(html)
+        self.assertEqual(len(results), 1)
+
+    def test_discovers_members_path(self):
+        html = _html_with_links(("Group", "https://example.edu/~prof/members"))
+        results = self._disc(html)
+        self.assertEqual(len(results), 1)
+
+    def test_discovers_personnel_path(self):
+        html = _html_with_links(("Personnel", "https://example.edu/~prof/personnel"))
+        results = self._disc(html)
+        self.assertEqual(len(results), 1)
+
+    def test_discovers_links_inside_nav(self):
+        """Links inside <nav> (skipped by MemberPageParser) must still be found."""
+        html = _nav_html_with_links(("People", "https://example.edu/~prof/people"))
+        results = self._disc(html)
+        self.assertEqual(len(results), 1)
+
+    # ── Anchor text matching ───────────────────────────────────────────────
+
+    def test_discovers_via_anchor_text_people(self):
+        # URL path has no people-pattern hit so anchor text drives detection
+        html = _html_with_links(("People", "https://example.edu/~prof/overview"))
+        results = self._disc(html)
+        self.assertEqual(len(results), 1)
+        self.assertTrue(any("anchor_match" in e for e in results[0].evidence))
+
+    def test_discovers_via_anchor_text_team(self):
+        html = _html_with_links(("Our Team", "https://example.edu/~prof/xyz"))
+        results = self._disc(html)
+        self.assertEqual(len(results), 1)
+
+    # ── Deduplication ─────────────────────────────────────────────────────
+
+    def test_skips_already_seen_url(self):
+        url = "https://example.edu/~prof/people"
+        html = _html_with_links(("People", url))
+        results = self._disc(html, already_seen={url.rstrip("/")})
+        self.assertEqual(len(results), 0)
+
+    def test_deduplicates_multiple_same_url_links(self):
+        url = "https://example.edu/~prof/people"
+        html = _html_with_links(("People", url), ("Lab members", url))
+        results = self._disc(html)
+        self.assertEqual(len(results), 1)
+
+    def test_updates_already_seen_in_place(self):
+        html = _html_with_links(("People", "https://example.edu/~prof/people"))
+        already_seen: set[str] = set()
+        self.disc.discover(html, self.base, already_seen)
+        self.assertIn("https://example.edu/~prof/people", already_seen)
+
+    # ── Cross-host filtering ───────────────────────────────────────────────
+
+    def test_rejects_cross_host_link(self):
+        html = _html_with_links(("People", "https://other.edu/people"))
+        results = self._disc(html)
+        self.assertEqual(len(results), 0)
+
+    def test_accepts_same_host_different_path(self):
+        html = _html_with_links(("Team", "https://example.edu/dept/team"))
+        results = self.disc.discover(html, "https://example.edu/~prof/", set())
+        self.assertEqual(len(results), 1)
+
+    # ── Non-matching links are ignored ────────────────────────────────────
+
+    def test_ignores_unrelated_links(self):
+        html = _html_with_links(
+            ("Publications", "https://example.edu/~prof/papers"),
+            ("News",         "https://example.edu/~prof/news"),
+            ("Home",         "https://example.edu/~prof/"),
+        )
+        results = self._disc(html)
+        self.assertEqual(len(results), 0)
+
+    def test_ignores_empty_html(self):
+        results = self._disc("<html><body></body></html>")
+        self.assertEqual(len(results), 0)
+
+    # ── Cap enforcement ───────────────────────────────────────────────────
+
+    def test_caps_at_max_per_page(self):
+        from research_group_agent.people_page_discovery import _MAX_SECOND_HOP_PER_PAGE
+        links = tuple(
+            (f"People {i}", f"https://example.edu/~prof/people{i}")
+            for i in range(20)
+        )
+        html = _html_with_links(*links)
+        results = self._disc(html)
+        self.assertLessEqual(len(results), _MAX_SECOND_HOP_PER_PAGE)
+
+    # ── Source metadata ───────────────────────────────────────────────────
+
+    def test_result_has_second_hop_source_node_type(self):
+        html = _html_with_links(("People", "https://example.edu/~prof/people"))
+        results = self._disc(html)
+        self.assertEqual(results[0].source_node_type, "second_hop")
+
+    def test_result_evidence_contains_match_type(self):
+        html = _html_with_links(("Members", "https://example.edu/~prof/members"))
+        results = self._disc(html)
+        self.assertTrue(any("match" in e for e in results[0].evidence))
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# PR20 — Second-hop integration in pipeline
+# ─────────────────────────────────────────────────────────────────────────────
+
+# HTML for a lab homepage that has members links in navigation but no members itself
+LAB_HOME_WITH_PEOPLE_NAV_HTML = """
+<!DOCTYPE html>
+<html>
+<head><title>Smith Systems Lab</title></head>
+<body>
+  <nav>
+    <a href="/~smith/">Home</a>
+    <a href="/~smith/people">People</a>
+    <a href="/~smith/publications">Publications</a>
+  </nav>
+  <h1>Smith Systems Lab</h1>
+  <p>We do systems research.</p>
+</body>
+</html>
+"""
+
+# HTML for the people sub-page that actually has members
+PEOPLE_SUBPAGE_HTML = """
+<!DOCTYPE html>
+<html>
+<head><title>Smith Systems Lab — People</title></head>
+<body>
+  <h1>Smith Systems Lab</h1>
+  <h2>Current Members</h2>
+  <ul>
+    <li><a href="https://example.edu/~alice">Alice Wang</a> – PhD Student</li>
+    <li><a href="https://example.edu/~bob">Bob Chen</a> – Postdoc</li>
+  </ul>
+</body>
+</html>
+"""
+
+
+def _smith_homepage_graph() -> HomepageGraph:
+    return HomepageGraph(
+        professor_name="John Smith",
+        homepage_url="https://example.edu/~smith/",
+        fetch_status=FetchStatus.SUCCESS,
+        canonical_homepage="https://example.edu/~smith/",
+        graph_nodes=[
+            GraphNode(
+                node_type="lab_page",
+                url="https://example.edu/~smith/",
+                confidence=ConfidenceScore.from_stub(0.9, 0.8),
+                discovery_method="heuristic",
+                anchor_text="Lab Home",
+            ),
+        ],
+    )
+
+
+def _smith_professor(graph: HomepageGraph) -> "ProfessorProfile":
+    profile = AuthorProfile(
+        author=Author(pid=None, name="John Smith"),
+        papers=[],
+    )
+    return ProfessorProfile(
+        author_profile=profile,
+        homepage="https://example.edu/~smith/",
+        homepage_graph=graph,
+        is_us=True,
+    )
+
+
+class TestSecondHopIntegration(unittest.TestCase):
+    """Integration tests for PR20 second-hop discovery inside ResearchGroupPipeline."""
+
+    def _make_fetch_side_effect(self, url_to_html: dict):
+        """Return a side_effect callable that returns different HTML per URL."""
+        from homepage_agent.models import HomepageDocument
+
+        def _side_effect(url):
+            html = url_to_html.get(url, "<html><body></body></html>")
+            return HomepageDocument(
+                url=url,
+                html=html,
+                title="",
+                fetch_status=FetchStatus.SUCCESS,
+                final_url=url,
+            )
+        return _side_effect
+
+    @patch("research_group_agent.fetcher.HomepageFetcher.fetch")
+    def test_second_hop_triggered_when_first_hop_has_zero_members(self, mock_fetch):
+        """
+        When the lab homepage parses successfully but yields 0 members, the
+        pipeline should discover and fetch the /people sub-page.
+        """
+        mock_fetch.side_effect = self._make_fetch_side_effect({
+            "https://example.edu/~smith/": LAB_HOME_WITH_PEOPLE_NAV_HTML,
+            "https://example.edu/~smith/people": PEOPLE_SUBPAGE_HTML,
+        })
+
+        graph_hp = _smith_homepage_graph()
+        pipeline = ResearchGroupPipeline(provider=StubResearchGroupProvider())
+        result = pipeline.analyze(_smith_professor(graph_hp), graph_hp)
+
+        # The people sub-page should have been parsed
+        self.assertIn("https://example.edu/~smith/people", result.parsed_pages)
+        # Second-hop discovery should be recorded
+        self.assertGreater(result.second_hop_pages_discovered, 0)
+
+    @patch("research_group_agent.fetcher.HomepageFetcher.fetch")
+    def test_second_hop_finds_members_when_sub_page_has_them(self, mock_fetch):
+        """Members discovered via second-hop are included in the final graph."""
+        mock_fetch.side_effect = self._make_fetch_side_effect({
+            "https://example.edu/~smith/": LAB_HOME_WITH_PEOPLE_NAV_HTML,
+            "https://example.edu/~smith/people": PEOPLE_SUBPAGE_HTML,
+        })
+
+        graph_hp = _smith_homepage_graph()
+        pipeline = ResearchGroupPipeline(provider=StubResearchGroupProvider())
+        result = pipeline.analyze(_smith_professor(graph_hp), graph_hp)
+
+        self.assertGreater(result.member_count, 0)
+        self.assertGreater(result.second_hop_pages_successful, 0)
+
+    @patch("research_group_agent.fetcher.HomepageFetcher.fetch")
+    def test_second_hop_not_triggered_when_first_hop_has_members(self, mock_fetch):
+        """When the first-hop page already has members, no second-hop is attempted."""
+        mock_fetch.return_value = __import__(
+            "homepage_agent.models", fromlist=["HomepageDocument"]
+        ).HomepageDocument(
+            url="https://example.edu/~ravi/people.html",
+            html=MEMBER_PAGE_HTML,
+            title="Netravali Research Group",
+            fetch_status=FetchStatus.SUCCESS,
+            final_url="https://example.edu/~ravi/people.html",
+        )
+
+        graph_hp = HomepageGraph(
+            professor_name="Ravi Netravali",
+            homepage_url="https://example.edu/~ravi/",
+            fetch_status=FetchStatus.SUCCESS,
+            canonical_homepage="https://example.edu/~ravi/",
+            graph_nodes=_homepage_graph_with_lab_and_people().graph_nodes,
+        )
+        pipeline = ResearchGroupPipeline(provider=StubResearchGroupProvider())
+        result = pipeline.analyze(_professor(graph_hp), graph_hp)
+
+        # Members found on first hop, so second-hop should not have been triggered
+        self.assertGreater(result.member_count, 0)
+        self.assertEqual(result.second_hop_pages_discovered, 0)
+
+    @patch("research_group_agent.fetcher.HomepageFetcher.fetch")
+    def test_second_hop_urls_not_retried(self, mock_fetch):
+        """
+        A URL already in the first-hop candidate set should not be fetched again
+        as a second-hop page.
+        """
+        from homepage_agent.models import HomepageDocument
+
+        fetched_urls: list[str] = []
+
+        def _tracking_fetch(url):
+            fetched_urls.append(url)
+            html = LAB_HOME_WITH_PEOPLE_NAV_HTML if "smith" in url else "<html/>"
+            return HomepageDocument(
+                url=url,
+                html=html,
+                title="",
+                fetch_status=FetchStatus.SUCCESS,
+                final_url=url,
+            )
+
+        mock_fetch.side_effect = _tracking_fetch
+
+        # Graph already includes /~smith/people as a first-hop candidate
+        graph_hp = HomepageGraph(
+            professor_name="John Smith",
+            homepage_url="https://example.edu/~smith/",
+            fetch_status=FetchStatus.SUCCESS,
+            canonical_homepage="https://example.edu/~smith/",
+            graph_nodes=[
+                GraphNode(
+                    node_type="lab_page",
+                    url="https://example.edu/~smith/",
+                    confidence=ConfidenceScore.from_stub(0.9, 0.8),
+                    discovery_method="heuristic",
+                    anchor_text="Lab Home",
+                ),
+                GraphNode(
+                    node_type="people_page",
+                    url="https://example.edu/~smith/people",
+                    confidence=ConfidenceScore.from_stub(0.9, 0.8),
+                    discovery_method="heuristic",
+                    anchor_text="People",
+                ),
+            ],
+        )
+        pipeline = ResearchGroupPipeline(provider=StubResearchGroupProvider())
+        pipeline.analyze(_smith_professor(graph_hp), graph_hp)
+
+        # /~smith/people must appear at most once in fetched URLs
+        people_fetches = [u for u in fetched_urls if "people" in u]
+        self.assertLessEqual(len(people_fetches), 1)
+
+    @patch("research_group_agent.fetcher.HomepageFetcher.fetch")
+    def test_second_hop_graph_fields_in_to_dict(self, mock_fetch):
+        """Serialised graph always contains second_hop_pages_discovered and _successful."""
+        mock_fetch.return_value = __import__(
+            "homepage_agent.models", fromlist=["HomepageDocument"]
+        ).HomepageDocument(
+            url="https://example.edu/~ravi/people.html",
+            html=MEMBER_PAGE_HTML,
+            title="Netravali Research Group",
+            fetch_status=FetchStatus.SUCCESS,
+            final_url="https://example.edu/~ravi/people.html",
+        )
+
+        graph_hp = HomepageGraph(
+            professor_name="Ravi Netravali",
+            homepage_url="https://example.edu/~ravi/",
+            fetch_status=FetchStatus.SUCCESS,
+            canonical_homepage="https://example.edu/~ravi/",
+            graph_nodes=_homepage_graph_with_lab_and_people().graph_nodes,
+        )
+        pipeline = ResearchGroupPipeline(provider=StubResearchGroupProvider())
+        result = pipeline.analyze(_professor(graph_hp), graph_hp)
+        d = result.to_dict()
+
+        self.assertIn("second_hop_pages_discovered", d)
+        self.assertIn("second_hop_pages_successful", d)
+        self.assertIsInstance(d["second_hop_pages_discovered"], int)
+        self.assertIsInstance(d["second_hop_pages_successful"], int)
+
+    @patch("research_group_agent.fetcher.HomepageFetcher.fetch")
+    def test_second_hop_metrics_recorded_in_analyze_many(self, mock_fetch):
+        """ExtractionRunMetrics records second-hop stats after analyze_many."""
+        mock_fetch.return_value = __import__(
+            "homepage_agent.models", fromlist=["HomepageDocument"]
+        ).HomepageDocument(
+            url="https://example.edu/~ravi/people.html",
+            html=MEMBER_PAGE_HTML,
+            title="Netravali Research Group",
+            fetch_status=FetchStatus.SUCCESS,
+            final_url="https://example.edu/~ravi/people.html",
+        )
+
+        graph_hp = HomepageGraph(
+            professor_name="Ravi Netravali",
+            homepage_url="https://example.edu/~ravi/",
+            fetch_status=FetchStatus.SUCCESS,
+            canonical_homepage="https://example.edu/~ravi/",
+            graph_nodes=_homepage_graph_with_lab_and_people().graph_nodes,
+        )
+        professor = _professor(graph_hp)
+        pipeline = ResearchGroupPipeline(provider=StubResearchGroupProvider())
+        pipeline.analyze_many([professor])
+
+        self.assertEqual(
+            len(pipeline.last_metrics.second_hop_discovered_counts), 1
+        )
+        self.assertEqual(
+            len(pipeline.last_metrics.second_hop_successful_counts), 1
+        )
 
 
 if __name__ == "__main__":
