@@ -32,6 +32,7 @@ class ResearchGroupGraphBuilder:
         successful_pages: list[str] | None = None,
         failed_pages: list[str] | None = None,
         member_sources: dict[str, list[str]] | None = None,
+        candidate_pages_discovered: int = 0,
     ) -> ResearchGroupGraph:
         navigation_path = list(group_page.navigation_path) if group_page else []
         navigation_provider = (
@@ -59,6 +60,7 @@ class ResearchGroupGraphBuilder:
             successful_pages=list(successful_pages or []),
             failed_pages=list(failed_pages or []),
             member_sources=dict(member_sources or {}),
+            candidate_pages_discovered=candidate_pages_discovered,
         )
 
     def build_skipped(
@@ -71,6 +73,7 @@ class ResearchGroupGraphBuilder:
         canonical_homepage: str | None = None,
         homepage_resolution_method: str | None = None,
         homepage_resolution_confidence: float = 0.0,
+        candidate_pages_discovered: int = 0,
     ) -> ResearchGroupGraph:
         return self.build(
             professor_name=professor_name,
@@ -84,6 +87,7 @@ class ResearchGroupGraphBuilder:
             canonical_homepage=canonical_homepage,
             homepage_resolution_method=homepage_resolution_method,
             homepage_resolution_confidence=homepage_resolution_confidence,
+            candidate_pages_discovered=candidate_pages_discovered,
         )
 
     def build_failed(
@@ -101,6 +105,7 @@ class ResearchGroupGraphBuilder:
         parsed_pages: list[str] | None = None,
         successful_pages: list[str] | None = None,
         failed_pages: list[str] | None = None,
+        candidate_pages_discovered: int = 0,
     ) -> ResearchGroupGraph:
         return self.build(
             professor_name=professor_name,
@@ -117,4 +122,5 @@ class ResearchGroupGraphBuilder:
             parsed_pages=parsed_pages,
             successful_pages=successful_pages,
             failed_pages=failed_pages,
+            candidate_pages_discovered=candidate_pages_discovered,
         )

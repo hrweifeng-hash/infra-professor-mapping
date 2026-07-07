@@ -41,6 +41,7 @@ class ResearchGroupReport:
         navigation_stats = cls._navigation_stats(graphs)
         manual_review = cls._manual_review_cases(graphs, member_counts)
         multipage_stats = cls._multipage_stats(graphs)
+        candidate_stats = cls._candidate_page_stats(graphs, metrics)
 
         wrong_page_rejections = sum(
             1
@@ -74,6 +75,7 @@ class ResearchGroupReport:
             "manual_review": manual_review,
             "manual_review_count": len(manual_review),
             "provider": graphs[0].provider if graphs else "n/a",
+            "candidate_pages": candidate_stats,
         }
 
     @classmethod
@@ -185,6 +187,46 @@ class ResearchGroupReport:
             "fallback_rate": round(fallback_count / (len(graphs) or 1), 3),
             "llm_navigated_count": llm_count,
             "top_evidence": top_evidence,
+        }
+
+    @classmethod
+    def _candidate_page_stats(
+        cls,
+        graphs: list[ResearchGroupGraph],
+        metrics: ExtractionRunMetrics,
+    ) -> dict:
+        """Aggregate PR19 candidate page discovery statistics."""
+        total = len(graphs) or 1
+
+        # Total candidates discovered (sum of per-professor counts)
+        candidate_counts = metrics.candidate_page_counts
+        if not candidate_counts:
+            # Fall back to graph field if metrics not populated (e.g. loaded from JSON)
+            candidate_counts = [g.candidate_pages_discovered for g in graphs]
+
+        total_discovered = sum(candidate_counts)
+        avg_candidates = round(total_discovered / total, 2)
+
+        # Pages actually parsed vs. successful
+        total_parsed = sum(len(g.parsed_pages) for g in graphs)
+        total_successful = sum(len(g.successful_pages) for g in graphs)
+        success_rate = round(total_successful / total_parsed, 3) if total_parsed > 0 else 0.0
+
+        # How many professors had ≥1 candidate discovered
+        profs_with_candidates = sum(1 for c in candidate_counts if c > 0)
+
+        # Page-type distribution (infer from node source types in parsed pages)
+        profs_with_parsed = sum(1 for g in graphs if g.parsed_pages)
+
+        return {
+            "total_candidates_discovered": total_discovered,
+            "average_candidates_per_professor": avg_candidates,
+            "professors_with_candidates": profs_with_candidates,
+            "candidate_coverage_rate": round(profs_with_candidates / total, 3),
+            "total_pages_parsed": total_parsed,
+            "total_pages_successful": total_successful,
+            "candidate_page_success_rate": success_rate,
+            "professors_with_parsed_pages": profs_with_parsed,
         }
 
     @classmethod
@@ -379,6 +421,7 @@ class ResearchGroupReport:
 
         nav = report.get("navigation", {})
         mp = report.get("multi_page", {})
+        cp = report.get("candidate_pages", {})
 
         pipeline_ver = report.get('pipeline_version', 'PR17')
         schema_ver = report.get('schema_version', '1.3')
@@ -422,6 +465,19 @@ class ResearchGroupReport:
             for signal, count in list(top_evidence.items())[:10]:
                 lines.append(f"- `{signal}`: **{count}**")
             lines.append("")
+
+        lines.extend([
+            "## Candidate Page Discovery (PR19)",
+            "",
+            f"- Total candidates discovered: **{cp.get('total_candidates_discovered', 0)}**",
+            f"- Average candidates per professor: **{cp.get('average_candidates_per_professor', 0):.2f}**",
+            f"- Professors with candidates: **{cp.get('professors_with_candidates', 0)}** "
+            f"({cp.get('candidate_coverage_rate', 0):.0%})",
+            f"- Total candidate pages parsed: **{cp.get('total_pages_parsed', 0)}**",
+            f"- Total candidate pages successful: **{cp.get('total_pages_successful', 0)}**",
+            f"- Candidate page success rate: **{cp.get('candidate_page_success_rate', 0):.0%}**",
+            "",
+        ])
 
         lines.extend([
             "## Multi-Page Discovery (PR17)",

@@ -1,0 +1,60 @@
+<html>
+
+<meta http-equiv="Content-Type" CONTENT="text/html; charset=utf-8">
+
+<style>
+.head1{text-decoration:none; font:normal normal normal 20pt Arial ; color:black}
+.text1{text-decoration:none ; font:normal normal normal 15pt Tahoma ; color:black}
+.text2{text-decoration:none ; font:normal normal normal 10pt Tahoma ; color:red}
+</style>
+
+<head>
+<title>
+Trickle
+</title>
+</head>
+
+
+
+<body class=text1>
+
+<center>
+<span class=head1>
+<br>
+<b>Trickle: Rate Limiting YouTube Video Streaming</bi>
+<br><hr width="100%">
+</span>
+</center>
+
+<span class=text1>
+This page demonstrates Trickle in action using two <i>pre-recorded</i> YouTube videos. One using Ustreamer's default streaming algorithm, one using Trickle.
+<br>
+<br>
+The two videos start downloading similarly during the initial bursting phase. 
+<br>
+After entering the throttling phase, it is visible that ustreamer download bar jumps at 64kB chunks while Trickle smoothes the transmission of the video. 
+<br>
+By design, both videosâ sending rate is equal and they finish downloading at the same time.
+<table width=100% border=0 cellpadding="20">
+<tr>
+<td width=50 align=center valign=top>
+<br>
+<object data="http://www.cs.toronto.edu/~monia/ustreamer.ogv" Pluginspage="http://www.apple.com/quicktime/" width="600" height="400" CONTROLLER="true" LOOP="true" AUTOPLAY="true" title="ustreamer"></object>
+</td>
+<td width=50 align=center valign=top>
+<br>
+<object data="http://www.cs.toronto.edu/~monia/tcptrickle.ogv" Pluginspage="http://www.apple.com/quicktime/" width="600" height="400" CONTROLLER="true" LOOP="true" AUTOPLAY="true" title="Trickle"></object> 
+</td>    
+</tr>
+<tr>
+<td width=50 align=center valign=top>
+<b>Ustreamer</b><br><br><br><br><br><br>
+</td>
+<td width=50 align=center valign=top>
+<b>Trickle</b><br><br><br><br><br><br>
+</td>
+
+</span>
+
+<br><br><br><br>
+</html>

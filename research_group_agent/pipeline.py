@@ -8,6 +8,11 @@ If so the page is rejected before the expensive classifier and extractor run.
 PR17 addition: multi-page member discovery.
 Instead of selecting a single best group page, the pipeline now selects the
 top N candidate pages, parses each one, and merges/deduplicates the results.
+
+PR19 addition: broader candidate page discovery.
+Replaces the navigator-based candidate selection with CandidatePageGenerator
+(enumerates ALL HomepageGraph nodes + the canonical homepage) and
+CandidatePageRanker (scores with explainable rules, returns top 5).
 """
 
 from __future__ import annotations
@@ -16,6 +21,11 @@ import re
 
 from homepage_agent.models import FetchStatus, HomepageGraph
 
+from research_group_agent.candidate_page import (
+    CandidatePage,
+    CandidatePageGenerator,
+    CandidatePageRanker,
+)
 from research_group_agent.enrichment import TalentEnricher
 from research_group_agent.fetcher import ResearchGroupFetcher
 from research_group_agent.graph_builder import ResearchGroupGraphBuilder
@@ -28,6 +38,7 @@ from research_group_agent.models import (
     DEFAULT_TOP_N,
     ExtractionRunMetrics,
     GroupPageSelection,
+    MultiPageSelection,
     ResearchGroupGraph,
     TalentProfile,
 )
@@ -38,8 +49,8 @@ from research_group_agent.providers.navigator_base import ResearchGroupNavigator
 from research_group_agent.providers.navigator_stub import StubResearchGroupNavigatorProvider
 from models.professor_profile import ProfessorProfile
 
-# Maximum candidate pages to parse per professor (PR17)
-_MAX_CANDIDATE_PAGES = 3
+# Maximum candidate pages to parse per professor (PR19: expanded to 5)
+_MAX_CANDIDATE_PAGES = 5
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Cross-identity verification helpers (Part 5)
@@ -163,6 +174,9 @@ class ResearchGroupPipeline:
         self.member_merger = MemberMerger()
         self.graph_builder = graph_builder or ResearchGroupGraphBuilder()
         self.last_metrics = ExtractionRunMetrics()
+        # PR19: candidate-based discovery components
+        self.candidate_generator = CandidatePageGenerator()
+        self.candidate_ranker = CandidatePageRanker()
 
     def _homepage_context(self, homepage_graph: HomepageGraph) -> dict:
         original = homepage_graph.original_homepage or homepage_graph.homepage_url
@@ -183,13 +197,13 @@ class ResearchGroupPipeline:
         ctx = self._homepage_context(homepage_graph)
         canonical = ctx["canonical_homepage"]
 
-        # PR17: select top N candidates instead of a single page
-        decisions = self.group_navigator.navigate(name, homepage_graph)
-        multi = self.group_navigator.select_top_candidates(
-            decisions,
-            homepage_graph=homepage_graph,
-            max_candidates=_MAX_CANDIDATE_PAGES,
-        )
+        # PR19: broader candidate discovery via CandidatePageGenerator + CandidatePageRanker
+        all_candidates = self.candidate_generator.generate(homepage_graph)
+        candidate_count = len(all_candidates)
+        self.last_metrics.record_candidate_count(candidate_count)
+
+        ranked = self.candidate_ranker.rank(all_candidates, top_n=_MAX_CANDIDATE_PAGES)
+        multi = self._candidates_to_multi(ranked, homepage_graph)
 
         if not multi.selected_pages:
             self.last_metrics.record_rejected_page(
@@ -200,6 +214,7 @@ class ResearchGroupPipeline:
                 professor_homepage=canonical,
                 provider=self.provider.provider_name,
                 reason="No suitable group page found in HomepageGraph",
+                candidate_pages_discovered=candidate_count,
                 **ctx,
             )
 
@@ -239,6 +254,7 @@ class ResearchGroupPipeline:
                 parsed_pages=parsed_pages,
                 successful_pages=successful_pages,
                 failed_pages=failed_pages,
+                candidate_pages_discovered=candidate_count,
                 **ctx,
             )
 
@@ -268,6 +284,7 @@ class ResearchGroupPipeline:
             successful_pages=successful_pages,
             failed_pages=failed_pages,
             member_sources=member_sources,
+            candidate_pages_discovered=candidate_count,
             **ctx,
         )
         return graph
@@ -375,6 +392,42 @@ class ResearchGroupPipeline:
 
         return current_profiles, former_profiles
 
+    def _candidates_to_multi(
+        self,
+        ranked: list[CandidatePage],
+        homepage_graph: HomepageGraph,
+    ) -> MultiPageSelection:
+        """Convert ranked CandidatePage objects to a MultiPageSelection."""
+        selected: list[GroupPageSelection] = []
+        for candidate in ranked:
+            nav_path = ResearchGroupNavigator._build_navigation_path(
+                homepage_graph, candidate.url
+            )
+            reason = (
+                "; ".join(candidate.evidence)
+                if candidate.evidence
+                else f"type:{candidate.page_type}"
+            )
+            selected.append(
+                GroupPageSelection(
+                    url=candidate.url,
+                    source_node_type=candidate.source_node_type or "candidate",
+                    confidence=candidate.score,
+                    reason=reason,
+                    navigation_path=nav_path,
+                    evidence=list(candidate.evidence),
+                    navigation_provider="candidate_ranker",
+                )
+            )
+
+        return MultiPageSelection(
+            selected_pages=selected,
+            selection_strategy="candidate_ranker",
+            selection_reason=(
+                f"Selected {len(selected)} candidates via CandidatePageRanker (PR19)"
+            ),
+        )
+
     def analyze_many(
         self,
         professors: list[ProfessorProfile],
@@ -386,6 +439,7 @@ class ResearchGroupPipeline:
         for professor in targets:
             homepage_graph = professor.homepage_graph
             if homepage_graph is None:
+                self.last_metrics.record_candidate_count(0)
                 graph = self.graph_builder.build_skipped(
                     professor_name=professor.author_profile.author.name,
                     professor_homepage=professor.homepage or "",

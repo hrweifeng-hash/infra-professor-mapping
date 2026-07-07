@@ -1,0 +1,67 @@
+{
+  "generated_at": "2026-07-07T03:32:01.838539+00:00",
+  "pr18_metrics": {
+    "pipeline_version": "PR17",
+    "schema_version": "1.3",
+    "total_professors": 100,
+    "homepage_success_count": 42,
+    "homepage_success_rate": 0.42,
+    "navigation_success_count": 42,
+    "navigation_success_rate": 0.42,
+    "member_discovery_count": 16,
+    "member_discovery_rate": 0.16,
+    "total_current_members": 151,
+    "total_former_members": 297,
+    "total_members": 448,
+    "average_members_per_professor": 1.51,
+    "total_pages_parsed": 58,
+    "total_pages_successful": 16,
+    "average_pages_parsed": 0.58,
+    "total_candidates_discovered": 0,
+    "average_candidates_per_professor": 0.0,
+    "candidate_page_success_rate": 0.276,
+    "fetch_status_distribution": {
+      "page_rejected": 26,
+      "success": 16,
+      "skipped": 58
+    }
+  },
+  "pr19_metrics": {
+    "pipeline_version": "PR19",
+    "schema_version": "1.4",
+    "total_professors": 100,
+    "homepage_success_count": 69,
+    "homepage_success_rate": 0.69,
+    "navigation_success_count": 69,
+    "navigation_success_rate": 0.69,
+    "member_discovery_count": 16,
+    "member_discovery_rate": 0.16,
+    "total_current_members": 151,
+    "total_former_members": 297,
+    "total_members": 448,
+    "average_members_per_professor": 1.51,
+    "total_pages_parsed": 166,
+    "total_pages_successful": 16,
+    "average_pages_parsed": 1.66,
+    "total_candidates_discovered": 288,
+    "average_candidates_per_professor": 2.88,
+    "candidate_page_success_rate": 0.096,
+    "fetch_status_distribution": {
+      "page_rejected": 53,
+      "success": 16,
+      "skipped": 31
+    }
+  },
+  "candidate_type_distribution": {
+    "lab_page": 24,
+    "homepage": 24,
+    "people_page": 8,
+    "research_group_page": 8,
+    "projects_page": 5
+  },
+  "precision_recall_observations": [
+    "New discoveries (PR18=0 → PR19>0): 0",
+    "",
+    "Member count gains (0 professors improved):"
+  ]
+}

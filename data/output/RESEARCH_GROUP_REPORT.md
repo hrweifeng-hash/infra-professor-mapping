@@ -1,14 +1,14 @@
-# Research Group Intelligence Report (PR17)
+# Research Group Intelligence Report (PR19)
 
-Generated: 2026-07-07T02:59:25.777275+00:00
-Schema version: **1.3** | Pipeline: **PR17**
+Generated: 2026-07-07T03:32:01.815968+00:00
+Schema version: **1.4** | Pipeline: **PR19**
 
 ## Summary
 
 - Professors processed: **100**
-- Research groups discovered: **42**
+- Research groups discovered: **69**
 - Successful group page fetches: **16**
-- Pages rejected by classifier: **26**
+- Pages rejected by classifier: **53**
 - Wrong-page rejections (PR16): **4**
 - Current members extracted: **151**
 - Former members (debug): **297**
@@ -17,31 +17,40 @@ Schema version: **1.3** | Pipeline: **PR17**
 
 ## Navigation Intelligence
 
-- Navigation provider: **heuristic**
-- Navigation success rate: **42%**
-- Average navigation confidence: **0.831**
-- Average navigation depth: **2.1** hops
-- Fallback rate: **100%**
-- LLM-navigated: **0**
+- Navigation provider: **candidate_ranker, heuristic**
+- Navigation success rate: **69%**
+- Average navigation confidence: **0.811**
+- Average navigation depth: **1.8** hops
+- Fallback rate: **31%**
+- LLM-navigated: **69**
 
 ### Most Common Navigation Evidence
 
-- `node_type:lab_page`: **25**
-- `anchor_lab:lab`: **25**
-- `anchor_group+:lab`: **25**
-- `node_type:people_page`: **11**
-- `anchor_member:students`: **8**
-- `anchor_group+:student`: **8**
-- `node_type:research_group_page`: **6**
-- `anchor_group+:group`: **6**
-- `url_member:/students`: **4**
-- `group_pattern:/students`: **4**
+- `type:lab:0.90`: **24**
+- `anchor_keyword:lab`: **24**
+- `graph_confidence:1.00`: **24**
+- `type:homepage:0.35`: **21**
+- `graph_confidence:0.58`: **18**
+- `url_keyword:lab`: **11**
+- `graph_confidence:0.49`: **10**
+- `graph_confidence:0.96`: **8**
+- `anchor_keyword:group`: **8**
+- `url_keyword:people`: **7**
+
+## Candidate Page Discovery (PR19)
+
+- Total candidates discovered: **288**
+- Average candidates per professor: **2.88**
+- Professors with candidates: **69** (69%)
+- Total candidate pages parsed: **166**
+- Total candidate pages successful: **16**
+- Candidate page success rate: **10%**
 
 ## Multi-Page Discovery (PR17)
 
-- Professors using multi-page discovery: **42**
-- Average parsed pages per professor: **1.38**
-- Average successful pages per professor: **0.38**
+- Professors using multi-page discovery: **69**
+- Average parsed pages per professor: **2.41**
+- Average successful pages per professor: **0.23**
 - Average merged members per professor: **9.4**
 - Deduplication rate: **66.3%**
 - Members found on multiple pages: **0**
@@ -71,7 +80,7 @@ Schema version: **1.3** | Pipeline: **PR17**
 - Median members per professor: **0**
 - Healthy range: **5-20**
 - Professors in healthy range: **11**
-- Rejected pages: **100**
+- Rejected pages: **181**
 - Rejected candidates: **61**
 
 ### Member Count Histogram
@@ -82,12 +91,12 @@ Schema version: **1.3** | Pipeline: **PR17**
 
 ### Most Common Rejection Reasons
 
-- **no suitable group page in HomepageGraph**: 58
-- **No member sections found on page**: 29
+- **fetch failed**: 109
+- **No member sections found on page**: 33
+- **no suitable group page in HomepageGraph**: 31
 - **missing personal profile URL or role evidence**: 28
 - **does not look like a person name**: 19
 - **exceeded member cap (20)**: 11
-- **fetch failed**: 5
 - **name matches non-person pattern**: 2
 - **Rejected as research_group (confidence=0.35)**: 2
 - **contains non-person keyword**: 1
@@ -125,25 +134,25 @@ _Note: Language signals are probabilistic recruiting hints — not nationality, 
 **89** professors flagged:
 
 - **Ravi Netravali** (0 members, https://sysml.cs.princeton.edu/): page_rejected_by_classifier; All candidate pages failed
-- **Arvind Krishnamurthy** (0 members, no group page): group_page_not_found; No suitable group page found in HomepageGraph
+- **Arvind Krishnamurthy** (0 members, http://www.cs.washington.edu/homes/arvind/): page_rejected_by_classifier; All candidate pages failed
 - **Vincent Liu 0001** (0 members, https://dsl.cis.upenn.edu/): page_rejected_by_classifier; All candidate pages failed
 - **Rachit Agarwal 0001** (0 members, https://www.cs.cornell.edu/~ragarwal/collaborators.html): page_rejected_by_classifier; All candidate pages failed
 - **Tianyin Xu** (0 members, https://www.cs.cornell.edu/~legunsen): page_rejected_by_classifier; All candidate pages failed
 - **Aditya Akella** (0 members, http://utns.cs.utexas.edu/): page_rejected_by_classifier; All candidate pages failed
 - **Peng Huang 0005** (0 members, no group page): group_page_not_found; No suitable group page found in HomepageGraph
-- **Ang Chen 0001** (0 members, no group page): group_page_not_found; No suitable group page found in HomepageGraph
-- **Remzi H. Arpaci-Dusseau** (0 members, no group page): group_page_not_found; No suitable group page found in HomepageGraph
+- **Ang Chen 0001** (0 members, https://www.cs.rice.edu/~angchen/): page_rejected_by_classifier; All candidate pages failed
+- **Remzi H. Arpaci-Dusseau** (0 members, https://pages.cs.wisc.edu/~remzi/): page_rejected_by_classifier; All candidate pages failed
 - **Gregory R. Ganger** (0 members, https://www.pdl.cmu.edu/): page_rejected_by_classifier; All candidate pages failed
-- **Sylvia Ratnasamy** (0 members, no group page): group_page_not_found; No suitable group page found in HomepageGraph
-- **Peter R. Pietzuch** (0 members, http://www.cl.cam.ac.uk/): page_rejected_by_classifier; All candidate pages failed
-- **Ming Liu 0027** (0 members, no group page): group_page_not_found; No suitable group page found in HomepageGraph
+- **Sylvia Ratnasamy** (0 members, https://people.eecs.berkeley.edu/~sylvia/): page_rejected_by_classifier; All candidate pages failed
+- **Peter R. Pietzuch** (0 members, http://lsds.doc.ic.ac.uk): page_rejected_by_classifier; All candidate pages failed
+- **Ming Liu 0027** (0 members, https://pages.cs.wisc.edu/~mgliu/teaching.html): page_rejected_by_classifier; All candidate pages failed
 - **Ramesh Govindan** (0 members, no group page): group_page_not_found; No suitable group page found in HomepageGraph
 - **T. S. Eugene Ng** (0 members, no group page): group_page_not_found; No suitable group page found in HomepageGraph
 - **Yifan Qiao 0002** (0 members, https://sky.cs.berkeley.edu/): page_rejected_by_classifier; All candidate pages failed
 - **Alex C. Snoeren** (0 members, http://www.sysnet.ucsd.edu): page_rejected_by_classifier; All candidate pages failed
 - **Sam H. Noh** (0 members, no group page): group_page_not_found; No suitable group page found in HomepageGraph
-- **Shuai Mu 0001** (0 members, no group page): group_page_not_found; No suitable group page found in HomepageGraph
-- **M. Frans Kaashoek** (0 members, http://www.csail.mit.edu/): page_rejected_by_classifier; All candidate pages failed
+- **Shuai Mu 0001** (0 members, http://mpaxos.com/): page_rejected_by_classifier; All candidate pages failed
+- **M. Frans Kaashoek** (0 members, https://people.csail.mit.edu/kaashoek/): page_rejected_by_classifier; All candidate pages failed
 - ... and 69 more
 
 ## Output

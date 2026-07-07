@@ -1,0 +1,1693 @@
+
+
+
+
+
+<!DOCTYPE html>
+<!--[if IE 9]><html class="no-js ie9" lang="en-US"><![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="en-US"><!--<![endif]-->
+
+<head>
+  
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISELab at UC Berkeley - REAL-TIME INTELLIGENT SECURE EXECUTION</title>
+<link rel="pingback" href="https://rise.cs.berkeley.edu/xmlrpc.php"><meta name='robots' content='max-image-preview:large' />
+
+<!-- Social Warfare v4.2.1 https://warfareplugins.com - BEGINNING OF OUTPUT -->
+<style>
+	@font-face {
+		font-family: "sw-icon-font";
+		src:url("https://rise.cs.berkeley.edu/wp-content/plugins/social-warfare/assets/fonts/sw-icon-font.eot?ver=4.2.1");
+		src:url("https://rise.cs.berkeley.edu/wp-content/plugins/social-warfare/assets/fonts/sw-icon-font.eot?ver=4.2.1#iefix") format("embedded-opentype"),
+		url("https://rise.cs.berkeley.edu/wp-content/plugins/social-warfare/assets/fonts/sw-icon-font.woff?ver=4.2.1") format("woff"),
+		url("https://rise.cs.berkeley.edu/wp-content/plugins/social-warfare/assets/fonts/sw-icon-font.ttf?ver=4.2.1") format("truetype"),
+		url("https://rise.cs.berkeley.edu/wp-content/plugins/social-warfare/assets/fonts/sw-icon-font.svg?ver=4.2.1#1445203416") format("svg");
+		font-weight: normal;
+		font-style: normal;
+		font-display:block;
+	}
+</style>
+<!-- Social Warfare v4.2.1 https://warfareplugins.com - END OF OUTPUT -->
+
+
+	<!-- This site is optimized with the Yoast SEO plugin v15.8 - https://yoast.com/wordpress/plugins/seo/ -->
+	<meta name="description" content="In the RISELab, we develop technologies that enable applications to make low-latency decisions on live data with strong security." />
+	<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<link rel="canonical" href="https://rise.cs.berkeley.edu/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="RISELab at UC Berkeley - REAL-TIME INTELLIGENT SECURE EXECUTION" />
+	<meta property="og:description" content="In the RISELab, we develop technologies that enable applications to make low-latency decisions on live data with strong security." />
+	<meta property="og:url" content="https://rise.cs.berkeley.edu/" />
+	<meta property="og:site_name" content="RISE Lab" />
+	<meta property="article:publisher" content="https://www.facebook.com/RISElabUCB/" />
+	<meta property="article:modified_time" content="2021-04-26T23:17:07+00:00" />
+	<meta property="og:image" content="https://rise.cs.berkeley.edu/wp-content/uploads/2017/01/riselab-at-uc-berkeley.jpg" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:label1" content="Est. reading time">
+	<meta name="twitter:data1" content="4 minutes">
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://rise.cs.berkeley.edu/#website","url":"https://rise.cs.berkeley.edu/","name":"RISE Lab","description":"REAL-TIME INTELLIGENT SECURE EXECUTION","potentialAction":[{"@type":"SearchAction","target":"https://rise.cs.berkeley.edu/?s={search_term_string}","query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://rise.cs.berkeley.edu/#primaryimage","inLanguage":"en-US","url":"/wp-content/uploads/2020/09/nsf_color_logo_md.png"},{"@type":"WebPage","@id":"https://rise.cs.berkeley.edu/#webpage","url":"https://rise.cs.berkeley.edu/","name":"RISELab at UC Berkeley - REAL-TIME INTELLIGENT SECURE EXECUTION","isPartOf":{"@id":"https://rise.cs.berkeley.edu/#website"},"primaryImageOfPage":{"@id":"https://rise.cs.berkeley.edu/#primaryimage"},"datePublished":"2016-12-01T01:06:02+00:00","dateModified":"2021-04-26T23:17:07+00:00","description":"In the RISELab, we develop technologies that enable applications to make low-latency decisions on live data with strong security.","breadcrumb":{"@id":"https://rise.cs.berkeley.edu/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://rise.cs.berkeley.edu/"]}]},{"@type":"BreadcrumbList","@id":"https://rise.cs.berkeley.edu/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"https://rise.cs.berkeley.edu/","url":"https://rise.cs.berkeley.edu/","name":"Home"}}]}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//cdn.jsdelivr.net' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="RISE Lab &raquo; Feed" href="https://rise.cs.berkeley.edu/feed/" />
+<link rel="alternate" type="application/rss+xml" title="RISE Lab &raquo; Comments Feed" href="https://rise.cs.berkeley.edu/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/rise.cs.berkeley.edu\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.8.13"}};
+			!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([10084,65039,8205,55357,56613],[10084,65039,8203,55357,56613])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='social-warfare-block-css-css'  href='https://rise.cs.berkeley.edu/wp-content/plugins/social-warfare/assets/js/post-editor/dist/blocks.style.build.css?ver=5.8.13' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://rise.cs.berkeley.edu/wp-includes/css/dist/block-library/style.min.css?ver=5.8.13' type='text/css' media='all' />
+<link rel='stylesheet' id='event-post-css'  href='https://rise.cs.berkeley.edu/wp-content/plugins/event-post/css/event-post.css?ver=1613432322' type='text/css' media='all' />
+<link rel='stylesheet' id='openlayers-css'  href='https://rise.cs.berkeley.edu/wp-content/plugins/event-post/css/openlayers.css?ver=1613432322' type='text/css' media='all' />
+<link rel='stylesheet' id='dashicons-css'  href='https://rise.cs.berkeley.edu/wp-includes/css/dashicons.min.css?ver=5.8.13' type='text/css' media='all' />
+<link rel='stylesheet' id='post-views-counter-frontend-css'  href='https://rise.cs.berkeley.edu/wp-content/plugins/post-views-counter/css/frontend.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='social_warfare-css'  href='https://rise.cs.berkeley.edu/wp-content/plugins/social-warfare/assets/css/style.min.css?ver=4.2.1' type='text/css' media='all' />
+<link rel='stylesheet' id='x-stack-css'  href='https://rise.cs.berkeley.edu/wp-content/themes/x/framework/css/dist/site/stacks/integrity-light.css?ver=4.6.4' type='text/css' media='all' />
+<link rel='stylesheet' id='x-child-css'  href='https://rise.cs.berkeley.edu/wp-content/themes/x-child/style.css?ver=4.6.4' type='text/css' media='all' />
+<link rel='stylesheet' id='x-google-fonts-css'  href='//fonts.googleapis.com/css?family=Maven+Pro%3A400%2C400italic%2C700%2C700italic&#038;subset=latin%2Clatin-ext&#038;ver=4.6.4' type='text/css' media='all' />
+<link rel='stylesheet' id='mediaelement-css'  href='https://rise.cs.berkeley.edu/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=4.2.16' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-mediaelement-css'  href='https://rise.cs.berkeley.edu/wp-includes/js/mediaelement/wp-mediaelement.min.css?ver=5.8.13' type='text/css' media='all' />
+<link rel='stylesheet' id='views-pagination-style-css'  href='https://rise.cs.berkeley.edu/wp-content/plugins/wp-views/embedded/res/css/wpv-pagination.css?ver=2.4.1' type='text/css' media='all' />
+<style id='views-pagination-style-inline-css' type='text/css'>
+.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-default > span.wpv-sort-list,.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-default .wpv-sort-list-item {border-color: #cdcdcd;}.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-default .wpv-sort-list-item a {color: #444;background-color: #fff;}.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-default a:hover,.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-default a:focus {color: #000;background-color: #eee;}.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-default .wpv-sort-list-item.wpv-sort-list-current a {color: #000;background-color: #eee;}.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-grey > span.wpv-sort-list,.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-grey .wpv-sort-list-item {border-color: #cdcdcd;}.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-grey .wpv-sort-list-item a {color: #444;background-color: #eeeeee;}.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-grey a:hover,.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-grey a:focus {color: #000;background-color: #e5e5e5;}.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-grey .wpv-sort-list-item.wpv-sort-list-current a {color: #000;background-color: #e5e5e5;}.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-blue > span.wpv-sort-list,.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-blue .wpv-sort-list-item {border-color: #0099cc;}.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-blue .wpv-sort-list-item a {color: #444;background-color: #cbddeb;}.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-blue a:hover,.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-blue a:focus {color: #000;background-color: #95bedd;}.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-blue .wpv-sort-list-item.wpv-sort-list-current a {color: #000;background-color: #95bedd;}
+</style>
+<link rel='stylesheet' id='x-shortcodes-css'  href='https://rise.cs.berkeley.edu/wp-content/plugins/x-shortcodes/css/integrity-light.css' type='text/css' media='all' />
+<link rel='stylesheet' id='js_composer_front-css'  href='https://rise.cs.berkeley.edu/wp-content/plugins/js_composer/assets/css/js_composer.min.css?ver=6.5.0' type='text/css' media='all' />
+<link rel='stylesheet' id='bfa-font-awesome-css'  href='//cdn.jsdelivr.net/fontawesome/4.7.0/css/font-awesome.min.css?ver=4.7.0' type='text/css' media='all' />
+<link rel='stylesheet' id='the-grid-css'  href='https://rise.cs.berkeley.edu/wp-content/plugins/the-grid/frontend/assets/css/the-grid.min.css?ver=2.2.0' type='text/css' media='all' />
+<style id='the-grid-inline-css' type='text/css'>
+.tolb-holder{background:rgba(0,0,0,0.8)}.tolb-holder .tolb-close,.tolb-holder .tolb-title,.tolb-holder .tolb-counter,.tolb-holder .tolb-next i,.tolb-holder .tolb-prev i{color:#ffffff}.tolb-holder .tolb-load{border-color:rgba(255,255,255,0.2);border-left:3px solid #ffffff}
+.to-heart-icon,.to-heart-icon svg,.to-post-like,.to-post-like .to-like-count{position:relative;display:inline-block}.to-post-like{width:auto;cursor:pointer;font-weight:400}.to-heart-icon{float:left;margin:0 4px 0 0}.to-heart-icon svg{overflow:visible;width:15px;height:14px}.to-heart-icon g{-webkit-transform:scale(1);transform:scale(1)}.to-heart-icon path{-webkit-transform:scale(1);transform:scale(1);transition:fill .4s ease,stroke .4s ease}.no-liked .to-heart-icon path{fill:#999;stroke:#999}.empty-heart .to-heart-icon path{fill:transparent!important;stroke:#999}.liked .to-heart-icon path,.to-heart-icon svg:hover path{fill:#ff6863!important;stroke:#ff6863!important}@keyframes heartBeat{0%{transform:scale(1)}20%{transform:scale(.8)}30%{transform:scale(.95)}45%{transform:scale(.75)}50%{transform:scale(.85)}100%{transform:scale(.9)}}@-webkit-keyframes heartBeat{0%,100%,50%{-webkit-transform:scale(1)}20%{-webkit-transform:scale(.8)}30%{-webkit-transform:scale(.95)}45%{-webkit-transform:scale(.75)}}.heart-pulse g{-webkit-animation-name:heartBeat;animation-name:heartBeat;-webkit-animation-duration:1s;animation-duration:1s;-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite;-webkit-transform-origin:50% 50%;transform-origin:50% 50%}.to-post-like a{color:inherit!important;fill:inherit!important;stroke:inherit!important}
+</style>
+<link rel='stylesheet' id='amrusers-css'  href='https://rise.cs.berkeley.edu/wp-content/plugins/amr-users/css/amrusersfront.css?ver=5.8.13' type='text/css' media='all' />
+<script type='text/javascript' src='https://rise.cs.berkeley.edu/wp-includes/js/jquery/jquery.min.js?ver=3.6.0' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://rise.cs.berkeley.edu/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<script type='text/javascript' src='https://rise.cs.berkeley.edu/wp-content/themes/x/framework/js/dist/site/x-head.min.js?ver=4.6.4' id='x-site-head-js'></script>
+<script type='text/javascript' src='https://rise.cs.berkeley.edu/wp-content/plugins/x-shortcodes/js/dist/site/x-shortcodes-head.min.js' id='x-shortcodes-site-head-js'></script>
+<link rel="https://api.w.org/" href="https://rise.cs.berkeley.edu/wp-json/" /><link rel="alternate" type="application/json" href="https://rise.cs.berkeley.edu/wp-json/wp/v2/pages/2" /><link rel='shortlink' href='https://rise.cs.berkeley.edu/' />
+<link rel="alternate" type="application/json+oembed" href="https://rise.cs.berkeley.edu/wp-json/oembed/1.0/embed?url=https%3A%2F%2Frise.cs.berkeley.edu%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://rise.cs.berkeley.edu/wp-json/oembed/1.0/embed?url=https%3A%2F%2Frise.cs.berkeley.edu%2F&#038;format=xml" />
+<style type="text/css">* Custom css for Access Category Password form */
+	.acpwd-container {
+	
+	}
+	
+	.acpwd-added-excerpt {
+	}
+	
+	.acpwd-info-message {
+	
+	}
+	
+	.acpwd-form {
+	
+	}
+	.acpwd-pass {
+	
+	}
+	
+	.acpwd-submit {
+	
+	}
+	
+	.acpwd-error-message {
+		color: darkred;
+	}</style><!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-108907429-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-108907429-1');
+</script>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i" rel="stylesheet">
+ <style> .ppw-ppf-input-container { background-color: !important; padding: px!important; border-radius: px!important; } .ppw-ppf-input-container div.ppw-ppf-headline { font-size: px!important; font-weight: !important; color: !important; } .ppw-ppf-input-container div.ppw-ppf-desc { font-size: px!important; font-weight: !important; color: !important; } .ppw-ppf-input-container label.ppw-pwd-label { font-size: px!important; font-weight: !important; color: !important; } div.ppwp-wrong-pw-error { font-size: px!important; font-weight: !important; color: #dc3232!important; background: !important; } .ppw-ppf-input-container input[type='submit'] { color: !important; background: !important; } .ppw-ppf-input-container input[type='submit']:hover { color: !important; background: !important; } .ppw-ppf-desc-below { font-size: px!important; font-weight: !important; color: !important; } </style> <meta property="og:image" content="https://rise.cs.berkeley.edu/wp-content/uploads/2017/01/riselab-at-uc-berkeley.jpg" />
+<style type="text/css" data-type="vc_custom-css">.blog-title {
+	font-size: 16px;
+	text-align: left;
+	text-transform: none !important;
+	margin-top: 24px;
+}
+.blog-title a {
+	color: #3C83C5 !important;
+}
+h1 {
+	padding-top: 5px;
+}
+h2 {
+	color: #000 !important;
+	text-align: center;
+	letter-spacing: .08em;
+	margin-top: 0;
+	text-transform: none;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold !important;
+}
+.sbhd3 h2 {
+	color: #000 !important;
+	text-align: center;
+	letter-spacing: .02em;
+	margin: 40px 0 0 0;
+	font-size: 21px;
+	text-transform: none;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold !important;
+}
+.tg-item-title {
+	text-align: left !important;
+}
+.homeh2 {
+	color: #000 !important;
+	text-align: left;
+	text-transform: none;
+	font-weight: 500;
+	letter-spacing: 0em;
+}
+.home-header {
+	width: 100%;
+	min-height: 580px;
+	margin: 0;
+	color: #fff;
+	background-position: top center;
+}
+
+@media (min-width: 768px) {
+    .home-header, .home-header .x-container {
+    display: flex;
+    align-items: center;
+    }
+}
+@media (max-width: 980px) {
+	.home-header {
+		padding-top: 2em;   
+	}
+}
+
+.home-preamble { font-size: 20px; font-style: italic; color: #fff; margin-top: 40px; }
+.home-preamble img { max-width: 60px; margin-right: 15px; }
+
+.home-header .center-body, .home-header .left-body { font-family: 'Montserrat', sans-serif; }
+.home-header .left-body { margin: 2% 10%; }
+
+.home-header h1 {
+	margin-top: 15px;
+	font-size: 36px;
+	line-height: 1;
+	font-weight: bold;
+}
+
+.home-header h4.left-body {
+	padding-left: 10%;
+	margin-bottom: 50px;
+}
+@media (min-width: 992px) {
+    .home-header h4.left-body {
+	padding-left: 0;
+    }
+}
+.home-header h4 {
+	padding: 0 15%;
+	font-size: 1.3em;
+	line-height: 1.5em;
+}
+.home-header .vc_column-inner {
+	padding: 0 15px;
+}
+h3 {
+	color: #000 !important;
+	text-transform: none !important;
+	font-size: 24px !important;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold !important;
+	margin-bottom: 30px !important;
+	margin-top: 0 !important;
+	padding-top: 0 !important;
+}
+.sponsor-container {
+	text-align: center;
+	margin: 20px auto;
+	width: 600px;
+	padding: 40px auto;
+}
+.sponsor-img {
+	display: inline-block;
+	float: left;
+}
+.extrapad {
+	margin-left: 200px;
+	margin-right: 200px;
+}
+
+.center-title {
+	font-size: 54px;
+	line-height: 54px;
+	text-align: center;
+	margin: 2% 10%;
+}
+.center-body {
+	text-align: center;
+	margin: 2% 10%;
+}
+@media (max-width: 480px) {
+	.mobile-center {
+		max-width: 480px;
+		margin: 0 auto !important;
+		padding: 0 auto !important;
+		float: center;
+	}
+	.home-preamble {
+		padding-top: 10px !important;
+	}
+	.center-title {
+		font-size: 36px !important;
+		line-height: 35px;
+	}
+	h1 {
+		padding-top: 10px !important;
+		font-size: 30px;
+		line-height: 31px;
+	}
+	h4 {
+		font-size: 14px !important;
+		line-height: 17px !important;
+	}
+}
+
+.home-logo, .home-logo2 {
+	max-width: 105px;
+	padding: 0 5px;
+	margin: 0 30px !important;
+}
+.wpb_single_image.wpb_content_element.vc_align_left {
+	max-width: 140px;
+	float: left;
+	margin: 0 18px;
+}
+.logo-bar {
+	width: 100%;
+	padding: 0 auto !important;
+	margin: 0 !important;
+}
+.logo-bar2 {
+	width: 100%;
+	padding: 0 auto !important;
+	margin: 0 !important;
+}
+
+
+#x-content-band-2 {
+	padding: 20px auto !important;
+	margin: 0 !important;
+}
+#x-content-band-4 {
+	padding: 0 auto 0 auto !important;
+}
+#x-content-band-6 {
+	padding: 40px auto 0 auto !important;
+}
+
+#x-content-band-3  .x-content-band {
+	margin-top: -20px !important;
+	padding: 0 !important;
+}
+.sample-article {
+	padding-top: 0 !important;
+}
+
+.home-logo-nsf {
+		margin: 0 auto !important;
+		width: 180px;
+		text-align: center !important;
+}
+
+.nsf-bar {
+		padding: 0 auto !important;
+		margin: 0 auto !important;
+		text-align: center;
+}
+
+@media screen and (max-width: 768px){
+    .home-preamble img {
+        margin: 1em 70% 0 30%;   
+    }
+
+	.home-logo {
+		width: 110px !important;
+		padding: 0 !important;
+		margin: 0 21px !important;
+	}
+	.home-logo2 {
+		width: 110px !important;
+		padding: 0 !important;
+		margin: 0 21px !important;
+	}
+	.nsf-bar {
+		padding: 0 auto !important;
+		margin: 0 auto !important;
+		text-align: center;
+	}
+	.home-logo-nsf {
+		margin: 0 80px !important;
+		width: 170px;
+		text-align: center !important;
+	}
+}
+
+@media screen and (min-width: 768px) and (max-width: 1170px){
+.home-header h1 {
+   font-size: 28px; 
+}
+.home-header .left-body {
+    margin: 2%;  
+}
+}</style><noscript><style> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript><style id="x-generated-css" type="text/css">a,h1 a:hover,h2 a:hover,h3 a:hover,h4 a:hover,h5 a:hover,h6 a:hover,.x-topbar .p-info a:hover,.x-breadcrumb-wrap a:hover,.widget ul li a:hover,.widget ol li a:hover,.widget.widget_text ul li a,.widget.widget_text ol li a,.widget_nav_menu .current-menu-item > a,.x-widgetbar .widget ul li a:hover,.x-accordion-heading .x-accordion-toggle:hover,.x-comment-author a:hover,.x-comment-time:hover,.x-recent-posts a:hover .h-recent-posts{color:#3c83c5;}a:hover,.widget.widget_text ul li a:hover,.widget.widget_text ol li a:hover,.x-twitter-widget ul li a:hover{color:#3c83c5;}.rev_slider_wrapper,a.x-img-thumbnail:hover,.x-slider-container.below,.page-template-template-blank-3-php .x-slider-container.above,.page-template-template-blank-6-php .x-slider-container.above{border-color:#3c83c5;}.entry-thumb:before,.x-pagination span.current,.flex-direction-nav a,.flex-control-nav a:hover,.flex-control-nav a.flex-active,.mejs-time-current,.x-dropcap,.x-skill-bar .bar,.x-pricing-column.featured h2,.h-comments-title small,.x-entry-share .x-share:hover,.x-highlight,.x-recent-posts .x-recent-posts-img:after{background-color:#3c83c5;}.x-nav-tabs > .active > a,.x-nav-tabs > .active > a:hover{box-shadow:inset 0 3px 0 0 #3c83c5;}.x-main{width:69.536945%;}.x-sidebar{width:25.536945%;}.x-topbar{background-color:transparent;}.x-topbar .p-info,.x-topbar .p-info a,.x-navbar .desktop .x-nav > li > a,.x-navbar .desktop .sub-menu a,.x-navbar .mobile .x-nav li > a,.x-breadcrumb-wrap a,.x-breadcrumbs .delimiter{color:#ffffff;}.x-navbar .desktop .x-nav > li > a:hover,.x-navbar .desktop .x-nav > .x-active > a,.x-navbar .desktop .x-nav > .current-menu-item > a,.x-navbar .desktop .sub-menu a:hover,.x-navbar .desktop .sub-menu .x-active > a,.x-navbar .desktop .sub-menu .current-menu-item > a,.x-navbar .desktop .x-nav .x-megamenu > .sub-menu > li > a,.x-navbar .mobile .x-nav li > a:hover,.x-navbar .mobile .x-nav .x-active > a,.x-navbar .mobile .x-nav .current-menu-item > a{color:#3c83c5;}.x-navbar{background-color:transparent;}.x-navbar .desktop .x-nav > li > a:hover,.x-navbar .desktop .x-nav > .x-active > a,.x-navbar .desktop .x-nav > .current-menu-item > a{box-shadow:inset 0 4px 0 0 #3c83c5;}.x-navbar .desktop .x-nav > li > a{height:80px;padding-top:32px;}.x-navbar .desktop .x-nav > li ul{top:65px;;}.x-comment-author,.x-comment-time,.comment-form-author label,.comment-form-email label,.comment-form-url label,.comment-form-rating label,.comment-form-comment label,.widget_calendar #wp-calendar caption,.widget.widget_rss li .rsswidget{font-family:Maven Pro;font-weight:400;text-transform:uppercase;}.p-landmark-sub,.p-meta,input,button,select,textarea{font-family:Maven Pro;}.widget ul li a,.widget ol li a,.x-comment-time{color:#000000;}.widget_text ol li a,.widget_text ul li a{color:#3c83c5;}.widget_text ol li a:hover,.widget_text ul li a:hover{color:#3c83c5;}.comment-form-author label,.comment-form-email label,.comment-form-url label,.comment-form-rating label,.comment-form-comment label,.widget_calendar #wp-calendar th,.p-landmark-sub strong,.widget_tag_cloud .tagcloud a:hover,.widget_tag_cloud .tagcloud a:active,.entry-footer a:hover,.entry-footer a:active,.x-breadcrumbs .current,.x-comment-author,.x-comment-author a{color:#272727;}.widget_calendar #wp-calendar th{border-color:#272727;}.h-feature-headline span i{background-color:#272727;}@media (max-width:979px){}body{font-size:14px;font-style:normal;font-weight:400;color:#000000;background-color:#ffffff;}a:focus,select:focus,input[type="file"]:focus,input[type="radio"]:focus,input[type="submit"]:focus,input[type="checkbox"]:focus{outline:thin dotted #333;outline:5px auto #3c83c5;outline-offset:-1px;}h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{font-family:"Maven Pro",sans-serif;font-style:normal;font-weight:400;text-transform:uppercase;}h1,.h1{letter-spacing:-0.01em;}h2,.h2{letter-spacing:-0.01em;}h3,.h3{letter-spacing:-0.01em;}h4,.h4{letter-spacing:-0.01em;}h5,.h5{letter-spacing:-0.01em;}h6,.h6{letter-spacing:-0.035em;}.w-h{font-weight:400 !important;}.x-container.width{width:88%;}.x-container.max{max-width:1200px;}.x-main.full{float:none;display:block;width:auto;}@media (max-width:979px){.x-main.full,.x-main.left,.x-main.right,.x-sidebar.left,.x-sidebar.right{float:none;display:block;width:auto !important;}}.entry-header,.entry-content{font-size:14px;}body,input,button,select,textarea{font-family:"Maven Pro",sans-serif;}h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6,h1 a,h2 a,h3 a,h4 a,h5 a,h6 a,.h1 a,.h2 a,.h3 a,.h4 a,.h5 a,.h6 a,blockquote{color:#272727;}.cfc-h-tx{color:#272727 !important;}.cfc-h-bd{border-color:#272727 !important;}.cfc-h-bg{background-color:#272727 !important;}.cfc-b-tx{color:#000000 !important;}.cfc-b-bd{border-color:#000000 !important;}.cfc-b-bg{background-color:#000000 !important;}.x-navbar-inner{min-height:80px;}.x-brand{margin-top:10px;font-family:"Maven Pro",sans-serif;font-size:42px;font-style:normal;font-weight:700;letter-spacing:-0.035em;color:#272727;}.x-brand:hover,.x-brand:focus{color:#272727;}.x-brand img{width:190px;}.x-navbar .x-nav-wrap .x-nav > li > a{font-family:"Maven Pro",sans-serif;font-style:normal;font-weight:400;letter-spacing:0.085em;text-transform:uppercase;}.x-navbar .desktop .x-nav > li > a{font-size:12px;}.x-navbar .desktop .x-nav > li > a:not(.x-btn-navbar-woocommerce){padding-left:20px;padding-right:20px;}.x-navbar .desktop .x-nav > li > a > span{margin-right:-0.085em;}.x-btn-navbar{margin-top:20px;}.x-btn-navbar,.x-btn-navbar.collapsed{font-size:24px;}@media (max-width:979px){.x-widgetbar{left:0;right:0;}}.x-btn,.button,[type="submit"]{color:#ffffff;border-color:#f8b614;background-color:#f8b614;text-shadow:0 0.075em 0.075em rgba(0,0,0,0.5);border-radius:0.25em;}.x-btn:hover,.button:hover,[type="submit"]:hover{color:#ffffff;border-color:#f8b614;background-color:#f8b614;text-shadow:0 0.075em 0.075em rgba(0,0,0,0.5);}.x-btn.x-btn-real,.x-btn.x-btn-real:hover{margin-bottom:0.25em;text-shadow:0 0.075em 0.075em rgba(0,0,0,0.65);}.x-btn.x-btn-real{box-shadow:0 0.25em 0 0 #a71000,0 4px 9px rgba(0,0,0,0.75);}.x-btn.x-btn-real:hover{box-shadow:0 0.25em 0 0 #a71000,0 4px 9px rgba(0,0,0,0.75);}.x-btn.x-btn-flat,.x-btn.x-btn-flat:hover{margin-bottom:0;text-shadow:0 0.075em 0.075em rgba(0,0,0,0.65);box-shadow:none;}.x-btn.x-btn-transparent,.x-btn.x-btn-transparent:hover{margin-bottom:0;border-width:3px;text-shadow:none;text-transform:uppercase;background-color:transparent;box-shadow:none;}
+      /*
+      // Base styles.
+      */
+
+      .x-content-dock {
+        position: fixed;
+        bottom: 0;
+        border: 1px solid ;
+        border-bottom: 0;
+        padding: 30px;
+        background-color: ;
+        z-index: 1050;
+        -webkit-transition: all 0.5s ease;
+                transition: all 0.5s ease;
+        -webkit-transform: translate3d(0, 0, 0);
+            -ms-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+              }
+
+
+      /*
+      // Headings.
+      */
+
+      .x-content-dock h1,
+      .x-content-dock h2,
+      .x-content-dock h3,
+      .x-content-dock h4,
+      .x-content-dock h5,
+      .x-content-dock h6 {
+        color:  !important;
+      }
+
+
+      /*
+      // Links.
+      */
+
+      .x-content-dock a:not(.x-btn):not(.x-recent-posts a) {
+        color:  !important;
+      }
+
+      .x-content-dock a:not(.x-btn):not(.x-recent-posts a):hover {
+        color:  !important;
+      }
+
+
+      /*
+      // Widget styles.
+      */
+
+      .x-content-dock .widget {
+        text-shadow: none;
+        color:  !important;
+      }
+
+      .x-content-dock .widget:before {
+        display: none;
+      }
+
+      .x-content-dock .h-widget {
+        margin: 0 0 0.5em;
+        font-size: 1.65em;
+        line-height: 1.2;
+      }
+
+
+      /*
+      // Close.
+      */
+
+      .x-close-content-dock {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 12px;
+        line-height: 1;
+        text-decoration: none;
+      }
+
+      .x-close-content-dock span {
+        color:  !important;
+        -webkit-transition: color 0.3s ease;
+                transition: color 0.3s ease;
+      }
+
+      .x-close-content-dock:hover span {
+        color:  !important;
+      }
+
+
+      /*
+      // Responsive.
+      */
+
+      @media (max-width: 767px) {
+        .x-content-dock {
+          display: none;
+        }
+      }
+
+  .page-id-377 .post-views {
+color:#000 !important;
+margin: -16px 0 10px 15px;
+}
+.page-id-377 .post-views-label {
+font-size: 12px;
+	line-height: 24px;
+}
+
+.post-views-label {
+color:#000 !important;
+}
+.post-views-count {
+color:#000 !important;
+}
+.page-id-377 .post-views-icon {
+display:none;
+visibility:hidden;
+}
+
+.x-social-global {
+display:none;visibility:hidden;
+}
+.x-nav a {
+padding-left:12px !important;
+padding-right:12px !important;
+
+}
+@media (min-width:970px) and (max-width:1070px) {
+.x-nav a {
+padding-left:5px !important;
+padding-right:5px !important;
+
+}
+}
+@media (min-width: 980px) {
+    .x-navbar .x-nav>li:nth-child(9) a {
+        border: 1px solid #fff;
+        padding:6px 3px;
+        margin-top: 25px;
+	max-height: 27px;
+        border-radius: 1px;
+        box-shadow: none !important;
+    }
+
+}
+.nc_socialPanel {
+  padding-right:60%;
+  margin-top:60px !important;
+}
+
+h1 {
+color:#fff;
+font-size:28px;
+letter-spacing:.06em;
+}
+@media screen and (min-width: 624px) and (max-width: 844px) {
+h1 {
+font-size:20px;
+
+}
+}
+@media screen and (max-width: 623px)  {
+h1 {
+font-size:16px;
+margin-bottom:40px;
+}
+}
+h2 {
+color:#fff;
+}
+p {
+  font-size:14px;
+   line-height:19px;
+}
+h3 {
+color:#0e407f;
+margin-bottom:10px;
+font-size:21px;
+font-weight:500;
+}
+h4 {
+  color:#fff;
+font-size:1.1em;
+letter-spacing:.1em;
+line-height:19px;
+  font-family: 'Architects Daughter', cursive;
+}
+h6 {
+  color:#aaa;
+  margin-bottom:30px;
+  text-transform:uppercase;
+  font-weight:700;
+  letter-spacing:.05em;
+}
+h1, h2, h3 {
+ a {
+    color:#468bc6 !important;
+    text-decoration:none;
+ }
+}
+.x-topbar a {
+color:#fff;
+}
+.x-topbar { 
+border-bottom: 1px solid #041e41;
+  color:#fff;
+  background-color: #041e41;
+  min-height:28px !important;
+ margin:0;
+padding:6px 0 0 0;
+font-size:10px;
+letter-spacing:.02em;
+text-transform:uppercase !important;
+}
+.x-btn {
+	color:#000;
+}
+.maxwidth {
+    padding:0 10%;
+}
+
+.standardize-sponsor-logo {
+    max-width:130px;
+    margin-right:30px !important;
+}
+@media screen and (max-width:468px) {
+.maxwidth .standardize-sponsor-logo {
+    max-width:100px !important;
+margin-left:10px;
+margin-right:10px;
+}
+}
+.x-container {
+  -webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+.x-colophon {
+  -webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+border:none;
+}
+
+.x-main {
+  -webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+.entry-wrap {
+  -webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+   background-color:transparent; 
+padding-left:0;
+}
+.entry-info {
+width:85% !important;
+
+}
+.single-post {
+  background-color:#fff;
+}
+
+.single-post p {
+  font-size:15px;
+line-height:1.6em;
+}
+.single-post h1 {
+  margin-bottom:60px;
+}
+
+#circle {
+    background: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color:#000;
+  border-style: solid;
+    border-width: 3px;
+
+}
+.innerTEXT{
+    position:absolute;
+    top:13px;
+    left:15px;
+}
+.menuicon {
+  font-size:20px;
+}
+.vc_grid-filter {
+  padding-bottom:50px;
+}
+
+.entry-featured {
+display:none;
+visibility:hidden;
+}
+.single-x-portfolio .cf {
+padding:20px 0;
+}
+.single-x-portfolio .entry-header {
+padding-bottom:60px;
+padding-top:80px;
+}
+.single-x-portfolio h1 {
+   color:#000;
+  text-transform:none;
+  letter-spacing:0;
+  font-size:34px !important;
+margin-bottom:60px;
+
+}
+.single-x-portfolio .masthead {
+   background-color:#0e407f !important;
+height:80px;
+}
+
+
+
+
+
+.single-course .masthead {
+/*
+background-image:url(/wp-content/uploads/2017/01/riselab-demo-image1.jpg);*/
+background-image:url(https://rise.cs.berkeley.edu/wp-content/uploads/2018/03/risebg.jpg);
+background-position:center center;
+background-color: transparent; padding-bottom: 20px;
+   background-color:#0e407f !important;
+height:120px;
+}
+
+.single-course .cf {
+padding:20px 0;
+}
+.single-course .entry-header {
+padding-bottom:60px;
+padding-top:80px;
+}
+
+.single-event .x-navbar{
+box-shadow:none;
+-moz-box-shadow:none;
+-webkit-box-shadow:none;
+border:none;
+/*
+background-image:url(/wp-content/uploads/2017/01/riselab-demo-image1.jpg);*/
+background-image:url(https://rise.cs.berkeley.edu/wp-content/uploads/2018/03/risebg.jpg);
+background-position:center center;
+min-height:100px;
+margin-bottom:100px;
+}
+
+.single-course .x-navbar{
+box-shadow:none;
+-moz-box-shadow:none;
+-webkit-box-shadow:none;
+border:none;
+/*
+background-image:url(/wp-content/uploads/2017/01/riselab-demo-image1.jpg);*/
+background-image:url(https://rise.cs.berkeley.edu/wp-content/uploads/2018/03/risebg.jpg);
+background-position:center center;
+min-height:100px;
+margin-bottom:100px;
+}
+
+.single-course h1 {
+   /*color:#0e407f !important;
+  text-transform:none;
+  letter-spacing:-.03em !important;
+  font-size:46px !important;
+padding-top:40px;
+margin-bottom:60px;*/
+color:#000;
+text-transform:none !important;
+letter-spacing:0;
+font-size:44px;
+}
+
+.single-course .x-main {
+padding-top:60px;
+}
+.single-course h2 {
+color:#000;
+font-size:24px;
+margin: 40px 0 10px 0;
+text-transform:none;
+font-weight:500;
+}
+
+.single-course h3 {
+color:#000;
+font-size:21px;
+margin: 40px 0 10px 0;
+text-transform:none;
+font-weight:500;
+}
+
+.single-course ol {
+font-size:15px !important;
+}
+.single-course ol p {
+  font-size:15px;
+line-height:1.6em;
+}
+
+/*
+
+.page-id-377 .tg-item-title {
+text-transform:none;
+font-size:24px;
+}
+.page-id-377 .tg-item-excerpt {
+color:#000 !important;
+margin:10px 0;
+font-size:16px;
+line-height:1.3em;
+}*/
+.single-event .detail-link {
+font-size: 1.2em;
+line-height: 1.8em;
+text-transform:uppercase;
+letter-spacing:.03em;
+}
+.single-course .detail-link {
+font-size: 1.2em;
+line-height: 1.8em;
+text-transform:uppercase;
+letter-spacing:.03em;
+}
+
+
+
+
+
+.single-event .cf {
+padding:20px 0;
+}
+.single-event .entry-header {
+padding-bottom:60px;
+padding-top:80px;
+}
+.single-event h1 {
+/*   color:#0e407f !important;
+  text-transform:none;
+  letter-spacing:-.03em !important;
+  font-size:46px !important;
+padding-top:40px;
+margin-bottom:60px;*/
+color:#000;
+text-transform:none !important;
+letter-spacing:0;
+font-size:44px;
+padding-bottom:40px !important;
+}
+.single-event .masthead {
+   background-color:#0e407f !important;
+height:120px;
+}
+.single-event .x-main {
+padding-top:60px;
+}
+.single-event h2 {
+color:#000;
+font-size:24px;
+margin: 40px 0 10px 0;
+text-transform:none;
+font-weight:500;
+}
+
+.single-event h3 {
+color:#000;
+font-size:21px;
+margin: 40px 0 10px 0;
+text-transform:none;
+font-weight:500;
+}
+.single-event ol {
+font-size:15px !important;
+}
+.single-event ol p {
+  font-size:15px;
+line-height:1.6em;
+}
+
+.single-x-portfolio .x-navbar{
+box-shadow:none;
+-moz-box-shadow:none;
+-webkit-box-shadow:none;
+border:none;
+/*
+background-image:url(/wp-content/uploads/2017/01/riselab-demo-image1.jpg);*/
+background-image:url(/wp-content/uploads/2018/03/risebg.jpg);
+min-height:100px;
+margin-bottom:100px;
+}
+
+
+.single-projects .x-navbar{
+box-shadow:none;
+-moz-box-shadow:none;
+-webkit-box-shadow:none;
+border:none;
+/*
+background-image:url(/wp-content/uploads/2017/01/riselab-demo-image1.jpg);*/
+background-image:url(https://rise.cs.berkeley.edu/wp-content/uploads/2018/03/risebg.jpg);
+background-position:center center;
+min-height:100px;
+margin-bottom:100px;
+}
+
+.single-publication .x-navbar{
+box-shadow:none;
+-moz-box-shadow:none;
+-webkit-box-shadow:none;
+border:none;
+/*
+background-image:url(/wp-content/uploads/2017/01/riselab-demo-image1.jpg);*/
+background-image:url(https://rise.cs.berkeley.edu/wp-content/uploads/2018/03/risebg.jpg);
+background-position:center center;
+
+min-height:100px;
+margin-bottom:100px;
+}
+
+.single-publication .cf {
+padding:20px 0;
+}
+.single-publication .entry-header {
+padding-bottom:60px;
+padding-top:80px;
+}
+.single-publication h1 {
+   color:#000 !important;
+  text-transform:none;
+  letter-spacing:0;
+  font-size:34px !important;
+margin-bottom:60px;
+}
+.single-publication .masthead {
+   background-color:#0e407f !important;
+height:80px;
+}
+.category-news h1 {
+   color:#000;
+  text-transform:none;
+  letter-spacing:0;
+  font-size:34px !important;
+margin-bottom:60px;
+}
+
+.category-news h3 {
+   color:#000 !important;
+  text-transform:capitalize;
+  letter-spacing:0;
+  font-size:1.2em;
+  margin-top:34px;
+  a {
+   color:#468bc6 !important;
+   text-decoration:none;
+   }
+}
+.category-news p {
+   color:#000 !important;
+  font-size:15px !important;
+   line-height:1.8em;
+}
+.category-news div {
+   color:#000;
+  font-size:15px !important;
+   line-height:1.8em;
+}
+
+
+
+/* author */
+.author .profile-name {
+padding-top:50px;
+color:#000;
+font-weight:200;
+text-transform:capitalize;
+font-size:44px;
+}
+.author .profile-desc {
+padding:10px 0;
+}
+.author .entry-header {
+padding-bottom:0;
+padding-top:0;
+}
+.author-archive-title {
+letter-spacing:.1em;
+color:#000;
+font-weight:300;
+font-size:18px;
+color:#ccc;
+padding-top:40px !important;
+}
+.author .entry-footer {
+display:none;
+visibility:hidden;
+}
+.author article {
+margin:0;
+}
+.author .entry-wrap {
+padding:20px 0;
+}
+.author .entry-title {
+   color:#000 !important;
+  text-transform:none;
+  letter-spacing:0;
+  font-size:18px !important;
+text-transform:capitalize !important;
+}
+.author .entry-title a:link {
+color:#163261;
+}
+.author .entry-title a:visited {
+color:#163261;
+}
+.author .masthead {
+   background-color:#0e407f !important;
+height:80px;
+}
+.author .entry-content {
+display:none;
+visibility:hidden;
+}
+
+.h-about-the-author {
+display:none;
+visibility:hidden;
+}
+.x-author-box {
+margin-top:100px;
+margin-bottom:60px;
+}
+.last_name {
+display:none;
+visibility:hidden;
+
+}
+.h-author{
+color:#000;
+font-size:44px;
+font-weight:300;
+font-family: "Maven Pro",sans-serif;
+text-transform:capitalize;
+letter-spacing:.0em;
+margin-left:0;
+}
+.x-author-box img {
+display:inline-block;
+float:left;
+border-radius: 50%;
+}
+.x-author-info {
+display:inline-block;
+float:left;
+margin-left:0 !important;
+}
+
+
+
+.floatperson {
+    text-align:center;
+    padding:0 40px 40px 40px;
+    display:inline-block;
+    width:240px;
+    height:280px;
+    float:left;
+}
+.personname {
+    margin-bottom:0;
+    font-weight:400;
+    line-height:1em;
+}
+.personemail {
+    line-height:1.6em;
+    margin:14px auto 0 auto;
+    font-size:.8em;
+}
+.floatperson img {
+    margin-bottom:20px;
+}
+.x-navbar{
+box-shadow:none;
+-moz-box-shadow:none;
+-webkit-box-shadow:none;
+border:none;
+}
+.x-main {
+margin-top:-80px;
+}
+
+div#categories-2 {
+display:none;
+visibility:hidden;
+}
+div#archives-2 {
+display:none;
+visibility:hidden;
+}
+div#recent-comments-2 {
+display:none;
+visibility:hidden;
+}
+div#meta-2 {
+display:none;
+visibility:hidden;
+}
+div#recent-posts-2 {
+display:none;
+visibility:hidden;
+}
+
+.single-post .x-main {
+
+padding-top:60px;
+}
+.single-post h2 {
+color:#000;
+font-size:24px;
+margin: 40px 0 10px 0;
+text-transform:none;
+font-weight:500;
+}
+
+.single-post .masthead {
+/*
+background-image:url(/wp-content/uploads/2017/01/riselab-demo-image1.jpg);*/
+background-image:url(https://rise.cs.berkeley.edu/wp-content/uploads/2018/03/risebg.jpg);
+background-position:center center; background-color: transparent; padding-bottom: 20px;
+}
+.single-post h1 {
+   color:#000 !important;
+  text-transform:none;
+  letter-spacing:0;
+  font-size:34px !important;
+margin-bottom:60px;
+}
+
+.single-post h3 {
+   color:#000 !important;
+}
+
+.single-post .p-meta {
+    font-size: 85.7% !important;
+    line-height: 1.5 !important;
+    margin: 8px 0 0 !important;
+    text-transform: uppercase !important;
+}
+.single-post .entry-header {
+padding-bottom:40px;
+
+}
+.single-post ol {
+font-size:15px !important;
+}
+.single-post ol p {
+  font-size:15px;
+line-height:1.6em;
+}
+
+#comments {
+visibility:hidden;
+display:none;
+}
+.tg-grid-holder {
+float:center;
+}
+.tg-layout-grid {
+float:center;
+}
+.tg-item {
+float:center  !important;
+}
+
+
+@media (max-width: 979px) {
+    .x-navbar {
+        background-color: #002363;
+    }
+.x-btn-navbar {
+        background-color: #002363 !important;
+box-shadow: none !important;
+color:#fff !important;
+}
+h4 {
+margin-top:30px !important; 
+margin-left:0 !important;
+margin-right:0 !important;
+}
+h1 {
+margin-top:60px;
+font-size:40px;
+text-transform:none !Important;
+letter-spacing:0 !important;
+}
+.nc_socialPanel {
+  padding-right:0;
+  margin-top:60px !important;
+}
+.single-post h1 {
+font-size:40px;
+margin-bottom:20px;
+}
+
+.maxwidth {
+    padding:0 40px 0 10px;
+}
+}
+
+@media (max-width: 480px) {
+    h1 {
+    margin-top:90px;
+    font-size:40px;
+text-transform:none !Important;
+letter-spacing:0 !important;
+    }
+.page-id-41 .tg-item-title {
+line-height:1.1em !important;
+font-size:32px !important;
+padding-top:0 !important;
+}
+.page-id-41 .tg-item-excerpt {
+padding-top:0 !important;
+padding-right:160px !important;
+}
+.page-id-377 .tg-item-title {
+line-height:1.1em !important;
+font-size:32px !important;
+padding-top:0 !important;
+}
+.page-id-377 .tg-item-excerpt {
+padding-top:0 !important;
+padding-right:160px !important;
+}
+
+.page-id-51 .tg-item-title {
+line-height:1.1em !important;
+font-size:32px !important;
+padding-top:0 !important;
+}
+.page-id-51 .tg-item-excerpt {
+padding-top:0 !important;
+padding-right:160px !important;
+}
+
+.page-id-377 .tg-item-title {
+line-height:1.05em !important;
+font-size:32px !important;
+padding-top:0 !important;
+}
+.page-id-377 .tg-item-excerpt {
+}
+.nc_socialPanel {
+  padding-right:0;
+  margin-top:60px !important;
+}
+}
+.p-meta span:nth-child(3n) {
+display:none !important;
+visibility:hidden !important;
+}
+
+.p-meta span:nth-child(4n) {
+display:none !important;
+visibility:hidden !important;
+}
+
+._sort_order {
+display:none !important;
+visibility:hidden !important;
+}
+.sort_order {
+display:none !important;
+visibility:hidden !important;
+}
+
+.single-publication .x-main {
+padding-top:20px;
+}
+.single-publication h2 {
+color:#000;
+font-size:24px;
+margin: 40px 0 10px 0;
+text-transform:none;
+font-weight:500;
+}
+.single-publication ol {
+font-size:15px !important;
+}
+.single-publication ol p {
+  font-size:15px;
+line-height:1.6em;
+}
+.p-info {
+display:none;visibility:hidden;
+}
+.menu-item .x-btn-navbar-search{
+display:none;
+}
+.topbar-addons {
+font-size:10px !important;
+margin-top:2px;
+}
+
+.topbar-addons a {
+font-size:10px !important;
+margin-top:2px;
+}
+
+.author .masthead {
+/*
+background-image:url(/wp-content/uploads/2017/01/riselab-demo-image1.jpg);*/
+background-image:url(https://rise.cs.berkeley.edu/wp-content/uploads/2018/03/risebg.jpg);
+background-position:center center;
+background-color: transparent; padding-bottom: 20px;
+   background-color:#0e407f !important;
+height:120px;
+}
+
+.author .cf {
+padding:20px 0;
+}
+.author .entry-header {
+padding-bottom:60px;
+padding-top:80px;
+}
+.single-x-portfolio .entry-header {
+margin-bottom:0;
+padding-bottom:0;
+margin-top:40px;
+}
+.single-x-portfolio .entry-wrap {
+margin-bottom:0;
+padding-bottom:0;
+}
+.single-x-portfolio .floatperson {
+margin-bottom:0 !important;
+padding-bottom:0 !important;
+height:240px;
+}
+.single-x-portfolio .cir {
+-webkit-border-radius: 50%;-moz-border-radius: 50%;-ms-border-radius: 50%;-o-border-radius: 50%; border-radius: 50%;
+width:150px;
+height:150px;
+overflow:hidden;
+}
+.single-x-portfolio .floatperson img {
+margin-top:0;
+width: 158px;
+
+}
+
+.page-id-377 .tg-item-author a:link {
+  color:#3c83c5 !important;
+}
+
+.page-id-377 .tg-item-author a:visited {
+  color:#3c83c5 !important;
+}
+
+.page-id-377 .tg-item-author a:hover {
+  color:#3c83c5 !important;
+}
+</style></head>
+
+<body class="home page-template page-template-template-blank-4 page-template-template-blank-4-php page page-id-2 x-integrity x-integrity-light x-navbar-static-active x-full-width-layout-active x-full-width-active x-portfolio-meta-disabled wpb-js-composer js-comp-ver-6.5.0 vc_responsive x-v4_6_4 x-child-theme-active x-shortcodes-v2_4_0">
+
+  
+  <div id="top" class="site">
+
+  
+  
+  <header class="masthead masthead-inline" role="banner">
+    
+
+  <div class="x-topbar">
+    <div class="x-topbar-inner x-container max width">
+            <p class="p-info"><div style="float:right;"><a href="https://twitter.com/ucbrise" target="_blank"><img src="https://rise.cs.berkeley.edu/wp-content/uploads/2017/10/rise-lab-tiny-social-icon-twitter.png" style="margin-right:10px;margin-top:-3px;"></a><a href="https://www.facebook.com/UCBRISELab/" target="_blank"><img src="https://rise.cs.berkeley.edu/wp-content/uploads/2017/10/rise-lab-tiny-social-icon-facebook.png" style="margin-right:10px;margin-top:-3px;"></a><a href="https://www.youtube.com/c/UCBRISELab/playlists?view_as=subscriber" target="_blank"><img src="https://rise.cs.berkeley.edu/youtube-icontop/" style="margin-right:10px;margin-top:-3px;"></a><a href="https://medium.com/riselab" target="_blank"><img src="https://rise.cs.berkeley.edu/wp-content/uploads/2020/10/Medium-logo-white-xs.png" style="margin-right:20px;margin-top:-3px;"></a><a href="/wp-admin">Login</a>    <a href="/contact">Contact Us</a>    <a href="#" class="x-btn-navbar-search"><span><i class="x-icon-search" data-x-icon="" aria-hidden="true"></i><span class="x-hidden-desktop"> Search</span></span></a></div></p>
+            <div class="x-social-global"><a href="https://www.facebook.com/UCBRISELab/" class="facebook" title="Facebook" target="_blank"><i class="x-icon-facebook-square" data-x-icon="&#xf082;" aria-hidden="true"></i></a><a href="https://twitter.com/ucbrise" class="twitter" title="Twitter" target="_blank"><i class="x-icon-twitter-square" data-x-icon="&#xf081;" aria-hidden="true"></i></a></div>    </div>
+  </div>
+
+    
+
+  <div class="x-navbar-wrap">
+    <div class="x-navbar">
+      <div class="x-navbar-inner">
+        <div class="x-container max width">
+          
+<h1 class="visually-hidden">RISE Lab</h1>
+<a href="https://rise.cs.berkeley.edu/" class="x-brand img" title="REAL-TIME INTELLIGENT SECURE EXECUTION">
+  <img src="//rise.cs.berkeley.edu/wp-content/uploads/2019/12/riselab-website-logo-with-white-and-strokes.png" alt="REAL-TIME INTELLIGENT SECURE EXECUTION"></a>           
+<a href="#" class="x-btn-navbar collapsed" data-toggle="collapse" data-target=".x-nav-wrap.mobile">
+  <i class="x-icon-bars" data-x-icon="&#xf0c9;"></i>
+  <span class="visually-hidden">Navigation</span>
+</a>
+
+<nav class="x-nav-wrap desktop" role="navigation" >
+<ul id="menu-main-menu" class="x-nav"><li id="menu-item-2690" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-2690"><a href="https://rise.cs.berkeley.edu" aria-current="page" data-ps2id-api="true"><span>Home</span></a></li>
+<li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="https://rise.cs.berkeley.edu/people/" data-ps2id-api="true"><span>People</span></a></li>
+<li id="menu-item-46" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-46"><a href="https://rise.cs.berkeley.edu/projects/" data-ps2id-api="true"><span>Projects</span></a></li>
+<li id="menu-item-235" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-235"><a href="https://rise.cs.berkeley.edu/publications/" data-ps2id-api="true"><span>Publications</span></a></li>
+<li id="menu-item-399" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-399"><a href="https://rise.cs.berkeley.edu/sponsors/" data-ps2id-api="true"><span>Sponsors</span></a></li>
+<li id="menu-item-4698" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4698"><a href="http://dare.berkeley.edu" data-ps2id-api="true"><span>DARE</span></a></li>
+<li id="menu-item-1323" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1323"><a href="https://rise.cs.berkeley.edu/academics/" data-ps2id-api="true"><span>Academics</span></a></li>
+<li id="menu-item-492" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-492"><a href="https://rise.cs.berkeley.edu/news/" data-ps2id-api="true"><span>News</span></a></li>
+<li id="menu-item-1330" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1330"><a href="https://rise.cs.berkeley.edu/events/" data-ps2id-api="true"><span>Events</span></a></li>
+<li id="menu-item-3644" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3644"><a href="http://risecamp.berkeley.edu" data-ps2id-api="true"><span>RISE Camp</span></a></li>
+<li id="menu-item-382" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-382"><a href="https://rise.cs.berkeley.edu/blog/" data-ps2id-api="true"><span>Blogs</span></a></li>
+<li id="menu-item-1092" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1092"><a href="https://rise.cs.berkeley.edu/jenkins/" data-ps2id-api="true"><span>Jenkins</span></a></li>
+<li class="menu-item x-menu-item x-menu-item-search"><a href="#" class="x-btn-navbar-search"><span><i class="x-icon-search" data-x-icon="&#xf002;" aria-hidden="true"></i><span class="x-hidden-desktop"> Search</span></span></a></li></ul></nav>
+
+<div class="x-nav-wrap mobile collapse">
+  <ul id="menu-main-menu-1" class="x-nav"><li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-2690"><a href="https://rise.cs.berkeley.edu" aria-current="page" data-ps2id-api="true"><span>Home</span></a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="https://rise.cs.berkeley.edu/people/" data-ps2id-api="true"><span>People</span></a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-46"><a href="https://rise.cs.berkeley.edu/projects/" data-ps2id-api="true"><span>Projects</span></a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-235"><a href="https://rise.cs.berkeley.edu/publications/" data-ps2id-api="true"><span>Publications</span></a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-399"><a href="https://rise.cs.berkeley.edu/sponsors/" data-ps2id-api="true"><span>Sponsors</span></a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4698"><a href="http://dare.berkeley.edu" data-ps2id-api="true"><span>DARE</span></a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1323"><a href="https://rise.cs.berkeley.edu/academics/" data-ps2id-api="true"><span>Academics</span></a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-492"><a href="https://rise.cs.berkeley.edu/news/" data-ps2id-api="true"><span>News</span></a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1330"><a href="https://rise.cs.berkeley.edu/events/" data-ps2id-api="true"><span>Events</span></a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3644"><a href="http://risecamp.berkeley.edu" data-ps2id-api="true"><span>RISE Camp</span></a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-382"><a href="https://rise.cs.berkeley.edu/blog/" data-ps2id-api="true"><span>Blogs</span></a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1092"><a href="https://rise.cs.berkeley.edu/jenkins/" data-ps2id-api="true"><span>Jenkins</span></a></li>
+<li class="menu-item x-menu-item x-menu-item-search"><a href="#" class="x-btn-navbar-search"><span><i class="x-icon-search" data-x-icon="&#xf002;" aria-hidden="true"></i><span class="x-hidden-desktop"> Search</span></span></a></li></ul></div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+    
+  </header>
+
+    
+
+  <div class="x-main full" role="main">
+
+    
+      <article id="post-2" class="post-2 page type-page status-publish hentry no-post-thumbnail">
+        
+
+<div class="entry-content content">
+
+
+  <div id="x-content-band-1" class="x-content-band vc home-header bg-pattern"  style="background-image: url(https://rise.cs.berkeley.edu/wp-content/uploads/2018/03/risebg.jpg); background-color: transparent; padding-top: 0px; padding-bottom: 30px;"><div class="x-container wpb_row"><div  class="x-column x-sm vc x-1-1" style="" ><div  class="x-container-fluid max width" ></p>
+<div style="max-width: 1170px; margin: 0 auto;">
+<p class="home-preamble" style="text-align: right;"><img loading="lazy" class="" style="max-width: 175px;" src="/wp-content/uploads/2020/09/nsf_color_logo_md.png" width="111" height="110" /><span style="white-space: nowrap; margin-left: 1em;">An NSF Expedition Project</span></p>
+</div>
+<div id="x-content-band-2" class="x-content-band vc" style="background-color: transparent; padding-top: 0px; padding-bottom: 0px;"><div class="x-container wpb_row"><div  class="x-column x-sm vc x-1-2" style="margin-left: 1.5em;" ></p>
+<h1 class="left-body">REAL-TIME INTELLIGENT SECURE EXPLAINABLE SYSTEMS</h1>
+<h4 class="left-body">In the RISELab, we develop technologies that enable applications to make low-latency decisions on live data with strong security.</h4>
+<p>
+</div><div  class="x-column x-sm vc x-1-2" style="margin-right: 1.5em;" ></p>
+<figure class="wpb_wrapper vc_figure lightgallery"><a class="vc_single_image-wrapper vc_box_border_grey" href="https://www.youtube.com/watch?v=ttS_1zybsHA"><img class="vc_single_image-img" src="https://risedev.eecs.berkeley.edu/wp-content/uploads/2020/12/homepage-intro-video-thumb.jpg" /></a></figure>
+<p>
+</div></div></div></div></div></div></div><div id="x-content-band-3" class="x-content-band vc" style="background-color: #fafafa; padding-top: 20px; padding-bottom: 20px;"><div class="x-container max width wpb_row"><div  class="x-column x-sm vc x-1-3" style="" ></p>
+<h3><a href="https://rise.cs.berkeley.edu/news/">News</a></h3>
+<p>
+<!-- The Grid Plugin Version 2.2.0 --><!-- The Grid Cache Enabled - Date: 06/30/26, 11:14:04 PM --><!-- The Grid Wrapper Start --><div class="tg-grid-wrapper tg-txt" id="grid-1310" data-version="2.2.0"><!-- The Grid Fonts --><link href="//fonts.googleapis.com/css?family=Maven+Pro%3A400" rel="stylesheet" property="stylesheet" type="text/css" media="all"><!-- The Grid Styles --><style class="tg-grid-styles" type="text/css" scoped>#grid-1310 .tg-nav-color:not(.dots):not(.tg-dropdown-value):not(.tg-dropdown-title):hover,#grid-1310 .tg-nav-color:hover .tg-nav-color,#grid-1310 .tg-page-number.tg-page-current,#grid-1310 .tg-filter.tg-filter-active span{color:#ff6863}#grid-1310 .tg-filter:before,#grid-1310 .tg-filter.tg-filter-active:before{color:#999999}#grid-1310 .tg-dropdown-holder,#grid-1310 .tg-search-inner,#grid-1310 .tg-sorter-order{border:1px solid #DDDDDD}#grid-1310 .tg-search-clear,#grid-1310 .tg-search-clear:hover{border:none;border-left:1px solid #DDDDDD}.tg-txt .tg-nav-font,.tg-txt input[type=text].tg-search{font-size:14px;font-weight:600}.tg-txt .tg-search::-webkit-input-placeholder{font-size:14px}.tg-txt .tg-search::-moz-placeholder{font-size:14px}.tg-txt .tg-search:-ms-input-placeholder{font-size:14px}.tg-txt .tg-icon-left-arrow:before{content:"\e604";font-size:32px;font-weight:100}.tg-txt .tg-icon-right-arrow:before{content:"\e602";font-size:32px;font-weight:100}.tg-txt .tg-icon-dropdown-open:before,.tg-txt .tg-icon-sorter-down:before{content:"\e60a"}.tg-txt .tg-icon-sorter-up:before{content:"\e609"}.tg-txt .tg-search-clear:before{content:"\e611";font-weight:300}.tg-txt .tg-search-icon:before{content:"\e62e";font-size:16px;font-weight:600}#grid-1310 .tg-nav-color,#grid-1310 .tg-search-icon:hover:before,#grid-1310 .tg-search-icon:hover input,#grid-1310 .tg-disabled:hover .tg-icon-left-arrow,#grid-1310 .tg-disabled:hover .tg-icon-right-arrow,#grid-1310 .tg-dropdown-title.tg-nav-color:hover{color:#999999}#grid-1310 input.tg-search:hover{color:#999999 !important}#grid-1310 input.tg-search::-webkit-input-placeholder{color:#999999}#grid-1310 input.tg-search::-moz-placeholder{color:#999999;opacity:1}#grid-1310 input.tg-search:-ms-input-placeholder{color:#999999}.grid-1310 .tg-dropdown-item{color:#777777;background:#ffffff}.grid-1310 .tg-filter-active,.grid-1310 .tg-dropdown-item:hover{color:#444444;background:#f5f6fa}#grid-1310 .tg-slider-bullets li.tg-active-item span{background:#59585b}#grid-1310 .tg-slider-bullets li span{background:#DDDDDD}.tg-home-news a:not([class*="tg-element-"]),.tg-home-news a:not([class*="tg-element-"]):active,.tg-home-news a:not([class*="tg-element-"]):focus,.tg-home-news [class*="tg-element-"] *:not(del){margin:0;padding:0;color:inherit !important;text-align:inherit;font-size:inherit;font-style:inherit;line-height:inherit;font-weight:inherit;text-transform:inherit;text-decoration:inherit;-webkit-box-shadow:none;box-shadow:none;border:none}.tg-home-news [class*="tg-element-"],.tg-home-news .tg-item-overlay,.tg-home-news .tg-center-outer,.tg-home-news .tg-center-inner > *{vertical-align:middle}.tg-home-news .tg-item-inner{background-color:#fafafa !important}.tg-home-news .tg-item-overlay{position:absolute;display:block;top:0;left:0;bottom:0;right:0;opacity:0;visibility:hidden;-webkit-transition:all 400ms ease !important;-moz-transition:all 400ms ease !important;-ms-transition:all 400ms ease !important;transition:all 400ms ease !important}.tg-home-news:not(.tg-force-play):not(.tg-is-playing) .tg-item-media-holder:hover .tg-item-overlay{opacity:1;visibility:visible}.tg-home-news .tg-item-content-holder[data-position="bottom"]{position:relative;min-height:1px;display:block;padding:0 10px 20px 0}.tg-home-news div.tg-item-media-content{text-align:center}.tg-home-news .tg-element-3{position:relative;font-size:17px;line-height:19px;color:#4084c3 !important;font-weight:400;font-family:Maven Pro;text-transform:none;display:block;margin:7px 10px 0 0;padding:0 0 5px}.tg-home-news .tg-element-1{position:relative;font-size:14px;line-height:19px;color:#4084c3 !important;font-weight:400;text-align:center;letter-spacing:0px;display:inline-block}.tg-home-news .tg-element-2{position:relative;font-size:14px;line-height:19px;color:#000000 !important;font-weight:200;font-style:normal;display:block;margin:5px 0 0;padding:0}.tg-item-content-holder{background-color:#fafafa !important}.tg-item .tg-dark div,.tg-item .tg-dark h1,.tg-item .tg-dark h1 a,.tg-item .tg-dark h2,.tg-item .tg-dark h2 a,.tg-item .tg-dark h3,.tg-item .tg-dark h3 a,.tg-item .tg-dark h4,.tg-item .tg-dark h4 a,.tg-item .tg-dark h5,.tg-item .tg-dark h5 a,.tg-item .tg-dark h6,.tg-item .tg-dark h6 a,.tg-item .tg-dark a,.tg-item .tg-dark a.tg-link-url,.tg-item .tg-dark i,.tg-item .tg-dark .tg-media-button,.tg-item .tg-dark .tg-item-price span{color:#444444;fill:#444444;stroke:#444444;border-color:#444444}.tg-item .tg-dark p,.tg-item .tg-dark ol,.tg-item .tg-dark ul,.tg-item .tg-dark li{color:#777777;fill:#777777;stroke:#777777;border-color:#777777}.tg-item .tg-dark span,.tg-item .tg-dark .no-liked .to-heart-icon path,.tg-item .tg-dark .empty-heart .to-heart-icon path,.tg-item .tg-dark .tg-item-comment i,.tg-item .tg-dark .tg-item-price del span{color:#999999;fill:#999999;stroke:#999999;border-color:#999999}.tg-item .tg-light div,.tg-item .tg-light h1,.tg-item .tg-light h1 a,.tg-item .tg-light h2,.tg-item .tg-light h2 a,.tg-item .tg-light h3,.tg-item .tg-light h3 a,.tg-item .tg-light h4,.tg-item .tg-light h4 a,.tg-item .tg-light h5,.tg-item .tg-light h5 a,.tg-item .tg-light h6,.tg-item .tg-light h6 a,.tg-item .tg-light a,.tg-item .tg-light a.tg-link-url,.tg-item .tg-light i,.tg-item .tg-light .tg-media-button,.tg-item .tg-light .tg-item-price span{color:#ffffff;fill:#ffffff;stroke:#ffffff;border-color:#ffffff}.tg-item .tg-light p,.tg-item .tg-light ol,.tg-item .tg-light ul,.tg-item .tg-light li{color:#f6f6f6;fill:#f6f6f6;stroke:#f6f6f6;border-color:#f6f6f6}.tg-item .tg-light span,.tg-item .tg-light .no-liked .to-heart-icon path,.tg-item .tg-light .empty-heart .to-heart-icon path,.tg-item .tg-light .tg-item-comment i,.tg-item .tg-light .tg-item-price del span{color:#f5f5f5;fill:#f5f5f5;stroke:#f5f5f5;border-color:#f5f5f5}#grid-1310 .tg-item-content-holder{background-color:#ffffff}#grid-1310 .tg-item-overlay{background-color:rgba(22,22,22,0)}</style><!-- The Grid Item Sizer --><div class="tg-grid-sizer"></div><!-- The Grid Gutter Sizer --><div class="tg-gutter-sizer"></div><!-- The Grid Items Holder --><div class="tg-grid-holder tg-layout-masonry"  data-name="News Home"  data-style="masonry" data-row="1" data-layout="vertical" data-rtl="" data-fitrows="" data-filtercomb="" data-filterlogic="AND" data-filterload ="" data-sortbyload ="" data-orderload ="false" data-fullwidth="" data-fullheight="null" data-gutters="[[320,0],[480,0],[768,0],[980,0],[1200,0],[9999,0]]" data-slider='{"itemNav":"null","swingSpeed":0.1,"cycleBy":"null","cycle":5000,"startAt":1}' data-ratio="1.00" data-cols="[[320,&quot;1&quot;],[480,&quot;1&quot;],[768,&quot;1&quot;],[980,&quot;1&quot;],[1200,&quot;1&quot;],[9999,&quot;1&quot;]]" data-rows="[[320,200],[480,200],[768,220],[980,220],[1200,240],[9999,240]]" data-animation="{&quot;name&quot;:&quot;Fade in&quot;,&quot;visible&quot;:&quot;&quot;,&quot;hidden&quot;:&quot;&quot;}" data-transition="700ms" data-ajaxmethod="load_more" data-ajaxdelay="100" data-preloader="" data-itemdelay="100" data-gallery="" data-ajax=""><!-- The Grid item #1 --><article class="tg-item tg-post-5740 tg-home-news f14" data-row="1" data-col="1"><div class="tg-item-inner"><div class="tg-item-content-holder tg-dark standard-format" data-position="bottom"><h2 class="tg-item-title tg-element-3"><a target="_blank" href="https://rise.cs.berkeley.edu/blog/blog-how-machine-learning-became-useful-reflecting-on-a-decade-of-research/">New Blog &#8220;How Machine Learning Became Useful: Reflecting on a Decade of Research&#8221;</a></h2><span class="tg-item-date tg-element-1"><a target="_self" href="https://rise.cs.berkeley.edu/blog/blog-how-machine-learning-became-useful-reflecting-on-a-decade-of-research/">July 15, 2022</a></span><p class="tg-item-excerpt tg-element-2">Joey Gonzalez wrote a blog reflecting on the past decade of ML systems research and how data and compute were...</p><div class="tg-item-clear"></div></div></div></article><!-- The Grid item #2 --><article class="tg-item tg-post-5728 tg-home-news f14" data-row="1" data-col="1"><div class="tg-item-inner"><div class="tg-item-content-holder tg-dark image-format" data-position="bottom"><h2 class="tg-item-title tg-element-3"><a target="_blank" href="https://rise.cs.berkeley.edu/blog/5728/">Ion Stoica to deliver keynote at Data@Scale</a></h2><span class="tg-item-date tg-element-1"><a target="_self" href="https://rise.cs.berkeley.edu/blog/5728/">May 5, 2022</a></span><p class="tg-item-excerpt tg-element-2">Register for Data@Scale to catch Ion&#8217;s keynote May 18! https://datascale2022.splashthat.com/...</p><div class="tg-item-clear"></div></div></div></article><!-- The Grid item #3 --><article class="tg-item tg-post-5555 tg-home-news f14" data-row="1" data-col="1"><div class="tg-item-inner"><div class="tg-item-content-holder tg-dark image-format" data-position="bottom"><h2 class="tg-item-title tg-element-3"><a target="_blank" href="https://rise.cs.berkeley.edu/blog/forbes-berkeley-research-lab-group-mints-second-billion-dollar-business-in-startup-anyscale/">Forbes: &#8220;Berkeley Research Lab Group Mints Second Billion-Dollar Business In Startup Anyscale&#8221;</a></h2><span class="tg-item-date tg-element-1"><a target="_self" href="https://rise.cs.berkeley.edu/blog/forbes-berkeley-research-lab-group-mints-second-billion-dollar-business-in-startup-anyscale/">December 10, 2021</a></span><p class="tg-item-excerpt tg-element-2">Anyscale cofounders Robert Nishihara, Ion Stoica, and Philipp Moritz Anyscale is making news with their latest...</p><div class="tg-item-clear"></div></div></div></article></div></div><!-- The Grid Wrapper End --></div><div  class="x-column x-sm vc x-1-3" style="" ></p>
+<h3><a href="https://rise.cs.berkeley.edu/events/">Events</a></h3>
+<p>
+<p><!-- The Grid Plugin Version 2.2.0 --><!-- The Grid Cache Enabled - Date: 10/15/17, 08:01:38 PM --><!-- The Grid Wrapper Start --><div class="tg-grid-wrapper tg-txt" id="grid-1311" data-version="2.2.0"><!-- The Grid Fonts --><link href="//fonts.googleapis.com/css?family=Maven+Pro%3A400" rel="stylesheet" property="stylesheet" type="text/css" media="all"><!-- The Grid Styles --><style class="tg-grid-styles" type="text/css" scoped>#grid-1311 .tg-nav-color:not(.dots):not(.tg-dropdown-value):not(.tg-dropdown-title):hover,#grid-1311 .tg-nav-color:hover .tg-nav-color,#grid-1311 .tg-page-number.tg-page-current,#grid-1311 .tg-filter.tg-filter-active span{color:#ff6863}#grid-1311 .tg-filter:before,#grid-1311 .tg-filter.tg-filter-active:before{color:#000000}#grid-1311 .tg-dropdown-holder,#grid-1311 .tg-search-inner,#grid-1311 .tg-sorter-order{border:1px solid #DDDDDD}#grid-1311 .tg-search-clear,#grid-1311 .tg-search-clear:hover{border:none;border-left:1px solid #DDDDDD}.tg-txt .tg-nav-font,.tg-txt input[type=text].tg-search{font-size:14px;font-weight:600}.tg-txt .tg-search::-webkit-input-placeholder{font-size:14px}.tg-txt .tg-search::-moz-placeholder{font-size:14px}.tg-txt .tg-search:-ms-input-placeholder{font-size:14px}.tg-txt .tg-icon-left-arrow:before{content:"\e604";font-size:16px;font-weight:100}.tg-txt .tg-icon-right-arrow:before{content:"\e602";font-size:16px;font-weight:100}.tg-txt .tg-icon-dropdown-open:before,.tg-txt .tg-icon-sorter-down:before{content:"\e60a"}.tg-txt .tg-icon-sorter-up:before{content:"\e609"}.tg-txt .tg-search-clear:before{content:"\e611";font-weight:300}.tg-txt .tg-search-icon:before{content:"\e62e";font-size:16px;font-weight:600}#grid-1311 .tg-nav-color,#grid-1311 .tg-search-icon:hover:before,#grid-1311 .tg-search-icon:hover input,#grid-1311 .tg-disabled:hover .tg-icon-left-arrow,#grid-1311 .tg-disabled:hover .tg-icon-right-arrow,#grid-1311 .tg-dropdown-title.tg-nav-color:hover{color:#000000}#grid-1311 input.tg-search:hover{color:#000000 !important}#grid-1311 input.tg-search::-webkit-input-placeholder{color:#000000}#grid-1311 input.tg-search::-moz-placeholder{color:#000000;opacity:1}#grid-1311 input.tg-search:-ms-input-placeholder{color:#000000}.grid-1311 .tg-dropdown-item{color:#777777;}.grid-1311 .tg-filter-active,.grid-1311 .tg-dropdown-item:hover{color:#444444;}#grid-1311 .tg-slider-bullets li.tg-active-item span{background:#59585b}#grid-1311 .tg-slider-bullets li span{background:#DDDDDD}.tg-events-home a:not([class*="tg-element-"]),.tg-events-home a:not([class*="tg-element-"]):active,.tg-events-home a:not([class*="tg-element-"]):focus,.tg-events-home [class*="tg-element-"] *:not(del){margin:0;padding:0;color:inherit !important;text-align:inherit;font-size:inherit;font-style:inherit;line-height:inherit;font-weight:inherit;text-transform:inherit;text-decoration:inherit;-webkit-box-shadow:none;box-shadow:none;border:none}.tg-events-home [class*="tg-element-"],.tg-events-home .tg-item-overlay,.tg-events-home .tg-center-outer,.tg-events-home .tg-center-inner > *{vertical-align:middle}.tg-events-home .tg-item-overlay{position:absolute;display:block;top:0;left:0;bottom:0;right:0;opacity:0;visibility:hidden;-webkit-transition:all 400ms ease !important;-moz-transition:all 400ms ease !important;-ms-transition:all 400ms ease !important;transition:all 400ms ease !important}.tg-events-home:not(.tg-force-play):not(.tg-is-playing) .tg-item-media-holder:hover .tg-item-overlay{opacity:1;visibility:visible}.tg-events-home .tg-item-content-holder[data-position="bottom"]{position:relative;min-height:1px;display:block;padding:0 10px 20px 0}.tg-events-home div.tg-item-media-content{text-align:center}.tg-events-home .tg-element-3{position:relative;font-size:16px;line-height:18px;color:#3c83c5 !important;font-weight:400;font-family:Maven Pro;text-transform:none;display:block;margin:6px 10px 0 0;padding:0 0 4px}.tg-events-home .tg-element-1{position:relative;font-size:14px;line-height:17px;color:#3c83c5 !important;font-weight:400;font-family:Maven Pro;text-transform:none;display:block;margin:2px 10px 0 0;padding:0 }.tg-events-home .tg-element-2{position:relative;font-size:14px;line-height:17px;color:#000000 !important;font-weight:200;font-style:normal;display:block;margin:0;padding:5px 0 0 0;}.tg-item .tg-dark div,.tg-item .tg-dark h1,.tg-item .tg-dark h1 a,.tg-item .tg-dark h2,.tg-item .tg-dark h2 a,.tg-item .tg-dark h3,.tg-item .tg-dark h3 a,.tg-item .tg-dark h4,.tg-item .tg-dark h4 a,.tg-item .tg-dark h5,.tg-item .tg-dark h5 a,.tg-item .tg-dark h6,.tg-item .tg-dark h6 a,.tg-item .tg-dark a,.tg-item .tg-dark a.tg-link-url,.tg-item .tg-dark i,.tg-item .tg-dark .tg-media-button,.tg-item .tg-dark .tg-item-price span{color:#444444;fill:#444444;stroke:#444444;border-color:#444444}.tg-item .tg-dark p,.tg-item .tg-dark ol,.tg-item .tg-dark ul,.tg-item .tg-dark li{color:#777777;fill:#777777;stroke:#777777;border-color:#777777}.tg-item .tg-dark span,.tg-item .tg-dark .no-liked .to-heart-icon path,.tg-item .tg-dark .empty-heart .to-heart-icon path,.tg-item .tg-dark .tg-item-comment i,.tg-item .tg-dark .tg-item-price del span{color:#000000;fill:#999999;stroke:#999999;border-color:#000000}.tg-item .tg-light div,.tg-item .tg-light h1,.tg-item .tg-light h1 a,.tg-item .tg-light h2,.tg-item .tg-light h2 a,.tg-item .tg-light h3,.tg-item .tg-light h3 a,.tg-item .tg-light h4,.tg-item .tg-light h4 a,.tg-item .tg-light h5,.tg-item .tg-light h5 a,.tg-item .tg-light h6,.tg-item .tg-light h6 a,.tg-item .tg-light a,.tg-item .tg-light a.tg-link-url,.tg-item .tg-light i,.tg-item .tg-light .tg-media-button,.tg-item .tg-light .tg-item-price span{color:#ffffff;fill:#ffffff;stroke:#ffffff;border-color:#ffffff}.tg-item .tg-light p,.tg-item .tg-light ol,.tg-item .tg-light ul,.tg-item .tg-light li{color:#f6f6f6;fill:#f6f6f6;stroke:#f6f6f6;border-color:#f6f6f6}.tg-item .tg-light span,.tg-item .tg-light .no-liked .to-heart-icon path,.tg-item .tg-light .empty-heart .to-heart-icon path,.tg-item .tg-light .tg-item-comment i,.tg-item .tg-light .tg-item-price del span{color:#f5f5f5;fill:#f5f5f5;stroke:#f5f5f5;border-color:#f5f5f5}#grid-1311 #grid-1311 </style><!-- The Grid Item Sizer --><div class="tg-grid-sizer"></div><!-- The Grid Gutter Sizer --><div class="tg-gutter-sizer"></div><!-- The Grid Items Holder --><div class="tg-grid-holder tg-layout-masonry" data-name="Events Home" data-style="masonry" data-row="1" data-layout="vertical" data-rtl="" data-fitrows="" data-filtercomb="" data-filterlogic="AND" data-filterload ="" data-sortbyload ="" data-orderload ="false" data-fullwidth="" data-fullheight="null" data-gutters="[[320,0],[480,0],[768,0],[980,0],[1200,0],[9999,0]]" data-slider='{"itemNav":"null","swingSpeed":0.1,"cycleBy":"null","cycle":5000,"startAt":1}' data-ratio="1.00" data-cols="[[320,&quot;1&quot;],[480,&quot;1&quot;],[768,&quot;1&quot;],[980,&quot;1&quot;],[1200,&quot;1&quot;],[9999,&quot;1&quot;]]" data-rows="[[320,200],[480,200],[768,220],[980,220],[1200,240],[9999,240]]" data-animation="{&quot;name&quot;:&quot;Fade in&quot;,&quot;visible&quot;:&quot;&quot;,&quot;hidden&quot;:&quot;&quot;}" data-transition="700ms" data-ajaxmethod="load_more" data-ajaxdelay="100" data-preloader="" data-itemdelay="100" data-gallery="" data-ajax=""><!-- The Grid item --><article class="tg-item tg-post-1301 tg-events-home" data-row="1" data-col="1"><div class="tg-item-inner"><div class="tg-item-content-holder tg-dark standard-format" data-position="bottom"><h2 class="tg-item-title tg-element-3"><a target="_self" href="https://rise.cs.berkeley.edu/event/dissertation-talk-machine-learning-for-query-optimization-by-zongheng-yang/">Dissertation Talk: Machine Learning for Query Optimization by Zongheng Yang</a></h2><span class="tg-item-meta-data tg-element-1">July 27, 2022</span><p class="tg-item-excerpt tg-element-2">Title: Machine Learning for Query Optimization Speaker: Zongheng Yang Advisor: Ion Stoica   Date: Wednesd...</p><div class="tg-item-clear"></div></div></div></article><!-- The Grid item --><article class="tg-item tg-post-1301 tg-events-home" data-row="1" data-col="1"><div class="tg-item-inner"><div class="tg-item-content-holder tg-dark standard-format" data-position="bottom"><h2 class="tg-item-title tg-element-3"><a target="_self" href="https://rise.cs.berkeley.edu/event/dissertation-talk-with-melih-elibol-nums-scalable-array-programming-for-the-cloud-10-am-tuesday-may-10/">Dissertation Talk with Melih Elibol: NumS: Scalable Array Programming for the Cloud; 10 AM, Tuesday, May 10</a></h2><span class="tg-item-meta-data tg-element-1">May 10, 2022</span><p class="tg-item-excerpt tg-element-2">Title: NumS: Scalable Array Programming for the Cloud Speaker: Melih Elibol Advisors: Michael I. Jordan and...</p><div class="tg-item-clear"></div></div></div></article><!-- The Grid item --><article class="tg-item tg-post-1301 tg-events-home" data-row="1" data-col="1"><div class="tg-item-inner"><div class="tg-item-content-holder tg-dark standard-format" data-position="bottom"><h2 class="tg-item-title tg-element-3"><a target="_self" href="https://rise.cs.berkeley.edu/event/dissertation-talk-with-weikeng-chen-building-cryptographic-systems-from-distributed-trust-1100-am-friday-april-29/">Dissertation Talk with Weikeng Chen: Building Cryptographic Systems from Distributed Trust; 11:00 AM, Friday, April 29</a></h2><span class="tg-item-meta-data tg-element-1">April 29, 2022</span><p class="tg-item-excerpt tg-element-2">Title: Building Cryptographic Systems from Distributed Trust Speaker: Weikeng Chen Advisor: Raluca Ada Popa...</p><div class="tg-item-clear"></div></div></div></article></div></div><!-- The Grid Wrapper End --></p>
+</div><div  class="x-column x-sm vc x-1-3" style="" ></p>
+<h3><a href="https://rise.cs.berkeley.edu/blog/">Blog</a></h3>
+<p>
+<p><div><article class="tg-home-news f15 f154 f89" data-row="1" data-col="1"><div class="tg-item-inner"><div class="tg-item-content-holder tg-dark standard-format" data-position="bottom"><h2 class="tg-item-title tg-element-3"><a target="_blank" href="https://rise.cs.berkeley.edu/blog/how-ai-fails-us/">How AI Fails Us</a></h3><span class="tg-item-date tg-element-1"><a target="_self" href="https://rise.cs.berkeley.edu/blog/how-ai-fails-us/">December 7, 2021</a></span><p class="tg-item-excerpt tg-element-2">Divya Siddarth, Daron Acemoglu, Danielle Allen, Kate Crawford, James Evans, Michael Jordan, E. Glen Weyl The dominant vision of&hellip;</p><div class="tg-item-clear"></div></div></div></article><article class="tg-home-news f15 f154 f89" data-row="1" data-col="1"><div class="tg-item-inner"><div class="tg-item-content-holder tg-dark standard-format" data-position="bottom"><h2 class="tg-item-title tg-element-3"><a target="_blank" href="https://rise.cs.berkeley.edu/blog/the-turing-test-is-bad-for-business/">The Turing Test Is Bad for Business</a></h3><span class="tg-item-date tg-element-1"><a target="_self" href="https://rise.cs.berkeley.edu/blog/the-turing-test-is-bad-for-business/">December 4, 2021</a></span><p class="tg-item-excerpt tg-element-2">Originally posted on Wired: Written by Daron Acemoglu, Michael I. Jordan, and E. Glen Weyl&hellip;</p><div class="tg-item-clear"></div></div></div></article><article class="tg-home-news f15 f154 f89" data-row="1" data-col="1"><div class="tg-item-inner"><div class="tg-item-content-holder tg-dark standard-format" data-position="bottom"><h2 class="tg-item-title tg-element-3"><a target="_blank" href="https://rise.cs.berkeley.edu/blog/secure-computation-homomorphic-encryption-or-hardware-enclaves/">Secure computation: Homomorphic encryption or hardware enclaves?</a></h3><span class="tg-item-date tg-element-1"><a target="_self" href="https://rise.cs.berkeley.edu/blog/secure-computation-homomorphic-encryption-or-hardware-enclaves/">October 1, 2021</a></span><p class="tg-item-excerpt tg-element-2">Originally posted on Medium: Written by Raluca Ada Popa on September 16, 2021 How to collaborate&hellip;</p><div class="tg-item-clear"></div></div></div></article></div><!-- End --></p>
+</div></div></div><div id="x-content-band-4" class="x-content-band vc sample-article man" style="background-color: transparent; padding-top: 20px; padding-bottom: 30px;"><div class="x-container max width wpb_row"><div  class="x-column x-sm vc x-1-1" style="" ></p>
+<h3 style="text-align: left; text-transform: none;">RISELab Story</h3>
+<p>Berkeley&#8217;s computer science division has an ongoing tradition of <a href="https://www2.eecs.berkeley.edu/Pubs/TechRpts/2013/EECS-2013-123.html">5-year collaborative research labs</a>. In the fall of 2016 we closed out the most recent of the series: the <a href="https://amplab.cs.berkeley.edu/">AMPLab</a>. We think it was a pretty big deal, and <a href="https://amplab.cs.berkeley.edu/news/">many agreed</a>.</p>
+<p>One great thing about Berkeley is the endless supply of energy and ideas that flows through the place — always bringing changes, building on what came before. In that spirit, we&#8217;re fired up to announce the Berkeley <a href="http://riselab.cs.berkeley.edu/">RISELab</a>, where we will focus intensely for five years on systems that provide <strong>Real-time Intelligence with Secure Explainable decisions</strong>.</p>
+<p class="homeh2"><strong>Context</strong></p>
+<p>RISELab represents the next chapter in the ongoing story of data-intensive systems at Berkeley; a proactive step to move beyond Big Data analytics into a more immersive world. The RISE agenda begins by recognizing that there are big changes afoot:</p>
+<ol>
+<li><em>Sensors are everywhere.</em> We carry them in our pockets, we embed them in our homes, we pass them on the street. Our world will be quantified, in fine detail, in real time.</li>
+<li><em>AI is for real.</em> Big data and cheap compute finally made some of the big ideas of AI a practical reality. There&#8217;s a ton more to be done, but learning and prediction are now practical tools in the computing toolbox.</li>
+<li><em>The world is programmable.</em> Our vehicles, houses, workplaces and medical devices are increasingly networked and programmable. The effects of computation are extending to include our homes, cities, airspace, and bloodstreams.</li>
+</ol>
+<p>In short, the loop between data generation, computation, and actuation is closing. And this is no longer a niche scenario: it&#8217;s going to be a standard mode of technology going forward.</p>
+<p class="homeh2"><strong>Mission</strong></p>
+<p>Our mission in the RISELab is to develop technologies that enable applications to interact intelligently and securely with their environment in real time.</p>
+<p>As in previous labs, we&#8217;re all in — working on everything from basic research to software development, all in the Berkeley tradition of open publication and open source software. We&#8217;ll use this space to lay out our ideas and progress as we go.</p>
+<p><strong>Commitment to Diversity</strong></p>
+<p><span style="font-weight: 400;">RISELab is guided by Berkeley’s </span><a href="https://diversity.berkeley.edu/principles-community"><span style="font-weight: 400;">Principles of Community</span></a><span style="font-weight: 400;"> and is committed to providing a safe and caring research environment for every member of our community. We believe that a diverse student body, faculty, and staff are essential to the open exchange of ideas that RISELab was founded on.</span></p>
+<p class="homeh2"><strong>Sponsors</strong></p>
+<p>In addition to NSF expedition, we&#8217;re extremely fortunate at Berkeley to be supported by — and working with — some of the world&#8217;s biggest and most innovative companies. The RISELab&#8217;s 13 founding sponsors are quite the crew: Amazon Web Services, Ant Group, Capital One, Ericsson, Facebook, Google, Intel, Microsoft Research, Scotiabank, Splunk and VMware. Thanks to all.</p>
+<p>We RISE.</p>
+<p>&#8212; <a href="https://people.eecs.berkeley.edu/%7Eistoica/">Ion</a>, <a href="http://db.cs.berkeley.edu/jmh">Joe</a>, <a href="https://people.eecs.berkeley.edu/%7Ejegonzal/">Joey</a>, <a href="https://people.eecs.berkeley.edu/%7Eraluca/">Raluca</a> and <a href="http://rise.cs.berkeley.edu/people">team</a></p>
+</div></div></div><div id="x-content-band-5" class="x-content-band vc sbhd3" style="background-color: #fafafa; padding-top: 0; padding-bottom: 20px;"><div class="x-container wpb_row"><div  class="x-column x-sm vc x-1-1" style="" ></p>
+<h2>Featured Project</h2>
+<p>
+</div></div></div><div id="x-content-band-6" class="x-content-band vc" style="background-color: #ffffff; padding-top: 40px; padding-bottom: 20px;"><div class="x-container max width wpb_row"><div  class="x-column x-sm vc x-1-1" style="" ><p><img loading="lazy" class="wp-image-3547 size-large aligncenter" src="https://rise.cs.berkeley.edu/wp-content/uploads/2019/09/tune-wide-1024x253.png" alt="" width="1024" height="253" /></p>
+<p>Tune is a powerful library for distributed hyperparameter tuning developed in the RISELab. Built on top of Ray, Tune allows users to easily leverage hyperparameter optimization algorithms including ASHA and Population-Based Training at scale. Tune integrates with the Ray autoscaler to seamlessly launch fault-tolerant distributed hyperparameter tuning jobs on Kubernetes, AWS or GCP. Tune supports any machine learning framework, including PyTorch, TensorFlow, XGBoost, LightGBM, and Keras.</p>
+<p>Tune also powers many other research projects across the Berkeley AI Research Lab, including <a href="https://github.com/arcelien/pba">Population-based Data Augmentation</a> and <a href="https://github.com/rail-berkeley/softlearning">Softlearning.</a></p>
+<p>To learn more about Tune, visit the <a href="https://ray.readthedocs.io/en/latest/tune.html">Tune project page</a>. Tune is packaged as part of Ray and can be found <a href="https://github.com/ray-project/ray">here on GitHub</a>.</p>
+</div></div></div>
+<div class="swp-hidden-panel-wrap" style="display: none; visibility: collapse; opacity: 0"><div class="swp_social_panel swp_horizontal_panel swp_flat_fresh  swp_default_full_color swp_individual_full_color swp_other_full_color scale-100  scale-" data-min-width="1100" data-float-color="#ffffff" data-float="bottom" data-float-mobile="bottom" data-transition="slide" data-post-id="2" ><div class="nc_tweetContainer swp_share_button swp_facebook" data-network="facebook"><a class="nc_tweet swp_share_link" rel="nofollow noreferrer noopener" target="_blank" href="https://www.facebook.com/share.php?u=https%3A%2F%2Frise.cs.berkeley.edu%2F" data-link="https://www.facebook.com/share.php?u=https%3A%2F%2Frise.cs.berkeley.edu%2F"><span class="swp_count swp_hide"><span class="iconFiller"><span class="spaceManWilly"><i class="sw swp_facebook_icon"></i><span class="swp_share">Share</span></span></span></span></a></div><div class="nc_tweetContainer swp_share_button swp_twitter" data-network="twitter"><a class="nc_tweet swp_share_link" rel="nofollow noreferrer noopener" target="_blank" href="https://twitter.com/intent/tweet?text=home&url=https%3A%2F%2Frise.cs.berkeley.edu%2F" data-link="https://twitter.com/intent/tweet?text=home&url=https%3A%2F%2Frise.cs.berkeley.edu%2F"><span class="swp_count swp_hide"><span class="iconFiller"><span class="spaceManWilly"><i class="sw swp_twitter_icon"></i><span class="swp_share">Tweet</span></span></span></span></a></div><div class="nc_tweetContainer swp_share_button swp_linkedin" data-network="linkedin"><a class="nc_tweet swp_share_link" rel="nofollow noreferrer noopener" target="_blank" href="https://www.linkedin.com/cws/share?url=https%3A%2F%2Frise.cs.berkeley.edu%2F" data-link="https://www.linkedin.com/cws/share?url=https%3A%2F%2Frise.cs.berkeley.edu%2F"><span class="swp_count swp_hide"><span class="iconFiller"><span class="spaceManWilly"><i class="sw swp_linkedin_icon"></i><span class="swp_share">Share</span></span></span></span></a></div></div></div><div class="swp-content-locator"></div>  
+
+</div>
+
+      </article>
+
+    
+  </div>
+
+<p style="text-align: center;"><a href="https://dac.berkeley.edu/web-accessibility">Accessibility</a> · <a href="https://ophd.berkeley.edu/policies-and-procedures/nondiscrimination-policy-statement">Nondiscrimination</a> · <a href="http://iris.eecs.berkeley.edu/privacy">Privacy</a></p>
+<div>&nbsp;</div>
+
+  
+    
+
+  <a class="x-scroll-top right fade" href="#top" title="Back to Top">
+    <i class="x-icon-angle-up" data-x-icon="&#xf106;"></i>
+  </a>
+
+  <script>
+
+  jQuery(document).ready(function($) {
+
+    var windowObj            = $(window);
+    var body                 = $('body');
+    var bodyOffsetBottom     = windowObj.scrollBottom();             // 1
+    var bodyHeightAdjustment = body.height() - bodyOffsetBottom;     // 2
+    var bodyHeightAdjusted   = body.height() - bodyHeightAdjustment; // 3
+    var scrollTopAnchor      = $('.x-scroll-top');
+
+    function sizingUpdate(){
+      var bodyOffsetTop = windowObj.scrollTop();
+      if ( bodyOffsetTop > ( bodyHeightAdjusted * 0.75 ) ) {
+        scrollTopAnchor.addClass('in');
+      } else {
+        scrollTopAnchor.removeClass('in');
+      }
+    }
+
+    windowObj.bind('scroll', sizingUpdate).resize(sizingUpdate);
+    sizingUpdate();
+
+    scrollTopAnchor.click(function(){
+      $('html,body').animate({ scrollTop: 0 }, 850, 'easeInOutExpo');
+      return false;
+    });
+
+  });
+
+  </script>
+
+  
+
+  
+    <footer class="x-colophon bottom" role="contentinfo">
+      <div class="x-container max width">
+
+                  
+<ul id="menu-main-menu-2" class="x-nav"><li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-2690"><a href="https://rise.cs.berkeley.edu" aria-current="page" data-ps2id-api="true">Home</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="https://rise.cs.berkeley.edu/people/" data-ps2id-api="true">People</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-46"><a href="https://rise.cs.berkeley.edu/projects/" data-ps2id-api="true">Projects</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-235"><a href="https://rise.cs.berkeley.edu/publications/" data-ps2id-api="true">Publications</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-399"><a href="https://rise.cs.berkeley.edu/sponsors/" data-ps2id-api="true">Sponsors</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4698"><a href="http://dare.berkeley.edu" data-ps2id-api="true">DARE</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1323"><a href="https://rise.cs.berkeley.edu/academics/" data-ps2id-api="true">Academics</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-492"><a href="https://rise.cs.berkeley.edu/news/" data-ps2id-api="true">News</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1330"><a href="https://rise.cs.berkeley.edu/events/" data-ps2id-api="true">Events</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3644"><a href="http://risecamp.berkeley.edu" data-ps2id-api="true">RISE Camp</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-382"><a href="https://rise.cs.berkeley.edu/blog/" data-ps2id-api="true">Blogs</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1092"><a href="https://rise.cs.berkeley.edu/jenkins/" data-ps2id-api="true">Jenkins</a></li>
+</ul>        
+                  <div class="x-social-global"><a href="https://www.facebook.com/UCBRISELab/" class="facebook" title="Facebook" target="_blank"><i class="x-icon-facebook-square" data-x-icon="&#xf082;" aria-hidden="true"></i></a><a href="https://twitter.com/ucbrise" class="twitter" title="Twitter" target="_blank"><i class="x-icon-twitter-square" data-x-icon="&#xf081;" aria-hidden="true"></i></a></div>        
+                  <div class="x-colophon-content">
+            <BR><BR>The UCBerkeley RISELab is an NSF Expedition Project.
+<BR><a href="https://twitter.com/ucbrise" target="_blank"><img src="https://rise.cs.berkeley.edu/wp-content/uploads/2017/10/rise-lab-social-icon-twitter.png" style="margin:20px 10px;max-width:30px;"></a><a href="https://www.facebook.com/UCBRISELab/" target="_blank"><img src="https://rise.cs.berkeley.edu/wp-content/uploads/2017/10/rise-lab-social-icon-facebook.png" style="margin:20px 10px;max-width:30px;"></a><a href="https://www.youtube.com/c/UCBRISELab/playlists?view_as=subscriber" target="_blank"><img src="https://rise.cs.berkeley.edu/youtube-icons/" style="margin:20px 10px;max-width:30px;"></a><a href="https://medium.com/riselab" target="_blank"><img src="https://rise.cs.berkeley.edu/wp-content/uploads/2020/10/Medium.png" style="margin:20px 10px;max-width:30px;"></a><BR>          </div>
+        
+      </div>
+    </footer>
+
+  
+
+  
+      <div class="x-searchform-overlay">
+        <div class="x-searchform-overlay-inner">
+          <div class="x-container max width">
+            <form method="get" id="searchform" class="form-search center-text" action="https://rise.cs.berkeley.edu/">
+              <label for="s" class="cfc-h-tx tt-upper">Type and Press &ldquo;enter&rdquo; to Search</label>
+              <input type="text" id="s" class="search-query cfc-h-tx center-text tt-upper" name="s">
+            </form>
+          </div>
+        </div>
+      </div>
+
+      
+  </div> <!-- END #top.site -->
+
+  
+<script type="text/html" id="tmpl-wp-playlist-current-item">
+	<# if ( data.thumb && data.thumb.src ) { #>
+		<img src="{{ data.thumb.src }}" alt="" />
+	<# } #>
+	<div class="wp-playlist-caption">
+		<span class="wp-playlist-item-meta wp-playlist-item-title">
+		&#8220;{{ data.title }}&#8221;		</span>
+		<# if ( data.meta.album ) { #><span class="wp-playlist-item-meta wp-playlist-item-album">{{ data.meta.album }}</span><# } #>
+		<# if ( data.meta.artist ) { #><span class="wp-playlist-item-meta wp-playlist-item-artist">{{ data.meta.artist }}</span><# } #>
+	</div>
+</script>
+<script type="text/html" id="tmpl-wp-playlist-item">
+	<div class="wp-playlist-item">
+		<a class="wp-playlist-caption" href="{{ data.src }}">
+			{{ data.index ? ( data.index + '. ' ) : '' }}
+			<# if ( data.caption ) { #>
+				{{ data.caption }}
+			<# } else { #>
+				<span class="wp-playlist-item-title">
+				&#8220;{{{ data.title }}}&#8221;				</span>
+				<# if ( data.artists && data.meta.artist ) { #>
+				<span class="wp-playlist-item-artist"> &mdash; {{ data.meta.artist }}</span>
+				<# } #>
+			<# } #>
+		</a>
+		<# if ( data.meta.length_formatted ) { #>
+		<div class="wp-playlist-item-length">{{ data.meta.length_formatted }}</div>
+		<# } #>
+	</div>
+</script>
+	
+<div id="views-extra-css-ie7" style="display:none;" aria-hidden="true">
+<!--[if IE 7]><style>
+.wpv-pagination { *zoom: 1; }
+</style><![endif]-->
+</div>
+
+<script type="text/javascript">
+jQuery( document ).ready( function( $ ) {
+	var extra_css = $( "#views-extra-css" ) ? $( "#views-extra-css" ).text() : null;	if( extra_css ) {		$( 'head' ).append( '<style style="text/css" media="screen">' + extra_css + '</style>' );
+		$( "#views-extra-css" ).remove();	}
+	$( 'head' ).append( $( "#views-extra-css-ie7" ).html() );
+	$( "#views-extra-css-ie7" ).remove();});
+</script>
+<script type='text/javascript' id='page-scroll-to-id-plugin-script-js-extra'>
+/* <![CDATA[ */
+var mPS2id_params = {"instances":{"mPS2id_instance_0":{"selector":"a[href*='#']:not([href='#'])","autoSelectorMenuLinks":"true","excludeSelector":"a[href^='#tab-'], a[href^='#tabs-'], a[data-toggle]:not([data-toggle='tooltip']), a[data-slide], a[data-vc-tabs], a[data-vc-accordion], a.screen-reader-text.skip-link","scrollSpeed":800,"autoScrollSpeed":"true","scrollEasing":"easeInOutQuint","scrollingEasing":"easeOutQuint","forceScrollEasing":"false","pageEndSmoothScroll":"true","stopScrollOnUserAction":"false","autoCorrectScroll":"false","autoCorrectScrollExtend":"false","layout":"vertical","offset":0,"dummyOffset":"false","highlightSelector":"","clickedClass":"mPS2id-clicked","targetClass":"mPS2id-target","highlightClass":"mPS2id-highlight","forceSingleHighlight":"false","keepHighlightUntilNext":"false","highlightByNextTarget":"false","appendHash":"false","scrollToHash":"true","scrollToHashForAll":"true","scrollToHashDelay":0,"scrollToHashUseElementData":"true","scrollToHashRemoveUrlHash":"false","disablePluginBelow":0,"adminDisplayWidgetsId":"true","adminTinyMCEbuttons":"true","unbindUnrelatedClickEvents":"false","normalizeAnchorPointTargets":"false","encodeLinks":"false"}},"total_instances":"1","shortcode_class":"_ps2id"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://rise.cs.berkeley.edu/wp-content/plugins/page-scroll-to-id/js/page-scroll-to-id.min.js?ver=1.7.2' id='page-scroll-to-id-plugin-script-js'></script>
+<script type='text/javascript' id='social_warfare_script-js-extra'>
+/* <![CDATA[ */
+var socialWarfare = {"addons":[],"post_id":"2","variables":{"emphasizeIcons":false,"powered_by_toggle":false,"affiliate_link":"https:\/\/warfareplugins.com"},"floatBeforeContent":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://rise.cs.berkeley.edu/wp-content/plugins/social-warfare/assets/js/script.min.js?ver=4.2.1' id='social_warfare_script-js'></script>
+<script type='text/javascript' src='https://rise.cs.berkeley.edu/wp-content/themes/x/framework/js/dist/site/x-body.min.js?ver=4.6.4' id='x-site-body-js'></script>
+<script type='text/javascript' src='https://rise.cs.berkeley.edu/wp-includes/js/comment-reply.min.js?ver=5.8.13' id='comment-reply-js'></script>
+<script type='text/javascript' src='https://rise.cs.berkeley.edu/wp-includes/js/jquery/ui/core.min.js?ver=1.12.1' id='jquery-ui-core-js'></script>
+<script type='text/javascript' src='https://rise.cs.berkeley.edu/wp-includes/js/jquery/ui/datepicker.min.js?ver=1.12.1' id='jquery-ui-datepicker-js'></script>
+<script type='text/javascript' id='jquery-ui-datepicker-js-after'>
+jQuery(document).ready(function(jQuery){jQuery.datepicker.setDefaults({"closeText":"Close","currentText":"Today","monthNames":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthNamesShort":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"nextText":"Next","prevText":"Previous","dayNames":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"dayNamesShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"dayNamesMin":["S","M","T","W","T","F","S"],"dateFormat":"MM d, yy","firstDay":1,"isRTL":false});});
+</script>
+<script type='text/javascript' id='mediaelement-core-js-before'>
+var mejsL10n = {"language":"en","strings":{"mejs.download-file":"Download File","mejs.install-flash":"You are using a browser that does not have Flash player enabled or installed. Please turn on your Flash player plugin or download the latest version from https:\/\/get.adobe.com\/flashplayer\/","mejs.fullscreen":"Fullscreen","mejs.play":"Play","mejs.pause":"Pause","mejs.time-slider":"Time Slider","mejs.time-help-text":"Use Left\/Right Arrow keys to advance one second, Up\/Down arrows to advance ten seconds.","mejs.live-broadcast":"Live Broadcast","mejs.volume-help-text":"Use Up\/Down Arrow keys to increase or decrease volume.","mejs.unmute":"Unmute","mejs.mute":"Mute","mejs.volume-slider":"Volume Slider","mejs.video-player":"Video Player","mejs.audio-player":"Audio Player","mejs.captions-subtitles":"Captions\/Subtitles","mejs.captions-chapters":"Chapters","mejs.none":"None","mejs.afrikaans":"Afrikaans","mejs.albanian":"Albanian","mejs.arabic":"Arabic","mejs.belarusian":"Belarusian","mejs.bulgarian":"Bulgarian","mejs.catalan":"Catalan","mejs.chinese":"Chinese","mejs.chinese-simplified":"Chinese (Simplified)","mejs.chinese-traditional":"Chinese (Traditional)","mejs.croatian":"Croatian","mejs.czech":"Czech","mejs.danish":"Danish","mejs.dutch":"Dutch","mejs.english":"English","mejs.estonian":"Estonian","mejs.filipino":"Filipino","mejs.finnish":"Finnish","mejs.french":"French","mejs.galician":"Galician","mejs.german":"German","mejs.greek":"Greek","mejs.haitian-creole":"Haitian Creole","mejs.hebrew":"Hebrew","mejs.hindi":"Hindi","mejs.hungarian":"Hungarian","mejs.icelandic":"Icelandic","mejs.indonesian":"Indonesian","mejs.irish":"Irish","mejs.italian":"Italian","mejs.japanese":"Japanese","mejs.korean":"Korean","mejs.latvian":"Latvian","mejs.lithuanian":"Lithuanian","mejs.macedonian":"Macedonian","mejs.malay":"Malay","mejs.maltese":"Maltese","mejs.norwegian":"Norwegian","mejs.persian":"Persian","mejs.polish":"Polish","mejs.portuguese":"Portuguese","mejs.romanian":"Romanian","mejs.russian":"Russian","mejs.serbian":"Serbian","mejs.slovak":"Slovak","mejs.slovenian":"Slovenian","mejs.spanish":"Spanish","mejs.swahili":"Swahili","mejs.swedish":"Swedish","mejs.tagalog":"Tagalog","mejs.thai":"Thai","mejs.turkish":"Turkish","mejs.ukrainian":"Ukrainian","mejs.vietnamese":"Vietnamese","mejs.welsh":"Welsh","mejs.yiddish":"Yiddish"}};
+var mejsL10n = {"language":"en","strings":{"mejs.download-file":"Download File","mejs.install-flash":"You are using a browser that does not have Flash player enabled or installed. Please turn on your Flash player plugin or download the latest version from https:\/\/get.adobe.com\/flashplayer\/","mejs.fullscreen":"Fullscreen","mejs.play":"Play","mejs.pause":"Pause","mejs.time-slider":"Time Slider","mejs.time-help-text":"Use Left\/Right Arrow keys to advance one second, Up\/Down arrows to advance ten seconds.","mejs.live-broadcast":"Live Broadcast","mejs.volume-help-text":"Use Up\/Down Arrow keys to increase or decrease volume.","mejs.unmute":"Unmute","mejs.mute":"Mute","mejs.volume-slider":"Volume Slider","mejs.video-player":"Video Player","mejs.audio-player":"Audio Player","mejs.captions-subtitles":"Captions\/Subtitles","mejs.captions-chapters":"Chapters","mejs.none":"None","mejs.afrikaans":"Afrikaans","mejs.albanian":"Albanian","mejs.arabic":"Arabic","mejs.belarusian":"Belarusian","mejs.bulgarian":"Bulgarian","mejs.catalan":"Catalan","mejs.chinese":"Chinese","mejs.chinese-simplified":"Chinese (Simplified)","mejs.chinese-traditional":"Chinese (Traditional)","mejs.croatian":"Croatian","mejs.czech":"Czech","mejs.danish":"Danish","mejs.dutch":"Dutch","mejs.english":"English","mejs.estonian":"Estonian","mejs.filipino":"Filipino","mejs.finnish":"Finnish","mejs.french":"French","mejs.galician":"Galician","mejs.german":"German","mejs.greek":"Greek","mejs.haitian-creole":"Haitian Creole","mejs.hebrew":"Hebrew","mejs.hindi":"Hindi","mejs.hungarian":"Hungarian","mejs.icelandic":"Icelandic","mejs.indonesian":"Indonesian","mejs.irish":"Irish","mejs.italian":"Italian","mejs.japanese":"Japanese","mejs.korean":"Korean","mejs.latvian":"Latvian","mejs.lithuanian":"Lithuanian","mejs.macedonian":"Macedonian","mejs.malay":"Malay","mejs.maltese":"Maltese","mejs.norwegian":"Norwegian","mejs.persian":"Persian","mejs.polish":"Polish","mejs.portuguese":"Portuguese","mejs.romanian":"Romanian","mejs.russian":"Russian","mejs.serbian":"Serbian","mejs.slovak":"Slovak","mejs.slovenian":"Slovenian","mejs.spanish":"Spanish","mejs.swahili":"Swahili","mejs.swedish":"Swedish","mejs.tagalog":"Tagalog","mejs.thai":"Thai","mejs.turkish":"Turkish","mejs.ukrainian":"Ukrainian","mejs.vietnamese":"Vietnamese","mejs.welsh":"Welsh","mejs.yiddish":"Yiddish"}};
+</script>
+<script type='text/javascript' src='https://rise.cs.berkeley.edu/wp-includes/js/mediaelement/mediaelement-and-player.min.js?ver=4.2.16' id='mediaelement-core-js'></script>
+<script type='text/javascript' src='https://rise.cs.berkeley.edu/wp-includes/js/mediaelement/mediaelement-migrate.min.js?ver=5.8.13' id='mediaelement-migrate-js'></script>
+<script type='text/javascript' id='mediaelement-js-extra'>
+/* <![CDATA[ */
+var _wpmejsSettings = {"pluginPath":"\/wp-includes\/js\/mediaelement\/","classPrefix":"mejs-","stretching":"responsive"};
+var _wpmejsSettings = {"pluginPath":"\/wp-includes\/js\/mediaelement\/","classPrefix":"mejs-","stretching":"responsive"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://rise.cs.berkeley.edu/wp-includes/js/mediaelement/wp-mediaelement.min.js?ver=5.8.13' id='wp-mediaelement-js'></script>
+<script type='text/javascript' src='https://rise.cs.berkeley.edu/wp-includes/js/underscore.min.js?ver=1.13.1' id='underscore-js'></script>
+<script type='text/javascript' id='wp-util-js-extra'>
+/* <![CDATA[ */
+var _wpUtilSettings = {"ajax":{"url":"\/wp-admin\/admin-ajax.php"}};
+var _wpUtilSettings = {"ajax":{"url":"\/wp-admin\/admin-ajax.php"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://rise.cs.berkeley.edu/wp-includes/js/wp-util.min.js?ver=5.8.13' id='wp-util-js'></script>
+<script type='text/javascript' src='https://rise.cs.berkeley.edu/wp-includes/js/backbone.min.js?ver=1.4.0' id='backbone-js'></script>
+<script type='text/javascript' src='https://rise.cs.berkeley.edu/wp-includes/js/mediaelement/wp-playlist.min.js?ver=5.8.13' id='wp-playlist-js'></script>
+<script type='text/javascript' id='views-pagination-script-js-extra'>
+/* <![CDATA[ */
+var wpv_pagination_local = {"front_ajaxurl":"https:\/\/rise.cs.berkeley.edu\/wp-admin\/admin-ajax.php","calendar_image":"https:\/\/rise.cs.berkeley.edu\/wp-content\/plugins\/wp-views\/embedded\/res\/img\/calendar.gif","calendar_text":"Select date","datepicker_min_date":null,"datepicker_max_date":null,"resize_debounce_tolerance":"100","datepicker_style_url":"https:\/\/rise.cs.berkeley.edu\/wp-content\/plugins\/types\/vendor\/toolset\/toolset-common\/toolset-forms\/css\/wpt-jquery-ui\/jquery-ui-1.11.4.custom.css"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://rise.cs.berkeley.edu/wp-content/plugins/wp-views/embedded/res/js/wpv-pagination-embedded.js?ver=2.4.1' id='views-pagination-script-js'></script>
+<script type='text/javascript' src='https://rise.cs.berkeley.edu/wp-content/plugins/x-shortcodes/js/dist/site/x-shortcodes-body.min.js' id='x-shortcodes-site-body-js'></script>
+<script type='text/javascript' src='https://rise.cs.berkeley.edu/wp-content/themes/x-child/js/custom.js?ver=1.0.1' id='custom-js-js'></script>
+<script type='text/javascript' src='https://rise.cs.berkeley.edu/wp-includes/js/jquery/ui/effect.min.js?ver=1.12.1' id='jquery-effects-core-js'></script>
+<script type='text/javascript' id='the-grid-js-extra'>
+/* <![CDATA[ */
+var tg_global_var = {"url":"https:\/\/rise.cs.berkeley.edu\/wp-admin\/admin-ajax.php","nonce":"c122e36b84","is_mobile":null,"mediaelement":"","mediaelement_ex":null,"lightbox_autoplay":"","debounce":"","meta_data":[{"name":"Date","key":"start_date"}],"main_query":{"error":"","m":"","p":"2","post_parent":"","subpost":"","subpost_id":"","attachment":"","attachment_id":0,"name":"","pagename":"","page_id":"2","second":"","minute":"","hour":"","day":0,"monthnum":0,"year":0,"w":0,"category_name":"","tag":"","cat":"","tag_id":"","author":"","author_name":"","feed":"","tb":"","paged":0,"meta_key":"","meta_value":"","preview":"","s":"","sentence":"","title":"","fields":"","menu_order":"","embed":"","category__in":[],"category__not_in":[],"category__and":[],"post__in":[],"post__not_in":[],"post_name__in":[],"tag__in":[],"tag__not_in":[],"tag__and":[],"tag_slug__in":[],"tag_slug__and":[],"post_parent__in":[],"post_parent__not_in":[],"author__in":[],"author__not_in":[],"ignore_sticky_posts":false,"suppress_filters":false,"cache_results":true,"update_post_term_cache":true,"lazy_load_term_meta":true,"update_post_meta_cache":true,"post_type":"","posts_per_page":100,"nopaging":false,"comments_per_page":"50","no_found_rows":false,"order":"DESC"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://rise.cs.berkeley.edu/wp-content/plugins/the-grid/frontend/assets/js/the-grid.min.js?ver=2.2.0' id='the-grid-js'></script>
+<script type='text/javascript' src='https://rise.cs.berkeley.edu/wp-includes/js/wp-embed.min.js?ver=5.8.13' id='wp-embed-js'></script>
+<script type='text/javascript' src='https://rise.cs.berkeley.edu/wp-content/plugins/js_composer/assets/js/dist/js_composer_front.min.js?ver=6.5.0' id='wpb_composer_front_js-js'></script>
+<script type="text/javascript"> var swp_nonce = "453729fe34";var swpFloatBeforeContent = false; var swp_ajax_url = "https://rise.cs.berkeley.edu/wp-admin/admin-ajax.php"; var swp_post_id = "2";var swpClickTracking = false;</script><script type="text/javascript">var to_like_post = {"url":"https://rise.cs.berkeley.edu/wp-admin/admin-ajax.php","nonce":"0d448470b1"};jQuery.noConflict(),function(a){"use strict";a(document).ready(function(){a(document).on("click",".to-post-like:not('.to-post-like-unactive')",function(b){b.preventDefault();var c=a(this),d=c.data("post-id"),e=parseInt(c.find(".to-like-count").text());return c.addClass("heart-pulse"),a.ajax({type:"post",url:to_like_post.url,data:{nonce:to_like_post.nonce,action:"to_like_post",post_id:d,like_nb:e},context:c,success:function(b){b&&(c=a(this),c.attr("title",b.title),c.find(".to-like-count").text(b.count),c.removeClass(b.remove_class+" heart-pulse").addClass(b.add_class))}}),!1})})}(jQuery);</script>
+  
+  
+</body>
+</html>

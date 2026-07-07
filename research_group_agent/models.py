@@ -8,8 +8,8 @@ from enum import Enum
 from typing import Any
 
 
-SCHEMA_VERSION = "1.3"
-PIPELINE_VERSION = "PR17"
+SCHEMA_VERSION = "1.4"
+PIPELINE_VERSION = "PR19"
 DEFAULT_TOP_N = 10
 
 
@@ -158,6 +158,8 @@ class ExtractionRunMetrics:
     member_counts: list[int] = field(default_factory=list)
     homepage_upgrades: int = 0
     homepage_resolution_attempts: int = 0
+    # PR19: per-professor candidate discovery counts
+    candidate_page_counts: list[int] = field(default_factory=list)
 
     def record_homepage_resolution(self, upgraded: bool) -> None:
         self.homepage_resolution_attempts += 1
@@ -181,6 +183,10 @@ class ExtractionRunMetrics:
 
     def record_member_count(self, count: int) -> None:
         self.member_counts.append(count)
+
+    def record_candidate_count(self, count: int) -> None:
+        """Record the number of candidate pages discovered for one professor."""
+        self.candidate_page_counts.append(count)
 
     @property
     def rejection_reason_counts(self) -> dict[str, int]:
@@ -389,6 +395,8 @@ class ResearchGroupGraph:
     successful_pages: list[str] = field(default_factory=list)
     failed_pages: list[str] = field(default_factory=list)
     member_sources: dict[str, list[str]] = field(default_factory=dict)
+    # PR19: total candidate pages enumerated before ranking
+    candidate_pages_discovered: int = 0
 
     @property
     def member_count(self) -> int:
@@ -441,4 +449,5 @@ class ResearchGroupGraph:
             "successful_pages": self.successful_pages,
             "failed_pages": self.failed_pages,
             "member_sources": self.member_sources,
+            "candidate_pages_discovered": self.candidate_pages_discovered,
         }
