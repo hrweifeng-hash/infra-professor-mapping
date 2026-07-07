@@ -1,0 +1,101 @@
+Professor,University,Conference,Homepage,Resolved Homepage,Selected Pages,Pages Parsed,Members Discovered,Current Members,Former Members,Failure Category,Navigation Confidence,Pipeline Status
+Ravi Netravali,Princeton University,NSDI; SOSP; OSDI,https://www.cs.princeton.edu/people/profile/ravian,https://www.cs.princeton.edu/~ravian,https://sysml.cs.princeton.edu/,1,0,0,0,page_classifier_rejection,0.805,page_rejected
+Feng Qian 0001,University of Southern California,SIGCOMM; NSDI; SOSP,https://feng-qian.github.io/,https://feng-qian.github.io/,https://feng-qian.github.io/students.html,1,19,19,0,,1.0,success
+Arvind Krishnamurthy,University of Washington,SIGCOMM; NSDI; SOSP,http://www.cs.washington.edu/homes/arvind/,http://www.cs.washington.edu/homes/arvind/,,0,0,0,0,navigation_failure,,skipped
+Vincent Liu 0001,University of Pennsylvania,SIGCOMM; NSDI; OSDI,https://vincen.tl/,https://vincen.tl/,https://dsl.cis.upenn.edu/,1,0,0,0,page_classifier_rejection,0.805,page_rejected
+Rachit Agarwal 0001,Cornell University,SIGCOMM; OSDI; NSDI,http://www.cs.cornell.edu/~ragarwal/index.html,http://www.cs.cornell.edu/~ragarwal/index.html,https://www.cs.cornell.edu/~ragarwal/collaborators.html,1,0,0,0,page_classifier_rejection,1.0,page_rejected
+Tianyin Xu,University of Illinois Urbana-Champaign,OSDI; NSDI; EuroSys,https://tianyin.github.io/,https://tianyin.github.io/,https://www.cs.cornell.edu/~legunsen,1,0,0,0,page_classifier_rejection,0.808,page_rejected
+Mosharaf Chowdhury,University of Michigan,NSDI; OSDI; SIGCOMM,http://www.mosharaf.com/,http://www.mosharaf.com/,https://symbioticlab.org/people/; https://symbioticlab.org/,2,10,10,68,,1.0,success
+Aditya Akella,The University of Texas at Austin,NSDI; SIGCOMM; EuroSys,https://www.cs.utexas.edu/~akella/,https://www.cs.utexas.edu/~akella/,http://utns.cs.utexas.edu/,1,0,0,0,page_classifier_rejection,0.805,page_rejected
+Peng Huang 0005,University of Michigan,SOSP; OSDI; NSDI,https://web.eecs.umich.edu/~ryanph/,https://web.eecs.umich.edu/~ryanph/,,0,0,0,0,homepage_resolution_failure,,skipped
+Scott Shenker,"University of California, Berkeley",SIGCOMM; NSDI; OSDI,https://www2.eecs.berkeley.edu/Faculty/Homepages/shenker.html,https://www2.eecs.berkeley.edu/Faculty/Homepages/shenker.html,https://eecs.berkeley.edu/people/; https://netsys.cs.berkeley.edu/,2,10,10,2,,0.817,success
+Ang Chen 0001,University of Michigan,NSDI; SIGCOMM; SOSP,https://www.cs.rice.edu/~angchen/,https://www.cs.rice.edu/~angchen/,,0,0,0,0,navigation_failure,,skipped
+Remzi H. Arpaci-Dusseau,University of Wisconsin-Madison,FAST; SOSP; NSDI,https://pages.cs.wisc.edu/~remzi/,https://pages.cs.wisc.edu/~remzi/,,0,0,0,0,navigation_failure,,skipped
+Gregory R. Ganger,Carnegie Mellon University,SOSP; OSDI; FAST,http://www.ece.cmu.edu/~ganger/,http://www.ece.cmu.edu/~ganger/,https://www.pdl.cmu.edu/,1,0,0,0,page_classifier_rejection,0.805,page_rejected
+Andrea C. Arpaci-Dusseau,University of Wisconsin-Madison,FAST; SOSP; NSDI,http://pages.cs.wisc.edu/~dusseau/,http://pages.cs.wisc.edu/~dusseau/,http://research.cs.wisc.edu/adsl/People/; http://research.cs.wisc.edu/wind,2,9,9,1,,1.0,success
+Sylvia Ratnasamy,"University of California, Berkeley",SIGCOMM; NSDI; SOSP,https://people.eecs.berkeley.edu/~sylvia/,https://people.eecs.berkeley.edu/~sylvia/,,0,0,0,0,navigation_failure,,skipped
+Natacha Crooks,"University of California, Berkeley",SOSP; NSDI; EuroSys,https://nacrooks.github.io/,https://nacrooks.github.io/,https://sky.berkeley.edu; https://nacrooks.github.io/students/,2,7,7,7,,0.708,success
+Peter R. Pietzuch,University of Kentucky,NSDI; SOSP; ATC,http://www.doc.ic.ac.uk/~prp/,http://www.doc.ic.ac.uk/~prp/,http://www.cl.cam.ac.uk/; http://lsds.doc.ic.ac.uk,2,0,0,0,page_classifier_rejection,0.708,page_rejected
+Jason Nieh,Columbia University,OSDI; SOSP; ATC,http://www.cs.columbia.edu/~nieh/,http://www.cs.columbia.edu/~nieh/,http://systems.cs.columbia.edu/,1,20,20,101,,0.708,success
+Ming Liu 0027,University of Wisconsin-Madison,NSDI; SIGCOMM; SOSP,https://mgliu.sites.cs.wisc.edu/index.html,https://pages.cs.wisc.edu/~mgliu/teaching.html,,0,0,0,0,navigation_failure,,skipped
+Christos Kozyrakis,Stanford University,SOSP; ASPLOS; OSDI,http://csl.stanford.edu/~christos/,http://csl.stanford.edu/~christos/,http://csl.stanford.edu/~christos/students.html; http://platformlab.stanford.edu,2,7,7,0,,1.0,success
+Ramesh Govindan,University of Southern California,SIGCOMM; NSDI,http://pollux.usc.edu/~ramesh/,http://pollux.usc.edu/~ramesh/,,0,0,0,0,homepage_resolution_failure,,skipped
+T. S. Eugene Ng,Rice University,SIGCOMM; NSDI; OSDI,,,,0,0,0,0,no_homepage,,skipped
+Yifan Qiao 0002,"University of California, Berkeley",NSDI; OSDI; SOSP,https://yifanqiao.com/,https://yifanqiao.com/,https://sky.cs.berkeley.edu/; https://pdos.csail.mit.edu/,2,0,0,0,page_classifier_rejection,0.805,page_rejected
+Alex C. Snoeren,"University of California, San Diego",SIGCOMM; ATC; NSDI,http://www.cs.ucsd.edu/~snoeren/,http://www.cs.ucsd.edu/~snoeren/,http://www.sysnet.ucsd.edu,1,0,0,0,page_classifier_rejection,0.556,page_rejected
+Sam H. Noh,Virginia Polytechnic Institute and State University,FAST; EuroSys; ATC,http://next.unist.ac.kr/professor,http://next.unist.ac.kr/professor,,0,0,0,0,homepage_resolution_failure,,skipped
+Shuai Mu 0001,Stony Brook University,NSDI; SOSP; EuroSys,http://mpaxos.com/,http://mpaxos.com/,,0,0,0,0,navigation_failure,,skipped
+M. Frans Kaashoek,Massachusetts Institute of Technology,SOSP; OSDI; EuroSys,http://pdos.csail.mit.edu/~kaashoek/,http://pdos.csail.mit.edu/~kaashoek/,http://www.csail.mit.edu/; https://people.csail.mit.edu/kaashoek/thesis.html,2,0,0,0,page_classifier_rejection,0.708,page_rejected
+Nickolai Zeldovich,Massachusetts Institute of Technology,OSDI; SOSP,,,,0,0,0,0,no_homepage,,skipped
+Vijay Chidambaram,The University of Texas at Austin,OSDI; FAST; NSDI,https://www.cs.utexas.edu/~vijay/,https://www.cs.utexas.edu/~vijay/,https://www.cs.utexas.edu/~vijay//team; https://utsaslab.cs.utexas.edu/,2,0,0,0,page_classifier_rejection,1.0,page_rejected
+Dimitrios Skarlatos 0002,Carnegie Mellon University,SOSP; ASPLOS; OSDI,http://www.cs.cmu.edu/~dskarlat/,http://www.cs.cmu.edu/~dskarlat/,https://www.cylab.cmu.edu,1,1,1,0,,0.708,success
+Guoqing Harry Xu,"University of California, Los Angeles",NSDI; ASPLOS; OSDI,https://web.cs.ucla.edu/~harryxu/,https://web.cs.ucla.edu/~harryxu/,,0,0,0,0,navigation_failure,,skipped
+Yang Wang 0009,Ohio State University,OSDI; SOSP; EuroSys,https://cse.osu.edu/people/wang.7564,https://yangwang83.github.io/,,0,0,0,0,navigation_failure,,skipped
+Ion Stoica,"University of California, Berkeley",NSDI; OSDI; EuroSys,http://www.cs.berkeley.edu/~istoica/,http://www.cs.berkeley.edu/~istoica/,,0,0,0,0,navigation_failure,,skipped
+Justine Sherry,Carnegie Mellon University,SIGCOMM; NSDI; OSDI,http://www.justinesherry.com/,http://www.justinesherry.com/,https://cylab.cmu.edu,1,1,1,0,,0.708,success
+Srinivasan Seshan,Carnegie Mellon University,NSDI; SIGCOMM,http://www.cs.cmu.edu/~srini/,http://www.cs.cmu.edu/~srini/,http://www.cs.cmu.edu/~srini/group/,1,2,2,0,,1.0,success
+Shivaram Venkataraman,University of Wisconsin-Madison,EuroSys; NSDI; OSDI,https://shivaram.org/,https://shivaram.org/,https://www.microsoft.com/en-us/research/group/systems-research-group-redmond/,1,0,0,0,page_classifier_rejection,1.0,page_rejected
+Xudong Sun 0013,University of Illinois Urbana-Champaign,EuroSys; OSDI; NSDI,,,,0,0,0,0,no_homepage,,skipped
+Simon Peter 0001,University of Washington,OSDI; NSDI; SOSP,https://homes.cs.washington.edu/~simpeter/,https://homes.cs.washington.edu/~simpeter/,,0,0,0,0,navigation_failure,,skipped
+Pedro Fonseca 0001,Purdue University,EuroSys; SOSP; OSDI,https://www.cs.purdue.edu/homes/pfonseca/,https://www.cs.purdue.edu/homes/pfonseca/,http://www.cs.purdue.edu/,1,0,0,0,page_classifier_rejection,0.805,page_rejected
+Yufei Ding 0001,"University of California, San Diego",ATC; OSDI; SOSP,https://picassolab.squarespace.com/yufei,https://picassolab.squarespace.com/yufei,,0,0,0,0,homepage_resolution_failure,,skipped
+Aleksandar Kuzmanovic,Northwestern University,SIGCOMM; NSDI; ATC,http://www.cs.northwestern.edu/~akuzma/,http://www.cs.northwestern.edu/~akuzma/,,0,0,0,0,navigation_failure,,skipped
+Yang Zhou 0008,Harvard University,NSDI; EuroSys; OSDI,,,,0,0,0,0,no_homepage,,skipped
+LluÃ­s Vilanova,University of Kentucky,OSDI; NSDI; ATC,,,,0,0,0,0,no_homepage,,skipped
+Rishabh R. Iyer,"University of California, Berkeley",SOSP; OSDI; NSDI,https://rishabh246.github.io/,https://rishabh246.github.io/,,0,0,0,0,navigation_failure,,skipped
+Amit Levy 0001,Princeton University,SOSP; NSDI; ATC,https://amitlevy.com/,https://amitlevy.com/,https://www.cs.princeton.edu/~akalaba/,1,0,0,0,page_classifier_rejection,1.0,page_rejected
+Joseph Tassarotti,New York University,SOSP; OSDI; SIGCOMM,,,,0,0,0,0,no_homepage,,skipped
+Harsha V. Madhyastha,University of Michigan,OSDI; NSDI; SIGCOMM,http://web.eecs.umich.edu/~harshavm/,http://web.eecs.umich.edu/~harshavm/,,0,0,0,0,homepage_resolution_failure,,skipped
+Manya Ghobadi,Massachusetts Institute of Technology,SIGCOMM; NSDI,http://people.csail.mit.edu/ghobadi/,http://www.cs.utoronto.ca/~monia/tcptrickle.html,,0,0,0,0,navigation_failure,,skipped
+Lorenzo Alvisi,The University of Texas at Austin,SOSP; EuroSys; OSDI,http://www.cs.utexas.edu/users/lorenzo/,http://www.cs.utexas.edu/users/lorenzo/,http://www.cs.utexas.edu/users/lasr/,1,0,0,0,page_classifier_rejection,0.708,page_rejected
+Rui Pan 0003,Princeton University,SOSP; NSDI,https://ruipan.xyz/,https://ruipan.xyz/,https://sysml.cs.princeton.edu/,1,0,0,0,page_classifier_rejection,0.805,page_rejected
+David MaziÃ¨res,Stanford University,NSDI; OSDI; SOSP,http://www.scs.stanford.edu/~dm/,http://www.scs.stanford.edu/~dm/,http://www.scs.stanford.edu/,1,0,0,0,page_classifier_rejection,0.556,page_rejected
+Bryan Parno,Carnegie Mellon University,OSDI; NSDI; SOSP,,,,0,0,0,0,no_homepage,,skipped
+Ronghui Gu,Columbia University,OSDI; SOSP,https://www.cs.columbia.edu/~rgu/,https://www.cs.columbia.edu/~rgu/,,0,0,0,0,navigation_failure,,skipped
+Hao Zhang 0025,"University of California, San Diego",OSDI; SOSP,http://www.cs.cmu.edu/~hzhang2/,http://www.cs.cmu.edu/~hzhang2/,,0,0,0,0,homepage_resolution_failure,,skipped
+Hong Zhang 0025,"University of California, Berkeley",NSDI; SIGCOMM; EuroSys,https://hongzhangblaze.github.io/,https://hongzhangblaze.github.io/,https://rise.cs.berkeley.edu/,1,0,0,0,page_classifier_rejection,0.708,page_rejected
+Yiming Qiu 0001,University of Michigan,NSDI; SOSP; SIGCOMM,,,,0,0,0,0,no_homepage,,skipped
+Miryung Kim,"University of California, Los Angeles",NSDI; OSDI; ASPLOS,https://web.cs.ucla.edu/~miryung/,https://web.cs.ucla.edu/~miryung/,,0,0,0,0,navigation_failure,,skipped
+Marios Kogias,University of Kentucky,SOSP; ASPLOS; NSDI,https://marioskogias.github.io/,https://marioskogias.github.io/,https://www.mystenlabs.com/,1,0,0,0,page_classifier_rejection,0.708,page_rejected
+Christina Delimitrou,Massachusetts Institute of Technology,ASPLOS; SIGCOMM; SOSP,https://people.csail.mit.edu/delimitrou/,http://csl.stanford.edu/~christos/,http://csl.stanford.edu/~christos/students.html; http://platformlab.stanford.edu,2,7,7,0,,1.0,success
+Steven Swanson,"University of California, San Diego",ATC; ASPLOS; SOSP,,,,0,0,0,0,no_homepage,,skipped
+Dong Li 0001,"University of California, Merced",ATC; EuroSys; FAST,,,,0,0,0,0,no_homepage,,skipped
+Josep Torrellas,University of Illinois Urbana-Champaign,ASPLOS; NSDI; OSDI,http://www.cs.uiuc.edu/directory/directory.php?name=torrellas,http://www.cs.uiuc.edu/directory/directory.php?name=torrellas,,0,0,0,0,homepage_resolution_failure,,skipped
+Nam Sung Kim,University of Illinois Urbana-Champaign,NSDI; ATC; EuroSys,https://csl.illinois.edu/directory/faculty/nskim,https://csl.illinois.edu/directory/faculty/nskim,https://csl.illinois.edu/research/groups/applied-research-and-technology-group; https://csl.illinois.edu/research/centers/national-center-professional-research-ethics/people; https://csl.illinois.edu/,3,2,2,0,,1.0,success
+Zheng Wang 0075,"University of California, San Diego",ATC; OSDI,https://zhengwang.info/,https://zhengwang.info/,,0,0,0,0,navigation_failure,,skipped
+Thomas E. Anderson,University of Washington,NSDI; SIGCOMM; FAST,http://www.cs.washington.edu/homes/tom/,http://www.cs.washington.edu/homes/tom/,https://www.cs.washington.edu/who-we-are/lab/; https://www.cs.washington.edu/people/,2,1,1,0,,1.0,success
+Silvery Fu,"University of California, Berkeley",SIGCOMM; NSDI; SOSP,https://silvery.im/,https://silvery.im/,,0,0,0,0,navigation_failure,,skipped
+Hari Balakrishnan,Massachusetts Institute of Technology,SIGCOMM; EuroSys,http://nms.csail.mit.edu/~hari/,http://nms.csail.mit.edu/~hari/,,0,0,0,0,homepage_resolution_failure,,skipped
+Matei Zaharia,Stanford University,NSDI; SOSP; OSDI,https://people.csail.mit.edu/matei/,https://people.csail.mit.edu/matei/,,0,0,0,0,navigation_failure,,skipped
+Jian Huang 0006,University of Illinois Urbana-Champaign,SOSP; ASPLOS; OSDI,http://jianh.web.engr.illinois.edu/,https://platformxlab.github.io,,0,0,0,0,navigation_failure,,skipped
+Jennifer Rexford,Princeton University,SIGCOMM; NSDI,http://www.cs.princeton.edu/~jrex/,http://www.cs.princeton.edu/~jrex/,,0,0,0,0,navigation_failure,,skipped
+Michael M. Swift,University of Wisconsin-Madison,ATC; SIGCOMM; FAST,http://www.cs.wisc.edu/~swift/,http://www.cs.wisc.edu/~swift/,http://www.cs.wisc.edu/multifacet/,1,0,0,0,page_classifier_rejection,0.556,page_rejected
+Zhuohan Li 0001,"University of California, Berkeley",OSDI; SOSP; SIGCOMM,,,,0,0,0,0,no_homepage,,skipped
+Jingrong Chen 0002,Duke University,NSDI; SIGCOMM,https://scholars.duke.edu/person/jingrong.chen,https://scholars.duke.edu/person/jingrong.chen,,0,0,0,0,homepage_resolution_failure,,skipped
+Lili Qiu,The University of Texas at Austin,NSDI; OSDI; SOSP,,,,0,0,0,0,no_homepage,,skipped
+Dan Williams 0001,Virginia Polytechnic Institute and State University,ATC; EuroSys; OSDI,https://website.cs.vt.edu/people/faculty/dan-williams.html,https://website.cs.vt.edu/people/faculty/dan-williams.html,https://website.cs.vt.edu/people.html,1,0,0,0,page_classifier_rejection,0.817,page_rejected
+Yiying Zhang 0005,"University of California, San Diego",NSDI; SOSP; ASPLOS,https://cseweb.ucsd.edu/~yiying/,https://cseweb.ucsd.edu/~yiying/,http://wuklab.io,1,0,0,0,page_classifier_rejection,0.708,page_rejected
+Qinghao Hu 0004,Massachusetts Institute of Technology,NSDI; SOSP; ATC,,,,0,0,0,0,no_homepage,,skipped
+George Varghese,"University of California, Los Angeles",NSDI; SIGCOMM,https://www.georgevargheseucla.com/,https://www.georgevargheseucla.com/,,0,0,0,0,navigation_failure,,skipped
+Krishna Chintalapudi,University of Southern California,NSDI; SIGCOMM,http://enl.usc.edu/~krishna/,http://enl.usc.edu/~krishna/,,0,0,0,0,homepage_resolution_failure,,skipped
+Song Han 0003,Massachusetts Institute of Technology,SOSP,https://songhan.mit.edu/,https://svg-project.github.io/v1/,,0,0,0,0,navigation_failure,,skipped
+Cheng Tan 0005,Northeastern University,OSDI; SOSP; EuroSys,https://www.khoury.northeastern.edu/people/cheng-tan/,https://naizhengtan.github.io/,https://www.bytedance.com/en/; http://srg.khoury.northeastern.edu/,2,0,0,0,page_classifier_rejection,0.805,page_rejected
+Roxana Geambasu,Columbia University,SOSP; EuroSys; OSDI,https://roxanageambasu.github.io/,https://roxanageambasu.github.io/,http://systems.cs.columbia.edu/,1,20,20,101,,0.805,success
+Ahmad Hassan 0004,University of Southern California,SIGCOMM; NSDI,,,,0,0,0,0,no_homepage,,skipped
+Kyle Jamieson,Princeton University,NSDI; SIGCOMM,http://www.cs.princeton.edu/~kylej/index.html,http://www.cs.princeton.edu/~kylej/index.html,,0,0,0,0,navigation_failure,,skipped
+Michael I. Jordan,"University of California, Berkeley",OSDI,http://www.cs.berkeley.edu/~jordan/,http://www.cs.berkeley.edu/~jordan/,http://bair.berkeley.edu/,1,0,0,0,page_classifier_rejection,0.805,page_rejected
+Yuhan Liu 0004,University of Chicago,SIGCOMM; NSDI; EuroSys,,,,0,0,0,0,no_homepage,,skipped
+Bruno Ribeiro 0001,Purdue University,SIGCOMM,https://www.cs.purdue.edu/homes/ribeirob/,https://www.cs.purdue.edu/homes/ribeirob/,,0,0,0,0,navigation_failure,,skipped
+Vasiliki Kalavri,Boston University,EuroSys; NSDI; SOSP,,,,0,0,0,0,no_homepage,,skipped
+Fan Lai 0001,University of Illinois Urbana-Champaign,OSDI; NSDI; SOSP,https://fanlai.me/,https://fanlai.me/,https://fanlai.me/students,1,0,0,0,page_classifier_rejection,1.0,page_rejected
+Sanjay G. Rao,Purdue University,SIGCOMM; NSDI; ATC,http://cobweb.ecn.purdue.edu/~sanjay/,http://cobweb.ecn.purdue.edu/~sanjay/,https://purdue-isl.github.io/team; https://purdue-isl.github.io/,2,20,20,17,,1.0,success
+Todd D. Millstein,"University of California, Los Angeles",SIGCOMM; NSDI; ASPLOS,http://www.cs.ucla.edu/~todd/,http://www.cs.ucla.edu/~todd/,https://www.microsoft.com/en-us/research/academic-program/outstanding-collaborator-award; http://web.cs.ucla.edu/~todd/alumni.html,2,0,0,0,page_classifier_rejection,0.97,page_rejected
+David Walker 0001,Princeton University,SIGCOMM; NSDI,https://www.cs.princeton.edu/~dpw/,https://www.cs.princeton.edu/~dpw/,https://www.cs.princeton.edu/~dpw/coauthors.htm,1,15,15,0,,0.672,success
+Muhammad Shahbaz 0001,Purdue University,OSDI; SIGCOMM; NSDI,https://mshahbaz.gitlab.io/,https://mshahbaz.gitlab.io/,,0,0,0,0,navigation_failure,,skipped
+David P. Woodruff,Carnegie Mellon University,,https://www.cs.cmu.edu/~dwoodruf/,https://www.cs.cmu.edu/~dwoodruf/,,0,0,0,0,navigation_failure,,skipped
+Heng Huang 0001,"University of Maryland, College Park",,https://www.cs.umd.edu/~heng/,https://www.cs.umd.edu/~heng/,,0,0,0,0,navigation_failure,,skipped
+Mingyi Hong 0001,University of Minnesota,,https://people.ece.umn.edu/~mhong/mingyi.html,https://people.ece.umn.edu/~mhong/mingyi.html,,0,0,0,0,homepage_resolution_failure,,skipped
+Philip S. Yu,University of Illinois Chicago,,https://www.cs.uic.edu/~psyu/,https://www.cs.uic.edu/~psyu/,,0,0,0,0,homepage_resolution_failure,,skipped
+Joshua B. Tenenbaum,Massachusetts Institute of Technology,,https://mitibmwatsonailab.mit.edu/people/joshua-tenenbaum/,https://mitibmwatsonailab.mit.edu/people/joshua-tenenbaum/,,0,0,0,0,homepage_resolution_failure,,skipped
+Zhenyu Zhang 0015,The University of Texas at Austin,,,,,0,0,0,0,no_homepage,,skipped
+Sijia Liu 0001,Michigan State University,,http://sliu17.mysite.syr.edu/,http://sliu17.mysite.syr.edu/,,0,0,0,0,homepage_resolution_failure,,skipped

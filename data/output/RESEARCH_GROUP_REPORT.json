@@ -1,22 +1,22 @@
 {
-  "generated_at": "2026-07-07T02:46:04.549782+00:00",
+  "generated_at": "2026-07-07T02:59:25.777275+00:00",
   "schema_version": "1.3",
   "pipeline_version": "PR17",
-  "professors_processed": 10,
-  "research_groups_discovered": 8,
-  "successful_group_fetches": 3,
-  "rejected_pages": 9,
-  "page_rejected_count": 5,
-  "wrong_page_rejections": 1,
-  "current_members_extracted": 39,
-  "former_members_extracted": 70,
-  "members_extracted": 39,
-  "current_member_ratio": 0.358,
+  "professors_processed": 100,
+  "research_groups_discovered": 42,
+  "successful_group_fetches": 16,
+  "rejected_pages": 100,
+  "page_rejected_count": 26,
+  "wrong_page_rejections": 4,
+  "current_members_extracted": 151,
+  "former_members_extracted": 297,
+  "members_extracted": 151,
+  "current_member_ratio": 0.337,
   "homepage_resolution": {
-    "resolution_attempts": 10,
-    "upgrades_to_personal_homepage": 1,
-    "upgrade_rate": 0.1,
-    "professors_without_canonical_upgrade": 9,
+    "resolution_attempts": 100,
+    "upgrades_to_personal_homepage": 8,
+    "upgrade_rate": 0.08,
+    "professors_without_canonical_upgrade": 92,
     "professors_without_current_students": [],
     "conversions": [
       {
@@ -25,87 +25,149 @@
         "canonical_homepage": "https://www.cs.princeton.edu/~ravian",
         "method": "link_upgrade:Homepage",
         "confidence": 0.75
+      },
+      {
+        "professor_name": "Ming Liu 0027",
+        "original_homepage": "https://mgliu.sites.cs.wisc.edu/index.html",
+        "canonical_homepage": "https://pages.cs.wisc.edu/~mgliu/teaching.html",
+        "method": "link_upgrade:Teaching",
+        "confidence": 0.85
+      },
+      {
+        "professor_name": "Yang Wang 0009",
+        "original_homepage": "https://cse.osu.edu/people/wang.7564",
+        "canonical_homepage": "https://yangwang83.github.io/",
+        "method": "link_upgrade:Personal website",
+        "confidence": 0.98
+      },
+      {
+        "professor_name": "Manya Ghobadi",
+        "original_homepage": "http://people.csail.mit.edu/ghobadi/",
+        "canonical_homepage": "http://www.cs.utoronto.ca/~monia/tcptrickle.html",
+        "method": "link_upgrade:demo",
+        "confidence": 0.85
+      },
+      {
+        "professor_name": "Christina Delimitrou",
+        "original_homepage": "https://people.csail.mit.edu/delimitrou/",
+        "canonical_homepage": "http://csl.stanford.edu/~christos/",
+        "method": "link_upgrade:Christos Kozyrakis",
+        "confidence": 0.85
+      },
+      {
+        "professor_name": "Jian Huang 0006",
+        "original_homepage": "http://jianh.web.engr.illinois.edu/",
+        "canonical_homepage": "https://platformxlab.github.io",
+        "method": "link_upgrade:Systems Platform and Intelligence Lab (Illinois PlatformX)",
+        "confidence": 0.85
+      },
+      {
+        "professor_name": "Song Han 0003",
+        "original_homepage": "https://songhan.mit.edu/",
+        "canonical_homepage": "https://svg-project.github.io/v1/",
+        "method": "link_upgrade:Sparse VideoGen",
+        "confidence": 0.85
+      },
+      {
+        "professor_name": "Cheng Tan 0005",
+        "original_homepage": "https://www.khoury.northeastern.edu/people/cheng-tan/",
+        "canonical_homepage": "https://naizhengtan.github.io/",
+        "method": "link_upgrade:https://naizhengtan.github.io/",
+        "confidence": 0.85
       }
     ]
   },
   "navigation": {
-    "navigation_success_rate": 0.8,
-    "average_navigation_confidence": 0.88,
-    "average_navigation_depth": 2.12,
+    "navigation_success_rate": 0.42,
+    "average_navigation_confidence": 0.831,
+    "average_navigation_depth": 2.07,
     "provider_breakdown": {
-      "heuristic": 10
+      "heuristic": 100
     },
     "fallback_rate": 1.0,
     "llm_navigated_count": 0,
     "top_evidence": {
-      "node_type:lab_page": 5,
-      "anchor_lab:lab": 5,
-      "anchor_group+:lab": 5,
-      "node_type:people_page": 3,
-      "anchor_member:students": 2,
-      "anchor_group+:student": 2,
-      "group_pattern:/~": 2,
-      "url_member:/people": 2,
-      "group_pattern:/people/": 2,
-      "url_member:/students": 1
+      "node_type:lab_page": 25,
+      "anchor_lab:lab": 25,
+      "anchor_group+:lab": 25,
+      "node_type:people_page": 11,
+      "anchor_member:students": 8,
+      "anchor_group+:student": 8,
+      "node_type:research_group_page": 6,
+      "anchor_group+:group": 6,
+      "url_member:/students": 4,
+      "group_pattern:/students": 4
     }
   },
   "multi_page": {
-    "professors_with_multipage": 8,
-    "average_parsed_pages": 1.25,
+    "professors_with_multipage": 42,
+    "average_parsed_pages": 1.38,
     "average_successful_pages": 0.38,
-    "average_merged_members": 13.0,
-    "total_raw_member_sources": 109,
-    "total_final_members": 39,
-    "deduplication_rate": 0.642,
+    "average_merged_members": 9.4,
+    "total_raw_member_sources": 448,
+    "total_final_members": 151,
+    "deduplication_rate": 0.663,
     "multi_page_member_count": 0,
     "member_source_distribution": {
-      "1_pages": 109
+      "1_pages": 448
     }
   },
   "role_distribution": {
-    "PhD Student": 34,
-    "Professor": 5
+    "PhD Student": 126,
+    "Professor": 19,
+    "Postdoc": 4,
+    "Research Staff": 2
   },
   "identity_coverage": {
-    "total_members": 39,
-    "any_identity_count": 8,
-    "any_identity_rate": 0.205,
-    "homepage_count": 8,
-    "homepage_rate": 0.205,
-    "github_count": 0,
-    "github_rate": 0.0,
+    "total_members": 151,
+    "any_identity_count": 48,
+    "any_identity_rate": 0.318,
+    "homepage_count": 40,
+    "homepage_rate": 0.265,
+    "github_count": 1,
+    "github_rate": 0.007,
     "google_scholar_count": 0,
     "google_scholar_rate": 0.0,
-    "linkedin_count": 0,
-    "linkedin_rate": 0.0
+    "linkedin_count": 7,
+    "linkedin_rate": 0.046
   },
   "language_signal_distribution": {
-    "count": 23,
-    "rate": 0.59,
+    "count": 69,
+    "rate": 0.457,
     "types": {
-      "Likely Chinese Surname": 23
+      "Likely Chinese Surname": 69
     }
   },
   "precision_statistics": {
-    "average_members_per_professor": 3.9,
+    "average_members_per_professor": 1.5,
     "median_members_per_professor": 0,
-    "rejected_candidates": 3,
-    "rejected_pages": 9,
+    "rejected_candidates": 61,
+    "rejected_pages": 100,
     "rejection_reason_counts": {
-      "No member sections found on page": 5,
-      "does not look like a person name": 3,
-      "no suitable group page in HomepageGraph": 2,
-      "Rejected as research_group (confidence=0.35)": 1,
-      "Page title 'Owolabi Legunsen' does not match target professor 'Tianyin Xu'; likely a different person's homepage": 1
+      "no suitable group page in HomepageGraph": 58,
+      "No member sections found on page": 29,
+      "missing personal profile URL or role evidence": 28,
+      "does not look like a person name": 19,
+      "exceeded member cap (20)": 11,
+      "fetch failed": 5,
+      "name matches non-person pattern": 2,
+      "Rejected as research_group (confidence=0.35)": 2,
+      "contains non-person keyword": 1,
+      "Page title 'Owolabi Legunsen' does not match target professor 'Tianyin Xu'; likely a different person's homepage": 1,
+      "Rejected as faculty_directory (confidence=0.28)": 1,
+      "Rejected as faculty_directory (confidence=0.31)": 1,
+      "Page title 'Anja Kalaba' does not match target professor 'Amit Levy 0001'; likely a different person's homepage": 1,
+      "Page title 'Wisconsin Multifacet Project' does not match target professor 'Michael M. Swift'; likely a different person's homepage": 1,
+      "Page title 'Graduated Students' does not match target professor 'Todd D. Millstein'; likely a different person's homepage": 1
     },
     "member_count_histogram": {
-      "0": 7,
-      "6-20": 3
+      "0": 84,
+      "6-20": 11,
+      "1-5": 5
     },
     "healthy_range": "5-20",
-    "professors_in_healthy_range": 3,
-    "professors_outside_healthy_range": 0
+    "professors_in_healthy_range": 11,
+    "professors_outside_healthy_range": 5
   },
   "manual_review": [
     {
@@ -170,8 +232,741 @@
         "group_page_not_found",
         "No suitable group page found in HomepageGraph"
       ]
+    },
+    {
+      "professor_name": "Ang Chen 0001",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Remzi H. Arpaci-Dusseau",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Gregory R. Ganger",
+      "group_page": "https://www.pdl.cmu.edu/",
+      "member_count": 0,
+      "reasons": [
+        "page_rejected_by_classifier",
+        "All candidate pages failed"
+      ]
+    },
+    {
+      "professor_name": "Sylvia Ratnasamy",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Peter R. Pietzuch",
+      "group_page": "http://www.cl.cam.ac.uk/",
+      "member_count": 0,
+      "reasons": [
+        "page_rejected_by_classifier",
+        "All candidate pages failed"
+      ]
+    },
+    {
+      "professor_name": "Ming Liu 0027",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Ramesh Govindan",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "T. S. Eugene Ng",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Yifan Qiao 0002",
+      "group_page": "https://sky.cs.berkeley.edu/",
+      "member_count": 0,
+      "reasons": [
+        "page_rejected_by_classifier",
+        "All candidate pages failed"
+      ]
+    },
+    {
+      "professor_name": "Alex C. Snoeren",
+      "group_page": "http://www.sysnet.ucsd.edu",
+      "member_count": 0,
+      "reasons": [
+        "page_rejected_by_classifier",
+        "All candidate pages failed"
+      ]
+    },
+    {
+      "professor_name": "Sam H. Noh",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Shuai Mu 0001",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "M. Frans Kaashoek",
+      "group_page": "http://www.csail.mit.edu/",
+      "member_count": 0,
+      "reasons": [
+        "page_rejected_by_classifier",
+        "All candidate pages failed"
+      ]
+    },
+    {
+      "professor_name": "Nickolai Zeldovich",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Vijay Chidambaram",
+      "group_page": "https://www.cs.utexas.edu/~vijay//team",
+      "member_count": 0,
+      "reasons": [
+        "page_rejected_by_classifier",
+        "All candidate pages failed"
+      ]
+    },
+    {
+      "professor_name": "Dimitrios Skarlatos 0002",
+      "group_page": "https://www.cylab.cmu.edu",
+      "member_count": 1,
+      "reasons": [
+        "member_count_low:1"
+      ]
+    },
+    {
+      "professor_name": "Guoqing Harry Xu",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Yang Wang 0009",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Ion Stoica",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Justine Sherry",
+      "group_page": "https://cylab.cmu.edu",
+      "member_count": 1,
+      "reasons": [
+        "member_count_low:1"
+      ]
+    },
+    {
+      "professor_name": "Srinivasan Seshan",
+      "group_page": "http://www.cs.cmu.edu/~srini/group/",
+      "member_count": 2,
+      "reasons": [
+        "member_count_low:2"
+      ]
+    },
+    {
+      "professor_name": "Shivaram Venkataraman",
+      "group_page": "https://www.microsoft.com/en-us/research/group/systems-research-group-redmond/",
+      "member_count": 0,
+      "reasons": [
+        "page_rejected_by_classifier",
+        "All candidate pages failed"
+      ]
+    },
+    {
+      "professor_name": "Xudong Sun 0013",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Simon Peter 0001",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Pedro Fonseca 0001",
+      "group_page": "http://www.cs.purdue.edu/",
+      "member_count": 0,
+      "reasons": [
+        "page_rejected_by_classifier",
+        "All candidate pages failed"
+      ]
+    },
+    {
+      "professor_name": "Yufei Ding 0001",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Aleksandar Kuzmanovic",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Yang Zhou 0008",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "LluÃ­s Vilanova",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Rishabh R. Iyer",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Amit Levy 0001",
+      "group_page": "https://www.cs.princeton.edu/~akalaba/",
+      "member_count": 0,
+      "reasons": [
+        "page_rejected_by_classifier",
+        "All candidate pages failed"
+      ]
+    },
+    {
+      "professor_name": "Joseph Tassarotti",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Harsha V. Madhyastha",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Manya Ghobadi",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Lorenzo Alvisi",
+      "group_page": "http://www.cs.utexas.edu/users/lasr/",
+      "member_count": 0,
+      "reasons": [
+        "page_rejected_by_classifier",
+        "All candidate pages failed"
+      ]
+    },
+    {
+      "professor_name": "Rui Pan 0003",
+      "group_page": "https://sysml.cs.princeton.edu/",
+      "member_count": 0,
+      "reasons": [
+        "page_rejected_by_classifier",
+        "All candidate pages failed"
+      ]
+    },
+    {
+      "professor_name": "David MaziÃ¨res",
+      "group_page": "http://www.scs.stanford.edu/",
+      "member_count": 0,
+      "reasons": [
+        "page_rejected_by_classifier",
+        "All candidate pages failed"
+      ]
+    },
+    {
+      "professor_name": "Bryan Parno",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Ronghui Gu",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Hao Zhang 0025",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Hong Zhang 0025",
+      "group_page": "https://rise.cs.berkeley.edu/",
+      "member_count": 0,
+      "reasons": [
+        "page_rejected_by_classifier",
+        "All candidate pages failed"
+      ]
+    },
+    {
+      "professor_name": "Yiming Qiu 0001",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Miryung Kim",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Marios Kogias",
+      "group_page": "https://www.mystenlabs.com/",
+      "member_count": 0,
+      "reasons": [
+        "page_rejected_by_classifier",
+        "All candidate pages failed"
+      ]
+    },
+    {
+      "professor_name": "Steven Swanson",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Dong Li 0001",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Josep Torrellas",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Nam Sung Kim",
+      "group_page": "https://csl.illinois.edu/research/groups/applied-research-and-technology-group",
+      "member_count": 2,
+      "reasons": [
+        "member_count_low:2"
+      ]
+    },
+    {
+      "professor_name": "Zheng Wang 0075",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Thomas E. Anderson",
+      "group_page": "https://www.cs.washington.edu/who-we-are/lab/",
+      "member_count": 1,
+      "reasons": [
+        "member_count_low:1"
+      ]
+    },
+    {
+      "professor_name": "Silvery Fu",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Hari Balakrishnan",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Matei Zaharia",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Jian Huang 0006",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Jennifer Rexford",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Michael M. Swift",
+      "group_page": "http://www.cs.wisc.edu/multifacet/",
+      "member_count": 0,
+      "reasons": [
+        "page_rejected_by_classifier",
+        "All candidate pages failed"
+      ]
+    },
+    {
+      "professor_name": "Zhuohan Li 0001",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Jingrong Chen 0002",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Lili Qiu",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Dan Williams 0001",
+      "group_page": "https://website.cs.vt.edu/people.html",
+      "member_count": 0,
+      "reasons": [
+        "page_rejected_by_classifier",
+        "All candidate pages failed"
+      ]
+    },
+    {
+      "professor_name": "Yiying Zhang 0005",
+      "group_page": "http://wuklab.io",
+      "member_count": 0,
+      "reasons": [
+        "page_rejected_by_classifier",
+        "All candidate pages failed"
+      ]
+    },
+    {
+      "professor_name": "Qinghao Hu 0004",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "George Varghese",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Krishna Chintalapudi",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Song Han 0003",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Cheng Tan 0005",
+      "group_page": "https://www.bytedance.com/en/",
+      "member_count": 0,
+      "reasons": [
+        "page_rejected_by_classifier",
+        "All candidate pages failed"
+      ]
+    },
+    {
+      "professor_name": "Ahmad Hassan 0004",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Kyle Jamieson",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Michael I. Jordan",
+      "group_page": "http://bair.berkeley.edu/",
+      "member_count": 0,
+      "reasons": [
+        "page_rejected_by_classifier",
+        "All candidate pages failed"
+      ]
+    },
+    {
+      "professor_name": "Yuhan Liu 0004",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Bruno Ribeiro 0001",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Vasiliki Kalavri",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Fan Lai 0001",
+      "group_page": "https://fanlai.me/students",
+      "member_count": 0,
+      "reasons": [
+        "page_rejected_by_classifier",
+        "All candidate pages failed"
+      ]
+    },
+    {
+      "professor_name": "Todd D. Millstein",
+      "group_page": "https://www.microsoft.com/en-us/research/academic-program/outstanding-collaborator-award",
+      "member_count": 0,
+      "reasons": [
+        "page_rejected_by_classifier",
+        "All candidate pages failed"
+      ]
+    },
+    {
+      "professor_name": "Muhammad Shahbaz 0001",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "David P. Woodruff",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Heng Huang 0001",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Mingyi Hong 0001",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Philip S. Yu",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Joshua B. Tenenbaum",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Zhenyu Zhang 0015",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
+    },
+    {
+      "professor_name": "Sijia Liu 0001",
+      "group_page": null,
+      "member_count": 0,
+      "reasons": [
+        "group_page_not_found",
+        "No suitable group page found in HomepageGraph"
+      ]
     }
   ],
-  "manual_review_count": 7,
+  "manual_review_count": 89,
   "provider": "heuristic"
 }
