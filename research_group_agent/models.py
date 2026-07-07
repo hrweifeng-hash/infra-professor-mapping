@@ -8,8 +8,8 @@ from enum import Enum
 from typing import Any
 
 
-SCHEMA_VERSION = "1.2"
-PIPELINE_VERSION = "PR16"
+SCHEMA_VERSION = "1.3"
+PIPELINE_VERSION = "PR17"
 DEFAULT_TOP_N = 10
 
 
@@ -333,6 +333,37 @@ class GroupPageSelection:
 
 
 @dataclass
+class MultiPageSelection:
+    """Selection of multiple candidate pages for multi-page member discovery."""
+
+    selected_pages: list[GroupPageSelection] = field(default_factory=list)
+    selection_strategy: str = "top_candidates"
+    selection_reason: str = ""
+
+    @property
+    def page_count(self) -> int:
+        return len(self.selected_pages)
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "selected_pages": [
+                {
+                    "url": p.url,
+                    "source_node_type": p.source_node_type,
+                    "confidence": round(p.confidence, 3),
+                    "reason": p.reason,
+                    "navigation_path": p.navigation_path,
+                    "evidence": p.evidence,
+                }
+                for p in self.selected_pages
+            ],
+            "selection_strategy": self.selection_strategy,
+            "selection_reason": self.selection_reason,
+            "page_count": self.page_count,
+        }
+
+
+@dataclass
 class ResearchGroupGraph:
     professor_name: str
     professor_homepage: str
@@ -353,6 +384,11 @@ class ResearchGroupGraph:
         default_factory=lambda: datetime.now(timezone.utc).isoformat()
     )
     pipeline_version: str = PIPELINE_VERSION
+    # PR17: multi-page discovery fields
+    parsed_pages: list[str] = field(default_factory=list)
+    successful_pages: list[str] = field(default_factory=list)
+    failed_pages: list[str] = field(default_factory=list)
+    member_sources: dict[str, list[str]] = field(default_factory=dict)
 
     @property
     def member_count(self) -> int:
@@ -401,4 +437,8 @@ class ResearchGroupGraph:
             "members": [member.to_dict() for member in self.members],
             "former_members": [member.to_dict() for member in self.former_members],
             "errors": self.errors,
+            "parsed_pages": self.parsed_pages,
+            "successful_pages": self.successful_pages,
+            "failed_pages": self.failed_pages,
+            "member_sources": self.member_sources,
         }

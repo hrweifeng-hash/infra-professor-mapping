@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-07-06T09:31:54.493731+00:00",
-  "schema_version": "1.2",
-  "pipeline_version": "PR16",
+  "generated_at": "2026-07-07T02:46:04.549782+00:00",
+  "schema_version": "1.3",
+  "pipeline_version": "PR17",
   "professors_processed": 10,
   "research_groups_discovered": 8,
   "successful_group_fetches": 3,
-  "rejected_pages": 7,
+  "rejected_pages": 9,
   "page_rejected_count": 5,
   "wrong_page_rejections": 1,
   "current_members_extracted": 39,
-  "former_members_extracted": 72,
+  "former_members_extracted": 70,
   "members_extracted": 39,
-  "current_member_ratio": 0.351,
+  "current_member_ratio": 0.358,
   "homepage_resolution": {
     "resolution_attempts": 10,
     "upgrades_to_personal_homepage": 1,
@@ -50,6 +50,19 @@
       "url_member:/students": 1
     }
   },
+  "multi_page": {
+    "professors_with_multipage": 8,
+    "average_parsed_pages": 1.25,
+    "average_successful_pages": 0.38,
+    "average_merged_members": 13.0,
+    "total_raw_member_sources": 109,
+    "total_final_members": 39,
+    "deduplication_rate": 0.642,
+    "multi_page_member_count": 0,
+    "member_source_distribution": {
+      "1_pages": 109
+    }
+  },
   "role_distribution": {
     "PhD Student": 34,
     "Professor": 5
@@ -78,10 +91,10 @@
     "average_members_per_professor": 3.9,
     "median_members_per_professor": 0,
     "rejected_candidates": 3,
-    "rejected_pages": 7,
+    "rejected_pages": 9,
     "rejection_reason_counts": {
+      "No member sections found on page": 5,
       "does not look like a person name": 3,
-      "No member sections found on page": 3,
       "no suitable group page in HomepageGraph": 2,
       "Rejected as research_group (confidence=0.35)": 1,
       "Page title 'Owolabi Legunsen' does not match target professor 'Tianyin Xu'; likely a different person's homepage": 1
@@ -101,7 +114,7 @@
       "member_count": 0,
       "reasons": [
         "page_rejected_by_classifier",
-        "Page rejected: Rejected as research_group (confidence=0.35)"
+        "All candidate pages failed"
       ]
     },
     {
@@ -119,7 +132,7 @@
       "member_count": 0,
       "reasons": [
         "page_rejected_by_classifier",
-        "Page rejected: No member sections found on page"
+        "All candidate pages failed"
       ]
     },
     {
@@ -128,7 +141,7 @@
       "member_count": 0,
       "reasons": [
         "page_rejected_by_classifier",
-        "Page rejected: No member sections found on page"
+        "All candidate pages failed"
       ]
     },
     {
@@ -137,7 +150,7 @@
       "member_count": 0,
       "reasons": [
         "page_rejected_by_classifier",
-        "Wrong page: Page title 'Owolabi Legunsen' does not match target professor 'Tianyin Xu'; likely a different person's homepage"
+        "All candidate pages failed"
       ]
     },
     {
@@ -146,7 +159,7 @@
       "member_count": 0,
       "reasons": [
         "page_rejected_by_classifier",
-        "Page rejected: No member sections found on page"
+        "All candidate pages failed"
       ]
     },
     {

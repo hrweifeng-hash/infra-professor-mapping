@@ -4,6 +4,10 @@ PR16 addition: cross-identity verification.
 After fetching and parsing a candidate group page, the pipeline now checks
 whether the page title or primary heading belongs to a *different* professor.
 If so the page is rejected before the expensive classifier and extractor run.
+
+PR17 addition: multi-page member discovery.
+Instead of selecting a single best group page, the pipeline now selects the
+top N candidate pages, parses each one, and merges/deduplicates the results.
 """
 
 from __future__ import annotations
@@ -18,10 +22,12 @@ from research_group_agent.graph_builder import ResearchGroupGraphBuilder
 from research_group_agent.group_discovery import GroupPageDiscoverer
 from research_group_agent.identity_resolver import IdentityResolver
 from research_group_agent.member_extractor import MemberExtractor
+from research_group_agent.member_merger import MemberMerger
 from research_group_agent.navigator import ResearchGroupNavigator
 from research_group_agent.models import (
     DEFAULT_TOP_N,
     ExtractionRunMetrics,
+    GroupPageSelection,
     ResearchGroupGraph,
     TalentProfile,
 )
@@ -31,6 +37,9 @@ from research_group_agent.providers.base import ResearchGroupProvider
 from research_group_agent.providers.navigator_base import ResearchGroupNavigatorProvider
 from research_group_agent.providers.navigator_stub import StubResearchGroupNavigatorProvider
 from models.professor_profile import ProfessorProfile
+
+# Maximum candidate pages to parse per professor (PR17)
+_MAX_CANDIDATE_PAGES = 3
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Cross-identity verification helpers (Part 5)
@@ -151,6 +160,7 @@ class ResearchGroupPipeline:
         self.member_extractor = MemberExtractor(provider=provider)
         self.identity_resolver = IdentityResolver(provider=provider)
         self.enricher = TalentEnricher()
+        self.member_merger = MemberMerger()
         self.graph_builder = graph_builder or ResearchGroupGraphBuilder()
         self.last_metrics = ExtractionRunMetrics()
 
@@ -173,8 +183,15 @@ class ResearchGroupPipeline:
         ctx = self._homepage_context(homepage_graph)
         canonical = ctx["canonical_homepage"]
 
-        group_page = self.group_discoverer.select(homepage_graph)
-        if group_page is None:
+        # PR17: select top N candidates instead of a single page
+        decisions = self.group_navigator.navigate(name, homepage_graph)
+        multi = self.group_navigator.select_top_candidates(
+            decisions,
+            homepage_graph=homepage_graph,
+            max_candidates=_MAX_CANDIDATE_PAGES,
+        )
+
+        if not multi.selected_pages:
             self.last_metrics.record_rejected_page(
                 name, canonical, "no suitable group page in HomepageGraph"
             )
@@ -186,6 +203,87 @@ class ResearchGroupPipeline:
                 **ctx,
             )
 
+        # PR17: parse every candidate page
+        page_results: list[tuple[str, list[TalentProfile], list[TalentProfile]]] = []
+        parsed_pages: list[str] = []
+        successful_pages: list[str] = []
+        failed_pages: list[str] = []
+        all_errors: list[str] = []
+        # Track the primary group_page (highest confidence) for graph metadata
+        primary_group_page: GroupPageSelection | None = multi.selected_pages[0]
+
+        for group_page in multi.selected_pages:
+            parsed_pages.append(group_page.url)
+            page_result = self._process_single_page(
+                name=name,
+                group_page=group_page,
+                canonical=canonical,
+            )
+            if page_result is None:
+                failed_pages.append(group_page.url)
+                continue
+            current_profiles, former_profiles, page_errors = page_result
+            successful_pages.append(group_page.url)
+            all_errors.extend(page_errors)
+            page_results.append((group_page.url, current_profiles, former_profiles))
+
+        if not page_results:
+            # All pages failed — return failed result using the primary page
+            return self.graph_builder.build_failed(
+                professor_name=name,
+                professor_homepage=canonical,
+                group_page=primary_group_page,
+                provider=self.provider.provider_name,
+                fetch_status="page_rejected",
+                errors=all_errors or ["All candidate pages failed"],
+                parsed_pages=parsed_pages,
+                successful_pages=successful_pages,
+                failed_pages=failed_pages,
+                **ctx,
+            )
+
+        # PR17: merge and deduplicate across pages
+        merged = self.member_merger.merge(page_results)
+        current_merged = merged["current"]
+        former_merged = merged["former"]
+
+        # Build member_sources: member_name → list of source page URLs
+        member_sources: dict[str, list[str]] = {}
+        for mm in current_merged + former_merged:
+            member_sources[mm.person.name] = mm.source_pages
+
+        final_current = [mm.person for mm in current_merged]
+        final_former = [mm.person for mm in former_merged]
+
+        graph = self.graph_builder.build(
+            professor_name=name,
+            professor_homepage=canonical,
+            group_page=primary_group_page,
+            members=final_current,
+            former_members=final_former,
+            provider=self.provider.provider_name,
+            fetch_status="success",
+            errors=all_errors,
+            parsed_pages=parsed_pages,
+            successful_pages=successful_pages,
+            failed_pages=failed_pages,
+            member_sources=member_sources,
+            **ctx,
+        )
+        return graph
+
+    def _process_single_page(
+        self,
+        name: str,
+        group_page: GroupPageSelection,
+        canonical: str,
+    ) -> tuple[list[TalentProfile], list[TalentProfile], list[str]] | None:
+        """
+        Fetch, validate and extract members from one group page.
+
+        Returns ``(current_profiles, former_profiles, errors)`` on success,
+        or ``None`` when the page should be skipped.
+        """
         document = self.fetcher.fetch(group_page.url)
         if document.fetch_status != FetchStatus.SUCCESS:
             self.last_metrics.record_rejected_page(
@@ -193,15 +291,7 @@ class ResearchGroupPipeline:
                 group_page.url,
                 f"fetch failed: {document.fetch_status.value}",
             )
-            return self.graph_builder.build_failed(
-                professor_name=name,
-                professor_homepage=canonical,
-                group_page=group_page,
-                provider=self.provider.provider_name,
-                fetch_status=document.fetch_status.value,
-                errors=[document.error_message or document.fetch_status.value],
-                **ctx,
-            )
+            return None
 
         base_url = document.final_url or document.url
         parsed = self.parser.parse(document.html, base_url=base_url)
@@ -209,15 +299,7 @@ class ResearchGroupPipeline:
         wrong_reason = _wrong_page_professor(parsed, name)
         if wrong_reason:
             self.last_metrics.record_rejected_page(name, group_page.url, wrong_reason)
-            return self.graph_builder.build_failed(
-                professor_name=name,
-                professor_homepage=canonical,
-                group_page=group_page,
-                provider=self.provider.provider_name,
-                fetch_status="page_rejected",
-                errors=[f"Wrong page: {wrong_reason}"],
-                **ctx,
-            )
+            return None
 
         classification = self.page_classifier.classify(
             parsed=parsed,
@@ -230,15 +312,7 @@ class ResearchGroupPipeline:
                 group_page.url,
                 classification.reason,
             )
-            return self.graph_builder.build_failed(
-                professor_name=name,
-                professor_homepage=canonical,
-                group_page=group_page,
-                provider=self.provider.provider_name,
-                fetch_status="page_rejected",
-                errors=[f"Page rejected: {classification.reason}"],
-                **ctx,
-            )
+            return None
 
         extraction = self.member_extractor.extract(
             professor_name=name,
@@ -259,18 +333,7 @@ class ResearchGroupPipeline:
             parsed,
             name,
         )
-
-        return self.graph_builder.build(
-            professor_name=name,
-            professor_homepage=canonical,
-            group_page=group_page,
-            members=current_profiles,
-            former_members=former_profiles,
-            provider=self.provider.provider_name,
-            fetch_status="success",
-            errors=list(extraction.errors),
-            **ctx,
-        )
+        return current_profiles, former_profiles, list(extraction.errors)
 
     def _build_profiles(
         self,

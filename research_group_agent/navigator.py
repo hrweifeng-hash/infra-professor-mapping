@@ -7,6 +7,7 @@ from homepage_agent.models import FetchStatus, HomepageGraph, NodeCategory
 from research_group_agent.models import (
     GroupPageCandidate,
     GroupPageSelection,
+    MultiPageSelection,
     ResearchGroupNavigationDecision,
 )
 from research_group_agent.navigation_prompt_builder import NavigationPromptBuilder
@@ -100,31 +101,72 @@ class ResearchGroupNavigator:
         homepage_graph: HomepageGraph | None = None,
     ) -> GroupPageSelection | None:
         """
-        Pick the best decision above threshold and return a GroupPageSelection.
+        Backward-compatible single-selection wrapper over select_top_candidates().
 
-        When homepage_graph is supplied the navigation_path is built from
-        original → canonical → selected URL and attached to the selection.
+        Returns the highest-confidence GroupPageSelection above threshold,
+        or None when no candidate meets the threshold.
         """
-        eligible = [d for d in decisions if d.confidence >= _MIN_SELECTION_SCORE]
-        if not eligible:
-            return None
-
-        best = eligible[0]
-        navigation_path = (
-            self._build_navigation_path(homepage_graph, best.candidate_url)
-            if homepage_graph is not None
-            else list(best.navigation_path)
+        multi = self.select_top_candidates(
+            decisions, homepage_graph=homepage_graph, max_candidates=1
         )
+        if not multi.selected_pages:
+            return None
+        return multi.selected_pages[0]
 
-        return GroupPageSelection(
-            url=best.candidate_url,
-            source_node_type=best.candidate_type,
-            confidence=round(best.confidence, 3),
-            reason=best.reason,
-            navigation_path=navigation_path,
-            evidence=list(best.evidence),
-            navigation_score=best.navigation_score,
-            navigation_provider=self.provider_name,
+    def select_top_candidates(
+        self,
+        decisions: list[ResearchGroupNavigationDecision],
+        homepage_graph: HomepageGraph | None = None,
+        max_candidates: int = 3,
+        min_confidence: float = _MIN_SELECTION_SCORE,
+    ) -> MultiPageSelection:
+        """
+        Return up to *max_candidates* GroupPageSelections above *min_confidence*,
+        sorted by confidence descending.
+
+        Guarantees:
+          - Sorted by confidence (highest first).
+          - No duplicate URLs.
+          - Configurable threshold and maximum count.
+        """
+        eligible = [d for d in decisions if d.confidence >= min_confidence]
+        seen_urls: set[str] = set()
+        selected: list[GroupPageSelection] = []
+
+        for decision in eligible:
+            if len(selected) >= max_candidates:
+                break
+            url = decision.candidate_url
+            if url in seen_urls:
+                continue
+            seen_urls.add(url)
+
+            navigation_path = (
+                self._build_navigation_path(homepage_graph, url)
+                if homepage_graph is not None
+                else list(decision.navigation_path)
+            )
+            selected.append(
+                GroupPageSelection(
+                    url=url,
+                    source_node_type=decision.candidate_type,
+                    confidence=round(decision.confidence, 3),
+                    reason=decision.reason,
+                    navigation_path=navigation_path,
+                    evidence=list(decision.evidence),
+                    navigation_score=decision.navigation_score,
+                    navigation_provider=self.provider_name,
+                )
+            )
+
+        reason = (
+            f"Selected {len(selected)} of {len(eligible)} eligible candidates "
+            f"(threshold={min_confidence}, max={max_candidates})"
+        )
+        return MultiPageSelection(
+            selected_pages=selected,
+            selection_strategy="top_candidates",
+            selection_reason=reason,
         )
 
     def navigate_and_select(
@@ -132,9 +174,25 @@ class ResearchGroupNavigator:
         professor_name: str,
         homepage_graph: HomepageGraph,
     ) -> GroupPageSelection | None:
-        """Convenience method: navigate + select in one call."""
+        """Convenience method: navigate + select the single best page."""
         decisions = self.navigate(professor_name, homepage_graph)
         return self.select(decisions, homepage_graph)
+
+    def navigate_and_select_top(
+        self,
+        professor_name: str,
+        homepage_graph: HomepageGraph,
+        max_candidates: int = 3,
+        min_confidence: float = _MIN_SELECTION_SCORE,
+    ) -> MultiPageSelection:
+        """Convenience method: navigate + select top N candidate pages."""
+        decisions = self.navigate(professor_name, homepage_graph)
+        return self.select_top_candidates(
+            decisions,
+            homepage_graph=homepage_graph,
+            max_candidates=max_candidates,
+            min_confidence=min_confidence,
+        )
 
     def all_decisions(
         self,

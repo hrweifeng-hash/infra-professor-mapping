@@ -1,4 +1,4 @@
-"""PR16 Research Group Agent report generator."""
+"""PR17 Research Group Agent report generator."""
 
 from __future__ import annotations
 
@@ -40,6 +40,7 @@ class ResearchGroupReport:
 
         navigation_stats = cls._navigation_stats(graphs)
         manual_review = cls._manual_review_cases(graphs, member_counts)
+        multipage_stats = cls._multipage_stats(graphs)
 
         wrong_page_rejections = sum(
             1
@@ -65,6 +66,7 @@ class ResearchGroupReport:
             ),
             "homepage_resolution": homepage_stats,
             "navigation": navigation_stats,
+            "multi_page": multipage_stats,
             "role_distribution": cls._role_distribution(all_members),
             "identity_coverage": cls._identity_coverage(all_members),
             "language_signal_distribution": cls._language_distribution(all_members),
@@ -100,8 +102,8 @@ class ResearchGroupReport:
 
         md_path.write_text(cls._render_markdown(report, graphs), encoding="utf-8")
 
-        print(f"[PR16] Wrote research group graphs to {json_graph_path}", flush=True)
-        print(f"[PR16] Wrote report to {md_path}", flush=True)
+        print(f"[PR17] Wrote research group graphs to {json_graph_path}", flush=True)
+        print(f"[PR17] Wrote report to {md_path}", flush=True)
 
         return json_graph_path, md_path
 
@@ -183,6 +185,60 @@ class ResearchGroupReport:
             "fallback_rate": round(fallback_count / (len(graphs) or 1), 3),
             "llm_navigated_count": llm_count,
             "top_evidence": top_evidence,
+        }
+
+    @classmethod
+    def _multipage_stats(cls, graphs: list[ResearchGroupGraph]) -> dict:
+        """Aggregate multi-page discovery statistics (PR17)."""
+        graphs_with_parsed = [g for g in graphs if g.parsed_pages]
+        total = len(graphs) or 1
+
+        parsed_counts = [len(g.parsed_pages) for g in graphs_with_parsed]
+        successful_counts = [len(g.successful_pages) for g in graphs_with_parsed]
+
+        avg_parsed = round(sum(parsed_counts) / len(parsed_counts), 2) if parsed_counts else 0.0
+        avg_successful = round(
+            sum(successful_counts) / len(successful_counts), 2
+        ) if successful_counts else 0.0
+
+        # Merged member counts per professor (current members)
+        merged_counts = [g.member_count for g in graphs if g.fetch_status == "success"]
+        avg_merged = round(sum(merged_counts) / len(merged_counts), 1) if merged_counts else 0.0
+
+        # Deduplication rate: compare raw member_sources entries vs final member count
+        total_raw_sources = sum(
+            sum(len(v) for v in g.member_sources.values()) for g in graphs
+        )
+        total_final_members = sum(g.member_count for g in graphs)
+        dedup_rate = (
+            round(1.0 - total_final_members / total_raw_sources, 3)
+            if total_raw_sources > 0
+            else 0.0
+        )
+
+        # Member source distribution: how many members came from 1, 2, 3+ pages
+        source_distribution: Counter[str] = Counter()
+        for graph in graphs:
+            for _name, pages in graph.member_sources.items():
+                key = f"{len(pages)}_pages"
+                source_distribution[key] += 1
+
+        multi_page_members = sum(
+            1 for graph in graphs
+            for pages in graph.member_sources.values()
+            if len(pages) > 1
+        )
+
+        return {
+            "professors_with_multipage": len(graphs_with_parsed),
+            "average_parsed_pages": avg_parsed,
+            "average_successful_pages": avg_successful,
+            "average_merged_members": avg_merged,
+            "total_raw_member_sources": total_raw_sources,
+            "total_final_members": total_final_members,
+            "deduplication_rate": dedup_rate,
+            "multi_page_member_count": multi_page_members,
+            "member_source_distribution": dict(source_distribution.most_common()),
         }
 
     @classmethod
@@ -322,9 +378,10 @@ class ResearchGroupReport:
         manual_review = report.get("manual_review", [])
 
         nav = report.get("navigation", {})
+        mp = report.get("multi_page", {})
 
-        pipeline_ver = report.get('pipeline_version', 'PR16')
-        schema_ver = report.get('schema_version', '1.2')
+        pipeline_ver = report.get('pipeline_version', 'PR17')
+        schema_ver = report.get('schema_version', '1.3')
         wrong_page = report.get('wrong_page_rejections', 0)
 
         lines = [
@@ -364,6 +421,25 @@ class ResearchGroupReport:
             lines.extend(["### Most Common Navigation Evidence", ""])
             for signal, count in list(top_evidence.items())[:10]:
                 lines.append(f"- `{signal}`: **{count}**")
+            lines.append("")
+
+        lines.extend([
+            "## Multi-Page Discovery (PR17)",
+            "",
+            f"- Professors using multi-page discovery: **{mp.get('professors_with_multipage', 0)}**",
+            f"- Average parsed pages per professor: **{mp.get('average_parsed_pages', 0):.2f}**",
+            f"- Average successful pages per professor: **{mp.get('average_successful_pages', 0):.2f}**",
+            f"- Average merged members per professor: **{mp.get('average_merged_members', 0):.1f}**",
+            f"- Deduplication rate: **{mp.get('deduplication_rate', 0):.1%}**",
+            f"- Members found on multiple pages: **{mp.get('multi_page_member_count', 0)}**",
+            "",
+        ])
+
+        source_dist = mp.get("member_source_distribution", {})
+        if source_dist:
+            lines.extend(["### Member Source Distribution", ""])
+            for bucket, count in sorted(source_dist.items()):
+                lines.append(f"- {bucket}: **{count}** members")
             lines.append("")
 
         homepage = report.get("homepage_resolution", {})
@@ -484,6 +560,7 @@ class ResearchGroupReport:
             "- `research_group_graph.json` — ResearchGroupGraph per professor (Top 10)",
             "- `NAVIGATION_DEBUG.json` — full navigation decision log per professor",
             "- Precision-first extraction: false positives rejected over false negatives",
+            "- PR17: multi-page discovery merges up to 3 candidate pages per professor",
             "",
             f"Total graphs written: **{len(graphs)}**",
             "",
