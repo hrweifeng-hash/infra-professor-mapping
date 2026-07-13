@@ -35,6 +35,9 @@ class ResearchGroupGraphBuilder:
         candidate_pages_discovered: int = 0,
         second_hop_pages_discovered: int = 0,
         second_hop_pages_successful: int = 0,
+        homepage_accepted_as_group_page: bool = False,
+        department_scope_pages: list[dict] | None = None,
+        navigation_discovery: dict | None = None,
     ) -> ResearchGroupGraph:
         navigation_path = list(group_page.navigation_path) if group_page else []
         navigation_provider = (
@@ -65,6 +68,9 @@ class ResearchGroupGraphBuilder:
             candidate_pages_discovered=candidate_pages_discovered,
             second_hop_pages_discovered=second_hop_pages_discovered,
             second_hop_pages_successful=second_hop_pages_successful,
+            homepage_accepted_as_group_page=homepage_accepted_as_group_page,
+            department_scope_pages=list(department_scope_pages or []),
+            navigation_discovery=dict(navigation_discovery or {}),
         )
 
     def build_skipped(
@@ -78,6 +84,7 @@ class ResearchGroupGraphBuilder:
         homepage_resolution_method: str | None = None,
         homepage_resolution_confidence: float = 0.0,
         candidate_pages_discovered: int = 0,
+        navigation_discovery: dict | None = None,
     ) -> ResearchGroupGraph:
         return self.build(
             professor_name=professor_name,
@@ -92,6 +99,7 @@ class ResearchGroupGraphBuilder:
             homepage_resolution_method=homepage_resolution_method,
             homepage_resolution_confidence=homepage_resolution_confidence,
             candidate_pages_discovered=candidate_pages_discovered,
+            navigation_discovery=navigation_discovery,
         )
 
     def build_failed(
@@ -112,6 +120,7 @@ class ResearchGroupGraphBuilder:
         candidate_pages_discovered: int = 0,
         second_hop_pages_discovered: int = 0,
         second_hop_pages_successful: int = 0,
+        navigation_discovery: dict | None = None,
     ) -> ResearchGroupGraph:
         return self.build(
             professor_name=professor_name,
@@ -131,4 +140,5 @@ class ResearchGroupGraphBuilder:
             candidate_pages_discovered=candidate_pages_discovered,
             second_hop_pages_discovered=second_hop_pages_discovered,
             second_hop_pages_successful=second_hop_pages_successful,
+            navigation_discovery=navigation_discovery,
         )

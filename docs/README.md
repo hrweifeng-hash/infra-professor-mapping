@@ -122,34 +122,28 @@ All derived information is stored inside a single `ProfessorIntelligence` object
 
 ## Current Status
 
-### Completed
+### DBLP ranking pipeline (PR0–PR11)
 
 - Streaming DBLP parser
 - Conference extraction
-- Author aggregation
-- Professor profile generation
-- Professor deduplication
-- Intelligence pipeline
-- Ranking engine
-- Export framework
-- End-to-end pipeline validation
+- Professor registry + intelligence
+- Top-100 US export + validation
+
+### Research group pipeline (PR13–PR32)
+
+- Homepage agent + canonical resolution
+- Multi-level navigation explorer (BFS)
+- Member parser + person validator
+- **PR31 ✅ Identity Foundation**
+- **PR32 ✅ Homepage Recovery + Lab Discovery**
+
+See [PROJECT_STATE.md](PROJECT_STATE.md) for PR32 validation metrics.
 
 ---
 
-### Current Output
+## Roadmap
 
-Current pipeline is capable of producing:
-
-- Ranked professor list
-- Publication statistics
-- Conference statistics
-- Structured professor profiles
-
-Target demo output:
-
-- Top 100 Infrastructure Professors
-- University distribution
-- Research area statistics
+See [ROADMAP.md](ROADMAP.md) for completed PRs and planned work (Homepage Override, Lab Override, OpenAlex Resolver).
 
 ---
 

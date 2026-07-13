@@ -68,6 +68,23 @@ _PLAIN_SECTION_PATTERNS: list[tuple[re.Pattern, MemberRole, MemberStatus]] = [
      MemberRole.POSTDOC, MemberStatus.CURRENT),
     (re.compile(r'^collaborators?\s*:?\s*$', re.I),
      MemberRole.UNKNOWN, MemberStatus.CURRENT),
+    # Sprint 2A — exact plain-text member section labels (optional colon)
+    (re.compile(r'^current\s+students?\s*:?\s*$', re.I),
+     MemberRole.PHD_STUDENT, MemberStatus.CURRENT),
+    (re.compile(r'^graduate\s+students?\s*:?\s*$', re.I),
+     MemberRole.PHD_STUDENT, MemberStatus.CURRENT),
+    (re.compile(r'^ph\.?d\.?\s+students?\s*:?\s*$', re.I),
+     MemberRole.PHD_STUDENT, MemberStatus.CURRENT),
+    (re.compile(r'^former\s+members?\s*:?\s*$', re.I),
+     MemberRole.ALUMNI, MemberStatus.ALUMNI),
+    (re.compile(r'^alumni\s*:?\s*$', re.I),
+     MemberRole.ALUMNI, MemberStatus.ALUMNI),
+    (re.compile(r'\b(?:research\s+team|people\s+directory|student\s+directory|lab\s+members?)\b', re.I),
+     MemberRole.UNKNOWN, MemberStatus.CURRENT),
+    (re.compile(r'\baffiliated\s+students?\b', re.I),
+     MemberRole.PHD_STUDENT, MemberStatus.CURRENT),
+    (re.compile(r'\bvisitors?\b', re.I),
+     MemberRole.VISITOR, MemberStatus.CURRENT),
     (re.compile(r'^(?:current\s+)?faculty\s*:?\s*$', re.I),
      MemberRole.PROFESSOR, MemberStatus.CURRENT),
     # ── Alumni / former member patterns ─────────────────────────────────────
@@ -254,6 +271,20 @@ class SectionDetector:
                 )
 
         return None
+
+    def is_section_header_only(self, text: str) -> bool:
+        """
+        Return True when *text* is a standalone section label (not member content).
+
+        Used by _SectionAwareParser to distinguish section headers in p/div/strong
+        blocks from actual member entries.
+        """
+        if not text:
+            return False
+        stripped = text.strip()
+        if not stripped or len(stripped) > _MAX_PLAIN_SECTION_LENGTH:
+            return False
+        return self.detect_from_plain_text(stripped) is not None
 
     @staticmethod
     def is_lab_name_heading(normalized: str) -> bool:

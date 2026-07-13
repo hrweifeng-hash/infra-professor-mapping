@@ -21,3 +21,6 @@ data/output/
 !*_TEMPLATE.xlsx
 ~$*.xlsx
 *.csv
+
+# Local duplicates / scratch
+infra-professor-mapping3/

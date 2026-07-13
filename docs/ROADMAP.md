@@ -1,142 +1,69 @@
-## PR7 — Demo Release (Top 100 Infrastructure Professors)
+# Roadmap
 
-### Objective
-
-Deliver a production-ready demo that generates a high-quality ranking of top Infrastructure professors from major systems conferences.
-
-The primary goal of PR7 is to produce a stakeholder-ready deliverable rather than introducing new architecture.
+**Last updated:** 2026-07-13
 
 ---
 
-### Goals
+## Completed — Research group intelligence
 
-#### 1. Top 100 Professor Ranking
+| PR | Status | Deliverable |
+|----|--------|-------------|
+| PR13–PR18 | ✅ | Homepage agent, group discovery, member extraction baseline |
+| PR19–PR22 | ✅ | Candidate pages, people-page discovery, homepage-first detection |
+| PR23–PR25 | ✅ | Navigation guard, ranking, BFS explorer integration |
+| PR26–PR29 | ✅ | Department scope, adaptive caps, deep/paragraph layouts |
+| PR30 | ✅ | Navigation evidence ranking |
+| **PR31** | ✅ | **Identity Foundation** — candidate preservation layer |
+| **PR32** | ✅ | **Homepage Recovery + Lab Discovery + validation overhaul** |
 
-Generate a ranked list of the Top 100 Infrastructure professors.
+### PR32 validated impact (Top-100, PR30 → PR32)
 
-Output should include:
-
-- Name
-- University
-- Research Areas
-- Publication Count
-- Conference Distribution
-- Overall Score
-- Priority
-
----
-
-#### 2. Ranking Quality
-
-Improve ranking quality using the existing DBLP publication data.
-
-Validate:
-
-- publication counts
-- venue weights
-- duplicate removal
-- conference coverage
-
-Ranking should produce reasonable results for major Infrastructure researchers.
+- Navigation success: 42 → 49 (+7)
+- Current members: 980 → 1,259 (+279)
+- 21 improved / 4 regressed / 75 unchanged professors
+- 27 homepage recoveries, 242 labs discovered
 
 ---
 
-#### 3. Export
+## Completed — DBLP ranking (PR0–PR11)
 
-Generate demo-ready outputs.
+| PR | Status |
+|----|--------|
+| PR0–PR7 | ✅ Streaming DBLP, registry, intelligence, demo export |
+| PR10 | ✅ US professor filtering + DBLP homepage enrichment |
+| PR11 | ✅ Infrastructure affinity ranking + validation report |
 
-Formats:
-
-- Excel (.xlsx)
-- CSV
-
-Exports should be human-readable and suitable for presentation.
-
----
-
-#### 4. Data Quality Validation
-
-Run the full pipeline on the real DBLP dataset.
-
-Verify:
-
-- no duplicate professors
-- correct publication counts
-- exporter correctness
-- ranking consistency
-- Top 100 manual sanity check
+See [HANDOFF.md](HANDOFF.md) for DBLP pipeline details.
 
 ---
 
-#### 5. Pipeline Stability
+## Next — High ROI
 
-Verify the complete execution pipeline.
+### PR33 (planned): Manual Homepage Override
 
-```
-DBLP XML
+Curated overrides for professor homepages that DBLP or canonical resolution get wrong. JSON or YAML resource file; applied before Homepage Recovery.
 
-↓
+### PR34 (planned): Lab Override
 
-DatasetPipeline
+Manual lab URL hints for professors where Lab Discovery misses the correct research group entry point.
 
-↓
+### PR35 (planned): OpenAlex Resolver
 
-ConferencePipeline
-
-↓
-
-ProfessorRegistry
-
-↓
-
-IntelligencePipeline
-
-↓
-
-RankingEngine
-
-↓
-
-Exporter
-```
-
-Pipeline should complete successfully without manual intervention.
+Wire Identity Foundation to OpenAlex for homepage, affiliation, and ORCID enrichment. First external identity source on the preserved candidate graph.
 
 ---
 
-### Deliverables
+## Deferred — Lower ROI near term
 
-- Top_Professors.xlsx
-- Top_Professors.csv
-- Validation report
-- Demo-ready ranking
-- Updated README
+- Additional parser layout heuristics (diminishing returns vs navigation)
+- Google Scholar integration (no stable API)
+- Full recruiter dashboard / talent search modules
 
 ---
 
-### Success Criteria
+## Design principles
 
-- Full pipeline completes successfully.
-- Top 100 ranking is generated.
-- Export contains valid professor information.
-- No duplicate professors.
-- Publication statistics are correct.
-- Ranking is suitable for stakeholder demonstration.
-
----
-
-### Out of Scope
-
-The following features are intentionally deferred to later PRs:
-
-- OpenAlex integration
-- Semantic Scholar integration
-- Google Scholar citations
-- Homepage crawling
-- Identity resolution
-- Lab mapping
-- University ranking
-- Recruiting intelligence
-- HM scoring
-
-PR7 focuses exclusively on delivering a stable, demo-quality ranking based on DBLP.
+1. **Navigation before parsing** — reach the right page first (PR32 proved this).
+2. **Preserve identity evidence (PR31)** — never discard parser output silently.
+3. **Apples-to-apples validation** — matched cohort, consistent metrics, per-professor regression tables.
+4. **One PR, one problem** — keep changes reviewable.

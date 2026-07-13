@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from research_group_agent.department_scope_detector import DepartmentScopeResult
 from research_group_agent.models import GroupPageSelection, MemberExtractionResult
 from research_group_agent.parser import ParsedMemberPage
 from research_group_agent.prompt_builder import build_member_extraction_prompt
@@ -19,6 +20,9 @@ class MemberExtractor:
         professor_name: str,
         group_page: GroupPageSelection,
         parsed: ParsedMemberPage,
+        *,
+        page_url: str | None = None,
+        department_scope: DepartmentScopeResult | None = None,
     ) -> MemberExtractionResult:
         prompt = build_member_extraction_prompt(
             professor_name=professor_name,
@@ -29,6 +33,8 @@ class MemberExtractor:
             prompt=prompt,
             parsed=parsed,
             professor_name=professor_name,
+            page_url=page_url or group_page.url,
+            department_scope=department_scope,
         )
-        result.page_url = group_page.url
+        result.page_url = page_url or group_page.url
         return result

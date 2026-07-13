@@ -8,8 +8,8 @@ from enum import Enum
 from typing import Any
 
 
-SCHEMA_VERSION = "1.6"
-PIPELINE_VERSION = "PR21"
+SCHEMA_VERSION = "1.7"
+PIPELINE_VERSION = "PR32"
 DEFAULT_TOP_N = 10
 
 
@@ -147,6 +147,12 @@ class MemberExtractionResult:
     page_url: str = ""
     errors: list[str] = field(default_factory=list)
     rejected_candidates: list[dict] = field(default_factory=list)
+    # PR29: adaptive member cap metadata
+    adaptive_member_limit: int | None = None
+    adaptive_limit_confidence: str = ""
+    adaptive_limit_reason: str = ""
+    adaptive_limit_rules: list[str] = field(default_factory=list)
+    adaptive_limit_unlimited: bool = False
 
 
 @dataclass
@@ -163,6 +169,12 @@ class ExtractionRunMetrics:
     # PR20: per-professor second-hop discovery counts
     second_hop_discovered_counts: list[int] = field(default_factory=list)
     second_hop_successful_counts: list[int] = field(default_factory=list)
+    # PR26: department-scope recognition (no extraction impact)
+    department_scope_pages: list[dict] = field(default_factory=list)
+    # M5-PR1: multi-level navigation exploration
+    navigation_pages_explored: list[int] = field(default_factory=list)
+    navigation_candidates_discovered: list[int] = field(default_factory=list)
+    navigation_loops_prevented: list[int] = field(default_factory=list)
 
     def record_homepage_resolution(self, upgraded: bool) -> None:
         self.homepage_resolution_attempts += 1
@@ -195,6 +207,29 @@ class ExtractionRunMetrics:
         """Record second-hop discovery stats for one professor."""
         self.second_hop_discovered_counts.append(discovered)
         self.second_hop_successful_counts.append(successful)
+
+    def record_navigation_exploration(self, stats: Any) -> None:
+        """Record M5-PR1 navigation exploration stats for one professor."""
+        self.navigation_pages_explored.append(stats.pages_visited)
+        self.navigation_candidates_discovered.append(stats.candidate_pages)
+        self.navigation_loops_prevented.append(stats.loops_prevented)
+
+    def record_department_scope(
+        self,
+        professor_name: str,
+        result: Any,
+    ) -> None:
+        """Record department-scope detection for one parsed page."""
+        from research_group_agent.department_scope_detector import DepartmentScopeResult
+
+        if not isinstance(result, DepartmentScopeResult):
+            return
+        self.department_scope_pages.append(
+            {
+                "professor_name": professor_name,
+                **result.to_dict(),
+            }
+        )
 
     @property
     def rejection_reason_counts(self) -> dict[str, int]:
@@ -408,6 +443,12 @@ class ResearchGroupGraph:
     # PR20: second-hop discovery results
     second_hop_pages_discovered: int = 0
     second_hop_pages_successful: int = 0
+    # PR22: homepage-first detection result
+    homepage_accepted_as_group_page: bool = False
+    # PR26: department-scope recognition metadata (recognition only)
+    department_scope_pages: list[dict] = field(default_factory=list)
+    # PR32: homepage recovery + lab discovery navigation metadata
+    navigation_discovery: dict = field(default_factory=dict)
 
     @property
     def member_count(self) -> int:
@@ -463,4 +504,7 @@ class ResearchGroupGraph:
             "candidate_pages_discovered": self.candidate_pages_discovered,
             "second_hop_pages_discovered": self.second_hop_pages_discovered,
             "second_hop_pages_successful": self.second_hop_pages_successful,
+            "homepage_accepted_as_group_page": self.homepage_accepted_as_group_page,
+            "department_scope_pages": self.department_scope_pages,
+            "navigation_discovery": self.navigation_discovery,
         }

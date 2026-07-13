@@ -14,6 +14,18 @@ PR21 addition:
     member is represented as an H3/H4 heading rather than a list item.
     Common on Bootstrap/React card-based lab pages (RISE Lab, Sky Computing,
     CSL Illinois, Vijay Chidambaram's group, etc.).
+
+PR23 addition:
+  - ParagraphMemberExtractor integration: extracts members from legacy academic
+    homepages where each member is a short ``<p>`` with a name and role keyword.
+    Common on flat paragraph blocks (e.g. Tianyin Xu-style homepages).
+
+M5-PR2 addition:
+  - DeepMemberExtractor integration: extracts members from deep laboratory pages
+    discovered via multi-level navigation — definition lists, bootstrap cards,
+    grid/media/profile-tile layouts, accordion/tab panels, table directories,
+    and repeated profile-card grids.  Also merges previously classification-only
+    repeated profile cards into extractable entries.
 """
 
 from __future__ import annotations
@@ -89,6 +101,10 @@ class ParsedMemberPage:
     profile_card_count: int = 0
     # PR21 addition
     heading_card_count: int = 0
+    # PR23 addition
+    paragraph_member_count: int = 0
+    # M5-PR2 addition
+    deep_member_count: int = 0
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -138,6 +154,13 @@ class _SectionAwareParser(HTMLParser):
         self._current_section_method = "heading"
         self._section_counts: dict[str, int] = {}
         self._section_methods: dict[str, str] = {}
+        self._section_roles: dict[str, MemberRole] = {}
+        self._section_statuses: dict[str, MemberStatus] = {}
+        self._section_is_member: dict[str, bool] = {}
+
+        # Sprint 2A: inline strong/b section heading tracking
+        self._inline_heading_tag: str | None = None
+        self._inline_heading_parts: list[str] = []
 
         # Block tracking (li / tr / p / div)
         self._block_tag: str | None = None
@@ -197,6 +220,12 @@ class _SectionAwareParser(HTMLParser):
             self._pending_heading_parts = []
             return
 
+        # Sprint 2A: track inline bold section labels (<strong>, <b>)
+        if tag in {"strong", "b"}:
+            self._inline_heading_tag = tag
+            self._inline_heading_parts = []
+            return
+
         # Plain-text section inference: when a list begins, check preceding text
         if tag in {"ul", "ol"}:
             self._try_infer_section_before_list()
@@ -246,16 +275,19 @@ class _SectionAwareParser(HTMLParser):
         if tag in {"h1", "h2", "h3", "h4"} and self._pending_heading_tag == tag:
             heading_text = _WHITESPACE.sub(" ", "".join(self._pending_heading_parts)).strip()
             match = self._detector.detect_from_heading(heading_text)
-            self._current_section_name = match.section_name
-            self._current_section_role = match.role
-            self._current_section_is_member = match.is_member
-            self._current_member_status = match.member_status
-            self._current_section_method = match.detection_method
-            if match.section_name and match.section_name not in self._section_counts:
-                self._section_counts[match.section_name] = 0
-                self._section_methods[match.section_name] = match.detection_method
+            self._apply_section_match(match)
             self._pending_heading_tag = None
             self._pending_heading_parts = []
+            return
+
+        # Sprint 2A: finalize inline bold section label
+        if tag in {"strong", "b"} and self._inline_heading_tag == tag:
+            inline_text = _WHITESPACE.sub(" ", "".join(self._inline_heading_parts)).strip()
+            match = self._detector.detect_from_plain_text(inline_text)
+            if match:
+                self._apply_inferred_section(match)
+            self._inline_heading_tag = None
+            self._inline_heading_parts = []
             return
 
         if tag == "a" and self._current_href:
@@ -300,6 +332,9 @@ class _SectionAwareParser(HTMLParser):
         if self._pending_heading_tag is not None:
             self._pending_heading_parts.append(data)
 
+        if self._inline_heading_tag is not None:
+            self._inline_heading_parts.append(data)
+
         if self._current_href is not None:
             self._current_anchor.append(data)
 
@@ -312,6 +347,20 @@ class _SectionAwareParser(HTMLParser):
             self._loose_text_parts.append(data)
 
     # ── Section inference helpers ────────────────────────────────────────────
+
+    def _apply_section_match(self, match) -> None:
+        """Apply a SectionMatch (heading or plain-text) as current section context."""
+        self._current_section_name = match.section_name
+        self._current_section_role = match.role
+        self._current_section_is_member = match.is_member
+        self._current_member_status = match.member_status
+        self._current_section_method = match.detection_method
+        if match.section_name and match.section_name not in self._section_counts:
+            self._section_counts[match.section_name] = 0
+            self._section_methods[match.section_name] = match.detection_method
+            self._section_roles[match.section_name] = match.role
+            self._section_statuses[match.section_name] = match.member_status
+            self._section_is_member[match.section_name] = match.is_member
 
     def _try_infer_section_before_list(self) -> None:
         """
@@ -347,21 +396,26 @@ class _SectionAwareParser(HTMLParser):
 
     def _apply_inferred_section(self, match) -> None:
         """Apply a plain-text section match as the current section context."""
-        self._current_section_name = match.section_name
-        self._current_section_role = match.role
-        self._current_section_is_member = match.is_member
-        self._current_member_status = match.member_status
-        self._current_section_method = match.detection_method
-        if match.section_name and match.section_name not in self._section_counts:
-            self._section_counts[match.section_name] = 0
-            self._section_methods[match.section_name] = match.detection_method
-
-    # ── Block helpers ────────────────────────────────────────────────────────
+        self._apply_section_match(match)
 
     def _flush_block(self) -> None:
         if not self._block_tag:
             return
         text = _WHITESPACE.sub(" ", " ".join(self._block_text)).strip()
+        if not text:
+            self._block_tag = None
+            return
+
+        # Sprint 2A: p/div blocks that contain only a section label start a section
+        if self._block_tag in {"p", "div"} and self._detector.is_section_header_only(text):
+            match = self._detector.detect_from_plain_text(text)
+            if match:
+                self._apply_inferred_section(match)
+                self._block_tag = None
+                self._block_text = []
+                self._block_links = []
+                return
+
         if text:
             self._blocks.append((
                 self._block_tag,
@@ -451,14 +505,27 @@ class _SectionAwareParser(HTMLParser):
         # Build sections list
         sections: list[PageSection] = []
         for name, count in self._section_counts.items():
-            match = self._detector.detect_from_heading(name)
             method = self._section_methods.get(name, "heading")
+            role = self._section_roles.get(name, MemberRole.UNKNOWN)
+            member_status = self._section_statuses.get(name, MemberStatus.UNKNOWN)
+            is_member = self._section_is_member.get(name, False)
+            if not is_member:
+                plain_match = self._detector.detect_from_plain_text(name)
+                if plain_match:
+                    role = plain_match.role
+                    member_status = plain_match.member_status
+                    is_member = plain_match.is_member
+                else:
+                    heading_match = self._detector.detect_from_heading(name)
+                    role = heading_match.role
+                    member_status = heading_match.member_status
+                    is_member = heading_match.is_member
             sections.append(
                 PageSection(
                     name=name,
-                    role=match.role,
-                    member_status=match.member_status,
-                    is_member_section=match.is_member,
+                    role=role,
+                    member_status=member_status,
+                    is_member_section=is_member,
                     entry_count=count,
                     detection_method=method,
                 )
@@ -614,5 +681,33 @@ class MemberPageParser:
         if heading_entries:
             result.entries.extend(heading_entries)
             result.heading_card_count = len(heading_entries)
+
+        # PR23: paragraph member extraction for legacy flat paragraph layouts.
+        # Runs as a third pass on the same HTML so existing passes are unchanged.
+        from research_group_agent.paragraph_member_extractor import (  # noqa: PLC0415
+            ParagraphMemberExtractor,
+        )
+        already_seen.update(e.name.lower() for e in result.entries)
+        paragraph_entries = ParagraphMemberExtractor().extract(
+            html, base_url, already_seen
+        )
+        if paragraph_entries:
+            result.entries.extend(paragraph_entries)
+            result.paragraph_member_count = len(paragraph_entries)
+
+        # M5-PR2: deep member extraction for navigation-discovered layouts.
+        from research_group_agent.deep_member_extractor import DeepMemberExtractor  # noqa: PLC0415
+
+        deep_seen: set[str] = {e.name.lower() for e in result.entries}
+        deep_entries = DeepMemberExtractor().extract(
+            html,
+            base_url,
+            deep_seen,
+            repeated_profiles=result.repeated_profiles,
+        )
+        if deep_entries:
+            result.entries.extend(deep_entries)
+            result.deep_member_count = len(deep_entries)
+            result.repeated_profiles = []
 
         return result

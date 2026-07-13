@@ -1,7 +1,9 @@
 import unittest
 from unittest.mock import MagicMock, patch
 
-from homepage_agent.fetcher import HomepageFetcher
+from requests.exceptions import ConnectTimeout, ReadTimeout, TooManyRedirects
+
+from homepage_agent.fetcher import FetchStats, HomepageFetcher
 from homepage_agent.graph_builder import GraphBuilder
 from homepage_agent.models import (
     ConfidenceScore,
@@ -285,6 +287,11 @@ class TestHomepageFetcher(unittest.TestCase):
         self.assertEqual(document.fetch_status, FetchStatus.SUCCESS)
         self.assertEqual(document.title, "Test")
         self.assertIn("Hello", document.html)
+        mock_get.assert_called_once_with(
+            "https://example.edu",
+            timeout=(5, 10),
+            allow_redirects=True,
+        )
 
     @patch("homepage_agent.fetcher.requests.Session.get")
     def test_fetch_http_error(self, mock_get):
@@ -298,6 +305,121 @@ class TestHomepageFetcher(unittest.TestCase):
             "https://example.edu/missing"
         )
         self.assertEqual(document.fetch_status, FetchStatus.HTTP_ERROR)
+
+    @patch("homepage_agent.fetcher.logger")
+    @patch("homepage_agent.fetcher.requests.Session.get")
+    def test_fetch_read_timeout_returns_without_retry(self, mock_get, mock_logger):
+        mock_get.side_effect = ReadTimeout("read timed out")
+
+        fetcher = HomepageFetcher(use_cache=False, retries=2)
+        document = fetcher.fetch("https://slow.example.edu/")
+
+        self.assertEqual(document.fetch_status, FetchStatus.TIMEOUT)
+        mock_get.assert_called_once()
+        mock_logger.warning.assert_called()
+
+    @patch("homepage_agent.fetcher.logger")
+    @patch("homepage_agent.fetcher.requests.Session.get")
+    def test_fetch_connect_timeout_returns_without_retry(self, mock_get, mock_logger):
+        mock_get.side_effect = ConnectTimeout("connect timed out")
+
+        fetcher = HomepageFetcher(use_cache=False, retries=2)
+        document = fetcher.fetch("https://unreachable.example.edu/")
+
+        self.assertEqual(document.fetch_status, FetchStatus.TIMEOUT)
+        mock_get.assert_called_once()
+        mock_logger.warning.assert_called()
+
+    @patch("homepage_agent.fetcher.logger")
+    @patch("homepage_agent.fetcher.requests.Session.get")
+    def test_fetch_too_many_redirects_skips_page(self, mock_get, mock_logger):
+        mock_get.side_effect = TooManyRedirects("too many redirects")
+
+        fetcher = HomepageFetcher(use_cache=False, retries=2, max_redirects=5)
+        document = fetcher.fetch("https://redirect-loop.example.edu/")
+
+        self.assertEqual(document.fetch_status, FetchStatus.NETWORK_ERROR)
+        self.assertIn("redirect limit", document.error_message.lower())
+        mock_get.assert_called_once()
+        mock_logger.warning.assert_called()
+
+    @patch("homepage_agent.fetcher.time.monotonic")
+    @patch("homepage_agent.fetcher.logger")
+    @patch("homepage_agent.fetcher.requests.Session.get")
+    def test_fetch_logs_slow_request(self, mock_get, mock_logger, mock_monotonic):
+        mock_monotonic.side_effect = [0.0, 7.8, 7.8]
+        response = MagicMock()
+        response.url = "https://example.edu/"
+        response.status_code = 200
+        response.text = "<html><title>Test</title><body>Hello</body></html>"
+        mock_get.return_value = response
+
+        fetcher = HomepageFetcher(use_cache=False, retries=0)
+        fetcher.fetch("https://example.edu/")
+
+        mock_logger.warning.assert_called_with(
+            "Slow fetch (%.1fs) %s",
+            7.8,
+            "https://example.edu/",
+        )
+
+    def test_session_redirect_limit_configured(self):
+        fetcher = HomepageFetcher(use_cache=False, max_redirects=5)
+        self.assertEqual(fetcher._session.max_redirects, 5)
+
+    @patch("homepage_agent.fetcher.requests.Session.get")
+    def test_fetch_records_success_stats(self, mock_get):
+        response = MagicMock()
+        response.url = "https://example.edu/"
+        response.status_code = 200
+        response.text = "<html><title>Test</title><body>Hello</body></html>"
+        mock_get.return_value = response
+
+        stats = FetchStats()
+        fetcher = HomepageFetcher(use_cache=False, retries=0, stats=stats)
+        document = fetcher.fetch("https://example.edu/")
+
+        self.assertEqual(document.fetch_status, FetchStatus.SUCCESS)
+        self.assertEqual(stats.total_requests, 1)
+        self.assertEqual(stats.successful, 1)
+        self.assertEqual(stats.timeouts, 0)
+
+    @patch("homepage_agent.fetcher.requests.Session.get")
+    def test_fetch_records_timeout_stats(self, mock_get):
+        mock_get.side_effect = ReadTimeout("read timed out")
+
+        stats = FetchStats()
+        fetcher = HomepageFetcher(use_cache=False, retries=2, stats=stats)
+        fetcher.fetch("https://slow.example.edu/")
+
+        self.assertEqual(stats.total_requests, 1)
+        self.assertEqual(stats.timeouts, 1)
+
+    @patch("homepage_agent.fetcher.requests.Session.get")
+    def test_fetch_records_redirect_limit_stats(self, mock_get):
+        mock_get.side_effect = TooManyRedirects("too many redirects")
+
+        stats = FetchStats()
+        fetcher = HomepageFetcher(use_cache=False, retries=0, stats=stats)
+        fetcher.fetch("https://redirect-loop.example.edu/")
+
+        self.assertEqual(stats.total_requests, 1)
+        self.assertEqual(stats.redirect_limit_exceeded, 1)
+        self.assertEqual(stats.network_errors, 0)
+
+    def test_fetch_stats_summary_format(self):
+        stats = FetchStats()
+        stats.record(0.4, FetchStatus.SUCCESS)
+        stats.record(6.2, FetchStatus.TIMEOUT)
+        stats.record(1.1, FetchStatus.NETWORK_ERROR, redirect_limit=True)
+
+        summary = stats.to_dict()
+        self.assertEqual(summary["total_requests"], 3)
+        self.assertEqual(summary["successful"], 1)
+        self.assertEqual(summary["timeouts"], 1)
+        self.assertEqual(summary["redirect_limit_exceeded"], 1)
+        self.assertEqual(summary["slow_requests"], 1)
+        self.assertIn("Fetch Summary", stats.format_summary())
 
 
 class TestHomepageAgentReport(unittest.TestCase):

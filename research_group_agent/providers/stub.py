@@ -2,11 +2,21 @@
 
 from __future__ import annotations
 
+import logging
 import re
 from urllib.parse import urlparse
 
 from homepage_agent.models import Hyperlink
 
+from research_group_agent.adaptive_member_limiter import (
+    AdaptiveMemberLimiter,
+    LEGACY_MEMBER_CAP,
+    format_adaptive_member_limit_log,
+)
+from research_group_agent.department_scope_detector import (
+    DepartmentScopeDetector,
+    DepartmentScopeResult,
+)
 from research_group_agent.models import (
     DigitalFootprint,
     ExtractedMember,
@@ -19,6 +29,8 @@ from research_group_agent.models import (
 from research_group_agent.parser import ParsedMemberPage
 from research_group_agent.person_validator import PersonValidator
 from research_group_agent.providers.base import ResearchGroupProvider
+
+logger = logging.getLogger(__name__)
 
 _ROLE_RULES: list[tuple[MemberRole, tuple[str, ...]]] = [
     (MemberRole.PROFESSOR, ("professor", "faculty", "pi", "principal investigator")),
@@ -51,10 +63,17 @@ class StubResearchGroupProvider(ResearchGroupProvider):
     """
 
     MIN_EXTRACTION_CONFIDENCE = 0.55
-    MAX_MEMBERS_PER_GROUP = 20
+    MAX_MEMBERS_PER_GROUP = LEGACY_MEMBER_CAP  # backward-compatible alias (PR29)
 
-    def __init__(self, validator: PersonValidator | None = None):
+    def __init__(
+        self,
+        validator: PersonValidator | None = None,
+        department_detector: DepartmentScopeDetector | None = None,
+        member_limiter: AdaptiveMemberLimiter | None = None,
+    ):
         self.validator = validator or PersonValidator()
+        self.department_detector = department_detector or DepartmentScopeDetector()
+        self.member_limiter = member_limiter or AdaptiveMemberLimiter()
 
     @property
     def provider_name(self) -> str:
@@ -65,6 +84,9 @@ class StubResearchGroupProvider(ResearchGroupProvider):
         prompt: str,
         parsed: ParsedMemberPage,
         professor_name: str,
+        *,
+        page_url: str | None = None,
+        department_scope: DepartmentScopeResult | None = None,
     ) -> MemberExtractionResult:
         del prompt
 
@@ -118,15 +140,44 @@ class StubResearchGroupProvider(ResearchGroupProvider):
                 current_members.append(extracted)
 
         current_members.sort(key=lambda member: member.extraction_confidence, reverse=True)
-        if len(current_members) > self.MAX_MEMBERS_PER_GROUP:
-            for dropped in current_members[self.MAX_MEMBERS_PER_GROUP :]:
+
+        scope = department_scope
+        if scope is None:
+            scope = self.department_detector.detect(
+                parsed=parsed,
+                page_url=page_url or "",
+                page_title=parsed.page_title,
+            )
+
+        limit_result = self.member_limiter.compute(
+            parsed,
+            scope,
+            validated_member_count=len(current_members),
+        )
+        member_limit = limit_result.member_limit
+        parsed_count = len(parsed.entries)
+
+        if not limit_result.unlimited and len(current_members) > member_limit:
+            for dropped in current_members[member_limit:]:
                 rejected.append(
                     {
                         "name": dropped.name,
-                        "reason": f"exceeded member cap ({self.MAX_MEMBERS_PER_GROUP})",
+                        "reason": (
+                            f"exceeded adaptive member cap ({member_limit}; "
+                            f"{limit_result.reason})"
+                        ),
                     }
                 )
-            current_members = current_members[: self.MAX_MEMBERS_PER_GROUP]
+            current_members = current_members[:member_limit]
+
+            log_block = format_adaptive_member_limit_log(
+                professor_name=professor_name,
+                parsed_members=parsed_count,
+                exported_members=len(current_members),
+                limit_result=limit_result,
+            )
+            logger.info("\n%s", log_block)
+            print(log_block)
 
         return MemberExtractionResult(
             members=current_members,
@@ -134,6 +185,11 @@ class StubResearchGroupProvider(ResearchGroupProvider):
             provider=self.provider_name,
             rejected_candidates=rejected,
             errors=[] if current_members else ["No current members passed precision validation"],
+            adaptive_member_limit=member_limit if not limit_result.unlimited else None,
+            adaptive_limit_confidence=limit_result.confidence,
+            adaptive_limit_reason=limit_result.reason,
+            adaptive_limit_rules=list(limit_result.rules_applied),
+            adaptive_limit_unlimited=limit_result.unlimited,
         )
 
     def resolve_identities(

@@ -9,14 +9,20 @@ PR16 additions:
   - MIN_ACCEPTABLE_SCORE slightly relaxed from 0.45 to 0.40 for evidence-rich
     pages; the hard requirement for at least one member section with entries
     still applies (unless overridden by profile-card evidence).
+
+PR24 additions:
+  - Paragraph-member layouts (paragraph_member_count >= 3) are recognised as
+    valid member-page evidence with a score comparable to member sections.
 """
 
 from __future__ import annotations
 
+import logging
 from dataclasses import dataclass, field
 from enum import Enum
 from urllib.parse import urlparse
 
+from research_group_agent.homepage_member_detector import MIN_PARAGRAPH_STRUCTURE_COUNT
 from research_group_agent.models import MemberStatus
 from research_group_agent.parser import ParsedMemberPage
 from research_group_agent.precision_constants import (
@@ -65,6 +71,8 @@ _HOMEPAGE_LINK_KEYWORDS: tuple[str, ...] = (
     "github.com/", "scholar.google", "linkedin.com/in/",
 )
 
+logger = logging.getLogger(__name__)
+
 
 @dataclass
 class PageClassificationScore:
@@ -87,6 +95,7 @@ class PageClassificationScore:
     section_score: float = 0.0
     profile_score: float = 0.0
     role_score: float = 0.0
+    paragraph_layout_bonus: float = 0.0
     negative_score: float = 0.0
 
     @property
@@ -97,6 +106,7 @@ class PageClassificationScore:
             + self.section_score
             + self.profile_score
             + self.role_score
+            + self.paragraph_layout_bonus
         )
         penalized = positive * max(0.0, 1.0 - self.negative_score)
         return round(min(1.0, max(0.0, penalized)), 3)
@@ -108,6 +118,7 @@ class PageClassificationScore:
             "section_score": round(self.section_score, 3),
             "profile_score": round(self.profile_score, 3),
             "role_score": round(self.role_score, 3),
+            "paragraph_layout_bonus": round(self.paragraph_layout_bonus, 3),
             "negative_score": round(self.negative_score, 3),
             "final_score": self.final_score,
         }
@@ -220,8 +231,18 @@ class PageClassifier:
             scores[PageType.LAB_MEMBERS] += 0.10
             breakdown.section_score += 0.10
 
+        # PR24: paragraph-member layout evidence
+        if parsed.paragraph_member_count >= MIN_PARAGRAPH_STRUCTURE_COUNT:
+            scores[PageType.RESEARCH_GROUP] += 0.35
+            scores[PageType.LAB_MEMBERS] += 0.30
+            breakdown.paragraph_layout_bonus += 0.35
+
         # High entry count without member sections → likely directory
-        if len(parsed.entries) > 30 and not member_sections:
+        if (
+            len(parsed.entries) > 30
+            and not member_sections
+            and parsed.paragraph_member_count < MIN_PARAGRAPH_STRUCTURE_COUNT
+        ):
             scores[PageType.FACULTY_DIRECTORY] += 0.40
             scores[PageType.DEPARTMENT_DIRECTORY] += 0.35
             breakdown.negative_score += 0.30
@@ -279,18 +300,31 @@ class PageClassifier:
             or len(parsed.repeated_profiles) >= 4
         )
 
+        # PR24: paragraph-member layout evidence
+        has_paragraph_evidence = (
+            parsed.paragraph_member_count >= MIN_PARAGRAPH_STRUCTURE_COUNT
+        )
+
         is_acceptable = (
             page_type in ACCEPTABLE_PAGE_TYPES
             and confidence >= self.MIN_ACCEPTABLE_SCORE
-            and (has_member_content or has_profile_evidence)
+            and (has_member_content or has_profile_evidence or has_paragraph_evidence)
         )
 
         # Build reason string
         if page_type in ACCEPTABLE_PAGE_TYPES and not (
-            has_member_content or has_profile_evidence
+            has_member_content or has_profile_evidence or has_paragraph_evidence
         ):
             is_acceptable = False
-            if parsed.profile_card_count > 0:
+            if (
+                0 < parsed.paragraph_member_count < MIN_PARAGRAPH_STRUCTURE_COUNT
+            ):
+                reason = (
+                    f"Paragraph layout below threshold "
+                    f"({parsed.paragraph_member_count} members, "
+                    f"need {MIN_PARAGRAPH_STRUCTURE_COUNT})"
+                )
+            elif parsed.profile_card_count > 0:
                 reason = (
                     f"No member sections found; {parsed.profile_card_count} profile cards "
                     "detected but below threshold"
@@ -303,10 +337,24 @@ class PageClassifier:
                 evidence_parts.append(f"{len(member_sections)} member section(s)")
             if has_profile_evidence:
                 evidence_parts.append(f"{parsed.profile_card_count} profile cards")
+            if has_paragraph_evidence:
+                evidence_parts.append(
+                    f"paragraph layout ({parsed.paragraph_member_count} members)"
+                )
             evidence_str = ", ".join(evidence_parts) or "unknown"
             reason = f"Classified as {page_type.value} with {evidence_str}"
         else:
             reason = f"Rejected as {page_type.value} (confidence={confidence:.2f})"
+
+        logger.debug(
+            "[PR24] PageClassifier: url=%s paragraph_member_count=%d "
+            "paragraph_layout_bonus=%.3f classification_score=%.3f acceptable=%s",
+            page_url,
+            parsed.paragraph_member_count,
+            breakdown.paragraph_layout_bonus,
+            breakdown.final_score,
+            is_acceptable,
+        )
 
         return PageClassification(
             page_type=page_type,

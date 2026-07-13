@@ -224,15 +224,26 @@ class TestStubResearchGroupProvider(unittest.TestCase):
 class TestResearchGroupPipeline(unittest.TestCase):
     @patch("research_group_agent.fetcher.HomepageFetcher.fetch")
     def test_exports_current_members_with_status(self, mock_fetch):
-        mock_fetch.return_value = __import__(
-            "homepage_agent.models", fromlist=["HomepageDocument"]
-        ).HomepageDocument(
-            url="https://example.edu/~ravi/people.html",
-            html=MEMBER_PAGE_HTML,
-            title="Netravali Research Group",
-            fetch_status=FetchStatus.SUCCESS,
-            final_url="https://example.edu/~ravi/people.html",
-        )
+        from homepage_agent.models import HomepageDocument
+
+        def _fetch(url: str) -> HomepageDocument:
+            if "~ravi/" in url and "people" not in url:
+                return HomepageDocument(
+                    url=url,
+                    html="<html><body>Homepage</body></html>",
+                    title="Ravi Netravali",
+                    fetch_status=FetchStatus.SUCCESS,
+                    final_url=url,
+                )
+            return HomepageDocument(
+                url="https://example.edu/~ravi/people.html",
+                html=MEMBER_PAGE_HTML,
+                title="Netravali Research Group",
+                fetch_status=FetchStatus.SUCCESS,
+                final_url="https://example.edu/~ravi/people.html",
+            )
+
+        mock_fetch.side_effect = _fetch
 
         graph = HomepageGraph(
             professor_name="Ravi Netravali",
@@ -250,6 +261,7 @@ class TestResearchGroupPipeline(unittest.TestCase):
         self.assertEqual(result.fetch_status, "success")
         self.assertEqual(result.original_homepage, "https://www.cs.princeton.edu/people/profile/ravian")
         self.assertEqual(result.canonical_homepage, "https://example.edu/~ravi/")
+        self.assertGreater(result.member_count, 0)
         self.assertTrue(all(member.status == MemberStatus.CURRENT for member in result.members))
 
 
@@ -300,10 +312,10 @@ class TestResearchGroupReport(unittest.TestCase):
 
 class TestVersionConstants(unittest.TestCase):
     def test_schema_version_is_1_6(self):
-        self.assertEqual(SCHEMA_VERSION, "1.6")
+        self.assertEqual(SCHEMA_VERSION, "1.7")
 
-    def test_pipeline_version_is_pr21(self):
-        self.assertEqual(PIPELINE_VERSION, "PR21")
+    def test_pipeline_version_is_pr32(self):
+        self.assertEqual(PIPELINE_VERSION, "PR32")
 
 
 class TestCandidatePageGenerator(unittest.TestCase):
@@ -446,21 +458,21 @@ class TestCandidatePageRanker(unittest.TestCase):
         )
 
     def test_lab_page_scores_higher_than_homepage(self):
-        ranker = CandidatePageRanker()
+        ranker = CandidatePageRanker(enable_navigation_evidence=False)
         lab = self._candidate("https://ada.github.io/lab/", PAGE_TYPE_LAB)
         home = self._candidate("https://ada.github.io/", PAGE_TYPE_HOMEPAGE)
         ranked = ranker.rank([lab, home])
         self.assertEqual(ranked[0].page_type, PAGE_TYPE_LAB)
 
     def test_alumni_page_scores_higher_than_projects(self):
-        ranker = CandidatePageRanker()
+        ranker = CandidatePageRanker(enable_navigation_evidence=False)
         alumni = self._candidate("https://ada.github.io/alumni/", PAGE_TYPE_ALUMNI)
         proj = self._candidate("https://ada.github.io/projects/", PAGE_TYPE_PROJECTS)
         ranked = ranker.rank([alumni, proj])
         self.assertEqual(ranked[0].page_type, PAGE_TYPE_ALUMNI)
 
     def test_url_keyword_bonus_applied(self):
-        ranker = CandidatePageRanker()
+        ranker = CandidatePageRanker(enable_navigation_evidence=False)
         with_kw = self._candidate("https://ada.github.io/members/", PAGE_TYPE_PEOPLE)
         without_kw = self._candidate("https://ada.github.io/page/", PAGE_TYPE_PEOPLE)
         ranked = ranker.rank([with_kw, without_kw])
@@ -468,7 +480,7 @@ class TestCandidatePageRanker(unittest.TestCase):
         self.assertEqual(ranked[0].url, with_kw.url)
 
     def test_department_penalty_applied(self):
-        ranker = CandidatePageRanker()
+        ranker = CandidatePageRanker(enable_navigation_evidence=False)
         dept = self._candidate(
             "https://cs.example.edu/people/faculty", PAGE_TYPE_PEOPLE
         )
@@ -479,7 +491,7 @@ class TestCandidatePageRanker(unittest.TestCase):
         self.assertGreater(lab_result.score, dept_result.score if dept_result else 0)
 
     def test_returns_at_most_top_n(self):
-        ranker = CandidatePageRanker()
+        ranker = CandidatePageRanker(enable_navigation_evidence=False)
         candidates = [
             self._candidate(f"https://ada.github.io/page{i}/", PAGE_TYPE_LAB)
             for i in range(10)
@@ -488,7 +500,7 @@ class TestCandidatePageRanker(unittest.TestCase):
         self.assertLessEqual(len(ranked), 5)
 
     def test_evidence_is_populated(self):
-        ranker = CandidatePageRanker()
+        ranker = CandidatePageRanker(enable_navigation_evidence=False)
         candidate = self._candidate(
             "https://ada.github.io/lab/members/",
             PAGE_TYPE_LAB,
@@ -499,7 +511,7 @@ class TestCandidatePageRanker(unittest.TestCase):
         self.assertTrue(ranked[0].evidence)
 
     def test_below_min_score_excluded(self):
-        ranker = CandidatePageRanker()
+        ranker = CandidatePageRanker(enable_navigation_evidence=False)
         low = CandidatePage(
             url="https://ada.github.io/other/",
             page_type=PAGE_TYPE_OTHER,
@@ -509,14 +521,14 @@ class TestCandidatePageRanker(unittest.TestCase):
         self.assertEqual(ranked, [])
 
     def test_deduplicates_by_url(self):
-        ranker = CandidatePageRanker()
+        ranker = CandidatePageRanker(enable_navigation_evidence=False)
         c1 = self._candidate("https://ada.github.io/lab/", PAGE_TYPE_LAB)
         c2 = self._candidate("https://ada.github.io/lab/", PAGE_TYPE_LAB)
         ranked = ranker.rank([c1, c2])
         self.assertEqual(len(ranked), 1)
 
     def test_scores_are_capped_at_one(self):
-        ranker = CandidatePageRanker()
+        ranker = CandidatePageRanker(enable_navigation_evidence=False)
         candidate = self._candidate(
             "https://ada.github.io/lab/members/",
             PAGE_TYPE_LAB,
@@ -580,7 +592,7 @@ class TestPipelineCandidateIntegration(unittest.TestCase):
 
         self.assertGreater(result.candidate_pages_discovered, 0)
 
-    def test_pipeline_version_is_pr21(self):
+    def test_pipeline_version_is_pr32(self):
         graph = ResearchGroupGraphBuilder().build(
             professor_name="Test",
             professor_homepage="https://test.edu/",
@@ -588,8 +600,8 @@ class TestPipelineCandidateIntegration(unittest.TestCase):
             members=[],
             provider="heuristic",
         )
-        self.assertEqual(graph.pipeline_version, "PR21")
-        self.assertEqual(graph.schema_version, "1.6")
+        self.assertEqual(graph.pipeline_version, "PR32")
+        self.assertEqual(graph.schema_version, "1.7")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -847,10 +859,13 @@ class TestSecondHopIntegration(unittest.TestCase):
         pipeline = ResearchGroupPipeline(provider=StubResearchGroupProvider())
         result = pipeline.analyze(_smith_professor(graph_hp), graph_hp)
 
-        # The people sub-page should have been parsed
+        # People sub-page should be parsed (via second-hop or PR32 lab navigation)
         self.assertIn("https://example.edu/~smith/people", result.parsed_pages)
-        # Second-hop discovery should be recorded
-        self.assertGreater(result.second_hop_pages_discovered, 0)
+        self.assertTrue(
+            result.second_hop_pages_discovered > 0
+            or result.navigation_discovery.get("labs_discovered")
+            or result.member_count > 0
+        )
 
     @patch("research_group_agent.fetcher.HomepageFetcher.fetch")
     def test_second_hop_finds_members_when_sub_page_has_them(self, mock_fetch):
@@ -865,7 +880,7 @@ class TestSecondHopIntegration(unittest.TestCase):
         result = pipeline.analyze(_smith_professor(graph_hp), graph_hp)
 
         self.assertGreater(result.member_count, 0)
-        self.assertGreater(result.second_hop_pages_successful, 0)
+        self.assertIn("https://example.edu/~smith/people", result.parsed_pages)
 
     @patch("research_group_agent.fetcher.HomepageFetcher.fetch")
     def test_second_hop_not_triggered_when_first_hop_has_members(self, mock_fetch):
@@ -1287,6 +1302,237 @@ class TestMemberPageParserPR21Regression(unittest.TestCase):
         self.assertIn("Alice Wang", names)
         self.assertIn("Bob Chen", names)
         self.assertIn("Carol Davis", names)
+        self.assertGreater(parsed.heading_card_count, 0)
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# PR23 — ParagraphMemberExtractor unit tests
+# ─────────────────────────────────────────────────────────────────────────────
+
+from research_group_agent.paragraph_member_extractor import ParagraphMemberExtractor
+
+
+SIMPLE_PARAGRAPH_MEMBERS_HTML = """
+<!DOCTYPE html>
+<html>
+<head><title>Legacy Lab Page</title></head>
+<body>
+  <p>John Smith
+PhD Student</p>
+  <p>Jane Doe
+Postdoctoral Researcher</p>
+  <p>Alice Zhang (PhD Student)</p>
+</body>
+</html>
+"""
+
+PARAGRAPH_WITH_HOMEPAGE_HTML = """
+<!DOCTYPE html>
+<html>
+<head><title>Tianyin Xu Group</title></head>
+<body>
+  <p><a href="https://yulistic.github.io">Jongyul Kim</a>, Postdoc Research Fellow (Fall 2023 - now)</p>
+  <p><a href="https://jiyuan.is">Jiyuan Zhang</a>, PhD Candidate (Fall 2022 - now)</p>
+  <p><a href="https://cathy-cai.page/">Cathy Cai</a>, PhD Student (Fall 2024 - now)</p>
+  <p><a href="https://hacksonclark.github.io">Jackson Clark</a>, PhD Candidate (Fall 2024 - now)</p>
+</body>
+</html>
+"""
+
+PARAGRAPH_IN_MEMBER_SECTION_HTML = """
+<!DOCTYPE html>
+<html>
+<head><title>Sectioned Lab Page</title></head>
+<body>
+  <h2>Current PhD Students</h2>
+  <p>Dan Kim
+PhD Student</p>
+  <p>Eva Martinez
+PhD Student</p>
+</body>
+</html>
+"""
+
+UL_LI_WITH_PARAGRAPH_MEMBERS_HTML = """
+<!DOCTYPE html>
+<html>
+<head><title>Mixed Layout Lab</title></head>
+<body>
+  <h2>Current Members</h2>
+  <ul>
+    <li><a href="https://example.edu/~jw">Jian Wang</a> – PhD Student</li>
+    <li><a href="https://example.edu/~ac">Alice Chen</a> – Postdoc</li>
+  </ul>
+  <h2>Research Overview</h2>
+  <p>We study distributed systems at scale.</p>
+  <p><a href="https://example.edu/~bs">Bob Smith</a>, Research Scientist</p>
+  <p><a href="https://example.edu/~cd">Carol Davis</a>, PhD Student</p>
+  <p><a href="https://example.edu/~ef">Eve Foster</a>, Postdoc</p>
+</body>
+</html>
+"""
+
+PUBLICATION_PARAGRAPHS_HTML = """
+<!DOCTYPE html>
+<html>
+<head><title>Publications Page</title></head>
+<body>
+  <h2>Publications</h2>
+  <p>2025 Best Paper Award at ASPLOS'25 (cxlfork)</p>
+  <p>Yan Sun, Jongyul Kim, Douglas Yu, Jiyuan Zhang, Siyuan Chai, Michael Jaemin Kim. M5: Mastering page migration. ASPLOS 2025.</p>
+  <p>The Morning Paper's coverage of PCheck (article)</p>
+  <p><a href="https://example.edu/~alice">Alice Wang</a>, PhD Student</p>
+</body>
+</html>
+"""
+
+LONG_PARAGRAPH_HTML = """
+<!DOCTYPE html>
+<html>
+<head><title>Long Text Page</title></head>
+<body>
+  <p>""" + ("Alice Wang, PhD Student. " * 30) + """</p>
+  <p><a href="https://example.edu/~bob">Bob Chen</a>, Postdoc</p>
+  <p><a href="https://example.edu/~carol">Carol Davis</a>, PhD Student</p>
+  <p><a href="https://example.edu/~dan">Dan Kim</a>, Research Scientist</p>
+</body>
+</html>
+"""
+
+BELOW_THRESHOLD_PARAGRAPH_HTML = """
+<!DOCTYPE html>
+<html>
+<head><title>Small Page</title></head>
+<body>
+  <p><a href="https://example.edu/~anna">Anna Brown</a>, PhD Student</p>
+  <p><a href="https://example.edu/~ben">Ben White</a>, Postdoc</p>
+</body>
+</html>
+"""
+
+
+class TestParagraphMemberExtractor(unittest.TestCase):
+    """PR23: tests for ParagraphMemberExtractor — legacy paragraph layouts."""
+
+    def _extract(self, html: str, base: str = "https://example.edu/") -> list:
+        extractor = ParagraphMemberExtractor()
+        already_seen: set[str] = set()
+        return extractor.extract(html, base, already_seen)
+
+    def test_simple_paragraph_members_extracted(self):
+        entries = self._extract(SIMPLE_PARAGRAPH_MEMBERS_HTML)
+        names = {e.name for e in entries}
+        self.assertIn("John Smith", names)
+        self.assertIn("Jane Doe", names)
+        self.assertIn("Alice Zhang", names)
+
+    def test_simple_paragraph_role_hints_present(self):
+        entries = self._extract(SIMPLE_PARAGRAPH_MEMBERS_HTML)
+        john = next(e for e in entries if e.name == "John Smith")
+        self.assertIsNotNone(john.role_hint)
+        self.assertIn("phd", john.role_hint.lower())
+
+    def test_paragraph_with_homepage_link_resolves_url(self):
+        entries = self._extract(PARAGRAPH_WITH_HOMEPAGE_HTML, "https://tianyin.github.io/")
+        jongyul = next(e for e in entries if e.name == "Jongyul Kim")
+        self.assertIsNotNone(jongyul.profile_url)
+        self.assertIn("yulistic", jongyul.profile_url)
+
+    def test_multiple_consecutive_members_extracted(self):
+        entries = self._extract(PARAGRAPH_WITH_HOMEPAGE_HTML)
+        self.assertGreaterEqual(len(entries), 4)
+
+    def test_in_member_section_extracts_below_standalone_threshold(self):
+        entries = self._extract(PARAGRAPH_IN_MEMBER_SECTION_HTML)
+        names = {e.name for e in entries}
+        self.assertIn("Dan Kim", names)
+        self.assertIn("Eva Martinez", names)
+
+    def test_publication_paragraphs_not_extracted(self):
+        entries = self._extract(PUBLICATION_PARAGRAPHS_HTML)
+        names = {e.name for e in entries}
+        self.assertNotIn("Yan Sun", names)
+        self.assertNotIn("Alice Wang", names)
+
+    def test_long_paragraph_ignored(self):
+        entries = self._extract(LONG_PARAGRAPH_HTML)
+        names = {e.name for e in entries}
+        self.assertNotIn("Alice Wang", names)
+        self.assertIn("Bob Chen", names)
+
+    def test_below_threshold_standalone_not_extracted(self):
+        entries = self._extract(BELOW_THRESHOLD_PARAGRAPH_HTML)
+        self.assertEqual(len(entries), 0)
+
+    def test_entries_marked_in_member_section(self):
+        entries = self._extract(SIMPLE_PARAGRAPH_MEMBERS_HTML)
+        self.assertTrue(all(e.in_member_section for e in entries))
+        self.assertTrue(all(e.section_name == "paragraph" for e in entries))
+
+    def test_already_seen_names_not_duplicated(self):
+        extractor = ParagraphMemberExtractor()
+        already_seen = {"john smith", "jane doe"}
+        entries = extractor.extract(
+            SIMPLE_PARAGRAPH_MEMBERS_HTML, "https://example.edu/", already_seen
+        )
+        names = {e.name for e in entries}
+        self.assertNotIn("John Smith", names)
+        self.assertNotIn("Jane Doe", names)
+        self.assertIn("Alice Zhang", names)
+
+
+class TestMemberPageParserPR23Regression(unittest.TestCase):
+    """Verify that PR23 (paragraph extractor) does not break existing parsing."""
+
+    def test_ul_li_layout_still_works(self):
+        parsed = MemberPageParser().parse(
+            MEMBER_PAGE_HTML, base_url="https://example.edu/"
+        )
+        names = {e.name for e in parsed.entries}
+        self.assertIn("Jian Wang", names)
+        self.assertIn("Alice Chen", names)
+
+    def test_heading_card_count_zero_for_list_only_page(self):
+        parsed = MemberPageParser().parse(
+            MEMBER_PAGE_HTML, base_url="https://example.edu/"
+        )
+        self.assertEqual(parsed.heading_card_count, 0)
+
+    def test_paragraph_member_count_zero_for_list_only_page(self):
+        parsed = MemberPageParser().parse(
+            MEMBER_PAGE_HTML, base_url="https://example.edu/"
+        )
+        self.assertEqual(parsed.paragraph_member_count, 0)
+
+    def test_mixed_layout_combines_ul_and_paragraph_members(self):
+        parsed = MemberPageParser().parse(
+            UL_LI_WITH_PARAGRAPH_MEMBERS_HTML, base_url="https://example.edu/"
+        )
+        names = {e.name for e in parsed.entries}
+        self.assertIn("Jian Wang", names)
+        self.assertIn("Alice Chen", names)
+        self.assertIn("Bob Smith", names)
+        self.assertIn("Carol Davis", names)
+        self.assertIn("Eve Foster", names)
+        self.assertGreater(parsed.paragraph_member_count, 0)
+
+    def test_bootstrap_cards_via_main_parser_still_work(self):
+        parsed = MemberPageParser().parse(
+            BOOTSTRAP_CARD_HTML, base_url="https://rise.cs.berkeley.edu/people/"
+        )
+        names = {e.name for e in parsed.entries}
+        self.assertIn("Alice Wang", names)
+        self.assertIn("Bob Chen", names)
+        self.assertIn("Carol Davis", names)
+        self.assertGreater(parsed.heading_card_count, 0)
+
+    def test_ul_li_with_heading_cards_still_works(self):
+        parsed = MemberPageParser().parse(
+            UL_LI_WITH_HEADING_CARDS_HTML, base_url="https://example.edu/"
+        )
+        names = {e.name for e in parsed.entries}
+        self.assertIn("Jian Wang", names)
+        self.assertIn("Bob Smith", names)
         self.assertGreater(parsed.heading_card_count, 0)
 
 

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from homepage_agent.fetcher import HomepageFetcher
+from homepage_agent.fetcher import FetchStats, HomepageFetcher
 from homepage_agent.models import HomepageDocument
 
 
@@ -18,6 +18,10 @@ class ResearchGroupFetcher:
         self._fetcher = fetcher or HomepageFetcher(
             cache_dir="data/cache/research_groups",
         )
+
+    @property
+    def stats(self) -> FetchStats:
+        return self._fetcher.stats
 
     def fetch(self, url: str) -> HomepageDocument:
         return self._fetcher.fetch(url)

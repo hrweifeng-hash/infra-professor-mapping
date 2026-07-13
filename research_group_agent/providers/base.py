@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+from research_group_agent.department_scope_detector import DepartmentScopeResult
 from research_group_agent.models import (
     ExtractedMember,
     IdentityResolutionResult,
@@ -27,6 +28,9 @@ class ResearchGroupProvider(ABC):
         prompt: str,
         parsed: ParsedMemberPage,
         professor_name: str,
+        *,
+        page_url: str | None = None,
+        department_scope: DepartmentScopeResult | None = None,
     ) -> MemberExtractionResult:
         ...
 

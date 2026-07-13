@@ -223,6 +223,7 @@ class MappingPipeline:
         rg_pipeline = ResearchGroupPipeline(provider=StubResearchGroupProvider())
         research_group_graphs = rg_pipeline.analyze_many(us_top100)
         ResearchGroupReport.write(research_group_graphs, metrics=rg_pipeline.last_metrics)
+        rg_pipeline.identity_repository.export()
         stage_end("ResearchGroupIntelligence", rg_start)
 
         self.us_top100 = USTop100Exporter().export(us_top100)

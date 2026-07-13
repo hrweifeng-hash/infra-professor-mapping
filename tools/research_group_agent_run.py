@@ -64,10 +64,12 @@ def main() -> int:
     pipeline = ResearchGroupPipeline(provider=StubResearchGroupProvider())
     graphs = pipeline.analyze_many(professors)
     json_path, md_path = ResearchGroupReport.write(graphs, metrics=pipeline.last_metrics)
+    identity_path = pipeline.identity_repository.export()
     NavigationDebugWriter.from_graphs(graphs)
 
     print(f"Graphs written to {json_path}")
     print(f"Report written to {md_path}")
+    print(f"Identity candidates written to {identity_path}")
     return 0
 
 
